@@ -1,0 +1,122 @@
+import * as React from "react";
+import {Header, Title, Content, Button, Icon, Left, Right, Body, Thumbnail, List, ListItem, Card, CardItem, Container } from "native-base";
+import { SearchBar, Badge } from "react-native-elements";
+
+import {
+	Image,
+	View,
+    Dimensions,
+	Modal,
+    StyleSheet,
+    Text, FlatList, ActivityIndicator, ImageBackground
+} from "react-native";
+export interface Props {
+	navigation: any;
+}
+export interface State {}
+export interface Props {
+    navigation: any;
+}
+
+const {height, width} = Dimensions.get('window');
+
+class FlatRow extends React.Component<Props, State> {
+    constructor(props) {
+        super(props);
+        this.state = {
+            fullReadComment: false,
+        };
+    }
+
+    viewFullComment = () => {
+        let current = this.state.fullReadComment
+        this.setState({
+            fullReadComment: !current
+        });
+    }
+
+    onRowPress = () => {
+        if (this.props.onRowPressed) {
+            this.props.onRowPressed(this.props.flat);
+        }
+    }
+
+    printNumber = () => {
+        this.props.flat.contacts.map((num, index) => {
+            return (
+                <Text key={index}>{num}</Text>
+            )
+        })
+    }
+
+    render() {
+        // let movie = this.props.friend.movies[this.props.movieId]
+		return (
+            <ListItem onPress={this.onRowPress}>
+                <View style={{width: width*0.95}}>
+                    <Text style={{fontSize: 18, fontWeight: "bold", paddingBottom: 5}}>{this.props.flat.title}</Text>
+                    <View style={{flexDirection: "row"}}>
+                        <View style={{flexDirection: "column", alignItems: 'center'}}>
+                            <View style={{paddingTop: 3}}>
+                                <ImageBackground
+                                    source={{ uri: this.props.flat.photos[0] }}
+                                    style={{height: height*0.1, width: width*0.25, }}
+                                >
+                                </ImageBackground>
+                            </View>
+                            <View style={{paddingTop: 5, width: width*0.25}}>
+                                <View style={{padding: 5, borderWidth: 1, borderColor: '#bec4cf', borderRadius: 2, alignItems: 'center'}}>
+                                    <Text style={{fontSize: 14,}}>{this.props.flat.price}$ /месяц</Text>
+                                </View>
+                            </View>
+                        </View>
+                        <View style={{flex: 1, flexDirection: "column", }}>
+                            <View style={{flexDirection: "row"}}>
+                                <View style={{flexDirection: "row", alignItems: 'center'}}>
+                                    <Icon name='camera' style={{fontSize: 16, color: '#9da3ae', paddingLeft: 5}}/>
+                                    <Text style={{fontSize: 12, color: '#9da3ae', padding: 3, paddingTop: 0, paddingBottom: 0}}>{this.props.flat.photos.length}</Text>
+                                </View>
+                                <View style={{flexDirection: "row", alignItems: 'center'}}>
+                                    <Icon name='clock' style={{fontSize: 16, color: '#9da3ae', paddingLeft: 5}}/>
+                                    <Text style={{fontSize: 12, paddingLeft: 5, color: '#9da3ae'}} >{this.props.flat.updatedOn}</Text>
+                                </View>
+                            </View>
+                            <View>
+                                <Text numberOfLines={4} style={{fontSize: 14, padding: 5, paddingTop: 0, paddingBottom: 0}}>{this.props.flat.description}</Text>
+                            </View>
+                            <View style={{flexDirection: "row", }}>
+                                {this.props.flat.contacts.map((num, index) => {
+                                    return (
+                                        <Text style={{fontSize: 14, padding: 5, paddingTop: 10, paddingBottom: 0}} key={index}>{num}</Text>
+                                    )
+                                })}
+                            </View>
+                        </View>
+                    </View>
+                </View>
+            </ListItem>
+		);
+	}
+}
+
+const styles = StyleSheet.create({
+    containerStyle: {
+        height: height,
+        width: width,
+        backgroundColor: '#FFFFFF',
+        alignSelf: 'center',
+        borderWidth: 1,
+        borderRadius: 5,
+        borderColor: '#ddd',
+        borderBottomWidth: 0,
+        shadowColor: '#000',
+        shadowOffset: { width: 0, height: 2 },
+        shadowOpacity: 0.8,
+        shadowRadius: 2,
+        elevation: 1,
+        // marginLeft: 5,
+        // marginRight: 5,
+    },
+})
+
+export default FlatRow;
