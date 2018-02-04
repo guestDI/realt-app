@@ -28,7 +28,7 @@ const { StatusBarManager } = NativeModules;
 const {height, width} = Dimensions.get('window');
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
 
-class NewMoviePage extends React.Component<Props, State> {
+class FlatPage extends React.Component<Props, State> {
     constructor(props) {
         super(props);
 
@@ -171,14 +171,67 @@ class NewMoviePage extends React.Component<Props, State> {
                                 ))}
                             </ScrollView>
                         </View>
-                        <View style={{flexDirection: "column", marginTop: 5}}>
-                            <View>
-                                <Text>Кол-во комнат: 2</Text>
+                        {/*<View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>*/}
+                            {/*<Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Основная информация</Text>*/}
+                        {/*</View>*/}
+                        <View style={{flex: 1, flexDirection: "row", }}>
+                            <View style={{flexDirection: "column", paddingLeft: 10}}>
+                                <Text style={{fontSize: 18, padding: 5, }}>Кол-во комнат: 2</Text>
+                                <Text style={{fontSize: 18, padding: 5, }}>Цена: {this.props.flat.price}</Text>
+                                <View style={{flexDirection: "row", alignItems: 'center'}}>
+                                    <Image
+                                        resizeMode="contain"
+                                        source={require("../../../../assets/images/location-icon-grey.png")}
+                                        style={{height: 24, width: 35}}/>
+                                    <Text style={{fontSize: 16}}>
+                                        {this.props.flat.address}
+                                    </Text>
+                                </View>
+                                    {this.props.flat.contacts.map((num, index) => {
+                                        return (
+                                            <View key={index} style={{flexDirection: "row", alignItems: 'center', paddingTop: 5}}>
+                                                <Image
+                                                    resizeMode="contain"
+                                                    source={require("../../../../assets/images/phone-512.png")}
+                                                    style={{height: 24, width: 35}}/>
+                                                <Text style={{fontSize: 16}}>
+                                                    {num}
+                                                </Text>
+                                            </View>
+                                        )
+                                    })}
                             </View>
-                            <View>
-                                <Text>Цена: {this.props.flat.price}</Text>
+
+                            {/*<View style={{flexDirection: "column", }}>*/}
+                                {/*<Text style={{fontSize: 18, padding: 5,}}>Район</Text>*/}
+                                {/*<Text style={{fontSize: 18, padding: 5,}}>{this.props.flat.address}</Text>*/}
+                            {/*</View>*/}
+                        </View>
+                        <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>
+                            <Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Описание</Text>
+                        </View>
+                        <Text style={{fontSize: 16, paddingLeft: 10, paddingTop: 5, paddingBottom: 10}}>{this.props.flat.description}</Text>
+                        <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>
+                            <Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Местоположение</Text>
+                        </View>
+                        <View style={{flex: 1, flexDirection: "row", }}>
+                            <View style={{flexDirection: "column", paddingLeft: 10}}>
+                                <Text style={{fontSize: 18, padding: 5, color: '#8c919c'}}>Район</Text>
+                                <Text style={{fontSize: 18, padding: 5, color: '#8c919c'}}>Улица</Text>
+                            </View>
+                            <View style={{flexDirection: "column", }}>
+                                <Text style={{fontSize: 18, padding: 5,}}>Район</Text>
+                                <Text style={{fontSize: 18, padding: 5,}}>{this.props.flat.address}</Text>
                             </View>
                         </View>
+                        {/*<View style={{flexDirection: "column", marginTop: 5}}>*/}
+                            {/*<View>*/}
+                                {/*<Text>Кол-во комнат: 2</Text>*/}
+                            {/*</View>*/}
+                            {/*<View>*/}
+                                {/*<Text>Цена: {this.props.flat.price}</Text>*/}
+                            {/*</View>*/}
+                        {/*</View>*/}
                             {/*<View style={{flexDirection: "row", marginBottom: 5, marginTop: 5, alignItems: 'center', justifyContent: "center"}}>*/}
                                 {/*<View style={{flexDirection: "row", paddingRight: 10, paddingBottom: 3}}>*/}
                                     {/*<Icon name='calendar' style={{fontSize: 16, color: '#a5abb6', paddingRight: 3}}/>*/}
@@ -381,4 +434,4 @@ const styles = StyleSheet.create({
     }
 });
 
-export default NewMoviePage;
+export default FlatPage;

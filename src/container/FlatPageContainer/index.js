@@ -1,6 +1,6 @@
 // @flow
 import * as React from "react";
-import NewMoviePage from "../../stories/screens/NewMoviePage";
+import FlatPage from "../../stories/screens/NewMoviePage";
 // import {setRate} from "../HomeContainer/actions";
 // import { fetchRatedFriendsList } from "./actions";
 import {connect} from "react-redux";
@@ -26,7 +26,7 @@ class FlatPageContainer extends React.Component<Props, State> {
         // let movie = movies.filter(mov => mov.id === param.id)[0];
         // const myRate = this.getMyRate(movie, myUID);
         // let ratedFriends = this.props.ratedFriendsData;
-		return <NewMoviePage
+		return <FlatPage
             navigation={this.props.navigation}
             flat={this.props.navigation.state.params.flat}
             // myRate={myRate}
