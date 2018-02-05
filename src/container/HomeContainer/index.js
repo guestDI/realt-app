@@ -24,31 +24,36 @@ class HomeContainer extends React.Component<Props, State> {
 	}
 
 	componentDidMount() {
-        // this.props.fetchFlats({
-		// 	page: 0,
-		// 	size: 10
-		// })
+        this.props.fetchFlats({
+			page: 0,
+			size: 10
+		})
 	}
 
 	render() {
 		return <Home
 			navigation={this.props.navigation}
-			list={flats}
-			// loadMore={this.loadMore}
+			list={this.props.data}
+			loadMore={this.loadMore}
 		/>;
 	}
 
-	loadMore = (startDate, endDate) => {
-        const movies = this.props.data;
-		if (movies && movies.length > 0) {
-            this.props.fetchList(startDate, endDate);
-        }
+	loadMore = (page) => {
+		let filter = {
+			page: page,
+			size: 10
+		}
+        this.props.fetchFlats(filter);
+        // const movies = this.props.data;
+        // if (movies && movies.length > 0) {
+        //     this.props.fetchList(startDate, endDate);
+        // }
 	}
 }
 
 function bindAction(dispatch) {
 	return {
-        // fetchFlats: (filter) => dispatch(fetchFlats(filter)),
+       fetchFlats: (filter) => dispatch(fetchFlats(filter)),
 	};
 }
 

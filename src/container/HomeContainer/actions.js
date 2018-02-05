@@ -17,7 +17,7 @@ export const fetchFlats = (filter) => {
     return (dispatch) => {
         dispatch(listIsLoading(true));
 
-        axios.get('http://localhost:8080/flats?page=' + filter.page + '&' + 'size=' + filter.size)
+        axios.get('http://192.168.100.6:8080/flats?page=' + filter.page + '&' + 'size=' + filter.size)
             .then((response) => response.data)
             .then((flats) => dispatch(fetchListSuccess(flats)))
             // .then(() => dispatch(usersFetchSuccess()))

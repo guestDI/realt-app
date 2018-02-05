@@ -25,12 +25,6 @@ export interface Props {
 
 const {height, width} = Dimensions.get('window');
 
-const images = [
-    {
-        url: "https://avatars2.githubusercontent.com/u/7970947?v=3&s=460"
-    }
-]
-
 class ImageView extends React.Component<Props, State> {
     constructor(props) {
         super(props);
@@ -41,7 +35,6 @@ class ImageView extends React.Component<Props, State> {
 
 	render() {
 		// const param = this.props.navigation.state.params;
-		let emotion = this.state.emotion;
         let wrappedImages = this.props.images.map(image => {return {source: {uri: image}}})
 		return (
             <Modal visible={this.props.visible}

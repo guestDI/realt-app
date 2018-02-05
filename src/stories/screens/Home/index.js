@@ -14,7 +14,7 @@ import {
     Thumbnail,
     Text
 } from "native-base";
-import { View, SectionList, FlatList, TouchableOpacity, Platform, NativeModules, Dimensions } from "react-native";
+import { View, SectionList, FlatList, TouchableOpacity, Platform, NativeModules, Dimensions, ActivityIndicator } from "react-native";
 import moment from "moment";
 import FlatRow from './components/FlatRow'
 import styles from "./styles";
@@ -38,9 +38,7 @@ class Home extends React.Component<Props, State> {
     super(props);
     this.state = {
         loading: false,
-        data: [],
         page: 0,
-        seed: 10,
         error: null,
         refreshing: false,
     }
@@ -68,6 +66,39 @@ class Home extends React.Component<Props, State> {
     //             this.setState({ error, loading: false });
     //         });
     // };
+
+    handleRefresh = () => {
+        this.setState({
+            page: 0,
+            refreshing: true
+        }, () => {
+            this.props.loadMore(0)
+        })
+    }
+
+    handleLoadMore = () => {
+      let currentPage = this.state.page + 1;
+        this.setState({
+            page: this.state.page + 1,
+        }, () => {
+            this.props.loadMore(currentPage)
+        })
+    }
+
+    renderFooter = () => {
+        // if (!this.state.loading) return null;
+        return (
+            <View
+                style={{
+                    paddingVertical: 30,
+                    borderTopWidth: 1,
+                    borderColor: "#CED0CE"
+                }}
+            >
+                {/*<ActivityIndicator animating size="large" />*/}
+            </View>
+        );
+    };
 
     onFlatRowPress = (val) => {
         // let friendInfo = {
@@ -108,14 +139,14 @@ class Home extends React.Component<Props, State> {
                       renderItem={({ item }) => (
                           <FlatRow flat={item} onRowPressed={this.onFlatRowPress}/>
                       )}
-                      keyExtractor={item => item.address}
+                      keyExtractor={item => item.description}
                       // ItemSeparatorComponent={this.renderSeparator}
                       // ListHeaderComponent={this.renderHeader}
-                      // ListFooterComponent={this.renderFooter}
+                      ListFooterComponent={this.renderFooter}
                       // onRefresh={this.handleRefresh}
-                      refreshing={this.state.refreshing}
-                      // onEndReached={this.handleLoadMore}
-                      // onEndReachedThreshold={0.5}
+                      // refreshing={this.state.refreshing}
+                      onEndReached={this.handleLoadMore}
+                      onEndReachedThreshold={3}
                   />
               </List>
           </View>

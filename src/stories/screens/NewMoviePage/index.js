@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Dimensions, View, Text, Image, StyleSheet, ScrollView, StatusBar, WebView, TouchableOpacity, TouchableWithoutFeedback,
-    Linking, NativeModules, Platform } from "react-native"
+    Linking, NativeModules, Platform, SectionList, FlatList } from "react-native"
 import { Button, Icon, Root, Toast, Container, Header, Title, Content, Left, Body, Right } from "native-base"
 import { Card   } from "react-native-elements"
 import ImageView from './components/ImageView'
@@ -38,12 +38,6 @@ class FlatPage extends React.Component<Props, State> {
         };
     }
 
-    friendsModalHandler = () => {
-        this.setState({
-            friendsModalVisible: true
-        });
-    }
-
     viewerHandler = (imageNumber) => {
         this.setState({
             viewerVisible: true,
@@ -52,25 +46,15 @@ class FlatPage extends React.Component<Props, State> {
         });
     }
 
-    onCloseRatingsHandler = () => {
-        this.setState({
-            visible: false
-        });
-
-    }
-
-    onCloseFriendsRatingHandler = () => {
-        this.setState({
-            friendsModalVisible: false
-        });
-
-    }
-
     onCloseViewerHandler = () => {
         this.setState({
             viewerVisible: false,
             statusBarColor: 'rgba(0, 0, 0, 0.3)'
         });
+    }
+
+    onAddressClick = () => {
+        this.refs._scrollView.scrollToEnd({animated: true})
     }
 
     viewFullSynopsis = () => {
@@ -128,23 +112,7 @@ class FlatPage extends React.Component<Props, State> {
                     <Right />
                 </Header>
                 <View style={{flex: 1}}>
-                    <ScrollView style={{backgroundColor: '#FFFFFF',}}>
-                        {/*<StatusBar*/}
-                            {/*translucent={true}*/}
-                            {/*backgroundColor={this.state.statusBarColor}*/}
-                            {/*barStyle={'light-content'}*/}
-                        {/*/>*/}
-                        {/*page={this.state.imageNumberSelected}*/}
-                        {/*<TouchableOpacity key={index} onPress={() => this.viewerHandler(shots.indexOf(image))}>*/}
-                            {/*<Image style={styles.cardImage} source={{uri: image}} />*/}
-                        {/*</TouchableOpacity>*/}
-                        {/*<View style={{flexDirection: "row", alignItems: 'center'}}>*/}
-                            {/*<Text style={{fontSize: 22, fontWeight: "bold", padding: 5}}>{this.props.flat.address}</Text>*/}
-                            {/*<Image*/}
-                            {/*resizeMode="contain"*/}
-                            {/*source={require("../../../../assets/images/location-icon-grey.png")}*/}
-                            {/*style={{height: 20, width: 23}}/>*/}
-                        {/*</View>*/}
+                    <ScrollView style={{backgroundColor: '#FFFFFF',}} ref="_scrollView">
                         <View
                             style={styles.scrollContainer}
                         >
@@ -154,7 +122,9 @@ class FlatPage extends React.Component<Props, State> {
                                 showsHorizontalScrollIndicator={false}
                             >
                                 {photos.map((image, index) => (
-                                    <Image key={index} style={styles.cardImage} source={{uri: image}} />
+                                    <TouchableOpacity key={index} activeOpacity={0.7} onPress={() => this.viewerHandler(this.props.flat.photos.indexOf(image))}>
+                                        <Image key={index} style={styles.cardImage} source={{uri: image}} />
+                                    </TouchableOpacity>
                                 ))}
                             </ScrollView>
                         </View>
@@ -163,16 +133,18 @@ class FlatPage extends React.Component<Props, State> {
                         {/*</View>*/}
                         <View style={{flex: 1, flexDirection: "row", }}>
                             <View style={{flexDirection: "column", paddingLeft: 10}}>
-                                <Text style={{fontSize: 18, padding: 5, }}>Кол-во комнат: 2</Text>
-                                <Text style={{fontSize: 18, padding: 5, }}>Цена: {this.props.flat.price}</Text>
+                                <Text style={{fontSize: 24, fontWeight: "bold", padding: 5, }}>2-х комнатная</Text>
+                                <Text style={{fontSize: 32, fontWeight: "bold", paddingLeft: 5,}}>{this.props.flat.price} $</Text>
                                 <View style={{flexDirection: "row", alignItems: 'center'}}>
                                     <Image
                                         resizeMode="contain"
                                         source={require("../../../../assets/images/location-icon-grey.png")}
                                         style={{height: 24, width: 35}}/>
-                                    <Text style={{fontSize: 16}}>
-                                        {this.props.flat.address}
-                                    </Text>
+                                    <TouchableOpacity activeOpacity={0.7} onPress={() => this.onAddressClick()}>
+                                        <Text style={{fontSize: 16, color: 'blue', textDecorationLine: 'underline'}}>
+                                            {this.props.flat.address}
+                                        </Text>
+                                    </TouchableOpacity>
                                 </View>
                                     {this.props.flat.contacts.map((num, index) => {
                                         return (
@@ -217,8 +189,8 @@ class FlatPage extends React.Component<Props, State> {
                                 initialRegion={{
                                     latitude: this.props.flat.latitude,
                                     longitude: this.props.flat.longitude,
-                                    latitudeDelta: 0.0222,
-                                    longitudeDelta: 0.0121,
+                                    latitudeDelta: 0.0092,
+                                    longitudeDelta: 0.0091,
                                 }}
                                 showsTraffic={false}
                             >
@@ -410,7 +382,7 @@ class FlatPage extends React.Component<Props, State> {
                         {/*comment={comment}*/}
                         {/*onSave={this.onChangeRate}*/}
                     {/*/>*/}
-                    {/*<ImageView visible={this.state.viewerVisible} page={this.state.imageNumberSelected} images={shots} onClose={this.onCloseViewerHandler}/>*/}
+                    <ImageView visible={this.state.viewerVisible} page={this.state.imageNumberSelected} images={this.props.flat.photos} onClose={this.onCloseViewerHandler}/>
                     {/*<FriendsRating*/}
                         {/*visible={this.state.friendsModalVisible}*/}
                         {/*onClose={this.onCloseFriendsRatingHandler}*/}
