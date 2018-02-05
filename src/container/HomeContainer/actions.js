@@ -1,3 +1,5 @@
+import axios from 'axios';
+
 export function listIsLoading(bool: boolean) {
 	return {
 		type: "LIST_IS_LOADING",
@@ -10,6 +12,18 @@ export function fetchListSuccess(list: Array) {
 		list,
 	};
 }
+
+export const fetchFlats = (filter) => {
+    return (dispatch) => {
+        dispatch(listIsLoading(true));
+
+        axios.get('http://localhost:8080/flats?page=' + filter.page + '&' + 'size=' + filter.size)
+            .then((response) => response.data)
+            .then((flats) => dispatch(fetchListSuccess(flats)))
+            // .then(() => dispatch(usersFetchSuccess()))
+            .catch((e) => {console.error(e);});
+    }
+};
 
 // function setUserRating(movieId: string, userId: string, rate: number, comment: string) {
 // 	return {

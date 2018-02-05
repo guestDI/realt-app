@@ -4,6 +4,7 @@ import { Dimensions, View, Text, Image, StyleSheet, ScrollView, StatusBar, WebVi
 import { Button, Icon, Root, Toast, Container, Header, Title, Content, Left, Body, Right } from "native-base"
 import { Card   } from "react-native-elements"
 import ImageView from './components/ImageView'
+import { MapView } from 'expo';
 
 export interface Props {
 	navigation: any;
@@ -15,13 +16,6 @@ export interface Props {
     myRate: ?{rate: number, comment: string};
     onRateChanged: Function;
 }
-
-const dataImages = [
-    { source: { uri: 'http://i.imgur.com/XP2BE7q.jpg' } },
-    { source: { uri: 'http://i.imgur.com/5nltiUd.jpg' } },
-    { source: { uri: 'http://i.imgur.com/6vOahbP.jpg' } },
-    { source: { uri: 'http://i.imgur.com/kj5VXtG.jpg' } }
-]
 
 const { StatusBarManager } = NativeModules;
 
@@ -44,18 +38,11 @@ class FlatPage extends React.Component<Props, State> {
         };
     }
 
-    rateHandler = () => {
-        this.setState({
-            visible: true
-        });
-    }
-
     friendsModalHandler = () => {
         this.setState({
             friendsModalVisible: true
         });
     }
-
 
     viewerHandler = (imageNumber) => {
         this.setState({
@@ -223,6 +210,26 @@ class FlatPage extends React.Component<Props, State> {
                                 <Text style={{fontSize: 18, padding: 5,}}>Район</Text>
                                 <Text style={{fontSize: 18, padding: 5,}}>{this.props.flat.address}</Text>
                             </View>
+                        </View>
+                        <View>
+                            <MapView
+                                style={{ flex: 1, width: width, height: height*0.5}}
+                                initialRegion={{
+                                    latitude: this.props.flat.latitude,
+                                    longitude: this.props.flat.longitude,
+                                    latitudeDelta: 0.0222,
+                                    longitudeDelta: 0.0121,
+                                }}
+                                showsTraffic={false}
+                            >
+                                <MapView.Marker
+                                    coordinate={{
+                                        latitude: this.props.flat.latitude,
+                                        longitude: this.props.flat.longitude}}
+                                    title={this.props.flat.address}
+                                />
+                            </MapView>
+
                         </View>
                         {/*<View style={{flexDirection: "column", marginTop: 5}}>*/}
                             {/*<View>*/}

@@ -4,8 +4,8 @@ import { connect } from "react-redux";
 
 import Home from "../../stories/screens/Home";
 import flats from "./data_test";
-import { fetchList } from "./actions";
-// import {setUID} from "../LoginContainer/actions";
+import { fetchFlats } from "./actions";
+// import {fetchFlats} from "../LoginContainer/actions";
 export interface Props {
 	navigation: any,
 	fetchList: Function,
@@ -15,7 +15,7 @@ export interface Props {
 export interface State {
 }
 
-const MOVIES_ON_PAGE = 5;
+const FLATS_ON_PAGE = 10;
 
 class HomeContainer extends React.Component<Props, State> {
 
@@ -24,7 +24,10 @@ class HomeContainer extends React.Component<Props, State> {
 	}
 
 	componentDidMount() {
-
+        // this.props.fetchFlats({
+		// 	page: 0,
+		// 	size: 10
+		// })
 	}
 
 	render() {
@@ -45,13 +48,12 @@ class HomeContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
 	return {
-		// fetchList: (movieId, limit) => dispatch(fetchList(movieId, limit)),
-		// setUID: (uid) => dispatch(setUID(uid)),
+        // fetchFlats: (filter) => dispatch(fetchFlats(filter)),
 	};
 }
 
 const mapStateToProps = state => ({
-	// data: state.homeReducer.list,
-	// isLoading: state.homeReducer.isLoading,
+	data: state.homeReducer.list,
+	isLoading: state.homeReducer.isLoading,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

@@ -37,9 +37,37 @@ class Home extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-        monthPlus: 0
+        loading: false,
+        data: [],
+        page: 0,
+        seed: 10,
+        error: null,
+        refreshing: false,
     }
   }
+
+    componentDidMount() {
+        // this.makeRemoteRequest();
+    }
+
+    // makeRemoteRequest = () => {
+    //     const { page, seed } = this.state;
+    //     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
+    //     this.setState({ loading: true });
+    //     fetch(url)
+    //         .then(res => res.json())
+    //         .then(res => {
+    //             this.setState({
+    //                 data: page === 1 ? res.results : [...this.state.data, ...res.results],
+    //                 error: res.error || null,
+    //                 loading: false,
+    //                 refreshing: false
+    //             });
+    //         })
+    //         .catch(error => {
+    //             this.setState({ error, loading: false });
+    //         });
+    // };
 
     onFlatRowPress = (val) => {
         // let friendInfo = {
