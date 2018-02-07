@@ -17,6 +17,7 @@ import {
 import { View, SectionList, FlatList, TouchableOpacity, Platform, NativeModules, Dimensions, ActivityIndicator } from "react-native";
 import moment from "moment";
 import styles from "./styles";
+import FlatPreview from './components/FlatPreview'
 import { MapView } from 'expo';
 const { StatusBarManager } = NativeModules;
 
@@ -48,69 +49,13 @@ class FlatsMap extends React.Component<Props, State> {
         // this.makeRemoteRequest();
     }
 
-    // makeRemoteRequest = () => {
-    //     const { page, seed } = this.state;
-    //     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
-    //     this.setState({ loading: true });
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             this.setState({
-    //                 data: page === 1 ? res.results : [...this.state.data, ...res.results],
-    //                 error: res.error || null,
-    //                 loading: false,
-    //                 refreshing: false
-    //             });
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error, loading: false });
-    //         });
-    // };
-
-    handleRefresh = () => {
-        this.setState({
-            page: 0,
-            refreshing: true
-        }, () => {
-            this.props.loadMore(0)
-        })
-    }
-
-    handleLoadMore = () => {
-      let currentPage = this.state.page + 1;
-        this.setState({
-            page: this.state.page + 1,
-        }, () => {
-            this.props.loadMore(currentPage)
-        })
-    }
-
-    renderFooter = () => {
-        // if (!this.state.loading) return null;
-        return (
-            <View
-                style={{
-                    paddingVertical: 30,
-                    borderTopWidth: 1,
-                    borderColor: "#CED0CE"
-                }}
-            >
-                {/*<ActivityIndicator animating size="large" />*/}
-            </View>
-        );
-    };
-
-    onFlatRowPress = (val) => {
-        // let friendInfo = {
-        //     id: val.id,
-        //     name: val.name,
-        //     photo: val.photo,
-        //     email: val.email,
-        //     friendsCount: Object.keys(val.friends).length
-        // }
+    onPreviewPress = (val) => {
         this.props.navigation.navigate("FlatPage", {
             flat: val
         })
+        // if (this.props.onFlatPreviewPressed) {
+        //     this.props.onFlatPreviewPressed(val);
+        // }
     }
 
   render() {
@@ -134,7 +79,12 @@ class FlatsMap extends React.Component<Props, State> {
                               latitude: flat.latitude,
                               longitude: flat.longitude}}
                           title="title"
-                      />
+                      >
+                          <MapView.Callout
+                          >
+                              <FlatPreview flat={flat}/>
+                          </MapView.Callout>
+                      </MapView.Marker>
                   )
                   // this.printMarker(flat.latitude, flat.longitude, flat.price);
               })}

@@ -109,7 +109,16 @@ class FlatPage extends React.Component<Props, State> {
                     <Body>
                     <Title>Аренда</Title>
                     </Body>
-                    <Right />
+                    <Right >
+                        <Button transparent>
+                            <Icon name="star" style={{fontSize: 28}}/>
+                            {/*<Icon*/}
+                                {/*active*/}
+                                {/*name="menu"*/}
+                                {/*onPress={() => this.props.navigation.navigate("DrawerOpen")}*/}
+                            {/*/>*/}
+                        </Button>
+                    </Right>
                 </Header>
                 <View style={{flex: 1}}>
                     <ScrollView style={{backgroundColor: '#FFFFFF',}} ref="_scrollView">
