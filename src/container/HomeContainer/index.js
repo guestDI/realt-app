@@ -24,17 +24,17 @@ class HomeContainer extends React.Component<Props, State> {
 	}
 
 	componentDidMount() {
-        this.props.fetchFlats({
-			page: 0,
-			size: 10
-		})
+        // this.props.fetchFlats({
+		// 	page: 0,
+		// 	size: 10
+		// })
 	}
 
 	render() {
 		return <Home
 			navigation={this.props.navigation}
-			list={this.props.data}
-			loadMore={this.loadMore}
+			list={flats}
+			// loadMore={this.loadMore}
 		/>;
 	}
 
@@ -53,7 +53,7 @@ class HomeContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
 	return {
-       fetchFlats: (filter) => dispatch(fetchFlats(filter)),
+       // fetchFlats: (filter) => dispatch(fetchFlats(filter)),
 	};
 }
 

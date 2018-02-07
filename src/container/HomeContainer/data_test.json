@@ -1,12 +1,36 @@
 [
   {
-    "id":1,
-    "price":300.00,
-    "address":"Минск, Комсомольская улица, 8",
-    "title":"Минск, Комсомольская улица, 8",
-    "description":"В центре Минска сдается 1-комнатная квартира по ул. Комсомольской 8. Отличное расположение. В шаговой доступности достопримечательности Минска, кафе, рестораны, магазины, парк. Метро Купаловская/Октябрьская и Пл. Ленина в 5 мин. ходьбы. Квартира с аккуратным ремонтом. полностью оснащена всем необходимым для комфортного проживания. Сдается квартира на длительный срок.",
-    "photos":
-    [
+    "id": 1,
+    "price": 300,
+    "address": "Минск, Комсомольская улица, 8",
+    "title": "Минск, Комсомольская улица, 8",
+    "description": "Сдается однокомнатная квартира в самом центре города, развитая инфраструктура, все в шаговой доступности. Квартира полностью укомплектована мебелью и техникой (кухонный гарнитур, обеденная группа, диван, шкаф-купе, стиральная машина и пр.). Оплата по факту.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/740b66bcce0f625e7f4e1f9469decd61.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/bf309ee7667f2a1ad8d27727a5175874.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/3fc91581cbeab04b3c4c599f6494f04c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/406fe5a30308395733fd9663d2b1e5b5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/2a75032b03a2ebe19b14586623209ae5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/0b1dfd24e9aaea5bd2d15f77e62fb398.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/722221aa9f4b685f6f37c4d0a0a3adda.jpeg"
+    ],
+    "contacts": [
+      "+375 29 157-90-17"
+    ],
+    "latitude": 53.902843,
+    "longitude": 27.551548,
+    "source": "ONLINER",
+    "originalId": "291177",
+    "createdOn": "2018-02-07T16:00:14",
+    "updatedOn": "2018-02-07T16:00:14"
+  },
+  {
+    "id": 2,
+    "price": 270,
+    "address": "Минск, Комсомольская улица, 8",
+    "title": "Минск, Комсомольская улица, 8",
+    "description": "В центре Минска сдается 1-комнатная квартира по ул. Комсомольской 8. Отличное расположение. В шаговой доступности достопримечательности Минска, кафе, рестораны, магазины, парк. Метро Купаловская/Октябрьская и Пл. Ленина в 5 мин. ходьбы. Квартира с аккуратным ремонтом. полностью оснащена всем необходимым для комфортного проживания. Сдается квартира на длительный срок.",
+    "photos": [
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/b1836a54f879017f748a5393572c04a2.jpeg",
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/6e055ad6052dfd22b75544100408e3df.jpeg",
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/2adcede6332ae8dc387530a38bf17b77.jpeg",
@@ -15,26 +39,24 @@
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/48e54e070a1befd922c0213032ac7fd8.jpeg",
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/da2588ef671120edbab126fa77a557e5.jpeg"
     ],
-    "contacts":
-    [
-      "+375 29 703-40-40",
-      "+375 44 703-40-40"
+    "contacts": [
+      "+375 44 703-40-40",
+      "+375 29 703-40-40"
     ],
-    "latitude":53.902863,
-    "longitude":27.551579,
-    "source":"ONLINER",
-    "originalId":"290396",
-    "createdOn":"2018-02-03T16:24:17",
-    "updatedOn":"2018-02-03T16:24:17"
+    "latitude": 53.902863,
+    "longitude": 27.551579,
+    "source": "ONLINER",
+    "originalId": "291104",
+    "createdOn": "2018-02-07T16:00:14",
+    "updatedOn": "2018-02-07T16:00:14"
   },
   {
-    "id":2,
-    "price":380.00,
-    "address":"Минск, улица Мясникова, 34",
-    "title":"Минск, улица Мясникова, 34",
-    "description":"В центре Минска сдается 1-комнатная квартира по ул. Мясникова, 34 (ст.м Площадь Ленина). Отличное расположение, развитая инфраструктура. В квартире сделан современный дорогостоящий ремонт. Имеется вся необходимая мебель (кухонный гарнитур, обеденная группа, диван, шкаф купе и пр.) и техника (варочная панель, духовой шкаф, холодильник, стиральная машина, кондиционер и пр). Просторный совмещенный сан.узел, установлена душевая кабина. Квартира сдается на длительный срок.",
-    "photos":
-    [
+    "id": 3,
+    "price": 380,
+    "address": "Минск, улица Мясникова, 34",
+    "title": "Минск, улица Мясникова, 34",
+    "description": "В центре Минска сдается 1-комнатная квартира по ул. Мясникова, 34 (ст.м Площадь Ленина). Отличное расположение, развитая инфраструктура. В квартире сделан современный дорогостоящий ремонт. Имеется вся необходимая мебель (кухонный гарнитур, обеденная группа, диван, шкаф купе и пр.) и техника (варочная панель, духовой шкаф, холодильник, стиральная машина, кондиционер и пр). Просторный совмещенный сан.узел, установлена душевая кабина. Квартира сдается на длительный срок.",
+    "photos": [
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/58f6b981889894f2efd64101bbbceecc.jpeg",
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/3ff1ea177a8caa3d135cc235d225167a.jpeg",
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/f866b5b1f64b7bb6b46441546cb36613.jpeg",
@@ -48,16 +70,763 @@
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/5edd8c415b0f1b54d670b5870656a552.jpeg",
       "https://content.onliner.by/apartment_rentals/1608827/1400x930/b89a39dd9d385b49f61d4be185ece875.jpeg"
     ],
-    "contacts":
-    [
-      "+375 44 703-40-40",
-      "+375 29 703-40-40"
+    "contacts": [
+      "+375 29 703-40-40",
+      "+375 44 703-40-40"
     ],
-    "latitude":53.897793,
-    "longitude":27.5431,
-    "source":"ONLINER",
-    "originalId":"290376",
-    "createdOn":"2018-02-03T16:24:17",
-    "updatedOn":"2018-02-03T16:24:17"
+    "latitude": 53.897793,
+    "longitude": 27.5431,
+    "source": "ONLINER",
+    "originalId": "291040",
+    "createdOn": "2018-02-07T16:00:14",
+    "updatedOn": "2018-02-07T16:00:14"
+  },
+  {
+    "id": 4,
+    "price": 300,
+    "address": "Мінск, вуліца Караля, 22",
+    "title": "Мінск, вуліца Караля, 22",
+    "description": "Уютная квартира в центре рядом с метро \"Фрунзенская\" и строящейся станцией \"Юбилейная площадь\", хорошее сообщение со всеми районами города, шаговая доступность торговых центров \"Корона\", \"Торговый дом на Немиге\", \"Юбилейный-92\" и \"Евроопт\", близость парка и Комсомольского озера помогут обеспечить Вам хорошие условия для плодотворного труда на работе и приятного отдыха дома",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/2162818/1400x930/0504c7110fb7f83e2d0d6b81cff0d8d0.jpeg",
+      "https://content.onliner.by/apartment_rentals/2162818/1400x930/c61cdaf7bbae5e0f9236efdcc3d9c95c.jpeg",
+      "https://content.onliner.by/apartment_rentals/2162818/1400x930/d8aa9d478ab28cc83ac9feb3c9f32a55.jpeg",
+      "https://content.onliner.by/apartment_rentals/2162818/1400x930/ea06a50dc9435512ca83f9c28e14bfe9.jpeg"
+    ],
+    "contacts": [
+      "+375 29 550-37-55"
+    ],
+    "latitude": 53.904213,
+    "longitude": 27.539099,
+    "source": "ONLINER",
+    "originalId": "291035",
+    "createdOn": "2018-02-07T16:00:14",
+    "updatedOn": "2018-02-07T16:00:14"
+  },
+  {
+    "id": 5,
+    "price": 399,
+    "address": "Минск, проспект Машерова, 43",
+    "title": "Минск, проспект Машерова, 43",
+    "description": "Сдается однокомнатная квартира VIP в элитном доме «Бетховен». Коротко о доме: консьерж, круглосуточное видеонаблюдение периметра дома, единственного подъезда и каждого этажа заботится о Вас и о сохранности Вашего автомобиля. Шаговая доступность к Короне, Bigzz, Стелле, парку Победы, проспекту Победителей и метро. Ежедневная уборка подъезда и дворовой территории. Все прелести комфортной и обеспеченной жизни в центре города. 13-й высокий этаж и окна на южную сторону позволят Вам смотреть салюты с просторной застеклённой лоджии. Наличие больших и глубоких шкафов-купе обеспечивают возможность положить не только женскую сумочку, но и маленького слона))) Регулировка температуры позволит Вам создать любимый и комфортный микроклимат. Наличие всей необходимой техники в квартире, тщательно продуманный дизайн и планировка, высокие потолки и площадь в 45 кв. метров, а также диван на 2 спальных места и полноценная кровать превратят это место в Ваш второй дом и позволят Вам без всяческих неудобств пригласить к себе гостей. Тёплая уютная южная солнечная квартира ждёт именно Вас! P.S. Окажу всяческую помощь и содействие в переезде. С уважением, Максим.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/fcb4a41721a4c945737694731329a642.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/d5efbfc3f363c5a45906068f60a56a36.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/c3efaf70aa994a617b295fb4938d793c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/483ee6f29e314d82b6c01dbb7d596072.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/fbd886e75c21a10fc64d5788155d0098.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/436d4cb6748c8673fb213e3e68d7c621.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/9355bbf212ced979a1f4a588441691ad.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/6cf39aea921d8616178fb692da94c58f.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/9b69d8e270bae1daab5a079ff45a8c8c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/304f883029469d0b337e9a0b83cc6e08.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/ff4480c80c49533e6d415192ae52c76b.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/1ec404cf6d4e1ca16e7cfd58bc86fb09.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/234b657a51c6ffd668d50de8965a54dd.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/971c176ac56713207655f58a00fb9f8c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/2eacb700b3a9a1cff006e990d01f9189.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/2ed51def6f4667378def627d3c629c6e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/47715059adf663a4e62780a5cfba19a9.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/8c3390b33f7a9913daf5f07076c630c6.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/fa5613bcff4dced72017127014a29bda.jpeg",
+      "https://content.onliner.by/apartment_rentals/1170569/1400x930/87f9d8c49ef52731bd0e514c3d4d563e.jpeg"
+    ],
+    "contacts": [
+      "+375 29 687-04-41"
+    ],
+    "latitude": 53.910915,
+    "longitude": 27.530766,
+    "source": "ONLINER",
+    "originalId": "290957",
+    "createdOn": "2018-02-07T16:00:14",
+    "updatedOn": "2018-02-07T16:00:14"
+  },
+  {
+    "id": 6,
+    "price": 350,
+    "address": "Минск, улица Ольшевского, 1А",
+    "title": "Минск, улица Ольшевского, 1А",
+    "description": "Сдаётся полностью мебелерованная квартира под ключ. Площадью 41,5м2. Есть все что нужно для комфортной жизни , в доме повышенной комфортности. Без домашних животных и маленьких деток. Стоимость указана без торга, плюс коммуналка зимой порядка 60р.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/9a6105982db7b73a86fcb9999aad407c.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/942159127f8abaf3b59afead94736179.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/3249a95f6b8c99e7d4d2abf6b791504f.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/f48cf22d9f44d8038e2c2b4d504cac0d.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/2488950ad361a8cd89970f43dcac4ed4.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/10002b1fe0347a687eedd5ab217f97f9.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/a30fb4ba1d7127de24216538b624c904.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/3ee7e762558c2c61b122598919455513.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/ba138a063051dd71c11acdb1953309b4.jpeg",
+      "https://content.onliner.by/apartment_rentals/678061/1400x930/b61bc930f12e4a6926b8a76ee9f1e268.jpeg"
+    ],
+    "contacts": [
+      "+375 29 715-20-77"
+    ],
+    "latitude": 53.911606,
+    "longitude": 27.5058,
+    "source": "ONLINER",
+    "originalId": "290544",
+    "createdOn": "2018-02-07T16:00:14",
+    "updatedOn": "2018-02-07T16:00:14"
+  },
+  {
+    "id": 7,
+    "price": 290,
+    "address": "Минск, Заславская улица, 37",
+    "title": "Минск, Заславская улица, 37",
+    "description": "Сдается однокомнатная квартира в центре города, с новым ремонтом, всей необходимой мебелью и техникой, метро Фрунзенская в шаговой доступности, развитая инфраструктура. Оплата по факту.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/6414b18b562f9918c008c1609bfba1fc.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/16455d59626a6c0c3365976ae31f7653.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/9fd498a04cc0f341179cec2db82f8180.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/1dc8cf69bbfa612265311d2996b3c1ce.jpeg"
+    ],
+    "contacts": [
+      "+375 29 157-90-17"
+    ],
+    "latitude": 53.911755,
+    "longitude": 27.533777,
+    "source": "ONLINER",
+    "originalId": "290188",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 8,
+    "price": 200,
+    "address": "Минск, улица Короля, 11",
+    "title": "Минск, улица Короля, 11",
+    "description": "Квартира вблизи метро Фрунзенская, мебель и холодильник в наличии, нет стиральной машины, прописан 1 человек.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/bd44dd99ab45d796ca8408a723f15ab6.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/7d8be35e36ea8596b0cc0a27304f7979.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/f351e54e1a36563bcac38e3598e97de3.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/a583b09943c77b592075af2acc7b102e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/985e76aff5f671ea8f36208a952582b7.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/febfbcc2f7e307e148a0ae64289f04f6.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/b4a96a30fcbfbafbc2600863a4c68941.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/9a0f34e806ee2c0230fcd1e5d6334114.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/9ed719f3883f54ff5e97119da17db0c9.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/07de7f6edb9687100a6b57c34407d5c5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/3458ad9da95d58f6d3a4e9a6a14bb901.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/453b1fa669300ccf7f54a88d8ced686b.jpeg"
+    ],
+    "contacts": [
+      "+375 29 538-11-88",
+      "+375 29 638-11-88"
+    ],
+    "latitude": 53.902275,
+    "longitude": 27.540792,
+    "source": "ONLINER",
+    "originalId": "289992",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 9,
+    "price": 230,
+    "address": "Минск, проспект Пушкина, 13",
+    "title": "Минск, проспект Пушкина, 13",
+    "description": "1-комн. квартира недалеко от ст.м. Пушкинская. В квартире имеется всё необходимое для проживания. Квартира после косметического ремонта. Стиральная машина, холодильник абсолютно новые. Сдаётся на длительный срок.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/bda0e357797bcd4071934914f3c9012a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/bb8e5132bda479e558582b50e2904f76.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/50cb5807507d359fe9e99fc7d51ed06d.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/143e27d7da636ea3263240f30da5653f.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/de78a51f9660f4797483e839fac640e8.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/e70a063cdde56d6597704962451cd2d7.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/a0359e53d4b9fa6f4474d2f199f125cd.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/3421a46a19a637b6ac9eb54f02ec200b.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/5f8c802d3bc2874f6bbe456e634ec511.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949309/1400x930/e05d43a73683c66b9daa9a4ee2cc5c63.jpeg"
+    ],
+    "contacts": [
+      "+375 29 538-11-88",
+      "+375 29 638-11-88"
+    ],
+    "latitude": 53.897655,
+    "longitude": 27.496101,
+    "source": "ONLINER",
+    "originalId": "289937",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 10,
+    "price": 358,
+    "address": "Минск, улица Максима Богдановича, 53",
+    "title": "Минск, улица Максима Богдановича, 53",
+    "description": "Квартира сдается от часа ,суток! На любой срок Чисто ,тепло,светло. Все необходимое . Р-он Немига_ Белая Вежа",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/537102/1400x930/3f296ae44b565a2c36a06d94439c1499.jpeg",
+      "https://content.onliner.by/apartment_rentals/537102/1400x930/20925a45ee8adfc5c85121e37a13e987.jpeg",
+      "https://content.onliner.by/apartment_rentals/537102/1400x930/3f1c3aa8ad6e6ec75d8f2fe6a7ed11bc.jpeg",
+      "https://content.onliner.by/apartment_rentals/537102/1400x930/397a52074443ccff2ae22534d1a8c54e.jpeg",
+      "https://content.onliner.by/apartment_rentals/537102/1400x930/c285f358f02d0153e27c03e983737b3a.jpeg"
+    ],
+    "contacts": [
+      "+375 29 107-41-06"
+    ],
+    "latitude": 53.918522,
+    "longitude": 27.56427,
+    "source": "ONLINER",
+    "originalId": "289683",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 11,
+    "price": 250,
+    "address": "Минск, проспект Пушкина, 25",
+    "title": "Минск, проспект Пушкина, 25",
+    "description": "С 16 февраля сдается 1-ком. квартира, адрес: пр. Пушкина 25, 8 эт. 9 эт. дома, металлическая дверь, стеклопакеы, застекленная раздвижной рамой лоджия, в кухне и коридоре- ламинат, Ванная, туалет, рабочая зона кухни- современная плитка, в коридоре – шкаф-купе. Мебель мягкая (комплект:2 дивана – кровати: 3-ка и 2-ка)+ корпусная – стенка-секция, шкаф для одежды, письменный стол. В ванной - шкафчик + тумбочка. Ремонт – нормальный. Прописано 3 чел.(вода считается 3*4м3(норма)=12м3 по минимальному тарифу). Холодильник, стиральная машина. Первоначальная предоплата: предоплата за 1 месяц + 200 уе. – залог (подлежит возврату по окончании срока договора аренды), далее – предоплата за 1 месяц.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/9f80849c34f9915d8f6d0a12b616108d.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/ebc871ce10f88fce6c3465376fae2241.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/b51b55c394573f8bc5df607758c210cb.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/68ea4df9c35fc9df0d01ac2603051d72.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/5c48a54f41f0b6f6938e203ea40a5dee.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/98a46d3133d8eb96c18d7753eca95c50.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/0e6b17d1d6251ad0ac177a3f1f2a2e9b.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/5e8dcdf118026a94c16c79f8289df4da.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/80a6b6f4b3ad7089e7f680d9d03852be.jpeg",
+      "https://content.onliner.by/apartment_rentals/365534/1400x930/e7c9d15d0a7aac4327ee339f43501f3b.jpeg"
+    ],
+    "contacts": [
+      "+375 29 577-85-24",
+      "+375 44 703-65-25"
+    ],
+    "latitude": 53.900166,
+    "longitude": 27.495926,
+    "source": "ONLINER",
+    "originalId": "289676",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 12,
+    "price": 440,
+    "address": "Минск, улица Коржа",
+    "title": "Минск, улица Коржа",
+    "description": "Сдается 1-комнатная квартира по ул. Коржа на длительный срок. Хороший ремонт, меблирована. Недалеко от центра города (2 остановки до ст. м. «Немига»).",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1547244/1400x930/273e35a340c8e966e886a820bc32c5e6.jpeg",
+      "https://content.onliner.by/apartment_rentals/1547244/1400x930/3c331a55e08362fd90a0e6c3562870a6.jpeg",
+      "https://content.onliner.by/apartment_rentals/1547244/1400x930/c618f251a1e23b3f03f0fb8b72dc56dc.jpeg",
+      "https://content.onliner.by/apartment_rentals/1547244/1400x930/872b001f76829621d3056a6645b987c3.jpeg",
+      "https://content.onliner.by/apartment_rentals/1547244/1400x930/2c9bd40cf366010d3eeafe071645ee18.jpeg"
+    ],
+    "contacts": [
+      "+375 29 323-63-78"
+    ],
+    "latitude": 53.893188,
+    "longitude": 27.522505,
+    "source": "ONLINER",
+    "originalId": "289586",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 13,
+    "price": 380,
+    "address": "Минск, улица Скрыганова, 4А",
+    "title": "Минск, улица Скрыганова, 4А",
+    "description": "Заселение с 6 февраля. Сдается однокомнатная квартира с евроремонтом, в новом доме ЖК \"Каскад\". Просторная квартира 50 кв.м., площадь комнаты 21 кв.м., кухня 12 кв.м. 3/14 эт. Квартира полностью укомплектована мебелью и бытовой техникой, небольшие коммунальные платежи.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/8d7301ff7ff973fc55c9dcb0824befb2.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/aa4fc8b52cfb00e1e7179cb6b82852bd.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/27ae50f16c88c427d673bf569ed8c66e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/3747f41295ffffbafdd1a2cef6120c1c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/3109fcfe516db59b334db522e60752ec.jpeg",
+      "https://content.onliner.by/apartment_rentals/1757600/1400x930/d6aabac508b6c6be8f5b8788ca123603.jpeg"
+    ],
+    "contacts": [
+      "+375 29 157-90-17"
+    ],
+    "latitude": 53.910484,
+    "longitude": 27.517752,
+    "source": "ONLINER",
+    "originalId": "289431",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 14,
+    "price": 400,
+    "address": "Минск, улица Гастелло, 6",
+    "title": "Минск, улица Гастелло, 6",
+    "description": "Сталинка в самом центре. Есть все для комфортного проживания: мебель, техника. Пять минут от Стеллы, ТЦ Корона, пр. Победителей.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1949188/1400x930/ea87a6dae72e9ac13a705121718443c3.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949188/1400x930/4b5435d0fb1a3d0df1d5444402988fae.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949188/1400x930/d675c4f0cd0ea3461c7b25ba689ba8ef.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949188/1400x930/63d4cd7be7526068070f19ce571b5d53.jpeg",
+      "https://content.onliner.by/apartment_rentals/1949188/1400x930/7c2b27f5399df6bb41dd1e62c703f911.jpeg"
+    ],
+    "contacts": [
+      "+375 25 933-45-48"
+    ],
+    "latitude": 53.916508,
+    "longitude": 27.531067,
+    "source": "ONLINER",
+    "originalId": "289311",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 15,
+    "price": 700,
+    "address": "Минск, улица Мясникова, 34",
+    "title": "Минск, улица Мясникова, 34",
+    "description": "One-room apartment to rent in the center of Minsk for foreigners. Домофон, металлическая дверь, лифт, стеклопакеты, парковка, хороший вид из окна, благоустроенный двор, детская площадка, рядом магазин, рядом супермаркет, рядом зеленая зона. Хорошая квартира с ремонтом. Отличное транспортное сообщение (все виды транспорта). Рядом две станции метро (5-7 минут пешком). Рядом Дом Правительства, площадь Независимости, ТД `На Немиге`, железнодорожный вокзал `Минск-Пассажирский`, несколько банков, рестораны, кафе и т.п. Вся новая сантехника, стиральная машина, холодильник, микроволновка, ЖКИ телевизор (ZALA), два раскладывающихся диван-кровати, Wi-Fi, высокоскоростной интернет (оптоволоконный кабель, сеть по квартире). Стеклопакеты. Кирпичные стены с хорошей звукоизоляцией. Удобное расположение дома: все в шаговой доступности, видно на карте. Для проживания в квартире все есть. Хороший `закрытый` внутренний двор с зеленой зоной. +375 29 151-21-30, Ольга",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/145fc46fda9a1e76b7808072fe83e14b.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/bd48b012ddbb4f86e1e251d03851963c.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/ddfc3cdf1ea02e1744d5a50d173dc7ff.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/7aa573aad28b302a564fcac5ea091dff.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/b594a6b07a938448cb5a3844f6fb6198.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/a1fdf89496ab48473cd2fb9b7842ca32.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/1d17e12443a1108139b6a43e9023c10f.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/ffb9418a2b6daa25efb425d49fd86472.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/1ef0e0c08cdac9f48fc29c661bde92fc.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/86ce25e04361c97c31f0f2b0ebad6ed3.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/ba4ba121d426ff2413aa9ad2452aa342.jpeg",
+      "https://content.onliner.by/apartment_rentals/2401127/1400x930/3895bea77137d0ff95a47e73484b9381.jpeg"
+    ],
+    "contacts": [
+      "+375 29 151-21-30",
+      "+375 44 784-49-66"
+    ],
+    "latitude": 53.897915,
+    "longitude": 27.543198,
+    "source": "ONLINER",
+    "originalId": "289034",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 16,
+    "price": 360,
+    "address": "Минск, улица Ольшевского, 1 к1",
+    "title": "Минск, улица Ольшевского, 1 к1",
+    "description": "Сдается на длительный срок однокомнатная квартира с мебелью. Имеется вся необходимая бытовая техника.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/993835/1400x930/bdde3f29cd8b7b3993f926d6ce0d6558.png",
+      "https://content.onliner.by/apartment_rentals/993835/1400x930/aa2709349f1cddcd70560536bacbad25.png",
+      "https://content.onliner.by/apartment_rentals/993835/1400x930/77d40180761d3157814b540b2ed6880b.png",
+      "https://content.onliner.by/apartment_rentals/993835/1400x930/b1c4049a2a0428d3575dbadd0ae8a33a.png",
+      "https://content.onliner.by/apartment_rentals/993835/1400x930/182f47aea452a31a86571160f7d7a511.png"
+    ],
+    "contacts": [
+      "+375 29 657-24-05"
+    ],
+    "latitude": 53.912483,
+    "longitude": 27.505619,
+    "source": "ONLINER",
+    "originalId": "288924",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 17,
+    "price": 380,
+    "address": "Минск, Интернациональная улица, 26",
+    "title": "Минск, Интернациональная улица, 26",
+    "description": "Ул.Интернациональная 36, 2/6К, дом с лифтом, квартира после ремонта, ламинат, окна ПВХ, Кухня с холодильником, шкаф купе, в комнате: диван, 2 кресла, столик. Новая стиральная машина. Дом напротив гостиницы Европа, рядом ГУМ, метро Октябрьская и Немига. Аккуратная квартира сдается на длит.срок.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/b24645d3c179e1d31be4adc021633e91.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/d5e368510040db4b8e3f1cbc98599d4e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/5128c29295bd36295945c2d1da147c6a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/777dec9ea354d22dd4addccb107767bc.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/2bf3f5d46351493069ba7a8900ee5606.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/a7cdb075ec38f2ef88efff60864b7ae1.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/bb2e79cba6d9eaeac5c86f853bd09ded.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/3875c1e6cd2bbaa47750d0c0718fe832.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/91fbac593af8a2edc03839b23be1efe9.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/1ea5741a1bcd683f8073dc1c63a9b8bc.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/293eaff23af8849819fad3a103bd3a8f.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/4e0ea9c2d9fdf238f7c391418e396cba.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/e695d55aac1392cc24abd525c72694d3.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/3cc48786daeb444b0cbc89f875d2b4eb.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/577b82f8e610b958e26c6309c2ef2e76.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/a1149b39f18eafd02483d1c7be8a5e01.jpeg",
+      "https://content.onliner.by/apartment_rentals/1674895/1400x930/71c32a3d37bad0817772bd62ce2a5384.jpeg"
+    ],
+    "contacts": [
+      "+375 29 609-99-31"
+    ],
+    "latitude": 53.902348,
+    "longitude": 27.555889,
+    "source": "ONLINER",
+    "originalId": "287568",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 18,
+    "price": 180,
+    "address": "Минск, проспект Пушкина, 23",
+    "title": "Минск, проспект Пушкина, 23",
+    "description": "Сдается 1-ная квртира на длительный срок со всем необходимым для проживания. 1 человек прописан. 1 остановка до метро Пушкинская.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/f3efff4f8ec06b19cbcc07bcb5095435.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/d52e9ce57502a3676901cd3178584bd8.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/a309a3a784560dad8503c86d2636bc14.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/d6c6088ee3e3903436d7b2fad4d8e7ff.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/d2ff747501b6fe35a55d1568d23805c2.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/13e64b5d4a73822e7695a88c3e2b37cf.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/beac65419d31ad08656a4abeedf4d62e.png",
+      "https://content.onliner.by/apartment_rentals/1775932/1400x930/95b8bdca5026a73509b3e729755b63f3.png"
+    ],
+    "contacts": [
+      "+375 29 253-49-31"
+    ],
+    "latitude": 53.898941,
+    "longitude": 27.49618,
+    "source": "ONLINER",
+    "originalId": "287354",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 19,
+    "price": 380,
+    "address": "Минск, улица Немига, 14А",
+    "title": "Минск, улица Немига, 14А",
+    "description": "Сдается уютная однокомнатная квартира по улице Немига 14, есть все необходимое для проживания. Центр. На длительный срок! Агент по факту.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/47bdc7be58c16a352e03e2b77bcf95e5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/a3cab55fab6c877cd77f2a583d09e01e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/b037850dac82e604cf6deb250ed35cbb.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/d35121a506a38cc591786be73fa98460.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/76f11edf160bda7508c318faaaa7db68.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/964cdffb3ee14eedfff61bcbd1b3b67b.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/db107d1bca50e4cde0460ceb9fa774c7.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/c97f7eae95991e2466d63d1d70c688cf.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/a8898ecf8cd03be78cd012d7d154d3f6.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/df0e58e72bfcc7c6cdc03c7dd24a4a04.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/a3a5fd2f35f98a7836a28af948f8fe0b.jpeg"
+    ],
+    "contacts": [
+      "+375 29 390-56-44"
+    ],
+    "latitude": 53.902798,
+    "longitude": 27.548435,
+    "source": "ONLINER",
+    "originalId": "287314",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 20,
+    "price": 260,
+    "address": "Минск, улица Веры Хоружей",
+    "title": "Минск, улица Веры Хоружей",
+    "description": "Сдаётся однокомнатная квартира в центре для семьи на длительный срок 36/18/8, 2-й этаж кирпичного дома за 270 у.е.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/b69cf078f3c82b9ce51d7384432ae62f.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/d0f33e957a9edd7d83ef9d2695814272.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/35523af5830e2da2151f815cfe36d6cb.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/bbda0bdb8113a690081c195abd8d66fb.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/e467266f39c3f0f36bdefb6b1cb40fae.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/209583c0dad378467848e35d26d34a1e.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/2123c42a3957e7bf5b485569b81ac8fe.jpeg",
+      "https://content.onliner.by/apartment_rentals/2342002/1400x930/13302dbffc2b0968438777d93f205f1f.jpeg"
+    ],
+    "contacts": [
+      "+375 25 957-98-31"
+    ],
+    "latitude": 53.923008,
+    "longitude": 27.549582,
+    "source": "ONLINER",
+    "originalId": "284979",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 21,
+    "price": 400,
+    "address": "Минск, улица Мясникова, 34",
+    "title": "Минск, улица Мясникова, 34",
+    "description": "Однокомнатная квартира на Мясникова 34. Центр. 33/21/7. Высокие потолки. Кирпичный дом, второй этаж, лифт. Просторная комната. Квартира в хорошем состоянии, после ремонта. Отличное транспортное сообщение. Равноудалены две ветки метро: Немига и пл.Ленина. До ж/д вокзала не более 7 мин пешком. В комнате находится двухспальная деревянная кровать с ортопедическим основанием и ортопедическим матрасом. На кухне есть посуда, холодильник Liebherr... Интернет, WI-FI. Свободная парковка по выходным, в будни - после 18 часов. СРОК найма - ПО ДОГОВОРЕННОСТИ.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/b4d6dc26c1ca8d92829432cd5ecd9336.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/bac07c4fd67c8a629d52ee671862a8a3.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/6c6c9e2da0cc73e458d9efb642e42b2e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/58e9b931007a22f0c80f74f6624a893a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/3943fc1aca2f84074a233f0a163876db.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/5d663d139d5f5a3ba118b0633424951a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/26fa53d51c186c56ad5e59a2fce66e86.jpeg",
+      "https://content.onliner.by/apartment_rentals/1895464/1400x930/0de0236fc86f242ae168834b5b13f387.jpeg"
+    ],
+    "contacts": [
+      "+375 44 460-06-30"
+    ],
+    "latitude": 53.897507,
+    "longitude": 27.542837,
+    "source": "ONLINER",
+    "originalId": "284837",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 22,
+    "price": 300,
+    "address": "Минск, улица Максима Богдановича, 53",
+    "title": "Минск, улица Максима Богдановича, 53",
+    "description": "Сдается отличная 1 комн. квартира в центре Минска по ул. Богдановича 53 (5 минут до ст. метро \"Площади Якуба Коласа\" и\"Комаровского рынка\". Квартира полностью укомплектована всем необходимым: кухня со встроенной бытовой техникой (холодильник, СВЧ, эл.чайник, вытяжка), есть вся мебель (2 шкафа-купе, диван раскладной, тумба под телевизор, компьютерный стол), имеется стиральная машина, телевизор, высокоскоростной wifi Интернет. Квартира готова для заселения и комфортного проживания. https://www.instagram.com/kv_minsk/",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/61098ca1da637943565071b885ad5dfc.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/53d1aabb17ffe1d97b4e9ca580581564.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/3cf19e1da020a38a42ca140caceeb4c5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/de1584f22ef03f072ecec8a7a55eb4c4.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/f222ce5233cb6c0778c49912522d7bfb.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/44df3c5b931fe68a08fede64443a02b4.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/d14c62c1f7b47f29c58fe6c178ec63e1.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/a73308b00223447f6daf8a0eb73762d4.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/acd2bea8f82a21b4a475d35674673096.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/7b5a063d90c08a0933e9f57e87475b87.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/4d004aaa1fa7292de2983d5ca0de457a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/3261f86b97646bbf0df6ebc06ba622ef.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/6c33a7c4872674c9a13dad9acfc68574.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/47b1bee0efaa061e0c56242e55ab7295.jpeg"
+    ],
+    "contacts": [
+      "+375 44 551-46-26"
+    ],
+    "latitude": 53.919624,
+    "longitude": 27.565577,
+    "source": "ONLINER",
+    "originalId": "284651",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 23,
+    "price": 380,
+    "address": "Минск, улица Немига",
+    "title": "Минск, улица Немига",
+    "description": "Сдаётся 1-я квартира по ул. Немига, 14. 4/10 этажного кирпичного дома. В квартире имеется всё необходимое для комфортного проживания: телефон, мебель, сан/узел - раздельный, ремонт - евроремонт, электрическая плита, лоджия застекленная + вагонка, паркет, домофон, металлическая дверь, лифт, встроенные шкафы, стеклопакеты, хороший вид из окна, детская площадка, рядом магазины, супермаркеты, гипермаркеты, спортивные центры, зеленая зона, множество различных кафе, баров и ресторанов, но вместе с тем в квартире очень тихо. Площадь 46/36/12 кв.м. Торг - на месте. P.S. Во дворе установлен шлагбаум, место для вашего автомобиля найдется в любое время дня и ночи ;)",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/843e3ad9954080ae4ca6d2052d4a1d22.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/ed30edb8de3691d4052857c1a901e1c2.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/521d5f91f0c34368b10a016e4605fab7.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/a6b6e0cd2b727d6638ff1bf08aad4b0c.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/1e9bf2ccb1a182f339ca587bb775739b.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/e0f61fea6a434f2b6ea59db9dfc49b83.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/bd323c51bbd03725cdd04882d3f276a4.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/f6ea524b6a739013acad99aa6aa14de2.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/100d3cc882129ed0565ff6968ad969aa.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/01fedab0fa00eede65a3367d71a0ef6c.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/cc665bf09102e6f830636ef8aa77ce84.jpeg",
+      "https://content.onliner.by/apartment_rentals/2117387/1400x930/ed2ca0a202b8268392934f92f69440c1.jpeg"
+    ],
+    "contacts": [
+      "+375 44 767-25-67"
+    ],
+    "latitude": 53.897667,
+    "longitude": 27.540524,
+    "source": "ONLINER",
+    "originalId": "283447",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 24,
+    "price": 350,
+    "address": "Минск, улица Притыцкого, 2 к2",
+    "title": "Минск, улица Притыцкого, 2 к2",
+    "description": "Сдается 1-комн.квартира в тихом центре, новостройка, по ул. Притыцкого 2 корпус 2 , в шаговой доступности метро \" Пушкинская ,развитая инфраструктура,\"вся техника, бойлер, посудомоечная машина, вся мебель, на длительный срок. https://www.instagram.com/kv_minsk/",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/7ab66725dcf2d767b6c1223978dc75d8.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/edd810344085b7fc8936a07ffaa7ab36.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/b7c87755b14bd2b33603a6c6b407e5c7.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/43c3b57cf36a4722781135785224928c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/2b8581a0e763a3a36247c5cf24ca2978.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/ebf1568cf4d4cd47dd96646e2091c145.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/985db67fabd3f51bc182cabf6577329f.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/48de3722aafebf76a20f7c24223e034e.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/0894b12e80c85557e49737a1d1ee284d.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/3b4195446bb39e5a526646f0a4271ad8.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/abb4ae587ebdaea6f733edc3300d5174.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/ee43e929ae0c7f98456c146f7a734a6d.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/229dc038dffe47124b534d1f8eadb15c.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/fc07f5be50bef17a36e11aa6ce6f2101.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/a7c5d58f83d381ccfb800b717bcecea4.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/4a1106e15249de38714e0223d8664e72.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/b17cb3fe5df6c53d6b76f076a9be3419.jpeg"
+    ],
+    "contacts": [
+      "+375 44 518-41-39"
+    ],
+    "latitude": 53.910976,
+    "longitude": 27.504498,
+    "source": "ONLINER",
+    "originalId": "280287",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 25,
+    "price": 400,
+    "address": "Минск, Заславская улица, 11 к2",
+    "title": "Минск, Заславская улица, 11 к2",
+    "description": "Сдается отличная 1-комнатная квартира в центре города, прекрасное месторасположение, престижный район, развитая инфраструктура с культурно-историческими достопримечательностями столицы: Музыкальный театр, кинотеатр Беларусь, скверы Адама Мицкевича, Мемориальный, Сендайский, в шаговой доступности Немига, Старый город. Рядом расположены: магазины «Корона», «Евроопт», салон мебели «Мандарин», фирменный центр «Velcom», салоны красоты, почта, банки, множество уютных кафе и ресторанов. Сдается на длительный срок, можно по суткам.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/458acbc965a901cdb3222febe74dedb4.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/c54633948aa865d4805611806827f623.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/e602da9432ffe0bc6a04d851c09011d0.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/a49a985af5513e45aca5bf086caf0891.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/2520f7f562d4cd1d1c1322e01b6e86a5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/d2c4d0b190a1c7039a47aba928185ff5.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/0a19309a6c18726d9b0db226d92d4927.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/30b37484016ed79f4f5dfd7715170165.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/392ee38bb4e18e58153f868ab3852472.jpeg",
+      "https://content.onliner.by/apartment_rentals/1586934/1400x930/47c9bf0076f219d17361750611a9b6bd.jpeg"
+    ],
+    "contacts": [
+      "+375 44 570-55-60"
+    ],
+    "latitude": 53.909763,
+    "longitude": 27.541843,
+    "source": "ONLINER",
+    "originalId": "274971",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 26,
+    "price": 370,
+    "address": "Минск, проспект Машерова, 51",
+    "title": "Минск, проспект Машерова, 51",
+    "description": "Стильная квартира студия с отдельной спальней. Все для жизни: мебель, техника, посуда, постельное... Рядом Корона, метро, парк Победы, Комсомольское озеро.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/b1c8123b86dc62f54a1eb2fb5f84fd76.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/24205a13ba948dea21bdc866118d5814.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/e1e2b9a03e72fb3021c97e0ca9e7b9f2.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/7cc6b7f63ca78bb87f9d6ea045bb87d4.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/6a35a6e68c15222f40b084e79cbe70dc.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/8dd9f611e5f99cb841312302d7a9f3b6.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/9cf7a8ac9c7167129968d2a26e1afa9e.jpeg",
+      "https://content.onliner.by/apartment_rentals/207612/1400x930/9daadee967031891e81ddff38c3ceb9a.jpeg"
+    ],
+    "contacts": [
+      "+375 44 715-52-23"
+    ],
+    "latitude": 53.91132,
+    "longitude": 27.528883,
+    "source": "ONLINER",
+    "originalId": "274472",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 27,
+    "price": 200,
+    "address": "Минск, улица Болеслава Берута, 17 к2",
+    "title": "Минск, улица Болеслава Берута, 17 к2",
+    "description": "Сдается 1-комнатная квартира 33,2 кв м по ул. Болеслава Берута. Комната 16,7 кв м. Окна- стеклопакеты. Интернет по оптоволокну. Просторный балкон. Рядом живописный сквер. Прописан 1 человек. Оплата за первый и последний месяц.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/812b2bd34a4f7c5f42af80885aac659a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/d6f4bc32ebf05dc2ed607e212c14e428.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/d4b53300c672cd7ca97bee928df4413f.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/eb9d0b98173fb649529170997f6c156a.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/11a5d85659076ff0ea35674a2a11c42f.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/5e29bb3a2bdbf1d4ee07f7b695fdf478.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/14b4b15d51b0dcc315b0aa797abc593d.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/89e8e4ad14deb4958a6299645e07b296.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/248aa955f6c2f41b3b28e7faa8e554fa.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/bea9a53288a3387d940fb3719ebe3bfd.jpeg",
+      "https://content.onliner.by/apartment_rentals/1504113/1400x930/bb8035b17e0a98a18959224b5d78e505.jpeg"
+    ],
+    "contacts": [
+      "+375 29 613-03-03"
+    ],
+    "latitude": 53.901207,
+    "longitude": 27.508354,
+    "source": "ONLINER",
+    "originalId": "210582",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 28,
+    "price": 380,
+    "address": "Минск, Обойная улица, 4 к1",
+    "title": "Минск, Обойная улица, 4 к1",
+    "description": "Сдаётся отличная однокомнатная квартира с хорошим ремонтом по ул. Обойная 4 к1. В квартире имеется вся мебель и техника для комфортного проживания, сделан современный ремонт!",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/ca95944067edcaac7402264ddbc41dc4.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/23d5600f2426fcbe3c9e931486c8b997.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/daf17478e2411397aa6eb19cbe3df3e7.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/a6fafa862de67b0f04cb0af841f778cc.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/8b1d1fae76c61b371993a998f16ed997.jpeg",
+      "https://content.onliner.by/apartment_rentals/1676580/1400x930/f9ead4526ab51062bed691c38eb9fa0e.jpeg"
+    ],
+    "contacts": [
+      "+375 44 550-00-71",
+      "+375 29 550-00-21"
+    ],
+    "latitude": 53.907249,
+    "longitude": 27.546288,
+    "source": "ONLINER",
+    "originalId": "182284",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 29,
+    "price": 380,
+    "address": "Минск, улица Ленина, 5",
+    "title": "Минск, улица Ленина, 5",
+    "description": "Сдаётся однокомнатная квартира. В квартире хороший ремонт. Вся мебель и техника имеется. Сдаётся на долгий срок. Место нахождения ст.м. Октябрьская, Немига. Рядом с домом все необходимые объекты инфраструктуры. ПОСУТОЧНУЮ АРЕНДУ НЕ ПРЕДЛАГАТЬ.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/e8cf73044b8dab72bdb4a3265ebe1eb9.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/4a40ed190415b3378245feacf959dcc0.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/4fcdb629c52faa5cc055affe6c8747bb.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/2c0434b321326d4c6b21ab5ebe27f626.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/21cb7870fe853824a495ebfcb8e93e5d.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/d2e33768f911af17c7cc14087b85b203.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/aac14dd99a972aff838d744822cad415.jpeg",
+      "https://content.onliner.by/apartment_rentals/666271/1400x930/0f6ba9f999b210c68789debcb41fc970.jpeg"
+    ],
+    "contacts": [
+      "+375 29 612-13-22"
+    ],
+    "latitude": 53.901783,
+    "longitude": 27.557926,
+    "source": "ONLINER",
+    "originalId": "173710",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
+  },
+  {
+    "id": 30,
+    "price": 250,
+    "address": "Минск, улица Червякова, 2 к2",
+    "title": "Минск, улица Червякова, 2 к2",
+    "description": "1,5 квартира по адресу ул.Червякова, 2/2. Есть холодильник, стиральная машина, 2 встроенных шкафа, стеклопакеты, ламинат. Через дорогу Комсомольское озеро (Парк Победы), рядом пр-т Машерова, Немига. Хорошо развито транспортное сообщение.",
+    "photos": [
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/1a8f24ab658e84a34a745a6f62ff54ff.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/6d170709d39f72e481d9200f41feccd4.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/7db742975c187be963e5cdeae19a43f8.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/b7945be353bc76297fd906b467dc14ab.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/27780c62f56fa421607402a9841ea2ad.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/540af11e55bde2b46b82312da8f07d62.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/af80f0d66a3b01d9488898a533d235c3.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/2bdd3ec9cadbc38259a283b0455c49c7.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/944f41aa156da4eafa585b1383872612.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/5d5595d9860b607335b2282697f6bba5.jpeg",
+      "https://content.onliner.by/apartment_rentals/801205/1400x930/4476fda8fa6d9fbc4da48d0cb4d92e5c.jpeg"
+    ],
+    "contacts": [
+      "+375 29 618-60-74"
+    ],
+    "latitude": 53.920937,
+    "longitude": 27.553736,
+    "source": "ONLINER",
+    "originalId": "172708",
+    "createdOn": "2018-02-07T16:00:15",
+    "updatedOn": "2018-02-07T16:00:15"
   }
 ]

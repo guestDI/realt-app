@@ -189,8 +189,8 @@ class FlatPage extends React.Component<Props, State> {
                                 initialRegion={{
                                     latitude: this.props.flat.latitude,
                                     longitude: this.props.flat.longitude,
-                                    latitudeDelta: 0.0092,
-                                    longitudeDelta: 0.0091,
+                                    latitudeDelta: 0.012,
+                                    longitudeDelta: 0.0191,
                                 }}
                                 showsTraffic={false}
                             >

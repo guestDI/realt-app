@@ -12,14 +12,12 @@ import {
     List,
     ListItem,
     Thumbnail,
-    Text,
-    Tab, Tabs, TabHeading
+    Text
 } from "native-base";
 import { View, SectionList, FlatList, TouchableOpacity, Platform, NativeModules, Dimensions, ActivityIndicator } from "react-native";
 import moment from "moment";
+import FlatRow from './components/FlatRow'
 import styles from "./styles";
-import FlatsList from "./components/FlatsList/index";
-import FlatsMap from "./components/FlatsMap"
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -34,7 +32,7 @@ export interface State {
 const {height, width} = Dimensions.get('window');
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
 
-class Home extends React.Component<Props, State> {
+class FlatsList extends React.Component<Props, State> {
 
   constructor(props) {
     super(props);
@@ -118,41 +116,22 @@ class Home extends React.Component<Props, State> {
   render() {
 
     return (
-      <Container>
-        <Header>
-          <Left>
-            <Button transparent>
-              <Icon
-                active
-                name="menu"
-                onPress={() => this.props.navigation.navigate("DrawerOpen")}
-              />
-            </Button>
-          </Left>
-          <Body>
-            <Title>Аренда</Title>
-          </Body>
-          <Right />
-        </Header>
-          <View style={{flex: 1}}>
-              {/*<Container style={{marginTop: '2%'}}>*/}
-                  <Tabs tabContainerStyle={{ height: 50, }} tabBarPosition="top" tabBarUnderlineStyle={{backgroundColor: "#bf6141"}}>
-                      <Tab heading={ <TabHeading><Icon name="list" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
-                           activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <FlatsList navigation={this.props.navigation} list={this.props.list}/>
-                      </Tab>
-                      <Tab heading={ <TabHeading><Icon name="map" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
-                           activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <FlatsMap navigation={this.props.navigation} list={this.props.list}/>
-                      </Tab>
-                      <Tab heading={ <TabHeading><Icon name="star" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
-                           activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <Text>1</Text>
-                      </Tab>
-                  </Tabs>
-              {/*</Container>*/}
-          </View>
-      </Container>
+      <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+          <FlatList
+              data={this.props.list}
+              renderItem={({ item }) => (
+                  <FlatRow flat={item} onRowPressed={this.onFlatRowPress}/>
+              )}
+              keyExtractor={item => item.description}
+              // ItemSeparatorComponent={this.renderSeparator}
+              // ListHeaderComponent={this.renderHeader}
+              ListFooterComponent={this.renderFooter}
+              // onRefresh={this.handleRefresh}
+              // refreshing={this.state.refreshing}
+              // onEndReached={this.handleLoadMore}
+              // onEndReachedThreshold={3}
+          />
+      </List>
     );
   }
 
@@ -219,4 +198,4 @@ class Home extends React.Component<Props, State> {
   // }
 }
 
-export default Home;
+export default FlatsList;
