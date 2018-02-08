@@ -1,6 +1,7 @@
 import * as React from "react";
 import {Header, Title, Content, Text, Button, Icon, Left, Right, Body, Thumbnail, Container} from "native-base";
-
+import MultiSlider from '@ptomasroos/react-native-multi-slider';
+import SliderCustomMarker from './components/SliderCustomMarker'
 import {
 	Image,
 	View,
@@ -8,7 +9,8 @@ import {
 	Modal,
     StyleSheet,
     TextInput,
-    ScrollView
+    ScrollView,
+    Slider
 } from "react-native";
 export interface Props {
 	navigation: any;
@@ -28,7 +30,7 @@ class Filter extends React.Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {
-
+            multiSliderValue: [0, 3000],
         };
     }
 
@@ -41,7 +43,7 @@ class Filter extends React.Component<Props, State> {
                             <Icon
                                 active
                                 name="arrow-back"
-                                onPress={() => this.props.navigation.navigate("Home")}
+                                // onPress={() => this.props.navigation.navigate("Home")}
                             />
                         </Button>
                     </Left>
@@ -61,8 +63,44 @@ class Filter extends React.Component<Props, State> {
                 </Header>
                 <View style={{flex: 1}}>
                     <ScrollView style={{backgroundColor: '#FFFFFF',}} >
-                        <View style={{flex: 1, flexDirection: "row", }}>
-                            <Text>1111111</Text>
+                        <View style={styles.sliderOne}>
+                            <Text style={{fontSize: 26, padding: 5, color: '#8c919c'}}>Цена</Text>
+                            <View style={{flexDirection: 'row'}}>
+                                <View style={{flex: 1, alignItems: 'flex-start', paddingLeft: 20}}>
+                                    <Text >{this.state.multiSliderValue[0]} </Text>
+                                </View>
+                                <View style={{flex: 1, alignItems: 'flex-end', paddingRight: 20}}>
+                                    <Text >{this.state.multiSliderValue[1]}</Text>
+                                </View>
+                            </View>
+                            <View style={{flex: 1, margin: 20, width: 280,}}>
+                                <MultiSlider
+                                    unselectedStyle={{
+                                        backgroundColor: 'silver',
+                                    }}
+                                    selectedStyle={{
+                                        backgroundColor: 'silver',
+                                    }}
+                                    touchDimensions={{
+                                        height: 200,
+                                        width: 200,
+                                        borderRadius: 60,
+                                        slipDisplacement: 70,
+                                    }}
+                                    trackStyle={{
+                                        height: 3,
+                                    }}
+                                    values={[this.state.multiSliderValue[0], this.state.multiSliderValue[1]]}
+                                    sliderLength={280}
+                                    // onValuesChange={this.multiSliderValuesChange}
+                                    min={0}
+                                    max={3000}
+                                    step={10}
+                                    allowOverlap
+                                    // snapped
+                                    customMarker={SliderCustomMarker}
+                                />
+                            </View>
                         </View>
                     </ScrollView>
                 </View>
@@ -90,10 +128,14 @@ const styles = StyleSheet.create({
         marginRight: 5,
         marginTop: height*0.1,
     },
-    ratingsContainer: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingTop: '1%'
+    image: {
+        height: 40,
+        width: 40
+    },
+    sliderOne: {
+        flexDirection: 'column',
+        justifyContent: 'space-around',
+        alignItems: 'center'
     }
 })
 
