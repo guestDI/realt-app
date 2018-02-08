@@ -127,7 +127,7 @@ class Home extends React.Component<Props, State> {
                   <Icon
                       active
                       name="options"
-                      // onPress={() => this.props.navigation.navigate("DrawerOpen")}
+                      onPress={() => this.props.navigation.navigate("Filter")}
                   />
               </Button>
           </Right>
@@ -139,7 +139,7 @@ class Home extends React.Component<Props, State> {
                            activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
                           <FlatsList navigation={this.props.navigation} list={this.props.list}/>
                       </Tab>
-                      <Tab heading={ <TabHeading><Icon name="map" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
+                      <Tab heading={ <TabHeading><Icon name="ios-map-outline" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
                            activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
                           <FlatsMap navigation={this.props.navigation} list={this.props.list}/>
                       </Tab>

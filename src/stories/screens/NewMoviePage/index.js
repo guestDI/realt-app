@@ -137,9 +137,6 @@ class FlatPage extends React.Component<Props, State> {
                                 ))}
                             </ScrollView>
                         </View>
-                        {/*<View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>*/}
-                            {/*<Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Основная информация</Text>*/}
-                        {/*</View>*/}
                         <View style={{flex: 1, flexDirection: "row", }}>
                             <View style={{flexDirection: "column", paddingLeft: 10}}>
                                 <Text style={{fontSize: 24, fontWeight: "bold", padding: 5, }}>2-х комнатная</Text>
@@ -162,18 +159,15 @@ class FlatPage extends React.Component<Props, State> {
                                                     resizeMode="contain"
                                                     source={require("../../../../assets/images/phone-512.png")}
                                                     style={{height: 24, width: 35}}/>
-                                                <Text style={{fontSize: 16}}>
-                                                    {num}
-                                                </Text>
+                                                <TouchableOpacity onPress={() => Linking.openURL('tel:' + num).catch(err => console.error('An error occurred', err))}>
+                                                    <Text style={{fontSize: 16, color: 'blue', textDecorationLine: 'underline'}}>
+                                                        {num}
+                                                    </Text>
+                                                </TouchableOpacity>
                                             </View>
                                         )
                                     })}
                             </View>
-
-                            {/*<View style={{flexDirection: "column", }}>*/}
-                                {/*<Text style={{fontSize: 18, padding: 5,}}>Район</Text>*/}
-                                {/*<Text style={{fontSize: 18, padding: 5,}}>{this.props.flat.address}</Text>*/}
-                            {/*</View>*/}
                         </View>
                         <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>
                             <Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Описание</Text>
@@ -208,194 +202,12 @@ class FlatPage extends React.Component<Props, State> {
                                         latitude: this.props.flat.latitude,
                                         longitude: this.props.flat.longitude}}
                                     title={this.props.flat.address}
+                                    image={require("../../../../assets/images/home-icon.png")}
                                 />
                             </MapView>
-
                         </View>
-                        {/*<View style={{flexDirection: "column", marginTop: 5}}>*/}
-                            {/*<View>*/}
-                                {/*<Text>Кол-во комнат: 2</Text>*/}
-                            {/*</View>*/}
-                            {/*<View>*/}
-                                {/*<Text>Цена: {this.props.flat.price}</Text>*/}
-                            {/*</View>*/}
-                        {/*</View>*/}
-                            {/*<View style={{flexDirection: "row", marginBottom: 5, marginTop: 5, alignItems: 'center', justifyContent: "center"}}>*/}
-                                {/*<View style={{flexDirection: "row", paddingRight: 10, paddingBottom: 3}}>*/}
-                                    {/*<Icon name='calendar' style={{fontSize: 16, color: '#a5abb6', paddingRight: 3}}/>*/}
-                                    {/*<Text style={{fontSize: 12, color: '#a5abb6'}}>{movie.date}</Text>*/}
-                                {/*</View>*/}
-                                {/*<View style={{flexDirection: "row", paddingBottom: 3}}>*/}
-                                    {/*<Icon name='clock' style={{fontSize: 16, color: '#a5abb6', paddingRight: 3}}/>*/}
-                                    {/*<Text style={{fontSize: 12, color: '#a5abb6'}}>{movie.duration} минут</Text>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
-                            {/*<View style={{flexDirection: "row", marginBottom: 10, alignItems: 'center', justifyContent: "center"}}>*/}
-                                {/*<View style={{padding: 5, borderWidth: 1, borderColor: '#bec4cf', borderRadius: 5}}>*/}
-                                    {/*<Text style={{fontSize: 10}}>Драма</Text>*/}
-                                {/*</View>*/}
-                                {/*<View style={{padding: 5, borderWidth: 1, borderColor: '#bec4cf', borderRadius: 5, marginLeft: 5}}>*/}
-                                    {/*<Text style={{fontSize: 10}}>Приключения</Text>*/}
-                                {/*</View>*/}
-                                {/*<View style={{padding: 5, borderWidth: 1, borderColor: '#bec4cf', borderRadius: 5, marginLeft: 5}}>*/}
-                                    {/*<Text style={{fontSize: 10}}>Фэнтэзи</Text>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
-                            {/*{*/}
-                                {/*this.state.fullRead ? <Text style={{fontSize: 14, padding: 5, paddingTop: 0, paddingBottom: 0}}>{movie.synopsis}</Text>*/}
-                                {/*: <Text numberOfLines={3} style={{fontSize: 14, padding: 5, paddingTop: 0, paddingBottom: 0}}>{movie.synopsis}</Text>*/}
-                            {/*}*/}
-                            {/*{ movie.synopsis ?*/}
-                                {/*<Text onPress={() => this.viewFullSynopsis()} style={{fontSize: 14, color: '#b2b8c3', marginBottom: 10, paddingLeft: 5}}>*/}
-                                    {/*{this.state.fullRead ? 'Скрыть' : 'Читать полностью' }*/}
-                                {/*</Text> : <Text style={{fontSize: 12, marginBottom: 10, paddingLeft: 5, fontStyle: 'italic'}}>Описание пока недоступно... </Text> }*/}
-                            {/*<View >*/}
-                                {/*<View style={{flexDirection: "row", marginBottom: 5, alignItems: 'center', justifyContent: "center"}}>*/}
-                                    {/*<TouchableWithoutFeedback onPress={() =>*/}
-                                        {/*this.props.navigation.navigate("FriendsRating", {*/}
-                                            {/*movie: movie.id*/}
-                                        {/*})}>*/}
-                                        {/*<View style={{alignItems: 'center', flex: 2 }}>*/}
-                                            {/*<Text style={{fontSize: 28}}>*/}
-                                                {/*5<Text style={{fontSize: 12, color: '#bec4cf'}}>/5</Text>*/}
-                                            {/*</Text>*/}
-                                            {/*<View style={{flexDirection: "row", alignItems: 'center'}}>*/}
-                                                {/*<Icon name='person' style={{fontSize: 18, color: 'red', paddingRight: 5}}/>*/}
-                                                {/*<Text style={{fontSize: 16}}>*/}
-                                                    {/*Друзья*/}
-                                                {/*</Text>*/}
-                                            {/*</View>*/}
-                                        {/*</View>*/}
-                                    {/*</TouchableWithoutFeedback>*/}
-                                    {/*<View style={{alignItems: 'center', flex: 3}}>*/}
-                                        {/*<Text style={{fontSize: 28}}>*/}
-                                            {/*{movie.ratings.rt}<Text style={{fontSize: 12, color: '#bec4cf'}}>%</Text>*/}
-                                        {/*</Text>*/}
-                                        {/*<View style={{flexDirection: "row", alignItems: 'center',}}>*/}
-                                            {/*/!*<Icon name='star-half' style={{fontSize: 16, color: 'red', paddingRight: 3}}/>*!/*/}
-                                            {/*<Image*/}
-                                                {/*resizeMode="contain"*/}
-                                                {/*source={require("../../../../assets/images/rottentomatoes_03.png")}*/}
-                                                {/*style={{height: 21, width: 35}}/>*/}
-                                            {/*<Text style={{fontSize: 14}}>*/}
-                                                {/*ROTTEN TOMATOES*/}
-                                            {/*</Text>*/}
-                                        {/*</View>*/}
-                                    {/*</View>*/}
-                                    {/*<View style={{alignItems: 'center', flex: 2}}>*/}
-                                        {/*<Text style={{fontSize: 28}}>*/}
-                                            {/*{movie.ratings.imdb}<Text style={{fontSize: 12, color: '#bec4cf'}}>/10</Text>*/}
-                                        {/*</Text>*/}
-                                        {/*<View style={{flexDirection: "row", alignItems: 'center',}}>*/}
-                                            {/*<Image*/}
-                                                {/*resizeMode="contain"*/}
-                                                {/*source={require("../../../../assets/images/IMDb-icon.png")}*/}
-                                                {/*style={{height: 14, width: 23}}/>*/}
-                                            {/*/!*<Icon name='star-half' style={{fontSize: 16, color: 'red', paddingRight: 3}}/>*!/*/}
-                                            {/*<Text style={{fontSize: 14, paddingLeft: 5}}>*/}
-                                                {/*IMDb*/}
-                                            {/*</Text>*/}
-                                        {/*</View>*/}
-                                    {/*</View>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
-                            {/*<View style={{flexDirection: "row", alignItems: 'center', justifyContent: "center", paddingBottom: 10}}>*/}
-                                {/*<View style={{padding: 5, flex: 2}}>*/}
-                                    {/*<Button bordered transparent light iconLeft*/}
-                                            {/*onPress={() => this.rateHandler()}*/}
-                                            {/*style={{alignSelf: 'stretch', justifyContent: 'center', borderColor: '#bec4cf'}}*/}
-                                    {/*>*/}
-                                        {/*<Icon name='star' style={{fontSize: 20, color: 'black', paddingRight: 5}}/>*/}
-                                        {/*<Text>Оценить</Text>*/}
-                                    {/*</Button>*/}
-                                {/*</View>*/}
-                                {/*<View style={{padding: 5, flex: 2}}>*/}
-                                    {/*<Button bordered transparent light iconLeft*/}
-                                            {/*// onPress={() =>*/}
-                                            {/*//     this.props.navigation.navigate("FriendProfile", {*/}
-                                            {/*//         movieId: movie.id, movieImage: movie.image_url_small*/}
-                                            {/*//     })}*/}
-                                            {/*onPress={()=> Toast.show({*/}
-                                                {/*text: this.onFollowHandler(),*/}
-                                                 {/*// text: this.state.follow ? 'Удачно подписаны' : 'Удачно отписаны',*/}
-                                                 {/*position: 'bottom',*/}
-                                                 {/*buttonText: 'Скрыть',*/}
-                                                 {/*duration: 1000*/}
-                                             {/*})}*/}
-                                            {/*style={{alignSelf: 'stretch', justifyContent: 'center', borderColor: '#bec4cf'}}*/}
-                                    {/*>*/}
-                                        {/*<Icon name='eye' style={{fontSize: 20, color: 'black', paddingRight: 5}}/>*/}
-                                        {/*{*/}
-                                            {/*this.state.follow ? <Text>Отписаться</Text> : <Text>Хочу посмотреть</Text>*/}
-                                        {/*}*/}
-                                    {/*</Button>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
-                        {/*{ (shots.length > 0 || videos.length > 0) &&*/}
-                            {/*<View>*/}
-                                {/*<View style={{flexDirection: "row", padding: 5}}>*/}
-                                    {/*<Icon name='film' style={{fontSize: 14, color: '#CF5768', paddingRight: 5}}/>*/}
-                                    {/*<Text style={{fontSize: 14}}>*/}
-                                        {/*Трейлер и кадры*/}
-                                    {/*</Text>*/}
-                                {/*</View>*/}
-                                {/*<View*/}
-                                    {/*style={styles.scrollContainer}*/}
-                                {/*>*/}
-                                    {/*<ScrollView*/}
-                                        {/*horizontal*/}
-                                        {/*pagingEnabled*/}
-                                        {/*showsHorizontalScrollIndicator={false}*/}
-                                    {/*>*/}
-                                        {/*{videos.map((video, index) => (*/}
-                                            {/*<TouchableOpacity key={index} onPress={() => Linking.openURL('https://youtube.com/watch?v=' + video).catch(err => console.error('An error occurred', err))}>*/}
-                                                {/*<View style={styles.trailerContainer}>*/}
-                                                    {/*<Image*/}
-                                                        {/*source={{uri: 'https://img.youtube.com/vi/' + video + '/default.jpg'}}*/}
-                                                        {/*style={styles.cardImage}*/}
-                                                    {/*>*/}
-                                                    {/*</Image>*/}
-                                                    {/*<View style={{*/}
-                                                        {/*justifyContent: 'center',*/}
-                                                        {/*alignItems: 'center',*/}
-                                                        {/*position: 'absolute',*/}
-                                                    {/*}}>*/}
-                                                        {/*<Image*/}
-                                                            {/*resizeMode="contain"*/}
-                                                            {/*source={require("../../../../assets/images/media_youtube.png")}*/}
-                                                            {/*style={{height: 50, width: 50, top: 30, left: 40}}/>*/}
-                                                    {/*</View>*/}
-                                                {/*</View>*/}
-                                                {/*/!*<View >*!/*/}
-                                                    {/*/!*<Image style={styles.videoLayoutImage} source={require("../../../../assets/images/media_youtube.png")} />*!/*/}
-                                                    {/*/!*<Image style={styles.cardImage} source={{uri: 'https://img.youtube.com/vi/' + video + '/default.jpg'}} />*!/*/}
-                                                {/*/!*</View>*!/*/}
-                                            {/*</TouchableOpacity>*/}
-                                        {/*))}*/}
-
-                                        {/*{shots.map((image, index) => (*/}
-                                            {/*<TouchableOpacity key={index} onPress={() => this.viewerHandler(shots.indexOf(image))}>*/}
-                                                {/*<Image style={styles.cardImage} source={{uri: image}} />*/}
-                                            {/*</TouchableOpacity>*/}
-                                        {/*))}*/}
-                                    {/*</ScrollView>*/}
-                                {/*</View>*/}
-                            {/*</View>*/}
-                        {/*}*/}
                     </ScrollView>
-                    {/*<SetRatingPage*/}
-                        {/*img={movie.image_url_small}*/}
-                        {/*visible={this.state.visible}*/}
-                        {/*onClose={this.onCloseRatingsHandler}*/}
-                        {/*rate={rate}*/}
-                        {/*comment={comment}*/}
-                        {/*onSave={this.onChangeRate}*/}
-                    {/*/>*/}
                     <ImageView visible={this.state.viewerVisible} page={this.state.imageNumberSelected} images={this.props.flat.photos} onClose={this.onCloseViewerHandler}/>
-                    {/*<FriendsRating*/}
-                        {/*visible={this.state.friendsModalVisible}*/}
-                        {/*onClose={this.onCloseFriendsRatingHandler}*/}
-                        {/*movie={movie.id}/>*/}
                 </View>
             </Container>
 		);
