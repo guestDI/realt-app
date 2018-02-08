@@ -43,31 +43,9 @@ class Home extends React.Component<Props, State> {
         page: 0,
         error: null,
         refreshing: false,
+        visible: false,
     }
   }
-
-    componentDidMount() {
-        // this.makeRemoteRequest();
-    }
-
-    // makeRemoteRequest = () => {
-    //     const { page, seed } = this.state;
-    //     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
-    //     this.setState({ loading: true });
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             this.setState({
-    //                 data: page === 1 ? res.results : [...this.state.data, ...res.results],
-    //                 error: res.error || null,
-    //                 loading: false,
-    //                 refreshing: false
-    //             });
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error, loading: false });
-    //         });
-    // };
 
     handleRefresh = () => {
         this.setState({
@@ -102,6 +80,18 @@ class Home extends React.Component<Props, State> {
         );
     };
 
+    filterHandler = () => {
+        this.setState({
+            visible: true
+        });
+    }
+
+    onCloseFilterHandler = () => {
+        this.setState({
+            visible: false
+        });
+    }
+
     onFlatRowPress = (val) => {
         // let friendInfo = {
         //     id: val.id,
@@ -132,7 +122,15 @@ class Home extends React.Component<Props, State> {
           <Body>
             <Title>Аренда</Title>
           </Body>
-          <Right />
+          <Right >
+              <Button transparent>
+                  <Icon
+                      active
+                      name="options"
+                      // onPress={() => this.props.navigation.navigate("DrawerOpen")}
+                  />
+              </Button>
+          </Right>
         </Header>
           <View style={{flex: 1}}>
               {/*<Container style={{marginTop: '2%'}}>*/}

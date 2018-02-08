@@ -78,10 +78,12 @@ class FlatsMap extends React.Component<Props, State> {
                           coordinate={{
                               latitude: flat.latitude,
                               longitude: flat.longitude}}
-                          title="title"
+                          image={require("../../../../../../assets/images/pin1.png")}
+                          onCalloutPress={() => this.props.navigation.navigate("FlatPage", {
+                              flat: flat
+                          })}
                       >
-                          <MapView.Callout
-                          >
+                          <MapView.Callout>
                               <FlatPreview flat={flat}/>
                           </MapView.Callout>
                       </MapView.Marker>
