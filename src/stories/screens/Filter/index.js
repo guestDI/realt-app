@@ -1,7 +1,11 @@
 import * as React from "react";
-import {Header, Title, Content, Text, Button, Icon, Left, Right, Body, Thumbnail, Container} from "native-base";
+import {Header, Title, Content, Text, Button, Icon, Left, Right, Body, Thumbnail, Container, Form, Item, Input} from "native-base";
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import SliderCustomMarker from './components/SliderCustomMarker'
+import { Dropdown } from 'react-native-material-dropdown';
+import { TextField } from 'react-native-material-textfield';
+import { CheckBox } from 'react-native-elements'
+import { MapView } from 'expo';
+
 import {
 	Image,
 	View,
@@ -10,7 +14,8 @@ import {
     StyleSheet,
     TextInput,
     ScrollView,
-    Slider
+    Slider,
+    TouchableOpacity
 } from "react-native";
 export interface Props {
 	navigation: any;
@@ -25,16 +30,112 @@ export interface Props {
 }
 
 const {height, width} = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+let id = 0;
 
 class Filter extends React.Component<Props, State> {
     constructor(props) {
         super(props);
         this.state = {
-            multiSliderValue: [0, 3000],
+            polygons: [],
+            editing: null,
+            creatingHole: false,
+            minPrice: '',
+            maxPrice: '',
+
         };
     }
 
+    finish() {
+        const { polygons, editing } = this.state;
+        this.setState({
+            polygons: [...polygons, editing],
+            editing: null,
+            creatingHole: false,
+        });
+        // console.log(this.state.editing)
+    }
+
+    createHole() {
+        const { editing, creatingHole } = this.state;
+        if (!creatingHole) {
+            this.setState({
+                creatingHole: true,
+                editing: {
+                    ...editing,
+                    holes: [
+                        ...editing.holes,
+                        [],
+                    ],
+                },
+            });
+        } else {
+            const holes = [...editing.holes];
+            if (holes[holes.length - 1].length === 0) {
+                holes.pop();
+                this.setState({
+                    editing: {
+                        ...editing,
+                        holes,
+                    },
+                });
+            }
+            this.setState({ creatingHole: false });
+        }
+    }
+
+    onPress(e) {
+        const { editing, creatingHole } = this.state;
+        if (!editing) {
+            this.setState({
+                editing: {
+                    id: id++,
+                    coordinates: [e.nativeEvent.coordinate],
+                    holes: [],
+                },
+            });
+        } else if (!creatingHole) {
+            this.setState({
+                editing: {
+                    ...editing,
+                    coordinates: [
+                        ...editing.coordinates,
+                        e.nativeEvent.coordinate,
+                    ],
+                },
+            });
+        } else {
+            const holes = [...editing.holes];
+            holes[holes.length - 1] = [
+                ...holes[holes.length - 1],
+                e.nativeEvent.coordinate,
+            ];
+            this.setState({
+                editing: {
+                    ...editing,
+                    id: id++, // keep incrementing id to trigger display refresh
+                    coordinates: [
+                        ...editing.coordinates,
+                    ],
+                    holes,
+                },
+            });
+        }
+    }
+
 	render() {
+        const mapOptions = {
+            scrollEnabled: true,
+        };
+
+        if (this.state.editing) {
+            mapOptions.scrollEnabled = false;
+            mapOptions.onPanDrag = e => this.onPress(e);
+        }
+
+        let { minPrice, maxPrice } = this.state
 		return (
             <Container >
                 <Header>
@@ -61,47 +162,111 @@ class Filter extends React.Component<Props, State> {
                         </Button>
                     </Right>
                 </Header>
-                <View style={{flex: 1}}>
+                <View style={{flex: 1, flexDirection: 'column'}}>
                     <ScrollView style={{backgroundColor: '#FFFFFF',}} >
-                        <View style={styles.sliderOne}>
-                            <Text style={{fontSize: 26, padding: 5, color: '#8c919c'}}>Цена</Text>
-                            <View style={{flexDirection: 'row'}}>
-                                <View style={{flex: 1, alignItems: 'flex-start', paddingLeft: 20}}>
-                                    <Text >{this.state.multiSliderValue[0]} </Text>
-                                </View>
-                                <View style={{flex: 1, alignItems: 'flex-end', paddingRight: 20}}>
-                                    <Text >{this.state.multiSliderValue[1]}</Text>
-                                </View>
+                        {/*<View>*/}
+                            {/*<Text style={{fontSize: 22, padding: 5, color: '#8c919c'}}>Цена</Text>*/}
+                        {/*</View>*/}
+                        <View style={{flexDirection: 'row', justifyContent: 'center', paddingLeft: 10, paddingRight: 10}}>
+                            <View style={{flex: 1, }}>
+                                <TextField
+                                    label='Минимальная цена'
+                                    value={minPrice}
+                                    containerStyle={{paddingRight: 10}}
+                                    animationDuration={50}
+                                    onChangeText={ (minPrice) => this.setState({ minPrice }) }
+                                />
                             </View>
-                            <View style={{flex: 1, margin: 20, width: 280,}}>
-                                <MultiSlider
-                                    unselectedStyle={{
-                                        backgroundColor: 'silver',
-                                    }}
-                                    selectedStyle={{
-                                        backgroundColor: 'silver',
-                                    }}
-                                    touchDimensions={{
-                                        height: 200,
-                                        width: 200,
-                                        borderRadius: 60,
-                                        slipDisplacement: 70,
-                                    }}
-                                    trackStyle={{
-                                        height: 3,
-                                    }}
-                                    values={[this.state.multiSliderValue[0], this.state.multiSliderValue[1]]}
-                                    sliderLength={280}
-                                    // onValuesChange={this.multiSliderValuesChange}
-                                    min={0}
-                                    max={3000}
-                                    step={10}
-                                    allowOverlap
-                                    // snapped
-                                    customMarker={SliderCustomMarker}
+                            <View style={{flex: 1, }}>
+                                <TextField
+                                    label='Максимальная цена'
+                                    value={maxPrice}
+                                    containerStyle={{paddingLeft: 10}}
+                                    animationDuration={50}
+                                    onChangeText={ (maxPrice) => this.setState({ maxPrice }) }
                                 />
                             </View>
                         </View>
+                        <View style={{flex: 1, }}>
+                            <MapView
+                                style={{ flex: 1, width: width, height: height*0.7}}
+                                initialRegion={{
+                                    latitude: 53.902863,
+                                    longitude: 27.551579,
+                                    latitudeDelta: LATITUDE_DELTA,
+                                    longitudeDelta: LONGITUDE_DELTA,
+                                }}
+                                showsTraffic={false}
+                                onPress={e => this.onPress(e)}
+                                {...mapOptions}
+                            >
+                                {this.state.editing!==null ? this.state.editing.coordinates.map(obj => (
+                                    <MapView.Marker
+                                        key={obj.longitude}
+                                        coordinate={{
+                                            latitude: obj.latitude,
+                                            longitude: obj.longitude}}
+                                        image={require("../../../../assets/images/pin.png")}
+                                    >
+                                    </MapView.Marker>
+                                    )) : null}
+                                {this.state.polygons.map(polygon => (
+                                    <MapView.Polygon
+                                        key={polygon.id}
+                                        coordinates={polygon.coordinates}
+                                        holes={polygon.holes}
+                                        strokeColor="#F00"
+                                        fillColor="rgba(255,0,0,0.5)"
+                                        strokeWidth={2}
+                                    />
+
+                                ))}
+                                {this.state.editing && (
+                                    <MapView.Polygon
+                                        key={this.state.editing.id}
+                                        coordinates={this.state.editing.coordinates}
+                                        holes={this.state.editing.holes}
+                                        strokeColor="#000"
+                                        fillColor="rgba(255,0,0,0.5)"
+                                        strokeWidth={2}
+                                    />
+                                )}
+                            </MapView>
+                            <View style={styles.buttonContainer}>
+                                {this.state.editing && (
+                                    <TouchableOpacity
+                                        onPress={() => this.createHole()}
+                                        style={[styles.bubble, styles.button]}
+                                    >
+                                        <Text>{this.state.creatingHole ? 'Finish Hole' : 'Create Hole'}</Text>
+                                    </TouchableOpacity>
+                                )}
+                                {this.state.editing && (
+                                    <TouchableOpacity
+                                        onPress={() => this.finish()}
+                                        style={[styles.bubble, styles.button]}
+                                    >
+                                        <Text>Finish</Text>
+                                    </TouchableOpacity>
+                                )}
+                            </View>
+                            {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
+                                {/*<Icon name='remove' />*/}
+                            {/*</Button>*/}
+                            {/*<View style={{flex: 1, }}>*/}
+                                {/*<TextField*/}
+                                    {/*label='Кол-во комнат'*/}
+                                    {/*value={maxPrice}*/}
+                                    {/*containerStyle={{paddingLeft: 10}}*/}
+                                    {/*animationDuration={50}*/}
+                                    {/*onChangeText={ (maxPrice) => this.setState({ maxPrice }) }*/}
+                                {/*/>*/}
+                            {/*</View>*/}
+                            {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
+                                {/*<Icon name='add' />*/}
+                            {/*</Button>*/}
+                        </View>
+
                     </ScrollView>
                 </View>
             </Container>
@@ -110,33 +275,35 @@ class Filter extends React.Component<Props, State> {
 }
 
 const styles = StyleSheet.create({
-    containerStyle: {
-        height: height*0.7,
-        width: width*0.9,
-        backgroundColor: '#FFFFFF',
-        alignSelf: 'center',
-        borderWidth: 1,
-        borderRadius: 5,
-        borderColor: '#ddd',
-        borderBottomWidth: 0,
-        shadowColor: '#000',
-        shadowOffset: { width: 0, height: 2 },
-        shadowOpacity: 0.8,
-        shadowRadius: 2,
-        elevation: 1,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: height*0.1,
+    container: {
+        ...StyleSheet.absoluteFillObject,
+        justifyContent: 'flex-end',
+        alignItems: 'center',
     },
-    image: {
-        height: 40,
-        width: 40
+    map: {
+        ...StyleSheet.absoluteFillObject,
     },
-    sliderOne: {
-        flexDirection: 'column',
-        justifyContent: 'space-around',
-        alignItems: 'center'
-    }
-})
+    bubble: {
+        backgroundColor: 'rgba(255,255,255,0.7)',
+        paddingHorizontal: 18,
+        paddingVertical: 12,
+        borderRadius: 20,
+    },
+    latlng: {
+        width: 200,
+        alignItems: 'stretch',
+    },
+    button: {
+        width: 80,
+        paddingHorizontal: 12,
+        alignItems: 'center',
+        marginHorizontal: 10,
+    },
+    buttonContainer: {
+        flexDirection: 'row',
+        marginVertical: 20,
+        backgroundColor: 'transparent',
+    },
+});
 
 export default Filter;
