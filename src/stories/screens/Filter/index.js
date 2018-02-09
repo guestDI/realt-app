@@ -1,9 +1,10 @@
 import * as React from "react";
-import {Header, Title, Content, Text, Button, Icon, Left, Right, Body, Thumbnail, Container, Form, Item, Input} from "native-base";
+import {Header, Title, Content, Text, Button, Icon, Left, Right, Body, Thumbnail, Container, Form, Input, Picker, Item as FormItem} from "native-base";
 import MultiSlider from '@ptomasroos/react-native-multi-slider';
 import { Dropdown } from 'react-native-material-dropdown';
 import { TextField } from 'react-native-material-textfield';
 import { CheckBox } from 'react-native-elements'
+import ToggleButton from './components/ToggleButton'
 import { MapView } from 'expo';
 
 import {
@@ -17,6 +18,8 @@ import {
     Slider,
     TouchableOpacity
 } from "react-native";
+const Item = Picker.Item;
+
 export interface Props {
 	navigation: any;
 }
@@ -44,7 +47,8 @@ class Filter extends React.Component<Props, State> {
             creatingHole: false,
             minPrice: '',
             maxPrice: '',
-
+            selected: "key0",
+            selectedSubway: "subwayKey0"
         };
     }
 
@@ -125,6 +129,18 @@ class Filter extends React.Component<Props, State> {
         }
     }
 
+    onValueChanged = (value) => {
+        this.setState({
+            selected: value
+        });
+    }
+
+    onSubwayChanged = (value) => {
+        this.setState({
+            selectedSubway: value
+        });
+    }
+
 	render() {
         const mapOptions = {
             scrollEnabled: true,
@@ -144,7 +160,7 @@ class Filter extends React.Component<Props, State> {
                             <Icon
                                 active
                                 name="arrow-back"
-                                // onPress={() => this.props.navigation.navigate("Home")}
+                                onPress={() => this.props.navigation.goBack()}
                             />
                         </Button>
                     </Left>
@@ -153,10 +169,12 @@ class Filter extends React.Component<Props, State> {
                     </Body>
                     <Right >
                         <Button transparent>
+                            <Icon name="checkmark" style={{fontSize: 28}}/>
+                            {/*onPress={() => this.props.navigation.navigate("DrawerOpen")}*/}
+                            {/*/>*/}
+                        </Button>
+                        <Button transparent>
                             <Icon name="trash" style={{fontSize: 28}}/>
-                            {/*<Icon*/}
-                            {/*active*/}
-                            {/*name="menu"*/}
                             {/*onPress={() => this.props.navigation.navigate("DrawerOpen")}*/}
                             {/*/>*/}
                         </Button>
@@ -186,6 +204,37 @@ class Filter extends React.Component<Props, State> {
                                     onChangeText={ (maxPrice) => this.setState({ maxPrice }) }
                                 />
                             </View>
+                        </View>
+                        <View style={{flexDirection: 'row'}}>
+                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="1" />
+                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="2" />
+                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="3" />
+                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="4+" />
+                        </View>
+                        <View>
+                            <Picker
+                                iosHeader="Собственник/Агент"
+                                mode="dropdown"
+                                selectedValue={this.state.selected}
+                                onValueChange={this.onValueChanged}
+                            >
+                                <Item label="Не важно" value="key0" />
+                                <Item label="Только собственник" value="key1" />
+                                <Item label="Собственник + проверенные агенты" value="key2" />
+                            </Picker>
+                        </View>
+                        <View>
+                            <Picker
+                                iosHeader="Метро"
+                                mode="dropdown"
+                                selectedValue={this.state.selectedSubway}
+                                onValueChange={this.onSubwayChanged}
+                            >
+                                <Item label="Не важно" value="subwayKey0" />
+                                <Item label="Возле метро" value="subwayKey1" />
+                                <Item label="Московская линия" value="subwayKey2" />
+                                <Item label="Автозаводская линия" value="subwayKey3" />
+                            </Picker>
                         </View>
                         <View style={{flex: 1, }}>
                             <MapView
