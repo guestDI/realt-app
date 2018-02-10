@@ -20,6 +20,9 @@ export interface Props {
 const { StatusBarManager } = NativeModules;
 
 const {height, width} = Dimensions.get('window');
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.0922;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
 
 class FlatPage extends React.Component<Props, State> {
@@ -101,8 +104,8 @@ class FlatPage extends React.Component<Props, State> {
                         <Button transparent>
                             <Icon
                                 active
-                                name="menu"
-                                onPress={() => this.props.navigation.navigate("DrawerOpen")}
+                                name="arrow-back"
+                                onPress={() => this.props.navigation.goBack()}
                             />
                         </Button>
                     </Left>
@@ -190,10 +193,10 @@ class FlatPage extends React.Component<Props, State> {
                             <MapView
                                 style={{ flex: 1, width: width, height: height*0.5}}
                                 initialRegion={{
-                                    latitude: this.props.flat.latitude,
-                                    longitude: this.props.flat.longitude,
-                                    latitudeDelta: 0.012,
-                                    longitudeDelta: 0.0191,
+                                    latitude: 53.902863,
+                                    longitude: 27.551579,
+                                    latitudeDelta: 0.025,
+                                    longitudeDelta: 0.005,
                                 }}
                                 showsTraffic={false}
                             >

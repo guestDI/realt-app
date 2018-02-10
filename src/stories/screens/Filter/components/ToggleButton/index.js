@@ -49,12 +49,6 @@ class ToggleButton extends React.Component<Props, State> {
             case 'pulse':
                 this.refs.view.pulse(800);
                 break;
-            case 'rotate':
-                this.refs.view.rotate(800);
-                break;
-            case 'rubberBand':
-                this.refs.view.rubberBand(800);
-                break;
         }
 
     }

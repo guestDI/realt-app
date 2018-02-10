@@ -47,8 +47,10 @@ class Filter extends React.Component<Props, State> {
             creatingHole: false,
             minPrice: '',
             maxPrice: '',
-            selected: "key0",
-            selectedSubway: "subwayKey0"
+            rooms: [],
+            coordinates: [],
+            selectedOwnerType: "ANY",
+            selectedSubway: "ANY_SUBWAY"
         };
     }
 
@@ -129,9 +131,22 @@ class Filter extends React.Component<Props, State> {
         }
     }
 
+    onFilterSaved = () => {
+        let filter = {
+            minPrice: this.state.minPrice,
+            maxPrice: this.state.maxPrice,
+            rooms: this.state.rooms,
+            owner: this.state.selectedOwnerType,
+            subway: this.state.selectedSubway,
+            coordinates: this.state.editing
+        }
+        console.log(filter)
+        this.props.navigation.goBack();
+    }
+
     onValueChanged = (value) => {
         this.setState({
-            selected: value
+            selectedOwnerType: value
         });
     }
 
@@ -169,9 +184,9 @@ class Filter extends React.Component<Props, State> {
                     </Body>
                     <Right >
                         <Button transparent>
-                            <Icon name="checkmark" style={{fontSize: 28}}/>
-                            {/*onPress={() => this.props.navigation.navigate("DrawerOpen")}*/}
-                            {/*/>*/}
+                            <Icon name="checkmark" style={{fontSize: 28}}
+                            onPress={this.onFilterSaved}
+                            />
                         </Button>
                         <Button transparent>
                             <Icon name="trash" style={{fontSize: 28}}/>
@@ -182,63 +197,83 @@ class Filter extends React.Component<Props, State> {
                 </Header>
                 <View style={{flex: 1, flexDirection: 'column'}}>
                     <ScrollView style={{backgroundColor: '#FFFFFF',}} >
-                        {/*<View>*/}
-                            {/*<Text style={{fontSize: 22, padding: 5, color: '#8c919c'}}>Цена</Text>*/}
-                        {/*</View>*/}
-                        <View style={{flexDirection: 'row', justifyContent: 'center', paddingLeft: 10, paddingRight: 10}}>
-                            <View style={{flex: 1, }}>
-                                <TextField
-                                    label='Минимальная цена'
-                                    value={minPrice}
-                                    containerStyle={{paddingRight: 10}}
-                                    animationDuration={50}
-                                    onChangeText={ (minPrice) => this.setState({ minPrice }) }
-                                />
+                        <View style={{flex: 1, alignItems: 'center'}}>
+                            <View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9,}}>
+                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Цена</Text>
                             </View>
-                            <View style={{flex: 1, }}>
-                                <TextField
-                                    label='Максимальная цена'
-                                    value={maxPrice}
-                                    containerStyle={{paddingLeft: 10}}
-                                    animationDuration={50}
-                                    onChangeText={ (maxPrice) => this.setState({ maxPrice }) }
-                                />
+                            <View style={{flexDirection: 'row', justifyContent: 'center', paddingLeft: 10, paddingRight: 10}}>
+                                    <TextField
+                                        label='Минимальная цена'
+                                        value={minPrice}
+                                        containerStyle={{paddingRight: 10, width: width*0.45}}
+                                        animationDuration={50}
+                                        keyboardType={'numeric'}
+                                        maxLength={5}
+                                        onChangeText={ (minPrice) => this.setState({ minPrice }) }
+                                    />
+                                    <TextField
+                                        label='Максимальная цена'
+                                        value={maxPrice}
+                                        containerStyle={{paddingLeft: 10, width: width*0.45}}
+                                        animationDuration={50}
+                                        keyboardType={'numeric'}
+                                        maxLength={5}
+                                        onChangeText={ (maxPrice) => this.setState({ maxPrice }) }
+                                    />
                             </View>
                         </View>
-                        <View style={{flexDirection: 'row'}}>
-                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="1" />
-                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="2" />
-                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="3" />
-                            <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="4+" />
+                        <View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>
+                            <View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>
+                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Количество комнат</Text>
+                            </View>
+                            <View style={{flexDirection: 'row', width: width*0.9, justifyContent: 'center', alignItems: 'center'}}>
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="1" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="2" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="3" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="4+" />
+                            </View>
                         </View>
-                        <View>
-                            <Picker
-                                iosHeader="Собственник/Агент"
-                                mode="dropdown"
-                                selectedValue={this.state.selected}
-                                onValueChange={this.onValueChanged}
-                            >
-                                <Item label="Не важно" value="key0" />
-                                <Item label="Только собственник" value="key1" />
-                                <Item label="Собственник + проверенные агенты" value="key2" />
-                            </Picker>
+                        <View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>
+                            <View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>
+                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>
+                            </View>
+                            <View style={{flex: 1, width: width*0.9}}>
+                                <Picker
+                                    iosHeader="Собственник/Агент"
+                                    mode="dropdown"
+                                    selectedValue={this.state.selectedOwnerType}
+                                    onValueChange={this.onValueChanged}
+                                >
+                                    <Item label="Не важно" value="ANY" />
+                                    <Item label="Только собственник" value="OWNER" />
+                                    <Item label="Собственник + проверенные агенты" value="OWNER_AND_AGENT" />
+                                </Picker>
+                            </View>
                         </View>
-                        <View>
-                            <Picker
-                                iosHeader="Метро"
-                                mode="dropdown"
-                                selectedValue={this.state.selectedSubway}
-                                onValueChange={this.onSubwayChanged}
-                            >
-                                <Item label="Не важно" value="subwayKey0" />
-                                <Item label="Возле метро" value="subwayKey1" />
-                                <Item label="Московская линия" value="subwayKey2" />
-                                <Item label="Автозаводская линия" value="subwayKey3" />
-                            </Picker>
+                        <View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>
+                            <View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>
+                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>
+                            </View>
+                            <View style={{flex: 1, width: width*0.9}}>
+                                <Picker
+                                    iosHeader="Метро"
+                                    mode="dropdown"
+                                    selectedValue={this.state.selectedSubway}
+                                    onValueChange={this.onSubwayChanged}
+                                >
+                                    <Item label="Не важно" value="ANY_SUBWAY" />
+                                    <Item label="Возле метро" value="NEAR_SUBWAY" />
+                                    <Item label="Московская линия" value="M_SUBWAY" />
+                                    <Item label="Автозаводская линия" value="A_SUBWAY" />
+                                </Picker>
+                            </View>
                         </View>
                         <View style={{flex: 1, }}>
+                            <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.9, alignSelf: 'center'}}>
+                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Местоположение на карте</Text>
+                            </View>
                             <MapView
-                                style={{ flex: 1, width: width, height: height*0.7}}
+                                style={{ flex: 1, width: width*0.99, height: height*0.7, alignSelf: 'center'}}
                                 initialRegion={{
                                     latitude: 53.902863,
                                     longitude: 27.551579,
