@@ -49,9 +49,25 @@ class Filter extends React.Component<Props, State> {
             maxPrice: '',
             rooms: [],
             coordinates: [],
-            selectedOwnerType: "ANY",
-            selectedSubway: "ANY_SUBWAY"
+            selectedOwnerType: this.props.filter.selectedOwnerType,
+            selectedSubway: this.props.filter.selectedOwnerType
         };
+    }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.filter !== nextProps.filter) {
+            this.setState({
+                selectedOwnerType: nextProps.selectedOwnerType,
+                selectedSubway: nextProps.selectedOwnerType
+                // id: nextProps.userProfile.id,
+                // firstname: nextProps.userProfile.firstname,
+                // lastname: nextProps.userProfile.lastname,
+                // email: nextProps.userProfile.email,
+                // profilePhoto: nextProps.userProfile.profilePhoto,
+                // role: nextProps.userProfile.role,
+                // userInfo: nextProps.userProfile,
+            });
+        }
     }
 
     finish() {
@@ -140,7 +156,9 @@ class Filter extends React.Component<Props, State> {
             subway: this.state.selectedSubway,
             coordinates: this.state.editing
         }
-        console.log(filter)
+        this.props.onAddFilter(filter);
+        // this.props.onFetchFilter();
+        // console.log(this.props.filter)
         this.props.navigation.goBack();
     }
 
