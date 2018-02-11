@@ -5,13 +5,13 @@ export const setFilter = (value) => {
     // console.log(filter)
     AsyncStorage.setItem('filter', filter);
 
-    return filter;
+    return value;
 }
 
 export const getFilter = async (callback) => {
     // let filter = null;
     let value = await AsyncStorage.getItem("filter").then(val => {
-        callback(val)
+        callback(JSON.parse(val))
     });
 }
 

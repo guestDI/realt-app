@@ -76,16 +76,20 @@ class FlatPage extends React.Component<Props, State> {
         return this.state.follow ? "Удачно отписаны" : "Удачно подписаны"
     }
 
-    onChangeRate = (rate) => {
-        Toast.show({
-            text: 'Ваша оценка сохранена успешно',
-            position: 'bottom',
-            buttonText: 'Скрыть',
-            duration: 2000
-        })
-
-        // this.props.onRateChanged(rate)
+    getSource = (source) => {
+        switch (source) {
+            case "ONLINER":
+                return "Onliner.by";
+            case "REALTBY":
+                return "Realt.by";
+            case "KUFAR":
+                return "Kufar.by";
+            default:
+                return "";
+        }
     }
+
+
 
 	render() {
 		const param = this.props.navigation.state.params;
@@ -142,7 +146,15 @@ class FlatPage extends React.Component<Props, State> {
                         </View>
                         <View style={{flex: 1, flexDirection: "row", }}>
                             <View style={{flexDirection: "column", paddingLeft: 10}}>
-                                <Text style={{fontSize: 24, fontWeight: "bold", padding: 5, }}>2-х комнатная</Text>
+                                <View style={{flexDirection: "row"}}>
+                                    <View>
+                                        <Text style={{fontSize: 24, fontWeight: "bold", padding: 5, }}>2-х комнатная</Text>
+                                    </View>
+                                    <View style={{flexDirection: "column", }}>
+                                        <Text style={{fontSize: 12, color: '#8c919c'}}>Обновлено: </Text>
+                                        <Text style={{fontSize: 12, color: '#8c919c'}}>{this.props.flat.updatedOn}</Text>
+                                    </View>
+                                </View>
                                 <Text style={{fontSize: 32, fontWeight: "bold", paddingLeft: 5,}}>{this.props.flat.price} $</Text>
                                 <View style={{flexDirection: "row", alignItems: 'center'}}>
                                     <Image
@@ -175,7 +187,15 @@ class FlatPage extends React.Component<Props, State> {
                         <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>
                             <Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Описание</Text>
                         </View>
-                        <Text style={{fontSize: 16, paddingLeft: 10, paddingTop: 5, paddingBottom: 10}}>{this.props.flat.description}</Text>
+                        <Text style={{fontSize: 16, paddingLeft: 10, paddingTop: 5, paddingBottom: 5}}>{this.props.flat.description}</Text>
+                        <View style={{flexDirection: "row", }}>
+                            <Text style={{fontSize: 18, paddingLeft: 10, fontWeight: "bold", paddingRight: 5, paddingBottom: 10}}>Источник:</Text>
+                            <TouchableOpacity onPress={() => Linking.openURL('http://onliner.by').catch(err => console.error('An error occurred', err))}>
+                                <Text style={{fontSize: 16, color: 'blue', textDecorationLine: 'underline'}}>
+                                    {this.getSource(this.props.flat.source)}
+                                </Text>
+                            </TouchableOpacity>
+                        </View>
                         <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.95, alignSelf: 'center'}}>
                             <Text style={{fontSize: 24, padding: 5, color: '#8c919c'}}>Местоположение</Text>
                         </View>

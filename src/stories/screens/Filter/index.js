@@ -49,26 +49,26 @@ class Filter extends React.Component<Props, State> {
             maxPrice: '',
             rooms: [],
             coordinates: [],
-            selectedOwnerType: this.props.filter.selectedOwnerType,
-            selectedSubway: this.props.filter.selectedOwnerType
+            selectedOwnerType: 'OWNER',
+            selectedSubway: 'ANY_SUBWAY'
         };
     }
 
-    componentWillReceiveProps(nextProps) {
-        if (this.props.filter !== nextProps.filter) {
-            this.setState({
-                selectedOwnerType: nextProps.selectedOwnerType,
-                selectedSubway: nextProps.selectedOwnerType
-                // id: nextProps.userProfile.id,
-                // firstname: nextProps.userProfile.firstname,
-                // lastname: nextProps.userProfile.lastname,
-                // email: nextProps.userProfile.email,
-                // profilePhoto: nextProps.userProfile.profilePhoto,
-                // role: nextProps.userProfile.role,
-                // userInfo: nextProps.userProfile,
-            });
-        }
-    }
+    // componentWillReceiveProps(nextProps) {
+    //     if (this.props.filter !== nextProps.filter) {
+    //         this.setState({
+    //             selectedOwnerType: nextProps.selectedOwnerType,
+    //             selectedSubway: nextProps.selectedOwnerType
+    //             // id: nextProps.userProfile.id,
+    //             // firstname: nextProps.userProfile.firstname,
+    //             // lastname: nextProps.userProfile.lastname,
+    //             // email: nextProps.userProfile.email,
+    //             // profilePhoto: nextProps.userProfile.profilePhoto,
+    //             // role: nextProps.userProfile.role,
+    //             // userInfo: nextProps.userProfile,
+    //         });
+    //     }
+    // }
 
     finish() {
         const { polygons, editing } = this.state;

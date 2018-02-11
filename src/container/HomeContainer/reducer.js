@@ -1,5 +1,6 @@
 const initialState = {
 	list: [],
+    data: {},
 	isLoading: true,
 };
 
@@ -16,5 +17,15 @@ export default function(state: any = initialState, action: Function) {
 			isLoading: action.isLoading,
 		};
 	}
+    if(action.type === "FETCH_FILTER"){
+        // console.log(action.data)
+        return action.data;
+    }
+
+    if(action.type === "ADD_FILTER"){
+        return Object.assign({}, action.filter);
+    }
 	return state;
 }
+
+

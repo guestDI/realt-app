@@ -1,20 +1,17 @@
 // @flow
 import * as React from "react";
 import Filter from "../../stories/screens/Filter";
-import { addFilter, fetchFilter } from "./actions";
+
 
 import {connect} from "react-redux";
 export interface Props {
 	navigation: any,
-    myUID: string,
-    data: Array<Object>,
-    setRate: Function,
 }
 export interface State {}
 class FilterContainer extends React.Component<Props, State> {
     componentDidMount() {
-        this.props.fetchFilter()
-        console.log(this.props.data)
+
+        // console.log(this.props.data)
     }
 
 	render() {
@@ -39,7 +36,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-    data: state.filterReducer.filter,
+    data: state.filterReducer.data,
     // isLoading: state.homeReducer.isLoading,
     // myUID: state.loginReducer.uid,
     // ratedFriendsData: state.ratedFriendsReducer.list,
