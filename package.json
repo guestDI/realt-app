@@ -22,6 +22,7 @@
     "@ptomasroos/react-native-multi-slider": "0.0.12",
     "axios": "^0.16.2",
     "expo": "^25.0.0",
+    "moment": "^2.20.1",
     "native-base": "GeekyAnts/NativeBase",
     "react": "16.2.0",
     "react-native": "0.52.0",

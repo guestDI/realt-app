@@ -10,6 +10,9 @@ import {
     StyleSheet,
     Text, FlatList, ActivityIndicator, ImageBackground
 } from "react-native";
+import formatDate from '../../../../../../../utils/utils'
+import moment from 'moment';
+
 export interface Props {
 	navigation: any;
 }
@@ -26,13 +29,6 @@ class FlatRow extends React.Component<Props, State> {
         this.state = {
             fullReadComment: false,
         };
-    }
-
-    viewFullComment = () => {
-        let current = this.state.fullReadComment
-        this.setState({
-            fullReadComment: !current
-        });
     }
 
     onRowPress = () => {
@@ -78,7 +74,7 @@ class FlatRow extends React.Component<Props, State> {
                                 </View>
                                 <View style={{flexDirection: "row", alignItems: 'center'}}>
                                     <Icon name='clock' style={{fontSize: 16, color: '#9da3ae', paddingLeft: 5}}/>
-                                    <Text style={{fontSize: 12, paddingLeft: 5, color: '#9da3ae'}} >{this.props.flat.updatedOn}</Text>
+                                    <Text style={{fontSize: 12, paddingLeft: 5, color: '#9da3ae'}} >{formatDate(this.props.flat.updatedOn)}</Text>
                                 </View>
                             </View>
                             <View>
@@ -86,9 +82,11 @@ class FlatRow extends React.Component<Props, State> {
                             </View>
                             <View style={{flexDirection: "row", }}>
                                 {this.props.flat.contacts.map((num, index) => {
-                                    return (
-                                        <Text style={{fontSize: 14, padding: 5, paddingTop: 10, paddingBottom: 0}} key={index}>{num}</Text>
-                                    )
+                                    if(index <= 1){
+                                        return (
+                                            <Text style={{fontSize: 14, padding: 5, paddingTop: 10, paddingBottom: 0}} key={index}>{num}</Text>
+                                        )
+                                    }
                                 })}
                             </View>
                         </View>

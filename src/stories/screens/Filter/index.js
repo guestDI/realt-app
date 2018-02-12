@@ -1,9 +1,6 @@
 import * as React from "react";
 import {Header, Title, Content, Text, Button, Icon, Left, Right, Body, Thumbnail, Container, Form, Input, Picker, Item as FormItem} from "native-base";
-import MultiSlider from '@ptomasroos/react-native-multi-slider';
-import { Dropdown } from 'react-native-material-dropdown';
 import { TextField } from 'react-native-material-textfield';
-import { CheckBox } from 'react-native-elements'
 import ToggleButton from './components/ToggleButton'
 import { MapView } from 'expo';
 
@@ -45,30 +42,36 @@ class Filter extends React.Component<Props, State> {
             polygons: [],
             editing: null,
             creatingHole: false,
-            minPrice: '',
-            maxPrice: '',
+            minPrice: this.props.filter.minPrice,
+            maxPrice: this.props.filter.maxPrice,
             rooms: [],
+            oneRoom: false,
+            twoRooms: false,
+            threeRooms: false,
+            fourAndMore: false,
             coordinates: [],
-            selectedOwnerType: 'OWNER',
+            selectedOwnerType: 'OWNER_AND_AGENT',
             selectedSubway: 'ANY_SUBWAY'
         };
     }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (this.props.filter !== nextProps.filter) {
-    //         this.setState({
-    //             selectedOwnerType: nextProps.selectedOwnerType,
-    //             selectedSubway: nextProps.selectedOwnerType
-    //             // id: nextProps.userProfile.id,
-    //             // firstname: nextProps.userProfile.firstname,
-    //             // lastname: nextProps.userProfile.lastname,
-    //             // email: nextProps.userProfile.email,
-    //             // profilePhoto: nextProps.userProfile.profilePhoto,
-    //             // role: nextProps.userProfile.role,
-    //             // userInfo: nextProps.userProfile,
-    //         });
-    //     }
-    // }
+    componentWillReceiveProps(nextProps) {
+        if (this.props.filter !== nextProps.filter) {
+            this.setState({
+                minPrice: nextProps.filter.minPrice,
+                maxPrice: nextProps.filter.maxPrice,
+                // selectedOwnerType: nextProps.filter.selectedOwnerType,
+                // selectedSubway: nextProps.filter.selectedOwnerType
+                // id: nextProps.userProfile.id,
+                // firstname: nextProps.userProfile.firstname,
+                // lastname: nextProps.userProfile.lastname,
+                // email: nextProps.userProfile.email,
+                // profilePhoto: nextProps.userProfile.profilePhoto,
+                // role: nextProps.userProfile.role,
+                // userInfo: nextProps.userProfile,
+            });
+        }
+    }
 
     finish() {
         const { polygons, editing } = this.state;
@@ -147,6 +150,48 @@ class Filter extends React.Component<Props, State> {
         }
     }
 
+    onValueChanged = (value) => {
+        this.setState({
+            selectedOwnerType: value
+        });
+    }
+
+    onSubwayChanged = (value) => {
+        this.setState({
+            selectedSubway: value
+        });
+    }
+
+    getRoomsNumber = (status, room) => {
+        let roomsNum =  this.state.rooms;
+
+        if(status && !roomsNum.includes(room)){
+            roomsNum.push(room);
+        } else if(!status && roomsNum.includes(room)){
+            const index = roomsNum.indexOf(room);
+            roomsNum.splice(index, 1);
+        }
+
+        this.setState({
+            rooms: roomsNum
+        });
+    }
+
+
+    reset = () => {
+        this.setState({
+            polygons: [],
+            editing: null,
+            creatingHole: false,
+            minPrice: "",
+            maxPrice: "",
+            rooms: [],
+            coordinates: [],
+            // selectedOwnerType: 'OWNER_AND_AGENT',
+            // selectedSubway: 'ANY_SUBWAY'
+        });
+    }
+
     onFilterSaved = () => {
         let filter = {
             minPrice: this.state.minPrice,
@@ -160,18 +205,6 @@ class Filter extends React.Component<Props, State> {
         // this.props.onFetchFilter();
         // console.log(this.props.filter)
         this.props.navigation.goBack();
-    }
-
-    onValueChanged = (value) => {
-        this.setState({
-            selectedOwnerType: value
-        });
-    }
-
-    onSubwayChanged = (value) => {
-        this.setState({
-            selectedSubway: value
-        });
     }
 
 	render() {
@@ -208,9 +241,9 @@ class Filter extends React.Component<Props, State> {
                             />
                         </Button>
                         <Button transparent>
-                            <Icon name="trash" style={{fontSize: 28}}/>
-                            {/*onPress={() => this.props.navigation.navigate("DrawerOpen")}*/}
-                            {/*/>*/}
+                            <Icon name="trash" style={{fontSize: 28}}
+                            onPress={this.reset}
+                            />
                         </Button>
                     </Right>
                 </Header>
@@ -246,10 +279,10 @@ class Filter extends React.Component<Props, State> {
                                 <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Количество комнат</Text>
                             </View>
                             <View style={{flexDirection: 'row', width: width*0.9, justifyContent: 'center', alignItems: 'center'}}>
-                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="1" />
-                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="2" />
-                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="3" />
-                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {}} text="4+" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {this.getRoomsNumber(status, "ONE")}} text="1" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {this.getRoomsNumber(status, "TWO")}} text="2" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {this.getRoomsNumber(status, "THREE")}} text="3" />
+                                <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {this.getRoomsNumber(status, "FOUR_OR_MORE")}} text="4+" />
                             </View>
                         </View>
                         <View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>
@@ -257,15 +290,17 @@ class Filter extends React.Component<Props, State> {
                                 <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>
                             </View>
                             <View style={{flex: 1, width: width*0.9}}>
-                                <Picker
-                                    iosHeader="Собственник/Агент"
+                                <Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}
+                                    iosHeader="Выбрать"
+                                    placeholder="Выбрать"
                                     mode="dropdown"
+                                    enabled={false}
                                     selectedValue={this.state.selectedOwnerType}
                                     onValueChange={this.onValueChanged}
                                 >
                                     <Item label="Не важно" value="ANY" />
                                     <Item label="Только собственник" value="OWNER" />
-                                    <Item label="Собственник + проверенные агенты" value="OWNER_AND_AGENT" />
+                                    <Item label="Собственник + агентства" value="OWNER_AND_AGENT" />
                                 </Picker>
                             </View>
                         </View>
@@ -274,9 +309,11 @@ class Filter extends React.Component<Props, State> {
                                 <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>
                             </View>
                             <View style={{flex: 1, width: width*0.9}}>
-                                <Picker
-                                    iosHeader="Метро"
+                                <Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}
+                                    iosHeader="Выбрать"
+                                    placeholder="Выбрать"
                                     mode="dropdown"
+                                    enabled={false}
                                     selectedValue={this.state.selectedSubway}
                                     onValueChange={this.onSubwayChanged}
                                 >

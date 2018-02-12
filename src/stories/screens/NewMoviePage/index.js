@@ -5,6 +5,7 @@ import { Button, Icon, Root, Toast, Container, Header, Title, Content, Left, Bod
 import { Card   } from "react-native-elements"
 import ImageView from './components/ImageView'
 import { MapView } from 'expo';
+import formatDate from '../../../utils/utils'
 
 export interface Props {
 	navigation: any;
@@ -152,7 +153,7 @@ class FlatPage extends React.Component<Props, State> {
                                     </View>
                                     <View style={{flexDirection: "column", }}>
                                         <Text style={{fontSize: 12, color: '#8c919c'}}>Обновлено: </Text>
-                                        <Text style={{fontSize: 12, color: '#8c919c'}}>{this.props.flat.updatedOn}</Text>
+                                        <Text style={{fontSize: 12, color: '#8c919c'}}>{formatDate(this.props.flat.updatedOn)}</Text>
                                     </View>
                                 </View>
                                 <Text style={{fontSize: 32, fontWeight: "bold", paddingLeft: 5,}}>{this.props.flat.price} $</Text>
@@ -213,8 +214,8 @@ class FlatPage extends React.Component<Props, State> {
                             <MapView
                                 style={{ flex: 1, width: width, height: height*0.5}}
                                 initialRegion={{
-                                    latitude: 53.902863,
-                                    longitude: 27.551579,
+                                    latitude: this.props.flat.latitude,
+                                    longitude: this.props.flat.longitude,
                                     latitudeDelta: 0.025,
                                     longitudeDelta: 0.005,
                                 }}
