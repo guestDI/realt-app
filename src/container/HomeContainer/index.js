@@ -5,8 +5,7 @@ import { connect } from "react-redux";
 import Home from "../../stories/screens/Home";
 import flats from "./data_test";
 import { fetchFlats } from "./actions";
-import { addFilter, fetchFilter } from "./actions";
-// import {fetchFlats} from "../LoginContainer/actions";
+
 export interface Props {
 	navigation: any,
 	fetchList: Function,
@@ -25,12 +24,12 @@ class HomeContainer extends React.Component<Props, State> {
 	}
 
 	componentDidMount() {
-        this.props.fetchFilter()
+        // this.props.fetchFilter()
         // this.props.fetchFlats({
 		// 	page: 0,
 		// 	size: 10
 		// })
-		console.log(this.props.filter)
+		// console.log(this.props.filter)
 	}
 
 	render() {
@@ -56,8 +55,6 @@ class HomeContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
 	return {
-        addFilter: (filter) => dispatch(addFilter(filter)),
-        fetchFilter: () => dispatch(fetchFilter())
        // fetchFlats: (filter) => dispatch(fetchFlats(filter)),
 	};
 }
@@ -65,6 +62,5 @@ function bindAction(dispatch) {
 const mapStateToProps = state => ({
 	data: state.homeReducer.list,
 	isLoading: state.homeReducer.isLoading,
-    filter: state.filterReducer.data,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

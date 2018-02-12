@@ -175,6 +175,7 @@ class Filter extends React.Component<Props, State> {
     }
 
 	render() {
+        console.log('render', this.props.filter)
         const mapOptions = {
             scrollEnabled: true,
         };
