@@ -1,5 +1,7 @@
 const initialState = {
-    filter: {},
+    filter: {
+        rooms: [],
+    },
 };
 
 export default function(state: any = initialState, action: Function) {
