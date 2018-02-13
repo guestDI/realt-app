@@ -55,7 +55,7 @@ class FlatRow extends React.Component<Props, State> {
                         <View style={{flexDirection: "column", alignItems: 'center'}}>
                             <View style={{paddingTop: 3}}>
                                 <ImageBackground
-                                    source={{ uri: this.props.flat.photos[0] }}
+                                    source={{ uri: this.props.flat.smallPhoto }}
                                     style={{height: height*0.1, width: width*0.25, }}
                                 >
                                 </ImageBackground>

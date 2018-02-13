@@ -13,7 +13,8 @@ import {
     TextInput,
     ScrollView,
     Slider,
-    TouchableOpacity
+    TouchableOpacity,
+    Alert
 } from "react-native";
 const Item = Picker.Item;
 
@@ -44,7 +45,7 @@ class Filter extends React.Component<Props, State> {
             creatingHole: false,
             minPrice: this.props.filter.minPrice,
             maxPrice: this.props.filter.maxPrice,
-            rooms: [],
+            rooms: this.props.filter.rooms,
             oneRoom: false,
             twoRooms: false,
             threeRooms: false,
@@ -60,15 +61,9 @@ class Filter extends React.Component<Props, State> {
             this.setState({
                 minPrice: nextProps.filter.minPrice,
                 maxPrice: nextProps.filter.maxPrice,
+                rooms: nextProps.filter.rooms
                 // selectedOwnerType: nextProps.filter.selectedOwnerType,
                 // selectedSubway: nextProps.filter.selectedOwnerType
-                // id: nextProps.userProfile.id,
-                // firstname: nextProps.userProfile.firstname,
-                // lastname: nextProps.userProfile.lastname,
-                // email: nextProps.userProfile.email,
-                // profilePhoto: nextProps.userProfile.profilePhoto,
-                // role: nextProps.userProfile.role,
-                // userInfo: nextProps.userProfile,
             });
         }
     }
@@ -179,17 +174,40 @@ class Filter extends React.Component<Props, State> {
 
 
     reset = () => {
-        this.setState({
-            polygons: [],
-            editing: null,
-            creatingHole: false,
-            minPrice: "",
-            maxPrice: "",
-            rooms: [],
-            coordinates: [],
-            // selectedOwnerType: 'OWNER_AND_AGENT',
-            // selectedSubway: 'ANY_SUBWAY'
-        });
+        // if(this.state.minPrice==="" && this.state.maxPrice==="" && )
+
+        Alert.alert(
+            'Подтвердите',
+            'Вы действительно хотите очистить фильтр?',
+            [
+                {text: 'Отменить', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
+                {text: 'Да', onPress: () => {
+                    this.setState({
+                        polygons: [],
+                        editing: null,
+                        creatingHole: false,
+                        minPrice: "",
+                        maxPrice: "",
+                        rooms: [],
+                        coordinates: [],
+                        // selectedOwnerType: 'OWNER_AND_AGENT',
+                        // selectedSubway: 'ANY_SUBWAY'
+                    });
+                }},
+            ]
+        )
+
+        // this.setState({
+        //     polygons: [],
+        //     editing: null,
+        //     creatingHole: false,
+        //     minPrice: "",
+        //     maxPrice: "",
+        //     rooms: [],
+        //     coordinates: [],
+        //     // selectedOwnerType: 'OWNER_AND_AGENT',
+        //     // selectedSubway: 'ANY_SUBWAY'
+        // });
     }
 
     onFilterSaved = () => {
@@ -285,45 +303,45 @@ class Filter extends React.Component<Props, State> {
                                 <ToggleButton onColor={"orange"} effect={"pulse"} _onPress={(status) => {this.getRoomsNumber(status, "FOUR_OR_MORE")}} text="4+" />
                             </View>
                         </View>
-                        <View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>
-                            <View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>
-                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>
-                            </View>
-                            <View style={{flex: 1, width: width*0.9}}>
-                                <Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}
-                                    iosHeader="Выбрать"
-                                    placeholder="Выбрать"
-                                    mode="dropdown"
-                                    enabled={false}
-                                    selectedValue={this.state.selectedOwnerType}
-                                    onValueChange={this.onValueChanged}
-                                >
-                                    <Item label="Не важно" value="ANY" />
-                                    <Item label="Только собственник" value="OWNER" />
-                                    <Item label="Собственник + агентства" value="OWNER_AND_AGENT" />
-                                </Picker>
-                            </View>
-                        </View>
-                        <View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>
-                            <View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>
-                                <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>
-                            </View>
-                            <View style={{flex: 1, width: width*0.9}}>
-                                <Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}
-                                    iosHeader="Выбрать"
-                                    placeholder="Выбрать"
-                                    mode="dropdown"
-                                    enabled={false}
-                                    selectedValue={this.state.selectedSubway}
-                                    onValueChange={this.onSubwayChanged}
-                                >
-                                    <Item label="Не важно" value="ANY_SUBWAY" />
-                                    <Item label="Возле метро" value="NEAR_SUBWAY" />
-                                    <Item label="Московская линия" value="M_SUBWAY" />
-                                    <Item label="Автозаводская линия" value="A_SUBWAY" />
-                                </Picker>
-                            </View>
-                        </View>
+                        {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
+                            {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>*/}
+                                {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>*/}
+                            {/*</View>*/}
+                            {/*<View style={{flex: 1, width: width*0.9}}>*/}
+                                {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
+                                    {/*iosHeader="Выбрать"*/}
+                                    {/*placeholder="Выбрать"*/}
+                                    {/*mode="dropdown"*/}
+                                    {/*enabled={false}*/}
+                                    {/*selectedValue={this.state.selectedOwnerType}*/}
+                                    {/*onValueChange={this.onValueChanged}*/}
+                                {/*>*/}
+                                    {/*<Item label="Не важно" value="ANY" />*/}
+                                    {/*<Item label="Только собственник" value="OWNER" />*/}
+                                    {/*<Item label="Собственник + агентства" value="OWNER_AND_AGENT" />*/}
+                                {/*</Picker>*/}
+                            {/*</View>*/}
+                        {/*</View>*/}
+                        {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
+                            {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>*/}
+                                {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>*/}
+                            {/*</View>*/}
+                            {/*<View style={{flex: 1, width: width*0.9}}>*/}
+                                {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
+                                    {/*iosHeader="Выбрать"*/}
+                                    {/*placeholder="Выбрать"*/}
+                                    {/*mode="dropdown"*/}
+                                    {/*enabled={false}*/}
+                                    {/*selectedValue={this.state.selectedSubway}*/}
+                                    {/*onValueChange={this.onSubwayChanged}*/}
+                                {/*>*/}
+                                    {/*<Item label="Не важно" value="ANY_SUBWAY" />*/}
+                                    {/*<Item label="Возле метро" value="NEAR_SUBWAY" />*/}
+                                    {/*<Item label="Московская линия" value="M_SUBWAY" />*/}
+                                    {/*<Item label="Автозаводская линия" value="A_SUBWAY" />*/}
+                                {/*</Picker>*/}
+                            {/*</View>*/}
+                        {/*</View>*/}
                         <View style={{flex: 1, }}>
                             <View style={{borderBottomWidth: 1, borderColor: '#aaafba', width: width*0.9, alignSelf: 'center'}}>
                                 <Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Местоположение на карте</Text>

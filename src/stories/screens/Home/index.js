@@ -141,7 +141,7 @@ class Home extends React.Component<Props, State> {
                       </Tab>
                       <Tab heading={ <TabHeading><Icon name="ios-map-outline" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
                            activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <FlatsMap navigation={this.props.navigation} list={this.props.list}/>
+                          <FlatsMap navigation={this.props.navigation} list={this.props.flatsOnMap}/>
                       </Tab>
                       <Tab heading={ <TabHeading><Icon name="star" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
                            activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>

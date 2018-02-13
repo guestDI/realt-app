@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import Home from "../../stories/screens/Home";
 import flats from "./data_test";
-import { fetchFlats } from "./actions";
+import { fetchFlats, fetchFlatsOnMap } from "./actions";
 
 export interface Props {
 	navigation: any,
@@ -25,18 +25,24 @@ class HomeContainer extends React.Component<Props, State> {
 
 	componentDidMount() {
         // this.props.fetchFilter()
-        // this.props.fetchFlats({
-		// 	page: 0,
-		// 	size: 10
-		// })
+        this.props.fetchFlats({
+			page: 0,
+			size: 10
+		})
+
+        this.props.fetchFlatsOnMap({
+            page: 0,
+            size: 999
+        })
 		// console.log(this.props.filter)
 	}
 
 	render() {
 		return <Home
 			navigation={this.props.navigation}
-			list={flats}
-			// loadMore={this.loadMore}
+			list={this.props.data}
+			flatsOnMap={this.props.mapData}
+			loadMore={this.loadMore}
 		/>;
 	}
 
@@ -55,12 +61,14 @@ class HomeContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
 	return {
-       // fetchFlats: (filter) => dispatch(fetchFlats(filter)),
+        fetchFlats: (filter) => dispatch(fetchFlats(filter)),
+        fetchFlatsOnMap: (filter) => dispatch(fetchFlatsOnMap(filter)),
 	};
 }
 
 const mapStateToProps = state => ({
 	data: state.homeReducer.list,
+    mapData: state.homeReducer.mapList,
 	isLoading: state.homeReducer.isLoading,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

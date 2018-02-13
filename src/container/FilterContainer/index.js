@@ -17,7 +17,7 @@ class FilterContainer extends React.Component<Props, State> {
 	render() {
 		return <Filter
             navigation={this.props.navigation}
-            onAddFilter={(filter) => this.props.addFilter(filter)}
+            onAddFilter={this.props.addFilter}
             // flat={this.props.navigation.state.params.flat}
             filter={this.props.filter}
             // friends={ratedFriends}

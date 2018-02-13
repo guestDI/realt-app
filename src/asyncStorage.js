@@ -1,4 +1,5 @@
 import { AsyncStorage } from 'react-native';
+const FLAT_KEY = "FLAT_KEY"
 
 export const setFilter = (value) => {
     let filter = JSON.stringify(value);
@@ -14,4 +15,6 @@ export const getFilter = async (callback) => {
         callback(JSON.parse(val))
     });
 }
+
+
 

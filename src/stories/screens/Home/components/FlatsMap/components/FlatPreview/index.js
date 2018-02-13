@@ -50,7 +50,7 @@ class FlatPreview extends React.Component<Props, State> {
     return (
       <View style={styles.previewContainer}>
           <Image
-              source={{uri: this.props.flat.photos[0]}}
+              source={{uri: this.props.flat.smallPhoto}}
               style={styles.cardImage}
           >
           </Image>

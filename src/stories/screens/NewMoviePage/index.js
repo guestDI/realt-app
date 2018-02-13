@@ -145,13 +145,13 @@ class FlatPage extends React.Component<Props, State> {
                                 ))}
                             </ScrollView>
                         </View>
-                        <View style={{flex: 1, flexDirection: "row", }}>
+                        <View style={{flex: 1, }}>
                             <View style={{flexDirection: "column", paddingLeft: 10}}>
-                                <View style={{flexDirection: "row"}}>
+                                <View style={{flex: 1, flexDirection: "row", justifyContent: 'space-between'}}>
                                     <View>
                                         <Text style={{fontSize: 24, fontWeight: "bold", padding: 5, }}>2-х комнатная</Text>
                                     </View>
-                                    <View style={{flexDirection: "column", }}>
+                                    <View style={{flexDirection: "column", right: 10}}>
                                         <Text style={{fontSize: 12, color: '#8c919c'}}>Обновлено: </Text>
                                         <Text style={{fontSize: 12, color: '#8c919c'}}>{formatDate(this.props.flat.updatedOn)}</Text>
                                     </View>
@@ -191,7 +191,7 @@ class FlatPage extends React.Component<Props, State> {
                         <Text style={{fontSize: 16, paddingLeft: 10, paddingTop: 5, paddingBottom: 5}}>{this.props.flat.description}</Text>
                         <View style={{flexDirection: "row", }}>
                             <Text style={{fontSize: 18, paddingLeft: 10, fontWeight: "bold", paddingRight: 5, paddingBottom: 10}}>Источник:</Text>
-                            <TouchableOpacity onPress={() => Linking.openURL('http://onliner.by').catch(err => console.error('An error occurred', err))}>
+                            <TouchableOpacity onPress={() => Linking.openURL(this.props.flat.url).catch(err => console.error('An error occurred', err))}>
                                 <Text style={{fontSize: 16, color: 'blue', textDecorationLine: 'underline'}}>
                                     {this.getSource(this.props.flat.source)}
                                 </Text>

@@ -19,10 +19,10 @@ export function fetchFilter() {
 }
 
 export function addFilter(filter: Object) {
-    let saved_filter = setFilter(filter);
+    setFilter(filter);
     return {
         type: "ADD_FILTER",
-        saved_filter,
+        filter,
     };
 }
 

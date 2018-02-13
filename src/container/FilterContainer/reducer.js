@@ -12,7 +12,12 @@ export default function(state: any = initialState, action: Function) {
     }
 
     if(action.type === "ADD_FILTER"){
-        return Object.assign({}, action.filter);
+        console.log(action.filter)
+        return {
+            ...state,
+            filter: action.filter,
+        };
+        // return Object.assign({}, action.filter);
     }
     return state;
 }
