@@ -33,11 +33,9 @@ export const fetchFlats = filter => {
     dispatch(listIsLoading(true));
     axios
       .get(
-        "http://46.101.244.156:5555/flats?page=" +
-          filter.page +
-          "&" +
-          "size=" +
-          filter.size
+        "http://46.101.244.156:5555/flats", {
+          params: filter
+          }
       )
       .then(response => response.data)
       .then(flats => dispatch(fetchListSuccess(flats)))
@@ -53,11 +51,9 @@ export const fetchFlatsOnMap = filter => {
     dispatch(mapListIsLoading(true));
     axios
       .get(
-        "http://46.101.244.156:5555/flats?page=" +
-          filter.page +
-          "&" +
-          "size=" +
-          filter.size
+        "http://46.101.244.156:5555/flats", {
+              params: filter
+          }
       )
       .then(response => response.data)
       .then(flatsOnMap => dispatch(fetchMapListSuccess(flatsOnMap)))

@@ -87,14 +87,14 @@ class FlatsList extends React.Component<Props, State> {
     );
   };
 
-  handleLoadMore = () => {
+  loadMoreFlats = () => {
     let currentPage = this.state.page + 1;
     this.setState(
       {
         page: this.state.page + 1
       },
       () => {
-        this.props.loadMore(currentPage);
+        this.props.onListEndReached(currentPage);
       }
     );
   };
@@ -135,14 +135,14 @@ class FlatsList extends React.Component<Props, State> {
           renderItem={({ item }) => (
             <FlatRow flat={item} onRowPressed={this.onFlatRowPress} />
           )}
-          keyExtractor={item => item.description}
+          keyExtractor={item => item.id}
           // ItemSeparatorComponent={this.renderSeparator}
           // ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
           // onRefresh={this.handleRefresh}
           // refreshing={this.state.refreshing}
-          // onEndReached={this.handleLoadMore}
-          // onEndReachedThreshold={3}
+          onEndReached={this.loadMoreFlats}
+          onEndReachedThreshold={3}
         />
       </List>
     );

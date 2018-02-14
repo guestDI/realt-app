@@ -57,28 +57,8 @@ class Home extends React.Component<Props, State> {
     };
   }
 
-  handleRefresh = () => {
-    this.setState(
-      {
-        page: 0,
-        refreshing: true
-      },
-      () => {
-        this.props.loadMore(0);
-      }
-    );
-  };
-
-  handleLoadMore = () => {
-    let currentPage = this.state.page + 1;
-    this.setState(
-      {
-        page: this.state.page + 1
-      },
-      () => {
-        this.props.loadMore(currentPage);
-      }
-    );
+  handleLoadMore = (page) => {
+    this.props.loadMore(page);
   };
 
   renderFooter = () => {
@@ -168,6 +148,8 @@ class Home extends React.Component<Props, State> {
               <FlatsList
                 navigation={this.props.navigation}
                 list={this.props.list}
+                onListEndReached={this.handleLoadMore}
+                // onRefresh={this.props.handleRefresh}
               />
             </Tab>
             <Tab
