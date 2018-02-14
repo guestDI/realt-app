@@ -50,6 +50,12 @@ const { height, width } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
+const ROOM_ENUM = {
+    ONE: "ONE",
+    TWO: "TWO",
+    THREE: "THREE",
+    FOUR_OR_MORE: "FOUR_OR_MORE"
+};
 let id = 0;
 
 class Filter extends React.Component<Props, State> {
@@ -62,10 +68,10 @@ class Filter extends React.Component<Props, State> {
       minPrice: this.props.filter.minPrice,
       maxPrice: this.props.filter.maxPrice,
       rooms: this.props.filter.rooms,
-      oneRoom: false,
-      twoRooms: false,
-      threeRooms: false,
-      fourAndMore: false,
+      oneRoom: this.props.filter.rooms.includes(ROOM_ENUM.ONE),
+      twoRooms: this.props.filter.rooms.includes(ROOM_ENUM.TWO),
+      threeRooms: this.props.filter.rooms.includes(ROOM_ENUM.THREE),
+      fourOrMore: this.props.filter.rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
       coordinates: [],
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: "ANY_SUBWAY"
@@ -77,7 +83,11 @@ class Filter extends React.Component<Props, State> {
       this.setState({
         minPrice: nextProps.filter.minPrice,
         maxPrice: nextProps.filter.maxPrice,
-        rooms: nextProps.filter.rooms
+        rooms: nextProps.filter.rooms,
+        oneRoom: nextProps.filter.rooms.includes(ROOM_ENUM.ONE),
+        twoRooms: nextProps.filter.rooms.includes(ROOM_ENUM.TWO),
+        threeRooms: nextProps.filter.rooms.includes(ROOM_ENUM.THREE),
+        fourOrMore: nextProps.filter.rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
       });
@@ -175,9 +185,25 @@ class Filter extends React.Component<Props, State> {
       roomsNum.splice(index, 1);
     }
 
+    switch(room){
+        case ROOM_ENUM.ONE:
+          this.setState({oneRoom: status});
+          break;
+        case ROOM_ENUM.TWO:
+          this.setState({twoRooms: status});
+          break;
+        case ROOM_ENUM.THREE:
+          this.setState({threeRooms: status});
+          break;
+        case ROOM_ENUM.FOUR_OR_MORE:
+          this.setState({fourOrMore: status});
+          break;
+    }
+
     this.setState({
       rooms: roomsNum
     });
+    // console.log(roomsNum)
   };
 
   reset = () => {
@@ -344,32 +370,36 @@ class Filter extends React.Component<Props, State> {
                 <ToggleButton
                   onColor={"orange"}
                   effect={"pulse"}
+                  status={this.state.oneRoom}
                   _onPress={status => {
-                    this.getRoomsNumber(status, "ONE");
+                    this.getRoomsNumber(status, ROOM_ENUM.ONE);
                   }}
                   text="1"
                 />
                 <ToggleButton
                   onColor={"orange"}
                   effect={"pulse"}
+                  status={this.state.twoRooms}
                   _onPress={status => {
-                    this.getRoomsNumber(status, "TWO");
+                    this.getRoomsNumber(status, ROOM_ENUM.TWO);
                   }}
                   text="2"
                 />
                 <ToggleButton
                   onColor={"orange"}
                   effect={"pulse"}
+                  status={this.state.threeRooms}
                   _onPress={status => {
-                    this.getRoomsNumber(status, "THREE");
+                    this.getRoomsNumber(status, ROOM_ENUM.THREE);
                   }}
                   text="3"
                 />
                 <ToggleButton
                   onColor={"orange"}
                   effect={"pulse"}
+                  status={this.state.fourOrMore}
                   _onPress={status => {
-                    this.getRoomsNumber(status, "FOUR_OR_MORE");
+                    this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
                   }}
                   text="4+"
                 />
