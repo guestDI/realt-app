@@ -9,35 +9,35 @@ import Sidebar from "./container/SidebarContainer";
 import "moment/locale/ru";
 
 const Drawer = DrawerNavigator(
-	{
-		Home: { screen: Home }
-        // Friends: { screen: Friends },
-        // Profile: {screen: UserProfile}
-	},
-	{
-		initialRouteName: "Home",
-		contentComponent: props => <Sidebar {...props} />,
-	}
+  {
+    Home: { screen: Home }
+    // Friends: { screen: Friends },
+    // Profile: {screen: UserProfile}
+  },
+  {
+    initialRouteName: "Home",
+    contentComponent: props => <Sidebar {...props} />
+  }
 );
 
 const App = StackNavigator(
-	{
-		// Login: { screen: Login },
-		// Logout: {screen: Logout },
-        FlatPage: { screen: FlatPage },
-        Filter: { screen: Filter },
-		Drawer: { screen: Drawer }
-        // FriendsRating: { screen: FriendsRating },
-        // FriendProfile: { screen: FriendProfile }
-	},
-	{
-		initialRouteName: "Drawer",
-		headerMode: "none",
-	}
+  {
+    // Login: { screen: Login },
+    // Logout: {screen: Logout },
+    FlatPage: { screen: FlatPage },
+    Filter: { screen: Filter },
+    Drawer: { screen: Drawer }
+    // FriendsRating: { screen: FriendsRating },
+    // FriendProfile: { screen: FriendProfile }
+  },
+  {
+    initialRouteName: "Drawer",
+    headerMode: "none"
+  }
 );
 
 export default () => (
-	<Root>
-		<App />
-	</Root>
+  <Root>
+    <App />
+  </Root>
 );

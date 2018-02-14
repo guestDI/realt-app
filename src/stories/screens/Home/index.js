@@ -1,112 +1,127 @@
 import * as React from "react";
 import {
-    Container,
-    Header,
-    Title,
-    Content,
-    Button,
-    Icon,
-    Left,
-    Body,
-    Right,
-    List,
-    ListItem,
-    Thumbnail,
-    Text,
-    Tab, Tabs, TabHeading
+  Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Icon,
+  Left,
+  Body,
+  Right,
+  List,
+  ListItem,
+  Thumbnail,
+  Text,
+  Tab,
+  Tabs,
+  TabHeading
 } from "native-base";
-import { View, SectionList, FlatList, TouchableOpacity, Platform, NativeModules, Dimensions, ActivityIndicator } from "react-native";
+import {
+  View,
+  SectionList,
+  FlatList,
+  TouchableOpacity,
+  Platform,
+  NativeModules,
+  Dimensions,
+  ActivityIndicator
+} from "react-native";
 import moment from "moment";
 import styles from "./styles";
 import FlatsList from "./components/FlatsList/index";
-import FlatsMap from "./components/FlatsMap"
+import FlatsMap from "./components/FlatsMap";
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
   navigation: any;
   list: any;
-  loadMore: Function,
+  loadMore: Function;
 }
 export interface State {
-    monthPlus: number
+  monthPlus: number;
 }
 
-const {height, width} = Dimensions.get('window');
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+const { height, width } = Dimensions.get("window");
+const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
 class Home extends React.Component<Props, State> {
-
   constructor(props) {
     super(props);
     this.state = {
-        loading: false,
-        page: 0,
-        error: null,
-        refreshing: false,
-        visible: false,
-    }
+      loading: false,
+      page: 0,
+      error: null,
+      refreshing: false,
+      visible: false
+    };
   }
 
-    handleRefresh = () => {
-        this.setState({
-            page: 0,
-            refreshing: true
-        }, () => {
-            this.props.loadMore(0)
-        })
-    }
+  handleRefresh = () => {
+    this.setState(
+      {
+        page: 0,
+        refreshing: true
+      },
+      () => {
+        this.props.loadMore(0);
+      }
+    );
+  };
 
-    handleLoadMore = () => {
-      let currentPage = this.state.page + 1;
-        this.setState({
-            page: this.state.page + 1,
-        }, () => {
-            this.props.loadMore(currentPage)
-        })
-    }
+  handleLoadMore = () => {
+    let currentPage = this.state.page + 1;
+    this.setState(
+      {
+        page: this.state.page + 1
+      },
+      () => {
+        this.props.loadMore(currentPage);
+      }
+    );
+  };
 
-    renderFooter = () => {
-        // if (!this.state.loading) return null;
-        return (
-            <View
-                style={{
-                    paddingVertical: 30,
-                    borderTopWidth: 1,
-                    borderColor: "#CED0CE"
-                }}
-            >
-                {/*<ActivityIndicator animating size="large" />*/}
-            </View>
-        );
-    };
+  renderFooter = () => {
+    // if (!this.state.loading) return null;
+    return (
+      <View
+        style={{
+          paddingVertical: 30,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        {/*<ActivityIndicator animating size="large" />*/}
+      </View>
+    );
+  };
 
-    filterHandler = () => {
-        this.setState({
-            visible: true
-        });
-    }
+  filterHandler = () => {
+    this.setState({
+      visible: true
+    });
+  };
 
-    onCloseFilterHandler = () => {
-        this.setState({
-            visible: false
-        });
-    }
+  onCloseFilterHandler = () => {
+    this.setState({
+      visible: false
+    });
+  };
 
-    onFlatRowPress = (val) => {
-        // let friendInfo = {
-        //     id: val.id,
-        //     name: val.name,
-        //     photo: val.photo,
-        //     email: val.email,
-        //     friendsCount: Object.keys(val.friends).length
-        // }
-        this.props.navigation.navigate("FlatPage", {
-            flat: val
-        })
-    }
+  onFlatRowPress = val => {
+    // let friendInfo = {
+    //     id: val.id,
+    //     name: val.name,
+    //     photo: val.photo,
+    //     email: val.email,
+    //     friendsCount: Object.keys(val.friends).length
+    // }
+    this.props.navigation.navigate("FlatPage", {
+      flat: val
+    });
+  };
 
   render() {
-
     return (
       <Container>
         <Header>
@@ -122,34 +137,71 @@ class Home extends React.Component<Props, State> {
           <Body>
             <Title>Аренда</Title>
           </Body>
-          <Right >
-              <Button transparent>
-                  <Icon
-                      active
-                      name="options"
-                      onPress={() => this.props.navigation.navigate("Filter")}
-                  />
-              </Button>
+          <Right>
+            <Button transparent>
+              <Icon
+                active
+                name="options"
+                onPress={() => this.props.navigation.navigate("Filter")}
+              />
+            </Button>
           </Right>
         </Header>
-          <View style={{flex: 1}}>
-              {/*<Container style={{marginTop: '2%'}}>*/}
-                  <Tabs tabContainerStyle={{ height: 50, }} tabBarPosition="top" tabBarUnderlineStyle={{backgroundColor: "#bf6141"}}>
-                      <Tab heading={ <TabHeading><Icon name="list" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
-                           activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <FlatsList navigation={this.props.navigation} list={this.props.list}/>
-                      </Tab>
-                      <Tab heading={ <TabHeading><Icon name="ios-map-outline" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
-                           activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <FlatsMap navigation={this.props.navigation} list={this.props.flatsOnMap}/>
-                      </Tab>
-                      <Tab heading={ <TabHeading><Icon name="star" /></TabHeading>} activeTabStyle={{backgroundColor: '#FFF'}} tabStyle={{backgroundColor: '#FFF'}}
-                           activeTextStyle={{color: '#bf6141', fontSize: 15}} textStyle={{color: '#959ba6', fontSize: 14}}>
-                          <Text>1</Text>
-                      </Tab>
-                  </Tabs>
-              {/*</Container>*/}
-          </View>
+        <View style={{ flex: 1 }}>
+          {/*<Container style={{marginTop: '2%'}}>*/}
+          <Tabs
+            tabContainerStyle={{ height: 50 }}
+            tabBarPosition="top"
+            tabBarUnderlineStyle={{ backgroundColor: "#bf6141" }}
+          >
+            <Tab
+              heading={
+                <TabHeading>
+                  <Icon name="list" />
+                </TabHeading>
+              }
+              activeTabStyle={{ backgroundColor: "#FFF" }}
+              tabStyle={{ backgroundColor: "#FFF" }}
+              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
+              textStyle={{ color: "#959ba6", fontSize: 14 }}
+            >
+              <FlatsList
+                navigation={this.props.navigation}
+                list={this.props.list}
+              />
+            </Tab>
+            <Tab
+              heading={
+                <TabHeading>
+                  <Icon name="ios-map-outline" />
+                </TabHeading>
+              }
+              activeTabStyle={{ backgroundColor: "#FFF" }}
+              tabStyle={{ backgroundColor: "#FFF" }}
+              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
+              textStyle={{ color: "#959ba6", fontSize: 14 }}
+            >
+              <FlatsMap
+                navigation={this.props.navigation}
+                list={this.props.flatsOnMap}
+              />
+            </Tab>
+            <Tab
+              heading={
+                <TabHeading>
+                  <Icon name="star" />
+                </TabHeading>
+              }
+              activeTabStyle={{ backgroundColor: "#FFF" }}
+              tabStyle={{ backgroundColor: "#FFF" }}
+              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
+              textStyle={{ color: "#959ba6", fontSize: 14 }}
+            >
+              <Text>1</Text>
+            </Tab>
+          </Tabs>
+          {/*</Container>*/}
+        </View>
       </Container>
     );
   }

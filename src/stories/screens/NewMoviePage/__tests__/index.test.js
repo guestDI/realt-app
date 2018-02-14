@@ -6,6 +6,6 @@ import renderer from "react-test-renderer";
 const navigation = { state: jest.fn() };
 
 it("renders correctly", () => {
-	const tree = renderer.create(<BlankPage navigation={navigation} />).toJSON();
-	expect(tree).toMatchSnapshot();
+  const tree = renderer.create(<BlankPage navigation={navigation} />).toJSON();
+  expect(tree).toMatchSnapshot();
 });

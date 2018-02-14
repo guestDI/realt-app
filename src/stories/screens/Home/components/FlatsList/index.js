@@ -1,136 +1,149 @@
 import * as React from "react";
 import {
-    Container,
-    Header,
-    Title,
-    Content,
-    Button,
-    Icon,
-    Left,
-    Body,
-    Right,
-    List,
-    ListItem,
-    Thumbnail,
-    Text
+  Container,
+  Header,
+  Title,
+  Content,
+  Button,
+  Icon,
+  Left,
+  Body,
+  Right,
+  List,
+  ListItem,
+  Thumbnail,
+  Text
 } from "native-base";
-import { View, SectionList, FlatList, TouchableOpacity, Platform, NativeModules, Dimensions, ActivityIndicator } from "react-native";
+import {
+  View,
+  SectionList,
+  FlatList,
+  TouchableOpacity,
+  Platform,
+  NativeModules,
+  Dimensions,
+  ActivityIndicator
+} from "react-native";
 import moment from "moment";
-import FlatRow from './components/FlatRow'
+import FlatRow from "./components/FlatRow";
 import styles from "./styles";
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
   navigation: any;
   list: any;
-  loadMore: Function,
+  loadMore: Function;
 }
 export interface State {
-    monthPlus: number
+  monthPlus: number;
 }
 
-const {height, width} = Dimensions.get('window');
-const STATUSBAR_HEIGHT = Platform.OS === 'ios' ? 20 : StatusBarManager.HEIGHT;
+const { height, width } = Dimensions.get("window");
+const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
 class FlatsList extends React.Component<Props, State> {
-
   constructor(props) {
     super(props);
     this.state = {
-        loading: false,
-        page: 0,
-        error: null,
-        refreshing: false,
-    }
+      loading: false,
+      page: 0,
+      error: null,
+      refreshing: false
+    };
   }
 
-    componentDidMount() {
-        // this.makeRemoteRequest();
-    }
+  componentDidMount() {
+    // this.makeRemoteRequest();
+  }
 
-    // makeRemoteRequest = () => {
-    //     const { page, seed } = this.state;
-    //     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
-    //     this.setState({ loading: true });
-    //     fetch(url)
-    //         .then(res => res.json())
-    //         .then(res => {
-    //             this.setState({
-    //                 data: page === 1 ? res.results : [...this.state.data, ...res.results],
-    //                 error: res.error || null,
-    //                 loading: false,
-    //                 refreshing: false
-    //             });
-    //         })
-    //         .catch(error => {
-    //             this.setState({ error, loading: false });
-    //         });
-    // };
+  // makeRemoteRequest = () => {
+  //     const { page, seed } = this.state;
+  //     const url = `https://randomuser.me/api/?seed=${seed}&page=${page}&results=20`;
+  //     this.setState({ loading: true });
+  //     fetch(url)
+  //         .then(res => res.json())
+  //         .then(res => {
+  //             this.setState({
+  //                 data: page === 1 ? res.results : [...this.state.data, ...res.results],
+  //                 error: res.error || null,
+  //                 loading: false,
+  //                 refreshing: false
+  //             });
+  //         })
+  //         .catch(error => {
+  //             this.setState({ error, loading: false });
+  //         });
+  // };
 
-    handleRefresh = () => {
-        this.setState({
-            page: 0,
-            refreshing: true
-        }, () => {
-            this.props.loadMore(0)
-        })
-    }
+  handleRefresh = () => {
+    this.setState(
+      {
+        page: 0,
+        refreshing: true
+      },
+      () => {
+        this.props.loadMore(0);
+      }
+    );
+  };
 
-    handleLoadMore = () => {
-      let currentPage = this.state.page + 1;
-        this.setState({
-            page: this.state.page + 1,
-        }, () => {
-            this.props.loadMore(currentPage)
-        })
-    }
+  handleLoadMore = () => {
+    let currentPage = this.state.page + 1;
+    this.setState(
+      {
+        page: this.state.page + 1
+      },
+      () => {
+        this.props.loadMore(currentPage);
+      }
+    );
+  };
 
-    renderFooter = () => {
-        // if (!this.state.loading) return null;
-        return (
-            <View
-                style={{
-                    paddingVertical: 30,
-                    borderTopWidth: 1,
-                    borderColor: "#CED0CE"
-                }}
-            >
-                {/*<ActivityIndicator animating size="large" />*/}
-            </View>
-        );
-    };
+  renderFooter = () => {
+    // if (!this.state.loading) return null;
+    return (
+      <View
+        style={{
+          paddingVertical: 30,
+          borderTopWidth: 1,
+          borderColor: "#CED0CE"
+        }}
+      >
+        {/*<ActivityIndicator animating size="large" />*/}
+      </View>
+    );
+  };
 
-    onFlatRowPress = (val) => {
-        // let friendInfo = {
-        //     id: val.id,
-        //     name: val.name,
-        //     photo: val.photo,
-        //     email: val.email,
-        //     friendsCount: Object.keys(val.friends).length
-        // }
-        this.props.navigation.navigate("FlatPage", {
-            flat: val
-        })
-    }
+  onFlatRowPress = val => {
+    // let friendInfo = {
+    //     id: val.id,
+    //     name: val.name,
+    //     photo: val.photo,
+    //     email: val.email,
+    //     friendsCount: Object.keys(val.friends).length
+    // }
+    this.props.navigation.navigate("FlatPage", {
+      flat: val
+    });
+  };
 
   render() {
-
     return (
       <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
-          <FlatList
-              data={this.props.list}
-              renderItem={({ item }) => (
-                  <FlatRow flat={item} onRowPressed={this.onFlatRowPress}/>
-              )}
-              keyExtractor={item => item.description}
-              // ItemSeparatorComponent={this.renderSeparator}
-              // ListHeaderComponent={this.renderHeader}
-              ListFooterComponent={this.renderFooter}
-              // onRefresh={this.handleRefresh}
-              // refreshing={this.state.refreshing}
-              // onEndReached={this.handleLoadMore}
-              // onEndReachedThreshold={3}
-          />
+        <FlatList
+          data={this.props.list}
+          renderItem={({ item }) => (
+            <FlatRow flat={item} onRowPressed={this.onFlatRowPress} />
+          )}
+          keyExtractor={item => item.description}
+          // ItemSeparatorComponent={this.renderSeparator}
+          // ListHeaderComponent={this.renderHeader}
+          ListFooterComponent={this.renderFooter}
+          // onRefresh={this.handleRefresh}
+          // refreshing={this.state.refreshing}
+          // onEndReached={this.handleLoadMore}
+          // onEndReachedThreshold={3}
+        />
       </List>
     );
   }

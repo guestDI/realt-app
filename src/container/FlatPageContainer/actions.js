@@ -1,14 +1,14 @@
 export function ratedFriendsListIsLoading(bool: boolean) {
-	return {
-		type: "RATED_FRIENDS_LIST_IS_LOADING",
-		isLoading: bool,
-	};
+  return {
+    type: "RATED_FRIENDS_LIST_IS_LOADING",
+    isLoading: bool
+  };
 }
 export function fetchRatedFriendsListSuccess(list: Array) {
-	return {
-		type: "FETCH_RATED_FRIENDS_LIST_SUCCESS",
-		list,
-	};
+  return {
+    type: "FETCH_RATED_FRIENDS_LIST_SUCCESS",
+    list
+  };
 }
 //
 // export function fetchRatedFriendsList(id) {
