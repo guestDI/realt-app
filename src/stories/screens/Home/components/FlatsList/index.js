@@ -104,12 +104,12 @@ class FlatsList extends React.Component<Props, State> {
     return (
       <View
         style={{
-          paddingVertical: 30,
-          borderTopWidth: 1,
+          paddingVertical: 20,
+          // borderTopWidth: 1,
           borderColor: "#CED0CE"
         }}
       >
-        {/*<ActivityIndicator animating size="large" />*/}
+          {this.props.loadingList ? <ActivityIndicator animating size="large" /> : null}
       </View>
     );
   };

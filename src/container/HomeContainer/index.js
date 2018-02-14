@@ -24,13 +24,14 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    this.props.fetchFilter()
+    // this.props.fetchFilter()
 
-      let filter = this.props.filter;
-      filter.page = 0;
-      filter.size = FLATS_ON_PAGE;
+      let filter = {
+        page: 0,
+        size: FLATS_ON_PAGE
+      }
 
-      console.log(filter)
+      // console.log(filter)
 
     this.props.fetchFlats(filter);
 
@@ -51,6 +52,7 @@ class HomeContainer extends React.Component<Props, State> {
         list={this.props.data}
         flatsOnMap={this.props.mapData}
         loadMore={this.loadMore}
+        loadingState={this.props.listIsLoading}
         // refresh={this.handleRefresh}
       />
     );
@@ -65,9 +67,14 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   loadMore = page => {
-    let filter = this.props.filter;
-    filter.page = page;
-    filter.size = FLATS_ON_PAGE;
+
+      let filter = {
+          page: page,
+          size: FLATS_ON_PAGE
+      }
+    // let filter = this.props.filter;
+    // filter.page = page;
+    // filter.size = FLATS_ON_PAGE;
 
     this.props.fetchFlats(filter);
   };
@@ -83,8 +90,10 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   data: state.homeReducer.list,
+  listIsLoading: state.homeReducer.listIsLoading,
+  listHasErrored: state.homeReducer.listHasErrored,
   mapData: state.homeReducer.mapList,
   isLoading: state.homeReducer.isLoading,
-  filter: state.filterReducer.filter
+  filter: state.filterReducer.filter,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

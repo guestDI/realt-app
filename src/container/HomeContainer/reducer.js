@@ -15,8 +15,15 @@ export default function(state: any = initialState, action: Function) {
   if (action.type === "LIST_IS_LOADING") {
     return {
       ...state,
-      isLoading: action.isLoading
+        listIsLoading: action.listIsLoading
     };
+  }
+
+  if (action.type === "FETCH_LIST_HAS_ERRORED") {
+      return {
+          ...state,
+          listHasErrored: action.listHasErrored
+      };
   }
 
   if (action.type === "FETCH_MAP_LIST_SUCCESS") {
@@ -35,3 +42,5 @@ export default function(state: any = initialState, action: Function) {
 
   return state;
 }
+
+
