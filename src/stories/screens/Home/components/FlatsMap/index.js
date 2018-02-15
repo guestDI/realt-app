@@ -82,7 +82,7 @@ class FlatsMap extends React.Component<Props, State> {
           {this.props.list.map(flat => {
             return (
               <MapView.Marker
-                key={flat.longitude}
+                key={flat.originalId}
                 coordinate={{
                   latitude: flat.latitude,
                   longitude: flat.longitude
