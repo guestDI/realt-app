@@ -44,9 +44,17 @@ class ToggleButton extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      status: false
+      status: this.props.status
     };
   }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.status !== nextProps.status) {
+            this.setState({
+                status: nextProps.status,
+            });
+        }
+    }
 
   _onPress() {
     this.props._onPress(!this.state.status);

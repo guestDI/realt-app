@@ -257,7 +257,7 @@ class Filter extends React.Component<Props, State> {
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
-
+    // console.log(filter)
     this.props.navigation.goBack();
   };
 
