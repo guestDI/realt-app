@@ -68,7 +68,7 @@ class FlatsList extends React.Component<Props, State> {
     let currentPage = this.state.page + 1;
     this.setState(
       {
-        page: this.state.page + 1
+        page: currentPage
       },
       () => {
         this.props.onListEndReached(currentPage);
@@ -109,10 +109,10 @@ class FlatsList extends React.Component<Props, State> {
       <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
         <FlatList
           data={this.props.list}
-          renderItem={({ item }) => (
-            <FlatRow flat={item} onRowPressed={this.onFlatRowPress} />
+          renderItem={({ item, index }) => (
+            <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} />
           )}
-          keyExtractor={item => item.id}
+          keyExtractor={item => item.originalId}
           // ItemSeparatorComponent={this.renderSeparator}
           // ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
