@@ -149,7 +149,7 @@ class Home extends React.Component<Props, State> {
                 navigation={this.props.navigation}
                 list={this.props.list}
                 onListEndReached={this.handleLoadMore}
-                loadingList={this.props.loadingState}
+                isListLoading={this.props.loadingState}
                 // onRefresh={this.props.handleRefresh}
               />
             </Tab>

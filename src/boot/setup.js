@@ -37,6 +37,7 @@ export default class Setup extends React.Component<Props, State> {
     // ];
   }
   componentWillMount() {
+    this.getLocationAsync();
     this.loadFonts();
   }
   async loadFonts() {
@@ -48,6 +49,16 @@ export default class Setup extends React.Component<Props, State> {
 
     this.setState({ isReady: true });
   }
+
+    async getLocationAsync() {
+        const { Location, Permissions } = Expo;
+        const { status } = await Permissions.askAsync(Permissions.LOCATION);
+        if (status === 'granted') {
+            return Location.getCurrentPositionAsync({enableHighAccuracy: true});
+        } else {
+            throw new Error('Location permission not granted');
+        }
+    }
 
   render() {
     if (!this.state.isReady || this.state.isLoading) {

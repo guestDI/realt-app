@@ -78,6 +78,8 @@ class FlatsMap extends React.Component<Props, State> {
             longitudeDelta: 0.1191
           }}
           showsTraffic={false}
+          showsUserLocation={true}
+          loadingEnabled={true}
         >
           {this.props.list.map(flat => {
             return (

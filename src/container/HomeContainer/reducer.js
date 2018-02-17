@@ -1,6 +1,7 @@
 const initialState = {
   list: [],
   mapList: [],
+  listIsLoading: false,
   isLoading: true
 };
 

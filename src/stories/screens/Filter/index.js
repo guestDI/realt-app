@@ -74,7 +74,8 @@ class Filter extends React.Component<Props, State> {
       fourOrMore: this.props.filter.rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
       coordinates: [],
       selectedOwnerType: "OWNER_AND_AGENT",
-      selectedSubway: "ANY_SUBWAY"
+      selectedSubway: "ANY_SUBWAY",
+      mapScrollEnabled: false
     };
   }
 
@@ -268,7 +269,7 @@ class Filter extends React.Component<Props, State> {
     };
 
     if (this.state.editing) {
-      mapOptions.scrollEnabled = false;
+      this.state.mapScrollEnabled = false;
       mapOptions.onPanDrag = e => this.onPress(e);
     }
 
@@ -470,7 +471,9 @@ class Filter extends React.Component<Props, State> {
                   latitudeDelta: LATITUDE_DELTA,
                   longitudeDelta: LONGITUDE_DELTA
                 }}
+                showsUserLocation={true}
                 showsTraffic={false}
+                loadingEnabled={true}
                 onPress={e => this.onPress(e)}
                 {...mapOptions}
               >
