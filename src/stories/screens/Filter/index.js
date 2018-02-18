@@ -283,13 +283,14 @@ class Filter extends React.Component<Props, State> {
           mapScrollEnabled: !this.state.mapScrollEnabled,
       });
 
-      if(this.state.mapScrollEnabled && this.state.editing!==null){
+      if(this.state.mapScrollEnabled && this.state.editing !== null && this.state.editing.coordinates.length > 0){
           const { polygons, editing } = this.state;
           this.setState({
               polygons: [...polygons, editing],
               editing: null,
               creatingHole: false
           });
+          console.log(this.state.editing)
       }
   }
 
@@ -302,9 +303,14 @@ class Filter extends React.Component<Props, State> {
       this.setState({
           editing: copy,
       });
+      if(copy.coordinates.length===0){
+          this.setState({
+              editing: null,
+          });
+      }
       //console.log(arr)
       console.log(copy)
-      console.log(this.state.editing)
+      // console.log(this.state.editing)
       // console.log(copy)
   }
 
