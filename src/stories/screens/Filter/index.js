@@ -131,37 +131,40 @@ class Filter extends React.Component<Props, State> {
   }
 
   onPress(e) {
-    const { editing, creatingHole } = this.state;
-    if (!editing) {
-      this.setState({
-        editing: {
-          id: id++,
-          coordinates: [e.nativeEvent.coordinate],
-          holes: []
+    if(this.state.mapScrollEnabled){
+        const { editing, creatingHole } = this.state;
+        if (!editing) {
+            this.setState({
+                editing: {
+                    id: id++,
+                    coordinates: [e.nativeEvent.coordinate],
+                    holes: []
+                }
+            });
+        } else if (!creatingHole) {
+            this.setState({
+                editing: {
+                    ...editing,
+                    coordinates: [...editing.coordinates, e.nativeEvent.coordinate]
+                }
+            });
+        } else {
+            const holes = [...editing.holes];
+            holes[holes.length - 1] = [
+                ...holes[holes.length - 1],
+                e.nativeEvent.coordinate
+            ];
+            this.setState({
+                editing: {
+                    ...editing,
+                    id: id++, // keep incrementing id to trigger display refresh
+                    coordinates: [...editing.coordinates],
+                    holes
+                }
+            });
         }
-      });
-    } else if (!creatingHole) {
-      this.setState({
-        editing: {
-          ...editing,
-          coordinates: [...editing.coordinates, e.nativeEvent.coordinate]
-        }
-      });
-    } else {
-      const holes = [...editing.holes];
-      holes[holes.length - 1] = [
-        ...holes[holes.length - 1],
-        e.nativeEvent.coordinate
-      ];
-      this.setState({
-        editing: {
-          ...editing,
-          id: id++, // keep incrementing id to trigger display refresh
-          coordinates: [...editing.coordinates],
-          holes
-        }
-      });
     }
+    // console.log(this.state.editing)
   }
 
   onValueChanged = value => {
@@ -226,7 +229,11 @@ class Filter extends React.Component<Props, State> {
             minPrice: "",
             maxPrice: "",
             rooms: [],
-            coordinates: []
+            coordinates: [],
+            oneRoom: false,
+            twoRooms: false,
+            threeRooms: false,
+            fourOrMore: false,
             // selectedOwnerType: 'OWNER_AND_AGENT',
             // selectedSubway: 'ANY_SUBWAY'
           });
@@ -254,7 +261,7 @@ class Filter extends React.Component<Props, State> {
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
-      coordinates: this.state.editing
+      coordinates: this.state.polygons
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
@@ -262,18 +269,57 @@ class Filter extends React.Component<Props, State> {
     this.props.navigation.goBack();
   };
 
+  resetMap = () => {
+      this.setState({
+          polygons: [],
+          editing: null,
+          creatingHole: false,
+          coordinates: [],
+      });
+  }
+
+  onEditHandler = () => {
+      this.setState({
+          mapScrollEnabled: !this.state.mapScrollEnabled,
+      });
+
+      if(this.state.mapScrollEnabled && this.state.editing!==null){
+          const { polygons, editing } = this.state;
+          this.setState({
+              polygons: [...polygons, editing],
+              editing: null,
+              creatingHole: false
+          });
+      }
+  }
+
+  removeMarker = (index) => {
+      let arr = this.state.editing.coordinates.slice();
+      let copy = Object.assign({}, this.state.editing);
+      arr.splice(index, 1);
+      copy.coordinates = arr;
+      //
+      this.setState({
+          editing: copy,
+      });
+      //console.log(arr)
+      console.log(copy)
+      console.log(this.state.editing)
+      // console.log(copy)
+  }
+
   render() {
-    console.log("render", this.props.filter);
+    // console.log("render", this.props.filter);
     const mapOptions = {
-      scrollEnabled: true
+      scrollEnabled: this.state.mapScrollEnabled
     };
 
     if (this.state.editing) {
-      this.state.mapScrollEnabled = false;
+      mapOptions.scrollEnabled = false;
       mapOptions.onPanDrag = e => this.onPress(e);
     }
 
-    let { minPrice, maxPrice } = this.state;
+    let { minPrice, maxPrice, editing } = this.state;
     return (
       <Container>
         <Header>
@@ -306,248 +352,288 @@ class Filter extends React.Component<Props, State> {
             </Button>
           </Right>
         </Header>
-        <View style={{ flex: 1, flexDirection: "column" }}>
-          <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
-            <View style={{ flex: 1, alignItems: "center" }}>
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: "#c7ccd7",
-                  width: width * 0.9
-                }}
-              >
-                <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
-                  Цена
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  justifyContent: "center",
-                  paddingLeft: 10,
-                  paddingRight: 10
-                }}
-              >
-                <TextField
-                  label="Минимальная цена"
-                  value={minPrice}
-                  containerStyle={{ paddingRight: 10, width: width * 0.45 }}
-                  animationDuration={50}
-                  keyboardType={"numeric"}
-                  maxLength={5}
-                  onChangeText={minPrice => this.setState({ minPrice })}
-                />
-                <TextField
-                  label="Максимальная цена"
-                  value={maxPrice}
-                  containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
-                  animationDuration={50}
-                  keyboardType={"numeric"}
-                  maxLength={5}
-                  onChangeText={maxPrice => this.setState({ maxPrice })}
-                />
-              </View>
-            </View>
-            <View style={{ flex: 1, alignItems: "center", paddingTop: 10 }}>
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: "#c7ccd7",
-                  width: width * 0.9
-                }}
-              >
-                <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
-                  Количество комнат
-                </Text>
-              </View>
-              <View
-                style={{
-                  flexDirection: "row",
-                  width: width * 0.9,
-                  justifyContent: "center",
-                  alignItems: "center"
-                }}
-              >
-                <ToggleButton
-                  onColor={"orange"}
-                  effect={"pulse"}
-                  status={this.state.oneRoom}
-                  _onPress={status => {
-                    this.getRoomsNumber(status, ROOM_ENUM.ONE);
+        <Content>
+          <View style={{ flex: 1, flexDirection: "column" }}>
+            <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
+              <View style={{ flex: 1, alignItems: "center" }}>
+                <View
+                  style={{
+                    borderBottomWidth: 1,
+                    borderColor: "#c7ccd7",
+                    width: width * 0.9
                   }}
-                  text="1"
-                />
-                <ToggleButton
-                  onColor={"orange"}
-                  effect={"pulse"}
-                  status={this.state.twoRooms}
-                  _onPress={status => {
-                    this.getRoomsNumber(status, ROOM_ENUM.TWO);
+                >
+                  <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
+                    Цена
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    justifyContent: "center",
+                    paddingLeft: 10,
+                    paddingRight: 10
                   }}
-                  text="2"
-                />
-                <ToggleButton
-                  onColor={"orange"}
-                  effect={"pulse"}
-                  status={this.state.threeRooms}
-                  _onPress={status => {
-                    this.getRoomsNumber(status, ROOM_ENUM.THREE);
-                  }}
-                  text="3"
-                />
-                <ToggleButton
-                  onColor={"orange"}
-                  effect={"pulse"}
-                  status={this.state.fourOrMore}
-                  _onPress={status => {
-                    this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
-                  }}
-                  text="4+"
-                />
-              </View>
-            </View>
-            {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
-            {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>*/}
-            {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>*/}
-            {/*</View>*/}
-            {/*<View style={{flex: 1, width: width*0.9}}>*/}
-            {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
-            {/*iosHeader="Выбрать"*/}
-            {/*placeholder="Выбрать"*/}
-            {/*mode="dropdown"*/}
-            {/*enabled={false}*/}
-            {/*selectedValue={this.state.selectedOwnerType}*/}
-            {/*onValueChange={this.onValueChanged}*/}
-            {/*>*/}
-            {/*<Item label="Не важно" value="ANY" />*/}
-            {/*<Item label="Только собственник" value="OWNER" />*/}
-            {/*<Item label="Собственник + агентства" value="OWNER_AND_AGENT" />*/}
-            {/*</Picker>*/}
-            {/*</View>*/}
-            {/*</View>*/}
-            {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
-            {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>*/}
-            {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>*/}
-            {/*</View>*/}
-            {/*<View style={{flex: 1, width: width*0.9}}>*/}
-            {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
-            {/*iosHeader="Выбрать"*/}
-            {/*placeholder="Выбрать"*/}
-            {/*mode="dropdown"*/}
-            {/*enabled={false}*/}
-            {/*selectedValue={this.state.selectedSubway}*/}
-            {/*onValueChange={this.onSubwayChanged}*/}
-            {/*>*/}
-            {/*<Item label="Не важно" value="ANY_SUBWAY" />*/}
-            {/*<Item label="Возле метро" value="NEAR_SUBWAY" />*/}
-            {/*<Item label="Московская линия" value="M_SUBWAY" />*/}
-            {/*<Item label="Автозаводская линия" value="A_SUBWAY" />*/}
-            {/*</Picker>*/}
-            {/*</View>*/}
-            {/*</View>*/}
-            <View style={{ flex: 1 }}>
-              <View
-                style={{
-                  borderBottomWidth: 1,
-                  borderColor: "#aaafba",
-                  width: width * 0.9,
-                  alignSelf: "center"
-                }}
-              >
-                <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
-                  Местоположение на карте
-                </Text>
-              </View>
-              <MapView
-                style={{
-                  flex: 1,
-                  width: width * 0.99,
-                  height: height * 0.7,
-                  alignSelf: "center"
-                }}
-                initialRegion={{
-                  latitude: 53.902863,
-                  longitude: 27.551579,
-                  latitudeDelta: LATITUDE_DELTA,
-                  longitudeDelta: LONGITUDE_DELTA
-                }}
-                showsUserLocation={true}
-                showsTraffic={false}
-                loadingEnabled={true}
-                onPress={e => this.onPress(e)}
-                {...mapOptions}
-              >
-                {this.state.editing !== null
-                  ? this.state.editing.coordinates.map(obj => (
-                      <MapView.Marker
-                        key={obj.longitude}
-                        coordinate={{
-                          latitude: obj.latitude,
-                          longitude: obj.longitude
-                        }}
-                        image={require("../../../../assets/images/pin.png")}
-                      />
-                    ))
-                  : null}
-                {this.state.polygons.map(polygon => (
-                  <MapView.Polygon
-                    key={polygon.id}
-                    coordinates={polygon.coordinates}
-                    holes={polygon.holes}
-                    strokeColor="#F00"
-                    fillColor="rgba(255,0,0,0.5)"
-                    strokeWidth={2}
+                >
+                  <TextField
+                    label="Минимальная цена"
+                    value={minPrice}
+                    containerStyle={{ paddingRight: 10, width: width * 0.45 }}
+                    animationDuration={50}
+                    keyboardType={"numeric"}
+                    maxLength={5}
+                    onChangeText={minPrice => this.setState({ minPrice })}
                   />
-                ))}
-                {this.state.editing && (
-                  <MapView.Polygon
-                    key={this.state.editing.id}
-                    coordinates={this.state.editing.coordinates}
-                    holes={this.state.editing.holes}
-                    strokeColor="#000"
-                    fillColor="rgba(255,0,0,0.5)"
-                    strokeWidth={2}
+                  <TextField
+                    label="Максимальная цена"
+                    value={maxPrice}
+                    containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
+                    animationDuration={50}
+                    keyboardType={"numeric"}
+                    maxLength={5}
+                    onChangeText={maxPrice => this.setState({ maxPrice })}
                   />
-                )}
-              </MapView>
-              <View style={styles.buttonContainer}>
-                {this.state.editing && (
-                  <TouchableOpacity
-                    onPress={() => this.createHole()}
-                    style={[styles.bubble, styles.button]}
-                  >
-                    <Text>
-                      {this.state.creatingHole ? "Finish Hole" : "Create Hole"}
-                    </Text>
-                  </TouchableOpacity>
-                )}
-                {this.state.editing && (
-                  <TouchableOpacity
-                    onPress={() => this.finish()}
-                    style={[styles.bubble, styles.button]}
-                  >
-                    <Text>Finish</Text>
-                  </TouchableOpacity>
-                )}
+                </View>
               </View>
-              {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
-              {/*<Icon name='remove' />*/}
-              {/*</Button>*/}
-              {/*<View style={{flex: 1, }}>*/}
-              {/*<TextField*/}
-              {/*label='Кол-во комнат'*/}
-              {/*value={maxPrice}*/}
-              {/*containerStyle={{paddingLeft: 10}}*/}
-              {/*animationDuration={50}*/}
-              {/*onChangeText={ (maxPrice) => this.setState({ maxPrice }) }*/}
-              {/*/>*/}
+              <View style={{ flex: 1, alignItems: "center", paddingTop: 10 }}>
+                <View
+                  style={{
+                    borderBottomWidth: 1,
+                    borderColor: "#c7ccd7",
+                    width: width * 0.9
+                  }}
+                >
+                  <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
+                    Количество комнат
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    flexDirection: "row",
+                    width: width * 0.9,
+                    justifyContent: "center",
+                    alignItems: "center"
+                  }}
+                >
+                  <ToggleButton
+                    onColor={"#3f51b5"}
+                    effect={"pulse"}
+                    status={this.state.oneRoom}
+                    _onPress={status => {
+                      this.getRoomsNumber(status, ROOM_ENUM.ONE);
+                    }}
+                    text="1"
+                  />
+                  <ToggleButton
+                    onColor={"#3f51b5"}
+                    effect={"pulse"}
+                    status={this.state.twoRooms}
+                    _onPress={status => {
+                      this.getRoomsNumber(status, ROOM_ENUM.TWO);
+                    }}
+                    text="2"
+                  />
+                  <ToggleButton
+                    onColor={"#3f51b5"}
+                    effect={"pulse"}
+                    status={this.state.threeRooms}
+                    _onPress={status => {
+                      this.getRoomsNumber(status, ROOM_ENUM.THREE);
+                    }}
+                    text="3"
+                  />
+                  <ToggleButton
+                    onColor={"#3f51b5"}
+                    effect={"pulse"}
+                    status={this.state.fourOrMore}
+                    _onPress={status => {
+                      this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
+                    }}
+                    text="4+"
+                  />
+                </View>
+              </View>
+              {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
+              {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>*/}
+              {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>*/}
               {/*</View>*/}
-              {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
-              {/*<Icon name='add' />*/}
-              {/*</Button>*/}
-            </View>
-          </ScrollView>
-        </View>
+              {/*<View style={{flex: 1, width: width*0.9}}>*/}
+              {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
+              {/*iosHeader="Выбрать"*/}
+              {/*placeholder="Выбрать"*/}
+              {/*mode="dropdown"*/}
+              {/*enabled={false}*/}
+              {/*selectedValue={this.state.selectedOwnerType}*/}
+              {/*onValueChange={this.onValueChanged}*/}
+              {/*>*/}
+              {/*<Item label="Не важно" value="ANY" />*/}
+              {/*<Item label="Только собственник" value="OWNER" />*/}
+              {/*<Item label="Собственник + агентства" value="OWNER_AND_AGENT" />*/}
+              {/*</Picker>*/}
+              {/*</View>*/}
+              {/*</View>*/}
+              {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
+              {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>*/}
+              {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>*/}
+              {/*</View>*/}
+              {/*<View style={{flex: 1, width: width*0.9}}>*/}
+              {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
+              {/*iosHeader="Выбрать"*/}
+              {/*placeholder="Выбрать"*/}
+              {/*mode="dropdown"*/}
+              {/*enabled={false}*/}
+              {/*selectedValue={this.state.selectedSubway}*/}
+              {/*onValueChange={this.onSubwayChanged}*/}
+              {/*>*/}
+              {/*<Item label="Не важно" value="ANY_SUBWAY" />*/}
+              {/*<Item label="Возле метро" value="NEAR_SUBWAY" />*/}
+              {/*<Item label="Московская линия" value="M_SUBWAY" />*/}
+              {/*<Item label="Автозаводская линия" value="A_SUBWAY" />*/}
+              {/*</Picker>*/}
+              {/*</View>*/}
+              {/*</View>*/}
+              <View style={{ flex: 1 }}>
+                <View
+                  style={{
+                    borderBottomWidth: 1,
+                    borderColor: "#aaafba",
+                    width: width * 0.9,
+                    alignSelf: "center"
+                  }}
+                >
+                  {/*3f51b5*/}
+                  <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
+                    Местоположение на карте
+                  </Text>
+                </View>
+                <View style={{flex: 1, flexDirection: 'row', paddingTop: 5, paddingBottom: 5,
+                    alignItems: "center", justifyContent: 'space-between'}}>
+                  <View style={{left: width*0.05, width: width*0.4,}}>
+                      {this.state.mapScrollEnabled ?
+                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                                  onPress={() => this.onEditHandler()}>
+                            <Text>Сохранить область</Text>
+                          </Button> :
+                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                                  onPress={() => this.onEditHandler()}>
+                            <Text>Выделить область</Text>
+                          </Button>
+                      }
+
+                  </View>
+                  <View style={{right: width*0.05, width: width*0.4,}}>
+                      {this.state.polygons.length > 0 || this.state.editing !== null ?
+                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                                  onPress={() => this.resetMap()}>
+                            <Text>Очистить область</Text>
+                          </Button> :
+                          <Button disabled rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                                  onPress={() => this.resetMap()}>
+                            <Text>Очистить область</Text>
+                          </Button>
+                      }
+                  </View>
+                </View>
+                <MapView
+                  style={{
+                    flex: 1,
+                    width: width * 0.99,
+                    height: height * 0.7,
+                    alignSelf: "center"
+                  }}
+                  initialRegion={{
+                    latitude: 53.902863,
+                    longitude: 27.551579,
+                    latitudeDelta: LATITUDE_DELTA,
+                    longitudeDelta: LONGITUDE_DELTA
+                  }}
+                  showsUserLocation={true}
+                  showsTraffic={false}
+                  loadingEnabled={true}
+                  // scrollEnabled
+                  onPress={e => this.onPress(e)}
+                  {...mapOptions}
+                >
+                  {editing !== null
+                    ? editing.coordinates.map((obj, index) => (
+                        <MapView.Marker
+                          key={index}
+                          coordinate={{
+                            latitude: obj.latitude,
+                            longitude: obj.longitude
+                          }}
+                          // onPress={() => console.log(index)}
+                          image={require("../../../../assets/images/pin.png")}
+                          onCalloutPress={() => this.removeMarker(index)}
+                        >
+                          <MapView.Callout>
+                            <View>
+                                <Text>Удалить</Text>
+                            </View>
+                          </MapView.Callout>
+                        </MapView.Marker>
+                      ))
+                    : null}
+                  {this.state.polygons.map(polygon => (
+                    <MapView.Polygon
+                      key={polygon.id}
+                      coordinates={polygon.coordinates}
+                      holes={polygon.holes}
+                      strokeColor="#F00"
+                      fillColor="rgba(255,0,0,0.5)"
+                      strokeWidth={2}
+                    />
+                  ))}
+                  {this.state.editing && (
+                    <MapView.Polygon
+                      key={this.state.editing.id}
+                      coordinates={this.state.editing.coordinates}
+                      holes={this.state.editing.holes}
+                      strokeColor="#000"
+                      fillColor="rgba(255,0,0,0.5)"
+                      strokeWidth={2}
+                    />
+                  )}
+                </MapView>
+                <View style={styles.buttonContainer}>
+                  {/*{this.state.editing && (*/}
+                    {/*<TouchableOpacity*/}
+                      {/*onPress={() => this.createHole()}*/}
+                      {/*style={[styles.bubble, styles.button]}*/}
+                    {/*>*/}
+                      {/*<Text>*/}
+                        {/*{this.state.creatingHole ? "Finish Hole" : "Create Hole"}*/}
+                      {/*</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                  {/*)}*/}
+                  {/*{this.state.editing && (*/}
+                    {/*<TouchableOpacity*/}
+                      {/*onPress={() => this.finish()}*/}
+                      {/*style={[styles.bubble, styles.button]}*/}
+                    {/*>*/}
+                      {/*<Text>Finish</Text>*/}
+                    {/*</TouchableOpacity>*/}
+                  {/*)}*/}
+                </View>
+                {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
+                {/*<Icon name='remove' />*/}
+                {/*</Button>*/}
+                {/*<View style={{flex: 1, }}>*/}
+                {/*<TextField*/}
+                {/*label='Кол-во комнат'*/}
+                {/*value={maxPrice}*/}
+                {/*containerStyle={{paddingLeft: 10}}*/}
+                {/*animationDuration={50}*/}
+                {/*onChangeText={ (maxPrice) => this.setState({ maxPrice }) }*/}
+                {/*/>*/}
+                {/*</View>*/}
+                {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
+                {/*<Icon name='add' />*/}
+                {/*</Button>*/}
+              </View>
+            </ScrollView>
+          </View>
+        </Content>
       </Container>
     );
   }
