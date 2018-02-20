@@ -180,7 +180,11 @@ class Home extends React.Component<Props, State> {
               activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
               textStyle={{ color: "#959ba6", fontSize: 14 }}
             >
-              <Text>1</Text>
+              {this.props.favorites.map((flat, index) => {
+                return (
+                  <Text key={index}>{flat.address}</Text>
+                )
+              })}
             </Tab>
           </Tabs>
           {/*</Container>*/}

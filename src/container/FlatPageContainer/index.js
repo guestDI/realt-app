@@ -2,7 +2,7 @@
 import * as React from "react";
 import FlatPage from "../../stories/screens/NewMoviePage";
 // import {setRate} from "../HomeContainer/actions";
-// import { fetchRatedFriendsList } from "./actions";
+import { addFavoriteFlat, fetchFavoritesFlats } from "./actions";
 import { connect } from "react-redux";
 export interface Props {
   navigation: any;
@@ -16,7 +16,7 @@ class FlatPageContainer extends React.Component<Props, State> {
     // const param = this.props.navigation.state.params;
     // let movies = this.props.data;
     // let movie = movies.filter(mov => mov.id === param.id)[0];
-    // this.props.fetchFriendsList(movie.id);
+    // this.props.getFavoriteFlats()
   }
 
   render() {
@@ -30,6 +30,7 @@ class FlatPageContainer extends React.Component<Props, State> {
       <FlatPage
         navigation={this.props.navigation}
         flat={this.props.navigation.state.params.flat}
+        addFavoriteFlat={this.props.addFlatToFavorites}
         // myRate={myRate}
         // friends={ratedFriends}
         // onRateChanged={({rate, comment}) => this.saveRate(movie.id, myUID, rate, comment)}
@@ -40,13 +41,13 @@ class FlatPageContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-    // setRate: (movieId: string, userId: string, rate: number, comment: string) => dispatch(setRate(movieId, userId, rate, comment)),
-    // fetchFriendsList: (id) => dispatch(fetchRatedFriendsList(id))
+    addFlatToFavorites: (favoriteFlat) => dispatch(addFavoriteFlat(favoriteFlat)),
+    getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
   };
 }
 
 const mapStateToProps = state => ({
-  // data: state.homeReducer.list,
+    favoriteFlats: state.flatReducer.favoriteFlats,
   // isLoading: state.homeReducer.isLoading,
   // myUID: state.loginReducer.uid,
   // ratedFriendsData: state.ratedFriendsReducer.list,

@@ -6,6 +6,7 @@ import Home from "../../stories/screens/Home";
 import flats from "./data_test";
 import { fetchFlats, fetchFlatsOnMap } from "./actions";
 import { fetchFilter } from '../FilterContainer/actions'
+import { fetchFavoritesFlats } from '../FlatPageContainer/actions'
 
 export interface Props {
   navigation: any;
@@ -25,7 +26,7 @@ class HomeContainer extends React.Component<Props, State> {
 
   componentDidMount() {
     // this.props.fetchFilter()
-
+      this.props.getFavoriteFlats()
       let filter = {
         page: 0,
         size: FLATS_ON_PAGE
@@ -53,6 +54,7 @@ class HomeContainer extends React.Component<Props, State> {
         flatsOnMap={this.props.mapData}
         loadMore={this.loadMore}
         loadingState={this.props.listIsLoading}
+        favorites={this.props.favoriteFlats}
         // refresh={this.handleRefresh}
       />
     );
@@ -84,7 +86,8 @@ function bindAction(dispatch) {
   return {
     fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
-    fetchFilter: () => dispatch(fetchFilter())
+    fetchFilter: () => dispatch(fetchFilter()),
+      getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
   };
 }
 
@@ -95,5 +98,6 @@ const mapStateToProps = state => ({
   mapData: state.homeReducer.mapList,
   isLoading: state.homeReducer.isLoading,
   filter: state.filterReducer.filter,
+    favoriteFlats: state.flatReducer.favoriteFlats,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

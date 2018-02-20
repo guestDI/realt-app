@@ -144,12 +144,11 @@ class FlatPage extends React.Component<Props, State> {
           </Body>
           <Right>
             <Button transparent>
-              <Icon name="star" style={{ fontSize: 28 }} />
-              {/*<Icon*/}
-              {/*active*/}
-              {/*name="menu"*/}
-              {/*onPress={() => this.props.navigation.navigate("DrawerOpen")}*/}
-              {/*/>*/}
+              <Icon
+                name="star"
+                style={{ fontSize: 28 }}
+                onPress={() => this.props.addFavoriteFlat(this.props.flat)}
+              />
             </Button>
           </Right>
         </Header>

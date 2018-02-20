@@ -15,3 +15,16 @@ export const getFilter = async callback => {
     callback(JSON.parse(val));
   });
 };
+
+export const saveFlats = flats => {
+    const serializedState = JSON.stringify(flats);
+    // console.log('localstorageJSON', serializedState)
+    AsyncStorage.setItem(FLAT_KEY, serializedState);
+}
+
+export const getFavoriteFlats = async callback => {
+    await AsyncStorage.getItem(FLAT_KEY).then(val => {
+        console.log('PARSED FROM', JSON.parse(val))
+        callback(JSON.parse(val));
+    });
+};
