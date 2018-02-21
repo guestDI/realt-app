@@ -1,4 +1,4 @@
-import { saveFlats, getFavoriteFlats } from "../../asyncStorage";
+import { saveFlats, getFavoriteFlats, deleteFlatFromFavorites } from "../../asyncStorage";
 
 export function ratedFriendsListIsLoading(bool: boolean) {
   return {
@@ -30,34 +30,9 @@ export function fetchFavoritesFlats() {
         });
     };
 }
-//
-// export function fetchRatedFriendsList(id) {
-// 	let prop = id;
-// 	let friendsRatedMovie = [];
-// 	let friend = {};
-// 	return (dispatch, getState) => {
-// 		const uid = getState().loginReducer.uid;
-// 		firebase.database().ref('users/' + uid).child('friends').on('value', (snapshot) => {
-// 			const friendIds = Object.keys(snapshot.val());
-// 			loadFriendsParallel(friendIds).then(values => {
-// 				values.map((val) => {
-// 					let currentFriend = val.val();
-// 					if(currentFriend.movies[prop]){
-// 						friendsRatedMovie.push(currentFriend)
-// 					}
-// 				})
-// 				// let ratedFriends = values.map(val => val.val());
-//
-// 				dispatch(fetchRatedFriendsListSuccess(friendsRatedMovie));
-// 			})
-// 		})
-//         dispatch(ratedFriendsListIsLoading(false));
-// 	};
-// }
-//
-// function loadFriendsParallel(userIds) {
-// 	const db = firebase.database();
-//     return Promise.all(
-//         userIds.map(id => db.ref('users').child(id).once('value'))
-//     );
-// }
+
+export function removeFromFavorite(id){
+    deleteFlatFromFavorites(id);
+    return ({ type: "REMOVE_FLAT", id});
+}
+

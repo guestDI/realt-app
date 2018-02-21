@@ -2,7 +2,7 @@
 import * as React from "react";
 import FlatPage from "../../stories/screens/NewMoviePage";
 // import {setRate} from "../HomeContainer/actions";
-import { addFavoriteFlat, fetchFavoritesFlats } from "./actions";
+import { addFavoriteFlat, fetchFavoritesFlats, removeFromFavorite } from "./actions";
 import { connect } from "react-redux";
 export interface Props {
   navigation: any;
@@ -31,6 +31,8 @@ class FlatPageContainer extends React.Component<Props, State> {
         navigation={this.props.navigation}
         flat={this.props.navigation.state.params.flat}
         addFavoriteFlat={this.props.addFlatToFavorites}
+        removeFavoriteFlat={this.props.removeFlatFromFavorites}
+        favoriteFlats={this.props.favoriteFlats}
         // myRate={myRate}
         // friends={ratedFriends}
         // onRateChanged={({rate, comment}) => this.saveRate(movie.id, myUID, rate, comment)}
@@ -42,7 +44,7 @@ class FlatPageContainer extends React.Component<Props, State> {
 function bindAction(dispatch) {
   return {
     addFlatToFavorites: (favoriteFlat) => dispatch(addFavoriteFlat(favoriteFlat)),
-    getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
+    removeFlatFromFavorites: id => dispatch(removeFromFavorite(id))
   };
 }
 

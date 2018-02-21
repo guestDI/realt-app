@@ -24,7 +24,18 @@ export const saveFlats = flats => {
 
 export const getFavoriteFlats = async callback => {
     await AsyncStorage.getItem(FLAT_KEY).then(val => {
-        console.log('PARSED FROM', JSON.parse(val))
+        // console.log('PARSED FROM', JSON.parse(val))
         callback(JSON.parse(val));
     });
+};
+
+export const deleteFlatFromFavorites = async id => {
+    getFavoriteFlats(items => {
+        if (items) {
+            let newState = items.filter((item) => item.id !== id);
+            const serializedState = JSON.stringify(newState);
+            AsyncStorage.setItem(FLAT_KEY, serializedState);
+        }
+    });
+
 };

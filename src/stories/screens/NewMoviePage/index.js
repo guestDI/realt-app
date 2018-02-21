@@ -65,8 +65,18 @@ class FlatPage extends React.Component<Props, State> {
       fullRead: false,
       statusBarColor: "rgba(0, 0, 0, 0.3)",
       friendsModalVisible: false,
-      imageNumberSelected: 0
+      imageNumberSelected: 0,
+      favorite: this.checkIfFavorite(this.props.favoriteFlats)
     };
+      // console.log(this.checkIfFavorite(this.props.favoriteFlats))
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.favoriteFlats !== nextProps.favoriteFlats) {
+        this.setState({
+            favorite: this.checkIfFavorite(nextProps.favoriteFlats),
+        });
+    }
   }
 
   viewerHandler = imageNumber => {
@@ -88,20 +98,36 @@ class FlatPage extends React.Component<Props, State> {
     this.refs._scrollView.scrollToEnd({ animated: true });
   };
 
-  viewFullSynopsis = () => {
-    let current = this.state.fullRead;
+  checkIfFavorite = (props) => {
+    let flatId = this.props.flat.id;
+
+    let collet = props.filter(flat => {
+      let id = flat.id
+      return flatId===id;
+    })
+
+    return collet.length > 0;
+  }
+
+
+  manageFavoriteState = () => {
+    if(this.state.favorite){
+        this.props.removeFavoriteFlat(this.props.flat.id)
+    } else {
+        this.props.addFavoriteFlat(this.props.flat)
+    }
     this.setState({
-      fullRead: !current
+      favorite: !this.state.favorite
     });
   };
 
-  onFollowHandler = () => {
+  onFavoriteHandler = () => {
     let current = this.state.follow;
     this.setState({
       follow: !current
     });
 
-    return this.state.follow ? "Удачно отписаны" : "Удачно подписаны";
+    return this.state.follow ? "Добавлено в избранное" : "Удалено из избранного";
   };
 
   getSource = source => {
@@ -126,30 +152,38 @@ class FlatPage extends React.Component<Props, State> {
     //
     const photos = this.props.flat.photos ? this.props.flat.photos : [];
     // const videos = movie.media && movie.media.video ? Object.values(movie.media.video) : [];
-
+    // console.log(this.state.favorite)
     return (
       <Container>
         <Header>
           <Left>
-            <Button transparent>
+            {/*<Button transparent>*/}
               <Icon
                 active
+                style={{color: "white"}}
                 name="arrow-back"
                 onPress={() => this.props.navigation.goBack()}
               />
-            </Button>
+            {/*</Button>*/}
           </Left>
           <Body>
             <Title>Аренда</Title>
           </Body>
           <Right>
-            <Button transparent>
-              <Icon
-                name="star"
-                style={{ fontSize: 28 }}
-                onPress={() => this.props.addFavoriteFlat(this.props.flat)}
-              />
-            </Button>
+            {/*<Button transparent>*/}
+              {this.state.favorite ?
+                  <Icon
+                      name="ios-star"
+                      style={{ fontSize: 28, color: "white" }}
+                      onPress={() => this.manageFavoriteState()}
+                  /> :
+                  <Icon
+                      name="ios-star-outline"
+                      style={{ fontSize: 28, color: "white" }}
+                      onPress={() => this.manageFavoriteState()}
+                  />
+              }
+            {/*</Button>*/}
           </Right>
         </Header>
         <View style={{ flex: 1 }}>
