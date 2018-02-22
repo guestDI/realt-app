@@ -113,8 +113,20 @@ class FlatPage extends React.Component<Props, State> {
   manageFavoriteState = () => {
     if(this.state.favorite){
         this.props.removeFavoriteFlat(this.props.flat.id)
+        Toast.show({
+            text: "Удалено из избранного",
+            position: 'bottom',
+            buttonText: 'Скрыть',
+            duration: 1000
+        })
     } else {
         this.props.addFavoriteFlat(this.props.flat)
+        Toast.show({
+            text: "Добавлено в избранное",
+            position: 'bottom',
+            buttonText: 'Скрыть',
+            duration: 1000
+        })
     }
     this.setState({
       favorite: !this.state.favorite
@@ -122,12 +134,12 @@ class FlatPage extends React.Component<Props, State> {
   };
 
   onFavoriteHandler = () => {
-    let current = this.state.follow;
+    let current = this.state.favorite;
     this.setState({
       follow: !current
     });
 
-    return this.state.follow ? "Добавлено в избранное" : "Удалено из избранного";
+    return this.state.favorite ? "Добавлено в избранное" : "Удалено из избранного";
   };
 
   getSource = source => {

@@ -6,7 +6,7 @@ const initialState = {
 
 export default function(state: any = initialState, action: Function) {
   if (action.type === "FETCH_FILTER") {
-    console.log(action.filter)
+    // console.log(action.filter)
     return {
       ...state,
       filter: action.filter
@@ -14,7 +14,7 @@ export default function(state: any = initialState, action: Function) {
   }
 
   if (action.type === "ADD_FILTER") {
-    console.log(action.filter);
+    // console.log(action.filter);
     return {
       ...state,
       filter: action.filter

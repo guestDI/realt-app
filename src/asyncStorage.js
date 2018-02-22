@@ -10,9 +10,13 @@ export const setFilter = value => {
 };
 
 export const getFilter = async callback => {
-  // let filter = null;
-  let value = await AsyncStorage.getItem("filter").then(val => {
-    callback(JSON.parse(val));
+  let filter = {rooms: []};
+  await AsyncStorage.getItem("filter").then(val => {
+      if(val){
+          callback(JSON.parse(val));
+      } else {
+          callback(filter);
+      }
   });
 };
 
@@ -23,9 +27,13 @@ export const saveFlats = flats => {
 }
 
 export const getFavoriteFlats = async callback => {
+    let flats = [];
     await AsyncStorage.getItem(FLAT_KEY).then(val => {
-        // console.log('PARSED FROM', JSON.parse(val))
-        callback(JSON.parse(val));
+        if(val){
+            callback(JSON.parse(val));
+        } else {
+            callback(flats);
+        }
     });
 };
 
