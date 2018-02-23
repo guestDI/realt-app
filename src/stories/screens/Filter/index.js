@@ -18,7 +18,7 @@ import {
 } from "native-base";
 import { TextField } from "react-native-material-textfield";
 import ToggleButton from "./components/ToggleButton";
-import { MapView } from "expo";
+import MapView from 'react-native-maps';
 
 import {
   Image,

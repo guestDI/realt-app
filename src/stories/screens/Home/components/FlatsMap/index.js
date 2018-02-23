@@ -27,7 +27,7 @@ import {
 import moment from "moment";
 import styles from "./styles";
 import FlatPreview from "./components/FlatPreview";
-import { MapView } from "expo";
+import MapView from 'react-native-maps';
 const { StatusBarManager } = NativeModules;
 
 export interface Props {

@@ -31,7 +31,7 @@ import {
 } from "native-base";
 import { Card } from "react-native-elements";
 import ImageView from "./components/ImageView";
-import { MapView } from "expo";
+import MapView from 'react-native-maps';
 import formatDate from "../../../utils/utils";
 
 export interface Props {
@@ -117,7 +117,7 @@ class FlatPage extends React.Component<Props, State> {
             text: "Удалено из избранного",
             position: 'bottom',
             buttonText: 'Скрыть',
-            duration: 1000
+            duration: 2000
         })
     } else {
         this.props.addFavoriteFlat(this.props.flat)
@@ -125,7 +125,7 @@ class FlatPage extends React.Component<Props, State> {
             text: "Добавлено в избранное",
             position: 'bottom',
             buttonText: 'Скрыть',
-            duration: 1000
+            duration: 2000
         })
     }
     this.setState({
