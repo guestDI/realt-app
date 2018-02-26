@@ -28,8 +28,7 @@ import {
   ActivityIndicator,
   ImageBackground
 } from "react-native";
-import formatDate from "../../../../../../../utils/utils";
-import moment from "moment";
+import formatDate from "../../../utils/utils";
 
 export interface Props {
   navigation: any;

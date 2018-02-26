@@ -31,6 +31,7 @@ import moment from "moment";
 import styles from "./styles";
 import FlatsList from "./components/FlatsList/index";
 import FlatsMap from "./components/FlatsMap";
+import FavoriteFlats from './components/FavoriteFlats'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -180,17 +181,24 @@ class Home extends React.Component<Props, State> {
               activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
               textStyle={{ color: "#959ba6", fontSize: 14 }}
             >
-              {this.props.favorites ?
-                this.props.favorites.map((flat, index) => {
-                return (
-                  <Text key={index}>{flat.address}</Text>
-                )
-              }) : <View style={{ paddingTop: 20, alignItems: 'center' }}>
-                      <Text style={{fontSize: 16}}>
-                        Вы пока не отслеживаете ни одной квартиры.
-                      </Text>
-                    </View>
-              }
+              <FavoriteFlats
+                  navigation={this.props.navigation}
+                  list={this.props.favorites}
+                  // onListEndReached={this.handleLoadMore}
+                  // isListLoading={this.props.loadingState}
+                  // onRefresh={this.props.handleRefresh}
+              />
+              {/*{this.props.favorites ?*/}
+                {/*this.props.favorites.map((flat, index) => {*/}
+                {/*return (*/}
+                  {/*<Text key={index}>{flat.address}</Text>*/}
+                {/*)*/}
+              {/*}) : <View style={{ paddingTop: 20, alignItems: 'center' }}>*/}
+                      {/*<Text style={{fontSize: 16}}>*/}
+                        {/*Вы пока не отслеживаете ни одной квартиры.*/}
+                      {/*</Text>*/}
+                    {/*</View>*/}
+              {/*}*/}
             </Tab>
           </Tabs>
           {/*</Container>*/}

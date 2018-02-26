@@ -24,9 +24,9 @@ import {
   Dimensions,
   ActivityIndicator
 } from "react-native";
-import moment from "moment";
+
 import FlatRow from "../../../../common/FlatRow";
-import styles from "./styles";
+
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -41,7 +41,7 @@ export interface State {
 const { height, width } = Dimensions.get("window");
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
-class FlatsList extends React.Component<Props, State> {
+class FavoriteFlats extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -51,38 +51,6 @@ class FlatsList extends React.Component<Props, State> {
       refreshing: false
     };
   }
-
-    componentWillReceiveProps(nextProps) {
-        if (this.props.isListLoading !== nextProps.isListLoading) {
-            this.setState({
-                loading: nextProps.isListLoading,
-            });
-        }
-    }
-
-  handleRefresh = () => {
-    this.setState(
-      {
-        page: 0,
-        refreshing: true
-      },
-      () => {
-        this.props.loadMore(0);
-      }
-    );
-  };
-
-  loadMoreFlats = () => {
-    let currentPage = this.state.page + 1;
-    this.setState(
-      {
-        page: currentPage
-      },
-      () => {
-        this.props.onListEndReached(currentPage);
-      }
-    );
-  };
 
   renderFooter = () => {
     if (!this.state.loading) return null;
@@ -108,24 +76,28 @@ class FlatsList extends React.Component<Props, State> {
   render() {
     return (
       <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
-        <FlatList
-          data={this.props.list}
-          renderItem={({ item, index }) => (
-            <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} />
-          )}
-          keyExtractor={item => item.originalId}
-          // ItemSeparatorComponent={this.renderSeparator}
-          // ListHeaderComponent={this.renderHeader}
-          ListFooterComponent={this.renderFooter}
-          // onRefresh={this.handleRefresh}
-          // refreshing={this.state.refreshing}
-          onEndReached={this.loadMoreFlats}
-          onEndReachedThreshold={2}
-        />
+          {this.props.list.length > 0 ?
+          < FlatList
+              data={this.props.list}
+              renderItem={({item, index}) => (
+              <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} />
+              )}
+              keyExtractor={item => item.originalId}
+              // ItemSeparatorComponent={this.renderSeparator}
+              // ListHeaderComponent={this.renderHeader}
+              ListFooterComponent={this.renderFooter}
+              // onRefresh={this.handleRefresh}
+              // refreshing={this.state.refreshing}
+              // onEndReachedThreshold={2}
+              /> :
+              <View style={{alignItems: 'center', paddingTop: 20}}>
+                <Text style={{fontSize: 16}}>Отслеживаемые квартиры отсутствуют</Text>
+              </View>
+          }
       </List>
     );
   }
 
 }
 
-export default FlatsList;
+export default FavoriteFlats;

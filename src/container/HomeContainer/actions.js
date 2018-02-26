@@ -36,6 +36,13 @@ export function fetchMapListSuccess(mapList: Array) {
   };
 }
 
+// export const reloadFlats = filter => {
+//     return dispatch => {
+//         dispatch()
+//         fetchFlats(filter)(dispatch);
+//     }
+// }
+
 export const fetchFlats = filter => {
   return dispatch => {
     dispatch(listIsLoading(true));

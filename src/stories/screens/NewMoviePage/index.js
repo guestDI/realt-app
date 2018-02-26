@@ -117,7 +117,7 @@ class FlatPage extends React.Component<Props, State> {
             text: "Удалено из избранного",
             position: 'bottom',
             buttonText: 'Скрыть',
-            duration: 1000
+            duration: 1500
         })
     } else {
         this.props.addFavoriteFlat(this.props.flat)
@@ -125,7 +125,7 @@ class FlatPage extends React.Component<Props, State> {
             text: "Добавлено в избранное",
             position: 'bottom',
             buttonText: 'Скрыть',
-            duration: 1000
+            duration: 1500
         })
     }
     this.setState({
@@ -186,12 +186,12 @@ class FlatPage extends React.Component<Props, State> {
               {this.state.favorite ?
                   <Icon
                       name="ios-star"
-                      style={{ fontSize: 28, color: "white" }}
+                      style={{ fontSize: 28, color: "yellow" }}
                       onPress={() => this.manageFavoriteState()}
                   /> :
                   <Icon
                       name="ios-star-outline"
-                      style={{ fontSize: 28, color: "white" }}
+                      style={{ fontSize: 28, color: "yellow" }}
                       onPress={() => this.manageFavoriteState()}
                   />
               }

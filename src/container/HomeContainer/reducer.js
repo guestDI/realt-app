@@ -13,6 +13,13 @@ export default function(state: any = initialState, action: Function) {
     };
   }
 
+  if (action.type === "LIST_CLEAR") {
+      return {
+          ...state,
+          list: []
+      };
+  }
+
   if (action.type === "LIST_IS_LOADING") {
     return {
       ...state,
