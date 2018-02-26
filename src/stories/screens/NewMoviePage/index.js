@@ -172,7 +172,7 @@ class FlatPage extends React.Component<Props, State> {
             {/*<Button transparent>*/}
               <Icon
                 active
-                style={{color: "white"}}
+                style={{color: "white", zIndex: 9999}}
                 name="arrow-back"
                 onPress={() => this.props.navigation.goBack()}
               />
@@ -182,20 +182,21 @@ class FlatPage extends React.Component<Props, State> {
             <Title>Аренда</Title>
           </Body>
           <Right>
-            {/*<Button transparent>*/}
+            <Button transparent
+                    style={{zIndex: 9999}}
+                    onPress={() => this.manageFavoriteState()}
+            >
               {this.state.favorite ?
                   <Icon
                       name="ios-star"
                       style={{ fontSize: 28, color: "yellow" }}
-                      onPress={() => this.manageFavoriteState()}
                   /> :
                   <Icon
                       name="ios-star-outline"
                       style={{ fontSize: 28, color: "yellow" }}
-                      onPress={() => this.manageFavoriteState()}
                   />
               }
-            {/*</Button>*/}
+            </Button>
           </Right>
         </Header>
         <View style={{ flex: 1 }}>

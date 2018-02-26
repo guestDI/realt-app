@@ -107,11 +107,13 @@ class Home extends React.Component<Props, State> {
       <Container>
         <Header>
           <Left>
-            <Button transparent>
+            <Button
+                style={{zIndex: 9999}}
+                onPress={() => this.props.navigation.navigate("DrawerOpen")}
+                transparent>
               <Icon
                 active
                 name="menu"
-                onPress={() => this.props.navigation.navigate("DrawerOpen")}
               />
             </Button>
           </Left>
@@ -119,11 +121,12 @@ class Home extends React.Component<Props, State> {
             <Title>Аренда</Title>
           </Body>
           <Right>
-            <Button transparent>
+            <Button
+                style={{zIndex: 9999}}
+                transparent onPress={() => this.props.navigation.navigate("Filter")}>
               <Icon
                 active
                 name="options"
-                onPress={() => this.props.navigation.navigate("Filter")}
               />
             </Button>
           </Right>

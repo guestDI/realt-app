@@ -336,11 +336,13 @@ class Filter extends React.Component<Props, State> {
       <Container>
         <Header>
           <Left>
-            <Button transparent>
+            <Button
+                style={{zIndex: 9999}}
+                onPress={() => this.props.navigation.goBack()}
+                transparent>
               <Icon
                 active
                 name="arrow-back"
-                onPress={() => this.props.navigation.goBack()}
               />
             </Button>
           </Left>
@@ -348,18 +350,22 @@ class Filter extends React.Component<Props, State> {
             <Title>Фильтр</Title>
           </Body>
           <Right>
-            <Button transparent>
+            <Button
+                style={{zIndex: 9999}}
+                onPress={this.onFilterSaved}
+                transparent>
               <Icon
                 name="checkmark"
                 style={{ fontSize: 28 }}
-                onPress={this.onFilterSaved}
               />
             </Button>
-            <Button transparent>
+            <Button transparent
+                    style={{zIndex: 9999}}
+                    onPress={this.reset}
+            >
               <Icon
                 name="trash"
                 style={{ fontSize: 28 }}
-                onPress={this.reset}
               />
             </Button>
           </Right>

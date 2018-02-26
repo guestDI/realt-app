@@ -107,7 +107,6 @@ class FlatsList extends React.Component<Props, State> {
 
   render() {
     return (
-      <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
         <FlatList
             initialNumToRender={3}
           data={this.props.list}
@@ -123,7 +122,6 @@ class FlatsList extends React.Component<Props, State> {
           onEndReached={this.loadMoreFlats}
           onEndReachedThreshold={2}
         />
-      </List>
     );
   }
 
