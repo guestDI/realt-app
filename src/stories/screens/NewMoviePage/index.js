@@ -31,7 +31,7 @@ import {
 } from "native-base";
 import { Card } from "react-native-elements";
 import ImageView from "./components/ImageView";
-import { MapView } from "expo";
+import MapView from 'react-native-maps';
 import formatDate from "../../../utils/utils";
 
 export interface Props {

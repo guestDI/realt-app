@@ -28,7 +28,7 @@ import {
   ImageBackground
 } from "react-native";
 import moment from "moment";
-import { MapView } from "expo";
+// import MapView from 'react-native-maps';
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
