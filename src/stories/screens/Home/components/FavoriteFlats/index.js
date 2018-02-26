@@ -77,8 +77,10 @@ class FavoriteFlats extends React.Component<Props, State> {
     return (
       <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
           {this.props.list.length > 0 ?
-          < FlatList
+          <FlatList
+
               data={this.props.list}
+              initialNumToRender={3}
               renderItem={({item, index}) => (
               <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} />
               )}
