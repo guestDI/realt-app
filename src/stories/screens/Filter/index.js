@@ -62,7 +62,7 @@ class Filter extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      polygons: [],
+      polygons: this.props.filter.coordinates,
       editing: null,
       creatingHole: false,
       minPrice: this.props.filter.minPrice,
@@ -89,6 +89,7 @@ class Filter extends React.Component<Props, State> {
         twoRooms: nextProps.filter.rooms.includes(ROOM_ENUM.TWO),
         threeRooms: nextProps.filter.rooms.includes(ROOM_ENUM.THREE),
         fourOrMore: nextProps.filter.rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
+        polygons: nextProps.filter.coordinates
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
       });

@@ -1,6 +1,7 @@
 const initialState = {
   filter: {
-    rooms: []
+    rooms: [],
+    coordinates: []
   }
 };
 
