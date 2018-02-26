@@ -266,7 +266,7 @@ class Filter extends React.Component<Props, State> {
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
-    // console.log(filter)
+    console.log(filter)
     this.props.navigation.goBack();
   };
 
@@ -285,13 +285,18 @@ class Filter extends React.Component<Props, State> {
       });
 
       if(this.state.mapScrollEnabled && this.state.editing !== null && this.state.editing.coordinates.length > 0){
-          const { polygons, editing } = this.state;
+          // console.log(this.state.editing)
+          // console.log(this.state.polygons)
+
+
+          const { polygons } = this.state.polygons ? this.state : []
+          const { editing } = this.state.editing ? this.state : [];
           this.setState({
               polygons: [...polygons, editing],
               editing: null,
               creatingHole: false
           });
-          console.log(this.state.editing)
+          // console.log(this.state.editing)
       }
   }
 
@@ -529,7 +534,7 @@ class Filter extends React.Component<Props, State> {
 
                   </View>
                   <View style={{right: width*0.05, width: width*0.4,}}>
-                      {this.state.polygons.length > 0 || this.state.editing !== null ?
+                      {this.state.polygons && this.state.polygons.length > 0 || this.state.editing !== null ?
                           <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
                                   onPress={() => this.resetMap()}>
                             <Text>Очистить область</Text>
@@ -581,7 +586,7 @@ class Filter extends React.Component<Props, State> {
                         </MapView.Marker>
                       ))
                     : null}
-                  {this.state.polygons.map(polygon => (
+                  {this.state.polygons && this.state.polygons.map(polygon => (
                     <MapView.Polygon
                       key={polygon.id}
                       coordinates={polygon.coordinates}
