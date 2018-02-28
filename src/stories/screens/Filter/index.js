@@ -101,7 +101,7 @@ class Filter extends React.Component<Props, State> {
   }
 
   onPress(e) {
-    if(this.state.mapScrollEnabled && this.state.polygons.length===0){
+    if(this.state.mapScrollEnabled ){
         const { editing, creatingHole } = this.state;
         if (!editing) {
             this.setState({
@@ -236,7 +236,7 @@ class Filter extends React.Component<Props, State> {
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
-    // console.log(this.state.polygons)
+    // console.log(this.state.polygons[0].coordinates)
     this.props.navigation.goBack();
   };
 

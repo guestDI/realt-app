@@ -1,5 +1,6 @@
 import axios from "axios";
 import { getFavoriteFlat, saveFavoriteFlat } from "../../asyncStorage";
+import { formatLocation } from "../../utils/utils";
 
 export function listIsLoading(bool: boolean) {
   return {
@@ -64,7 +65,17 @@ export const reloadFlatsOnMap = filter => {
 }
 
 export const fetchFlats = filter => {
-    // console.log(filter)
+    // console.log(filter.coordinates)
+    let f = {
+        minPrice: filter.minPrice,
+        maxPrice: filter.maxPrice,
+        rooms: filter.rooms,
+        owner: filter.owner,
+        subway: filter.subway,
+        location: formatLocation(filter.coordinates[0]),
+        page: filter.page
+    }
+
   return dispatch => {
     dispatch(listIsLoading(true));
     dispatch(fetchListHasErrored(false));
@@ -72,7 +83,7 @@ export const fetchFlats = filter => {
     axios
       .get(
         "http://46.101.244.156:5555/flats", {
-          params: Object.assign({}, filter, {size: 10})
+          params: Object.assign({}, f, {size: 10})
           }
       )
       .then(response => response.data)
@@ -86,12 +97,22 @@ export const fetchFlats = filter => {
 };
 
 export const fetchFlatsOnMap = filter => {
+    let f = {
+        minPrice: filter.minPrice,
+        maxPrice: filter.maxPrice,
+        rooms: filter.rooms,
+        owner: filter.owner,
+        subway: filter.subway,
+        location: formatLocation(filter.coordinates[0]),
+        page: filter.page
+    }
+
   return dispatch => {
     dispatch(mapListIsLoading(true));
     axios
       .get(
         "http://46.101.244.156:5555/flats", {
-              params: Object.assign({}, filter, {size: 150, page: 0})
+              params: Object.assign({}, f, {size: 150, page: 0})
           }
       )
       .then(response => response.data)
