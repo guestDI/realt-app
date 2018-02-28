@@ -64,6 +64,7 @@ export const reloadFlatsOnMap = filter => {
 }
 
 export const fetchFlats = filter => {
+    // console.log(filter)
   return dispatch => {
     dispatch(listIsLoading(true));
     dispatch(fetchListHasErrored(false));

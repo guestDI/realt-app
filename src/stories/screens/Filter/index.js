@@ -286,7 +286,7 @@ class Filter extends React.Component<Props, State> {
           });
       }
       //console.log(arr)
-      console.log(copy)
+      // console.log(copy)
       // console.log(this.state.editing)
       // console.log(copy)
   }
