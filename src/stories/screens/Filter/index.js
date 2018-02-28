@@ -62,6 +62,7 @@ class Filter extends React.Component<Props, State> {
   constructor(props) {
     super(props);
       let rooms = this.props.filter.rooms ? this.props.filter.rooms : [];
+      // let polygons = this.props.filter.coordinates ? this.props.filter.coordinates : [];
     this.state = {
       polygons: this.props.filter.coordinates,
       editing: null,
@@ -83,6 +84,7 @@ class Filter extends React.Component<Props, State> {
   componentWillReceiveProps(nextProps) {
     if (this.props.filter !== nextProps.filter) {
         let rooms = nextProps.filter.rooms ? nextProps.filter.rooms : [];
+        let polygons = nextProps.filter.coordinates ? nextProps.filter.coordinates : [];
       this.setState({
         minPrice: nextProps.filter.minPrice,
         maxPrice: nextProps.filter.maxPrice,
@@ -98,43 +100,8 @@ class Filter extends React.Component<Props, State> {
     }
   }
 
-  finish() {
-    const { polygons, editing } = this.state;
-    this.setState({
-      polygons: [...polygons, editing],
-      editing: null,
-      creatingHole: false
-    });
-    // console.log(this.state.editing)
-  }
-
-  createHole() {
-    const { editing, creatingHole } = this.state;
-    if (!creatingHole) {
-      this.setState({
-        creatingHole: true,
-        editing: {
-          ...editing,
-          holes: [...editing.holes, []]
-        }
-      });
-    } else {
-      const holes = [...editing.holes];
-      if (holes[holes.length - 1].length === 0) {
-        holes.pop();
-        this.setState({
-          editing: {
-            ...editing,
-            holes
-          }
-        });
-      }
-      this.setState({ creatingHole: false });
-    }
-  }
-
   onPress(e) {
-    if(this.state.mapScrollEnabled){
+    if(this.state.mapScrollEnabled && this.state.polygons.length===0){
         const { editing, creatingHole } = this.state;
         if (!editing) {
             this.setState({
@@ -264,12 +231,12 @@ class Filter extends React.Component<Props, State> {
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
-      // coordinates: this.state.polygons
+      coordinates: this.state.polygons,
       page: 0,
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
-    console.log(this.state.polygons)
+    // console.log(this.state.polygons)
     this.props.navigation.goBack();
   };
 
@@ -288,12 +255,13 @@ class Filter extends React.Component<Props, State> {
       });
 
       if(this.state.mapScrollEnabled && this.state.editing !== null && this.state.editing.coordinates.length > 0){
-          // console.log(this.state.editing)
-          // console.log(this.state.polygons)
 
+          const polygons  = this.state.polygons ? this.state.polygons : []
+          const editing = this.state.editing ? this.state.editing : [];
 
-          const { polygons } = this.state.polygons ? this.state : []
-          const { editing } = this.state.editing ? this.state : [];
+          console.log(polygons)
+          console.log(editing)
+
           this.setState({
               polygons: [...polygons, editing],
               editing: null,
