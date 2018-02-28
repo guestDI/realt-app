@@ -61,6 +61,7 @@ let id = 0;
 class Filter extends React.Component<Props, State> {
   constructor(props) {
     super(props);
+      let rooms = this.props.filter.rooms ? this.props.filter.rooms : [];
     this.state = {
       polygons: this.props.filter.coordinates,
       editing: null,
@@ -68,10 +69,10 @@ class Filter extends React.Component<Props, State> {
       minPrice: this.props.filter.minPrice,
       maxPrice: this.props.filter.maxPrice,
       rooms: this.props.filter.rooms,
-      oneRoom: this.props.filter.rooms.includes(ROOM_ENUM.ONE),
-      twoRooms: this.props.filter.rooms.includes(ROOM_ENUM.TWO),
-      threeRooms: this.props.filter.rooms.includes(ROOM_ENUM.THREE),
-      fourOrMore: this.props.filter.rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
+      oneRoom: rooms.includes(ROOM_ENUM.ONE),
+      twoRooms: rooms.includes(ROOM_ENUM.TWO),
+      threeRooms: rooms.includes(ROOM_ENUM.THREE),
+      fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
       coordinates: [],
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: "ANY_SUBWAY",
