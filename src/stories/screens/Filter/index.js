@@ -81,14 +81,15 @@ class Filter extends React.Component<Props, State> {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.filter !== nextProps.filter) {
+        let rooms = nextProps.filter.rooms ? nextProps.filter.rooms : [];
       this.setState({
         minPrice: nextProps.filter.minPrice,
         maxPrice: nextProps.filter.maxPrice,
-        rooms: nextProps.filter.rooms,
-        oneRoom: nextProps.filter.rooms.includes(ROOM_ENUM.ONE),
-        twoRooms: nextProps.filter.rooms.includes(ROOM_ENUM.TWO),
-        threeRooms: nextProps.filter.rooms.includes(ROOM_ENUM.THREE),
-        fourOrMore: nextProps.filter.rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
+        rooms: rooms,
+        oneRoom: rooms.includes(ROOM_ENUM.ONE),
+        twoRooms: rooms.includes(ROOM_ENUM.TWO),
+        threeRooms: rooms.includes(ROOM_ENUM.THREE),
+        fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
         polygons: nextProps.filter.coordinates
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
@@ -262,11 +263,12 @@ class Filter extends React.Component<Props, State> {
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
-      coordinates: this.state.polygons
+      // coordinates: this.state.polygons
+      page: 0,
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
-    console.log(filter)
+    console.log(this.state.polygons)
     this.props.navigation.goBack();
   };
 

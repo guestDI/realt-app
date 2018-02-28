@@ -1,4 +1,5 @@
 import { setFilter, getFilter } from "../../asyncStorage";
+import { reloadFlats, reloadFlatsOnMap } from "../HomeContainer/actions"
 
 export function fetchFilter() {
   return dispatch => {
@@ -18,9 +19,14 @@ export function fetchFilter() {
 }
 
 export function addFilter(filter: Object) {
-  setFilter(filter);
-  return {
-    type: "ADD_FILTER",
-    filter
-  };
+  return dispatch => {
+      setFilter(filter);
+      // console.log(filter)
+      reloadFlats(filter)(dispatch);
+      reloadFlatsOnMap(filter)(dispatch)
+      dispatch({
+          type: "ADD_FILTER",
+          filter
+      });
+  }
 }

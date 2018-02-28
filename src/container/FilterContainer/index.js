@@ -30,7 +30,6 @@ class FilterContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-    // setRate: (movieId: string, userId: string, rate: number, comment: string) => dispatch(setRate(movieId, userId, rate, comment)),
     addFilter: filter => dispatch(addFilter(filter)),
     fetchFilter: () => dispatch(fetchFilter())
   };
@@ -38,9 +37,6 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   filter: state.filterReducer.filter
-  // isLoading: state.homeReducer.isLoading,
-  // myUID: state.loginReducer.uid,
-  // ratedFriendsData: state.ratedFriendsReducer.list,
-  // isFriendsLoading: state.ratedFriendsReducer.isLoading,
+
 });
 export default connect(mapStateToProps, bindAction)(FilterContainer);

@@ -9,10 +9,23 @@ export function listIsLoading(bool: boolean) {
 }
 
 export function fetchListSuccess(list: Array) {
+    // console.log(list)
   return {
     type: "FETCH_LIST_SUCCESS",
     list
   };
+}
+
+export function clearFlatsList() {
+    return {
+        type: "LIST_CLEAR",
+    }
+}
+
+export function clearFlatsOnMap() {
+    return {
+        type: "MAP_CLEAR",
+    }
 }
 
 export function fetchListHasErrored(bool: boolean) {
@@ -36,21 +49,29 @@ export function fetchMapListSuccess(mapList: Array) {
   };
 }
 
-// export const reloadFlats = filter => {
-//     return dispatch => {
-//         dispatch()
-//         fetchFlats(filter)(dispatch);
-//     }
-// }
+export const reloadFlats = filter => {
+    return dispatch => {
+        dispatch(clearFlatsList())
+        dispatch(fetchFlats(filter));
+    }
+}
+
+export const reloadFlatsOnMap = filter => {
+    return dispatch => {
+        dispatch(clearFlatsOnMap())
+        dispatch(fetchFlatsOnMap(filter));
+    }
+}
 
 export const fetchFlats = filter => {
   return dispatch => {
     dispatch(listIsLoading(true));
     dispatch(fetchListHasErrored(false));
+
     axios
       .get(
         "http://46.101.244.156:5555/flats", {
-          params: filter
+          params: Object.assign({}, filter, {size: 10})
           }
       )
       .then(response => response.data)
@@ -69,7 +90,7 @@ export const fetchFlatsOnMap = filter => {
     axios
       .get(
         "http://46.101.244.156:5555/flats", {
-              params: filter
+              params: Object.assign({}, filter, {size: 150, page: 0})
           }
       )
       .then(response => response.data)

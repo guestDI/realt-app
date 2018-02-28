@@ -17,7 +17,7 @@ export interface Props {
 export interface State {}
 
 const FLATS_ON_PAGE = 10;
-const FLATS_ON_MAP = 999;
+const FLATS_ON_MAP = 150;
 
 class HomeContainer extends React.Component<Props, State> {
   constructor(props) {
@@ -34,12 +34,12 @@ class HomeContainer extends React.Component<Props, State> {
 
       // console.log(filter)
 
-    this.props.fetchFlats(filter);
+    // this.props.fetchFlats(filter);
 
-    this.props.fetchFlatsOnMap({
-      page: 0,
-      size: FLATS_ON_MAP
-    });
+    // this.props.fetchFlatsOnMap({
+    //   page: 0,
+    //   size: FLATS_ON_MAP
+    // });
   }
 
   componentWillReceiveProps(){
@@ -69,11 +69,12 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   loadMore = page => {
+    let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: page});
 
-      let filter = {
-          page: page,
-          size: FLATS_ON_PAGE
-      }
+      // let filter = {
+      //     page: page,
+      //     size: FLATS_ON_PAGE
+      // }
     // let filter = this.props.filter;
     // filter.page = page;
     // filter.size = FLATS_ON_PAGE;

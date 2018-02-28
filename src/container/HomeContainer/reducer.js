@@ -14,9 +14,17 @@ export default function(state: any = initialState, action: Function) {
   }
 
   if (action.type === "LIST_CLEAR") {
+      // console.log("List Clear Reducer")
       return {
           ...state,
           list: []
+      };
+  }
+
+  if (action.type === "MAP_CLEAR") {
+      return {
+          ...state,
+          mapList: []
       };
   }
 
