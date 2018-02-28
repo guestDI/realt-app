@@ -51,10 +51,10 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const ROOM_ENUM = {
-    ONE: "ONE",
-    TWO: "TWO",
-    THREE: "THREE",
-    FOUR_OR_MORE: "FOUR_OR_MORE"
+    ONE: "ONE_ROOM",
+    TWO: "TWO_ROOMS",
+    THREE: "THREE_ROOMS",
+    FOUR_OR_MORE: "FOUR_OR_MORE_ROOMS"
 };
 let id = 0;
 

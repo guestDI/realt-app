@@ -65,7 +65,7 @@ export const reloadFlatsOnMap = filter => {
 }
 
 export const fetchFlats = filter => {
-    // console.log(filter.coordinates)
+    console.log('flats', formatLocation(filter.coordinates[0]))
     let f = {
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
