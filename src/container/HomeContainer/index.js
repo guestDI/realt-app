@@ -69,6 +69,9 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   loadMore = page => {
+    // if (this.props.noMoreData) {
+    //   return;
+    // }
     let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: page});
 
       // let filter = {

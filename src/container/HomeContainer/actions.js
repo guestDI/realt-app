@@ -1,4 +1,5 @@
 import axios from "axios";
+import qs from 'qs'
 import { getFavoriteFlat, saveFavoriteFlat } from "../../asyncStorage";
 import { formatLocation } from "../../utils/utils";
 
@@ -83,8 +84,11 @@ export const fetchFlats = filter => {
     axios
       .get(
         "http://46.101.244.156:5555/flats", {
-          params: Object.assign({}, f, {size: 10})
+          params: Object.assign({}, f, {size: 10}),
+          paramsSerializer: function(params) {
+              return qs.stringify(params, {arrayFormat: 'repeat'})
           }
+        }
       )
       .then(response => response.data)
       .then(flats => dispatch(fetchListSuccess(flats)))
@@ -112,7 +116,10 @@ export const fetchFlatsOnMap = filter => {
     axios
       .get(
         "http://46.101.244.156:5555/flats", {
-              params: Object.assign({}, f, {size: 150, page: 0})
+              params: Object.assign({}, f, {size: 150, page: 0}),
+              paramsSerializer: function(params) {
+                  return qs.stringify(params, {arrayFormat: 'repeat'})
+              }
           }
       )
       .then(response => response.data)

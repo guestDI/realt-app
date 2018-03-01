@@ -9,5 +9,20 @@ export default (formatDate = initDate => {
 
 export const formatLocation = loc => {
   let obj = Object.assign({}, loc)
-  return obj.coordinates.map(point => point.longitude + " " + point.latitude).join(',');
+    let coordinates = obj.coordinates.slice();
+    if (coordinates && coordinates.length > 0) {
+        coordinates.push(coordinates[0])
+        obj.coordinates = coordinates;
+    }
+  return obj.coordinates.map(point => point.longitude + ' ' + point.latitude).join(',');
+}
+
+export const formatRooms = rooms => {
+    // let obj = Object.assign({}, loc)
+    // let coordinates = obj.coordinates.slice();
+    // if (coordinates && coordinates.length > 0) {
+    //     coordinates.push(coordinates[0])
+    //     obj.coordinates = coordinates;
+    // }
+    // return encodeURIComponent(obj.coordinates.map(point => point.longitude + ' ' + point.latitude).join(','));
 }
