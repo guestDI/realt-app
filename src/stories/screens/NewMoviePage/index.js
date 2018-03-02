@@ -133,15 +133,6 @@ class FlatPage extends React.Component<Props, State> {
     });
   };
 
-  onFavoriteHandler = () => {
-    let current = this.state.favorite;
-    this.setState({
-      follow: !current
-    });
-
-    return this.state.favorite ? "Добавлено в избранное" : "Удалено из избранного";
-  };
-
   getSource = source => {
     switch (source) {
       case "ONLINER":
@@ -155,16 +146,25 @@ class FlatPage extends React.Component<Props, State> {
     }
   };
 
+  getRoomsNumber = room => {
+    switch (room) {
+      case "ONE_ROOM":
+        return "1 комнатная";
+      case "TWO_ROOMS":
+        return "2-х комнатная";
+      case "THREE_ROOMS":
+        return "3-х комнатная";
+      case "FOUR_OR_MORE_ROOMS":
+          return "4-х комнатная";
+      default:
+        return "";
+    }
+  }
+
   render() {
     const param = this.props.navigation.state.params;
-    // const {movie, myRate} = this.props;
 
-    // const rate = myRate ? myRate.rate : null;
-    // const comment = myRate ? myRate.comment : null;
-    //
     const photos = this.props.flat.photos ? this.props.flat.photos : [];
-    // const videos = movie.media && movie.media.video ? Object.values(movie.media.video) : [];
-    // console.log(this.state.favorite)
     return (
       <Container>
         <Header>
@@ -237,7 +237,7 @@ class FlatPage extends React.Component<Props, State> {
                     <Text
                       style={{ fontSize: 24, fontWeight: "bold", padding: 5 }}
                     >
-                      2-х комнатная
+                      {this.getRoomsNumber(this.props.flat.rentType)}
                     </Text>
                   </View>
                   <View style={{ flexDirection: "column", right: 10 }}>

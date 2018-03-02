@@ -11,7 +11,6 @@ export function listIsLoading(bool: boolean) {
 }
 
 export function fetchListSuccess(list: Array) {
-    // console.log(list)
   return {
     type: "FETCH_LIST_SUCCESS",
     list

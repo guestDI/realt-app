@@ -90,13 +90,6 @@ class Home extends React.Component<Props, State> {
   };
 
   onFlatRowPress = val => {
-    // let friendInfo = {
-    //     id: val.id,
-    //     name: val.name,
-    //     photo: val.photo,
-    //     email: val.email,
-    //     friendsCount: Object.keys(val.friends).length
-    // }
     this.props.navigation.navigate("FlatPage", {
       flat: val
     });

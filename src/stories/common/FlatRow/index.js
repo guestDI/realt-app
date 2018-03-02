@@ -60,8 +60,22 @@ class FlatRow extends React.Component<Props, State> {
     });
   };
 
+    getRoomsNumber = room => {
+        switch (room) {
+            case "ONE_ROOM":
+                return "1к.";
+            case "TWO_ROOMS":
+                return "2к.";
+            case "THREE_ROOMS":
+                return "3к.";
+            case "FOUR_OR_MORE_ROOMS":
+                return "4+";
+            default:
+                return "";
+        }
+    }
+
   render() {
-    // let movie = this.props.friend.movies[this.props.movieId]
     return (
       <ListItem onPress={this.onRowPress}>
         <View style={{ width: width * 0.95 }}>
@@ -95,6 +109,17 @@ class FlatRow extends React.Component<Props, State> {
             <View style={{ flex: 1, flexDirection: "column" }}>
               <View style={{ flexDirection: "row" }}>
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
+                  <Icon
+                      name="home"
+                      style={{ fontSize: 16, color: "#9da3ae", paddingLeft: 5 }}
+                  />
+                  <Text
+                      style={{ fontSize: 14, paddingLeft: 2, color: "#9da3ae" }}
+                  >
+                      {this.getRoomsNumber(this.props.flat.rentType)}
+                  </Text>
+                </View>
+                <View style={{ flexDirection: "row", alignItems: "center", paddingLeft: 3 }}>
                   <Icon
                     name="camera"
                     style={{ fontSize: 16, color: "#9da3ae", paddingLeft: 5 }}

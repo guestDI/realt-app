@@ -1,5 +1,9 @@
 [
     {
+        "merged": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
+        "source": "D:\\React\\realt-app-notifier\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
         "merged": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi\\ic_launcher.png",
         "source": "D:\\React\\realt_app_notifier\\android\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
     }
