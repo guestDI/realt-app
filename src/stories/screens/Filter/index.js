@@ -19,6 +19,7 @@ import {
 import { TextField } from "react-native-material-textfield";
 import ToggleButton from "./components/ToggleButton";
 import MapView from 'react-native-maps';
+import { MINSK_COORDINATES } from '../../../utils/coordinates'
 
 import {
   Image,
@@ -56,6 +57,7 @@ const ROOM_ENUM = {
     THREE: "THREE_ROOMS",
     FOUR_OR_MORE: "FOUR_OR_MORE_ROOMS"
 };
+
 let id = 0;
 
 class Filter extends React.Component<Props, State> {
@@ -225,13 +227,15 @@ class Filter extends React.Component<Props, State> {
   };
 
   onFilterSaved = () => {
+      let polygons = this.state.polygons ? this.state.polygons.slice() : [];
+      let tempCoordinates = polygons && polygons.length > 0 ? polygons : MINSK_COORDINATES
     let filter = {
       minPrice: this.state.minPrice,
       maxPrice: this.state.maxPrice,
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
-      coordinates: this.state.polygons,
+      coordinates: tempCoordinates,
       page: 0,
     };
     this.props.onAddFilter(filter);

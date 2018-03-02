@@ -1,6 +1,8 @@
 package com.realt_app_notifier;
 
 import com.facebook.react.ReactActivity;
+import com.reactnativecomponent.splashscreen.RCTSplashScreen;
+import android.os.Bundle;
 
 public class MainActivity extends ReactActivity {
 
@@ -11,5 +13,12 @@ public class MainActivity extends ReactActivity {
     @Override
     protected String getMainComponentName() {
         return "realt_app_notifier";
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        RCTSplashScreen.openSplashScreen(this);
+
+        super.onCreate(savedInstanceState);
     }
 }

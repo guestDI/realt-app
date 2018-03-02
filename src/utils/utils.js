@@ -8,13 +8,16 @@ export default (formatDate = initDate => {
 });
 
 export const formatLocation = loc => {
-  let obj = Object.assign({}, loc)
-    let coordinates = obj.coordinates.slice();
-    if (coordinates && coordinates.length > 0) {
-        coordinates.push(coordinates[0])
-        obj.coordinates = coordinates;
+    let obj = {}
+    if(loc) {
+         obj = Object.assign({}, loc)
+        let coordinates = obj.coordinates.slice();
+        if (coordinates && coordinates.length > 0) {
+            coordinates.push(coordinates[0])
+            obj.coordinates = coordinates;
+        }
+        return obj.coordinates.map(point => point.longitude + ' ' + point.latitude).join(',');
     }
-  return obj.coordinates.map(point => point.longitude + ' ' + point.latitude).join(',');
 }
 
 export const formatRooms = rooms => {

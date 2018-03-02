@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 
 import Home from "../../stories/screens/Home";
 import flats from "./data_test";
+import SplashScreen from 'react-native-smart-splash-screen'
 import { fetchFlats, fetchFlatsOnMap } from "./actions";
 import { fetchFilter } from '../FilterContainer/actions'
 import { fetchFavoritesFlats } from '../FlatPageContainer/actions'
@@ -27,11 +28,12 @@ class HomeContainer extends React.Component<Props, State> {
   componentDidMount() {
     // this.props.fetchFilter()
       this.props.getFavoriteFlats()
-      let filter = {
-        page: 0,
-        size: FLATS_ON_PAGE
-      }
-
+      SplashScreen.close({
+          animationType: SplashScreen.animationType.scale,
+          duration: 850,
+          delay: 500,
+      })
+      this.props.fetchFilter()
       // console.log(filter)
 
     // this.props.fetchFlats(filter);

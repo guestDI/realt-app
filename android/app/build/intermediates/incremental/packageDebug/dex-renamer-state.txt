@@ -1,4 +1,4 @@
-#Thu Mar 01 11:03:14 MSK 2018
+#Fri Mar 02 14:07:03 MSK 2018
 base.0=D\:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=D\:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\1f\\main\\classes.dex

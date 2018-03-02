@@ -66,15 +66,17 @@ export const reloadFlatsOnMap = filter => {
 }
 
 export const fetchFlats = filter => {
-    console.log('flats', formatLocation(filter.coordinates[0]))
+    let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
+    let page = filter.page  ? filter.page : 0;
+
     let f = {
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
         rooms: filter.rooms,
         owner: filter.owner,
         subway: filter.subway,
-        location: formatLocation(filter.coordinates[0]),
-        page: filter.page
+        location: formatLocation(coordinates),
+        page: page
     }
 
   return dispatch => {
@@ -101,13 +103,15 @@ export const fetchFlats = filter => {
 };
 
 export const fetchFlatsOnMap = filter => {
+    let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
+
     let f = {
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
         rooms: filter.rooms,
         owner: filter.owner,
         subway: filter.subway,
-        location: formatLocation(filter.coordinates[0]),
+        location: formatLocation(coordinates),
         page: filter.page
     }
 

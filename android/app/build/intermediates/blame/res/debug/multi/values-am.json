@@ -1,1345 +1,5 @@
 [
     {
-        "outputFile": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 105,
-                    "endColumn": 101,
-                    "endOffset": 202
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 280,
-                        "endColumn": 101,
-                        "endOffset": 377
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 207,
-                    "endColumn": 107,
-                    "endOffset": 310
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 382,
-                        "endColumn": 107,
-                        "endOffset": 485
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 315,
-                    "endColumn": 122,
-                    "endOffset": 433
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 490,
-                        "endColumn": 122,
-                        "endOffset": 608
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 438,
-                    "endColumn": 98,
-                    "endOffset": 532
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 613,
-                        "endColumn": 98,
-                        "endOffset": 707
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 537,
-                    "endColumn": 105,
-                    "endOffset": 638
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 712,
-                        "endColumn": 105,
-                        "endOffset": 813
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 643,
-                    "endColumn": 85,
-                    "endOffset": 724
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 818,
-                        "endColumn": 85,
-                        "endOffset": 899
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 729,
-                    "endColumn": 102,
-                    "endOffset": 827
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 904,
-                        "endColumn": 102,
-                        "endOffset": 1002
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 832,
-                    "endColumn": 112,
-                    "endOffset": 940
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 1007,
-                        "endColumn": 112,
-                        "endOffset": 1115
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 10,
-                    "startColumn": 4,
-                    "startOffset": 945,
-                    "endColumn": 78,
-                    "endOffset": 1019
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 1120,
-                        "endColumn": 78,
-                        "endOffset": 1194
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 11,
-                    "startColumn": 4,
-                    "startOffset": 1024,
-                    "endColumn": 99,
-                    "endOffset": 1119
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1199,
-                        "endColumn": 99,
-                        "endOffset": 1294
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 12,
-                    "startColumn": 4,
-                    "startOffset": 1124,
-                    "endColumn": 99,
-                    "endOffset": 1219
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1299,
-                        "endColumn": 99,
-                        "endOffset": 1394
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 13,
-                    "startColumn": 4,
-                    "startOffset": 1224,
-                    "endColumn": 95,
-                    "endOffset": 1315
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 1399,
-                        "endColumn": 95,
-                        "endOffset": 1490
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 1320,
-                    "endColumn": 102,
-                    "endOffset": 1418
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 1495,
-                        "endColumn": 102,
-                        "endOffset": 1593
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 15,
-                    "startColumn": 4,
-                    "startOffset": 1423,
-                    "endColumn": 98,
-                    "endOffset": 1517
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 1598,
-                        "endColumn": 98,
-                        "endOffset": 1692
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 1522,
-                    "endColumn": 106,
-                    "endOffset": 1624
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 1697,
-                        "endColumn": 106,
-                        "endOffset": 1799
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 17,
-                    "startColumn": 4,
-                    "startOffset": 1629,
-                    "endColumn": 115,
-                    "endOffset": 1740
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 4,
-                        "startOffset": 1804,
-                        "endColumn": 115,
-                        "endOffset": 1915
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 18,
-                    "startColumn": 4,
-                    "startOffset": 1745,
-                    "endColumn": 95,
-                    "endOffset": 1836
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 1920,
-                        "endColumn": 95,
-                        "endOffset": 2011
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 19,
-                    "startColumn": 4,
-                    "startOffset": 1841,
-                    "endColumn": 103,
-                    "endOffset": 1940
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 0,
-                        "startOffset": 283,
-                        "endColumn": 99,
-                        "endOffset": 382
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 1945,
-                    "endColumn": 170,
-                    "endOffset": 2111
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 0,
-                        "startOffset": 383,
-                        "endColumn": 170,
-                        "endOffset": 553
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 21,
-                    "startColumn": 4,
-                    "startOffset": 2116,
-                    "endColumn": 123,
-                    "endOffset": 2235
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 0,
-                        "startOffset": 554,
-                        "endColumn": 119,
-                        "endOffset": 673
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 22,
-                    "startColumn": 4,
-                    "startOffset": 2240,
-                    "endColumn": 103,
-                    "endOffset": 2339
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 0,
-                        "startOffset": 674,
-                        "endColumn": 99,
-                        "endOffset": 773
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 23,
-                    "startColumn": 4,
-                    "startOffset": 2344,
-                    "endColumn": 185,
-                    "endOffset": 2525
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 0,
-                        "startOffset": 774,
-                        "endColumn": 185,
-                        "endOffset": 959
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 24,
-                    "startColumn": 4,
-                    "startOffset": 2530,
-                    "endColumn": 124,
-                    "endOffset": 2650
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 0,
-                        "startOffset": 960,
-                        "endColumn": 120,
-                        "endOffset": 1080
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 25,
-                    "startColumn": 4,
-                    "startOffset": 2655,
-                    "endColumn": 130,
-                    "endOffset": 2781
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 0,
-                        "startOffset": 1081,
-                        "endColumn": 126,
-                        "endOffset": 1207
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 26,
-                    "startColumn": 4,
-                    "startOffset": 2786,
-                    "endColumn": 190,
-                    "endOffset": 2972
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 0,
-                        "startOffset": 285,
-                        "endColumn": 190,
-                        "endOffset": 475
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 27,
-                    "startColumn": 4,
-                    "startOffset": 2977,
-                    "endColumn": 186,
-                    "endOffset": 3159
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 0,
-                        "startOffset": 1208,
-                        "endColumn": 186,
-                        "endOffset": 1394
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 28,
-                    "startColumn": 4,
-                    "startOffset": 3164,
-                    "endColumn": 104,
-                    "endOffset": 3264
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 0,
-                        "startOffset": 1395,
-                        "endColumn": 100,
-                        "endOffset": 1495
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 29,
-                    "startColumn": 4,
-                    "startOffset": 3269,
-                    "endColumn": 175,
-                    "endOffset": 3440
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 0,
-                        "startOffset": 1496,
-                        "endColumn": 175,
-                        "endOffset": 1671
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 30,
-                    "startColumn": 4,
-                    "startOffset": 3445,
-                    "endColumn": 124,
-                    "endOffset": 3565
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 0,
-                        "startOffset": 1672,
-                        "endColumn": 120,
-                        "endOffset": 1792
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 31,
-                    "startColumn": 4,
-                    "startOffset": 3570,
-                    "endColumn": 193,
-                    "endOffset": 3759
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 0,
-                        "startOffset": 1793,
-                        "endColumn": 193,
-                        "endOffset": 1986
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 32,
-                    "startColumn": 4,
-                    "startOffset": 3764,
-                    "endColumn": 156,
-                    "endOffset": 3916
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 0,
-                        "startOffset": 1987,
-                        "endColumn": 152,
-                        "endOffset": 2139
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 33,
-                    "startColumn": 4,
-                    "startOffset": 3921,
-                    "endColumn": 89,
-                    "endOffset": 4006
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 0,
-                        "startOffset": 2140,
-                        "endColumn": 85,
-                        "endOffset": 2225
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 34,
-                    "startColumn": 4,
-                    "startOffset": 4011,
-                    "endColumn": 86,
-                    "endOffset": 4093
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 0,
-                        "startOffset": 2226,
-                        "endColumn": 82,
-                        "endOffset": 2308
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 35,
-                    "startColumn": 4,
-                    "startOffset": 4098,
-                    "endColumn": 99,
-                    "endOffset": 4193
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 0,
-                        "startOffset": 2309,
-                        "endColumn": 95,
-                        "endOffset": 2404
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 36,
-                    "startColumn": 4,
-                    "startOffset": 4198,
-                    "endColumn": 100,
-                    "endOffset": 4294
-                },
-                "from": {
-                    "file": "D:\\React\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 2016,
-                        "endColumn": 100,
-                        "endOffset": 2112
-                    }
-                }
-            }
-        ]
-    },
-    {
-        "outputFile": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
-        "map": [
-            {
-                "to": {
-                    "startLine": 2,
-                    "startColumn": 4,
-                    "startOffset": 105,
-                    "endColumn": 101,
-                    "endOffset": 202
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 280,
-                        "endColumn": 101,
-                        "endOffset": 377
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 3,
-                    "startColumn": 4,
-                    "startOffset": 207,
-                    "endColumn": 107,
-                    "endOffset": 310
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 382,
-                        "endColumn": 107,
-                        "endOffset": 485
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 4,
-                    "startColumn": 4,
-                    "startOffset": 315,
-                    "endColumn": 122,
-                    "endOffset": 433
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 490,
-                        "endColumn": 122,
-                        "endOffset": 608
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 5,
-                    "startColumn": 4,
-                    "startOffset": 438,
-                    "endColumn": 98,
-                    "endOffset": 532
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 613,
-                        "endColumn": 98,
-                        "endOffset": 707
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 6,
-                    "startColumn": 4,
-                    "startOffset": 537,
-                    "endColumn": 105,
-                    "endOffset": 638
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 712,
-                        "endColumn": 105,
-                        "endOffset": 813
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 7,
-                    "startColumn": 4,
-                    "startOffset": 643,
-                    "endColumn": 85,
-                    "endOffset": 724
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 818,
-                        "endColumn": 85,
-                        "endOffset": 899
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 8,
-                    "startColumn": 4,
-                    "startOffset": 729,
-                    "endColumn": 102,
-                    "endOffset": 827
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 904,
-                        "endColumn": 102,
-                        "endOffset": 1002
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 9,
-                    "startColumn": 4,
-                    "startOffset": 832,
-                    "endColumn": 112,
-                    "endOffset": 940
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 1007,
-                        "endColumn": 112,
-                        "endOffset": 1115
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 10,
-                    "startColumn": 4,
-                    "startOffset": 945,
-                    "endColumn": 78,
-                    "endOffset": 1019
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 4,
-                        "startOffset": 1120,
-                        "endColumn": 78,
-                        "endOffset": 1194
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 11,
-                    "startColumn": 4,
-                    "startOffset": 1024,
-                    "endColumn": 99,
-                    "endOffset": 1119
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1199,
-                        "endColumn": 99,
-                        "endOffset": 1294
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 12,
-                    "startColumn": 4,
-                    "startOffset": 1124,
-                    "endColumn": 99,
-                    "endOffset": 1219
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 1299,
-                        "endColumn": 99,
-                        "endOffset": 1394
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 13,
-                    "startColumn": 4,
-                    "startOffset": 1224,
-                    "endColumn": 95,
-                    "endOffset": 1315
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 1399,
-                        "endColumn": 95,
-                        "endOffset": 1490
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 1320,
-                    "endColumn": 102,
-                    "endOffset": 1418
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 1495,
-                        "endColumn": 102,
-                        "endOffset": 1593
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 15,
-                    "startColumn": 4,
-                    "startOffset": 1423,
-                    "endColumn": 98,
-                    "endOffset": 1517
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 1598,
-                        "endColumn": 98,
-                        "endOffset": 1692
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 1522,
-                    "endColumn": 106,
-                    "endOffset": 1624
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 1697,
-                        "endColumn": 106,
-                        "endOffset": 1799
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 17,
-                    "startColumn": 4,
-                    "startOffset": 1629,
-                    "endColumn": 115,
-                    "endOffset": 1740
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 4,
-                        "startOffset": 1804,
-                        "endColumn": 115,
-                        "endOffset": 1915
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 18,
-                    "startColumn": 4,
-                    "startOffset": 1745,
-                    "endColumn": 95,
-                    "endOffset": 1836
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 1920,
-                        "endColumn": 95,
-                        "endOffset": 2011
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 19,
-                    "startColumn": 4,
-                    "startOffset": 1841,
-                    "endColumn": 103,
-                    "endOffset": 1940
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 0,
-                        "startOffset": 283,
-                        "endColumn": 99,
-                        "endOffset": 382
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 1945,
-                    "endColumn": 170,
-                    "endOffset": 2111
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 0,
-                        "startOffset": 383,
-                        "endColumn": 170,
-                        "endOffset": 553
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 21,
-                    "startColumn": 4,
-                    "startOffset": 2116,
-                    "endColumn": 123,
-                    "endOffset": 2235
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 0,
-                        "startOffset": 554,
-                        "endColumn": 119,
-                        "endOffset": 673
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 22,
-                    "startColumn": 4,
-                    "startOffset": 2240,
-                    "endColumn": 103,
-                    "endOffset": 2339
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 0,
-                        "startOffset": 674,
-                        "endColumn": 99,
-                        "endOffset": 773
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 23,
-                    "startColumn": 4,
-                    "startOffset": 2344,
-                    "endColumn": 185,
-                    "endOffset": 2525
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 0,
-                        "startOffset": 774,
-                        "endColumn": 185,
-                        "endOffset": 959
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 24,
-                    "startColumn": 4,
-                    "startOffset": 2530,
-                    "endColumn": 124,
-                    "endOffset": 2650
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 0,
-                        "startOffset": 960,
-                        "endColumn": 120,
-                        "endOffset": 1080
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 25,
-                    "startColumn": 4,
-                    "startOffset": 2655,
-                    "endColumn": 130,
-                    "endOffset": 2781
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 0,
-                        "startOffset": 1081,
-                        "endColumn": 126,
-                        "endOffset": 1207
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 26,
-                    "startColumn": 4,
-                    "startOffset": 2786,
-                    "endColumn": 190,
-                    "endOffset": 2972
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 0,
-                        "startOffset": 285,
-                        "endColumn": 190,
-                        "endOffset": 475
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 27,
-                    "startColumn": 4,
-                    "startOffset": 2977,
-                    "endColumn": 186,
-                    "endOffset": 3159
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 0,
-                        "startOffset": 1208,
-                        "endColumn": 186,
-                        "endOffset": 1394
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 28,
-                    "startColumn": 4,
-                    "startOffset": 3164,
-                    "endColumn": 104,
-                    "endOffset": 3264
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 12,
-                        "startColumn": 0,
-                        "startOffset": 1395,
-                        "endColumn": 100,
-                        "endOffset": 1495
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 29,
-                    "startColumn": 4,
-                    "startOffset": 3269,
-                    "endColumn": 175,
-                    "endOffset": 3440
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 0,
-                        "startOffset": 1496,
-                        "endColumn": 175,
-                        "endOffset": 1671
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 30,
-                    "startColumn": 4,
-                    "startOffset": 3445,
-                    "endColumn": 124,
-                    "endOffset": 3565
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 0,
-                        "startOffset": 1672,
-                        "endColumn": 120,
-                        "endOffset": 1792
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 31,
-                    "startColumn": 4,
-                    "startOffset": 3570,
-                    "endColumn": 193,
-                    "endOffset": 3759
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 0,
-                        "startOffset": 1793,
-                        "endColumn": 193,
-                        "endOffset": 1986
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 32,
-                    "startColumn": 4,
-                    "startOffset": 3764,
-                    "endColumn": 156,
-                    "endOffset": 3916
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 0,
-                        "startOffset": 1987,
-                        "endColumn": 152,
-                        "endOffset": 2139
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 33,
-                    "startColumn": 4,
-                    "startOffset": 3921,
-                    "endColumn": 89,
-                    "endOffset": 4006
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 0,
-                        "startOffset": 2140,
-                        "endColumn": 85,
-                        "endOffset": 2225
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 34,
-                    "startColumn": 4,
-                    "startOffset": 4011,
-                    "endColumn": 86,
-                    "endOffset": 4093
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 0,
-                        "startOffset": 2226,
-                        "endColumn": 82,
-                        "endOffset": 2308
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 35,
-                    "startColumn": 4,
-                    "startOffset": 4098,
-                    "endColumn": 99,
-                    "endOffset": 4193
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
-                    "position": {
-                        "startLine": 19,
-                        "startColumn": 0,
-                        "startOffset": 2309,
-                        "endColumn": 95,
-                        "endOffset": 2404
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 36,
-                    "startColumn": 4,
-                    "startOffset": 4198,
-                    "endColumn": 100,
-                    "endOffset": 4294
-                },
-                "from": {
-                    "file": "D:\\Users\\romanventskus\\WebstormProjects\\realt-app-notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
-                    "position": {
-                        "startLine": 21,
-                        "startColumn": 4,
-                        "startOffset": 2016,
-                        "endColumn": 100,
-                        "endOffset": 2112
-                    }
-                }
-            }
-        ]
-    },
-    {
         "outputFile": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
         "map": [
             {
@@ -1351,13 +11,13 @@
                     "endOffset": 202
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 280,
+                        "startOffset": 55,
                         "endColumn": 101,
-                        "endOffset": 377
+                        "endOffset": 152
                     }
                 }
             },
@@ -1370,13 +30,13 @@
                     "endOffset": 310
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 382,
+                        "startOffset": 157,
                         "endColumn": 107,
-                        "endOffset": 485
+                        "endOffset": 260
                     }
                 }
             },
@@ -1389,13 +49,13 @@
                     "endOffset": 433
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 490,
+                        "startOffset": 265,
                         "endColumn": 122,
-                        "endOffset": 608
+                        "endOffset": 383
                     }
                 }
             },
@@ -1408,13 +68,13 @@
                     "endOffset": 532
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 613,
+                        "startOffset": 388,
                         "endColumn": 98,
-                        "endOffset": 707
+                        "endOffset": 482
                     }
                 }
             },
@@ -1427,13 +87,13 @@
                     "endOffset": 638
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 712,
+                        "startOffset": 487,
                         "endColumn": 105,
-                        "endOffset": 813
+                        "endOffset": 588
                     }
                 }
             },
@@ -1446,13 +106,13 @@
                     "endOffset": 724
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 818,
+                        "startOffset": 593,
                         "endColumn": 85,
-                        "endOffset": 899
+                        "endOffset": 674
                     }
                 }
             },
@@ -1465,13 +125,13 @@
                     "endOffset": 827
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 904,
+                        "startOffset": 679,
                         "endColumn": 102,
-                        "endOffset": 1002
+                        "endOffset": 777
                     }
                 }
             },
@@ -1484,13 +144,13 @@
                     "endOffset": 940
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 1007,
+                        "startOffset": 782,
                         "endColumn": 112,
-                        "endOffset": 1115
+                        "endOffset": 890
                     }
                 }
             },
@@ -1499,17 +159,17 @@
                     "startLine": 10,
                     "startColumn": 4,
                     "startOffset": 945,
-                    "endColumn": 78,
-                    "endOffset": 1019
+                    "endColumn": 77,
+                    "endOffset": 1018
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 1120,
-                        "endColumn": 78,
-                        "endOffset": 1194
+                        "startOffset": 895,
+                        "endColumn": 77,
+                        "endOffset": 968
                     }
                 }
             },
@@ -1517,18 +177,18 @@
                 "to": {
                     "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 1024,
-                    "endColumn": 99,
-                    "endOffset": 1119
+                    "startOffset": 1023,
+                    "endColumn": 77,
+                    "endOffset": 1096
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1199,
-                        "endColumn": 99,
-                        "endOffset": 1294
+                        "startOffset": 973,
+                        "endColumn": 77,
+                        "endOffset": 1046
                     }
                 }
             },
@@ -1536,18 +196,18 @@
                 "to": {
                     "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 1124,
-                    "endColumn": 99,
-                    "endOffset": 1219
+                    "startOffset": 1101,
+                    "endColumn": 78,
+                    "endOffset": 1175
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1299,
-                        "endColumn": 99,
-                        "endOffset": 1394
+                        "startOffset": 1051,
+                        "endColumn": 78,
+                        "endOffset": 1125
                     }
                 }
             },
@@ -1555,18 +215,18 @@
                 "to": {
                     "startLine": 13,
                     "startColumn": 4,
-                    "startOffset": 1224,
-                    "endColumn": 95,
-                    "endOffset": 1315
+                    "startOffset": 1180,
+                    "endColumn": 99,
+                    "endOffset": 1275
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 13,
                         "startColumn": 4,
-                        "startOffset": 1399,
-                        "endColumn": 95,
-                        "endOffset": 1490
+                        "startOffset": 1130,
+                        "endColumn": 99,
+                        "endOffset": 1225
                     }
                 }
             },
@@ -1574,18 +234,18 @@
                 "to": {
                     "startLine": 14,
                     "startColumn": 4,
-                    "startOffset": 1320,
-                    "endColumn": 102,
-                    "endOffset": 1418
+                    "startOffset": 1280,
+                    "endColumn": 99,
+                    "endOffset": 1375
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 14,
                         "startColumn": 4,
-                        "startOffset": 1495,
-                        "endColumn": 102,
-                        "endOffset": 1593
+                        "startOffset": 1230,
+                        "endColumn": 99,
+                        "endOffset": 1325
                     }
                 }
             },
@@ -1593,18 +253,18 @@
                 "to": {
                     "startLine": 15,
                     "startColumn": 4,
-                    "startOffset": 1423,
-                    "endColumn": 98,
-                    "endOffset": 1517
+                    "startOffset": 1380,
+                    "endColumn": 95,
+                    "endOffset": 1471
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 15,
                         "startColumn": 4,
-                        "startOffset": 1598,
-                        "endColumn": 98,
-                        "endOffset": 1692
+                        "startOffset": 1330,
+                        "endColumn": 95,
+                        "endOffset": 1421
                     }
                 }
             },
@@ -1612,18 +272,18 @@
                 "to": {
                     "startLine": 16,
                     "startColumn": 4,
-                    "startOffset": 1522,
-                    "endColumn": 106,
-                    "endOffset": 1624
+                    "startOffset": 1476,
+                    "endColumn": 102,
+                    "endOffset": 1574
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 16,
                         "startColumn": 4,
-                        "startOffset": 1697,
-                        "endColumn": 106,
-                        "endOffset": 1799
+                        "startOffset": 1426,
+                        "endColumn": 102,
+                        "endOffset": 1524
                     }
                 }
             },
@@ -1631,18 +291,18 @@
                 "to": {
                     "startLine": 17,
                     "startColumn": 4,
-                    "startOffset": 1629,
-                    "endColumn": 115,
-                    "endOffset": 1740
+                    "startOffset": 1579,
+                    "endColumn": 98,
+                    "endOffset": 1673
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 17,
                         "startColumn": 4,
-                        "startOffset": 1804,
-                        "endColumn": 115,
-                        "endOffset": 1915
+                        "startOffset": 1529,
+                        "endColumn": 98,
+                        "endOffset": 1623
                     }
                 }
             },
@@ -1650,18 +310,18 @@
                 "to": {
                     "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 1745,
-                    "endColumn": 95,
-                    "endOffset": 1836
+                    "startOffset": 1678,
+                    "endColumn": 106,
+                    "endOffset": 1780
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 18,
                         "startColumn": 4,
-                        "startOffset": 1920,
-                        "endColumn": 95,
-                        "endOffset": 2011
+                        "startOffset": 1628,
+                        "endColumn": 106,
+                        "endOffset": 1730
                     }
                 }
             },
@@ -1669,9 +329,47 @@
                 "to": {
                     "startLine": 19,
                     "startColumn": 4,
-                    "startOffset": 1841,
+                    "startOffset": 1785,
+                    "endColumn": 115,
+                    "endOffset": 1896
+                },
+                "from": {
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
+                    "position": {
+                        "startLine": 19,
+                        "startColumn": 4,
+                        "startOffset": 1735,
+                        "endColumn": 115,
+                        "endOffset": 1846
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 20,
+                    "startColumn": 4,
+                    "startOffset": 1901,
+                    "endColumn": 95,
+                    "endOffset": 1992
+                },
+                "from": {
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
+                    "position": {
+                        "startLine": 20,
+                        "startColumn": 4,
+                        "startOffset": 1851,
+                        "endColumn": 95,
+                        "endOffset": 1942
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 21,
+                    "startColumn": 4,
+                    "startOffset": 1997,
                     "endColumn": 103,
-                    "endOffset": 1940
+                    "endOffset": 2096
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1686,11 +384,11 @@
             },
             {
                 "to": {
-                    "startLine": 20,
+                    "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 1945,
+                    "startOffset": 2101,
                     "endColumn": 170,
-                    "endOffset": 2111
+                    "endOffset": 2267
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1705,11 +403,11 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 2116,
+                    "startOffset": 2272,
                     "endColumn": 123,
-                    "endOffset": 2235
+                    "endOffset": 2391
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1724,11 +422,11 @@
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 2240,
+                    "startOffset": 2396,
                     "endColumn": 103,
-                    "endOffset": 2339
+                    "endOffset": 2495
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1743,11 +441,11 @@
             },
             {
                 "to": {
-                    "startLine": 23,
+                    "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 2344,
+                    "startOffset": 2500,
                     "endColumn": 185,
-                    "endOffset": 2525
+                    "endOffset": 2681
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1762,11 +460,11 @@
             },
             {
                 "to": {
-                    "startLine": 24,
+                    "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 2530,
+                    "startOffset": 2686,
                     "endColumn": 124,
-                    "endOffset": 2650
+                    "endOffset": 2806
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1781,11 +479,11 @@
             },
             {
                 "to": {
-                    "startLine": 25,
+                    "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 2655,
+                    "startOffset": 2811,
                     "endColumn": 130,
-                    "endOffset": 2781
+                    "endOffset": 2937
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1800,11 +498,11 @@
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 2786,
+                    "startOffset": 2942,
                     "endColumn": 190,
-                    "endOffset": 2972
+                    "endOffset": 3128
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-basement\\10.2.4\\res\\values-am\\values.xml",
@@ -1819,11 +517,11 @@
             },
             {
                 "to": {
-                    "startLine": 27,
+                    "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 2977,
+                    "startOffset": 3133,
                     "endColumn": 186,
-                    "endOffset": 3159
+                    "endOffset": 3315
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1838,11 +536,11 @@
             },
             {
                 "to": {
-                    "startLine": 28,
+                    "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 3164,
+                    "startOffset": 3320,
                     "endColumn": 104,
-                    "endOffset": 3264
+                    "endOffset": 3420
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1857,11 +555,11 @@
             },
             {
                 "to": {
-                    "startLine": 29,
+                    "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 3269,
+                    "startOffset": 3425,
                     "endColumn": 175,
-                    "endOffset": 3440
+                    "endOffset": 3596
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1876,11 +574,11 @@
             },
             {
                 "to": {
-                    "startLine": 30,
+                    "startLine": 32,
                     "startColumn": 4,
-                    "startOffset": 3445,
+                    "startOffset": 3601,
                     "endColumn": 124,
-                    "endOffset": 3565
+                    "endOffset": 3721
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1895,11 +593,11 @@
             },
             {
                 "to": {
-                    "startLine": 31,
+                    "startLine": 33,
                     "startColumn": 4,
-                    "startOffset": 3570,
+                    "startOffset": 3726,
                     "endColumn": 193,
-                    "endOffset": 3759
+                    "endOffset": 3915
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1914,11 +612,11 @@
             },
             {
                 "to": {
-                    "startLine": 32,
+                    "startLine": 34,
                     "startColumn": 4,
-                    "startOffset": 3764,
+                    "startOffset": 3920,
                     "endColumn": 156,
-                    "endOffset": 3916
+                    "endOffset": 4072
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1933,11 +631,11 @@
             },
             {
                 "to": {
-                    "startLine": 33,
+                    "startLine": 35,
                     "startColumn": 4,
-                    "startOffset": 3921,
+                    "startOffset": 4077,
                     "endColumn": 89,
-                    "endOffset": 4006
+                    "endOffset": 4162
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1952,11 +650,11 @@
             },
             {
                 "to": {
-                    "startLine": 34,
+                    "startLine": 36,
                     "startColumn": 4,
-                    "startOffset": 4011,
+                    "startOffset": 4167,
                     "endColumn": 86,
-                    "endOffset": 4093
+                    "endOffset": 4249
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1971,11 +669,11 @@
             },
             {
                 "to": {
-                    "startLine": 35,
+                    "startLine": 37,
                     "startColumn": 4,
-                    "startOffset": 4098,
+                    "startOffset": 4254,
                     "endColumn": 99,
-                    "endOffset": 4193
+                    "endOffset": 4349
                 },
                 "from": {
                     "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.google.android.gms\\play-services-base\\10.2.4\\res\\values-am\\values.xml",
@@ -1990,20 +688,20 @@
             },
             {
                 "to": {
-                    "startLine": 36,
+                    "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 4198,
+                    "startOffset": 4354,
                     "endColumn": 100,
-                    "endOffset": 4294
+                    "endOffset": 4450
                 },
                 "from": {
-                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.0.1\\res\\values-am\\values-am.xml",
+                    "file": "D:\\React\\realt_app_notifier\\android\\app\\build\\intermediates\\exploded-aar\\com.android.support\\appcompat-v7\\23.4.0\\res\\values-am\\values-am.xml",
                     "position": {
                         "startLine": 21,
                         "startColumn": 4,
-                        "startOffset": 2016,
+                        "startOffset": 1947,
                         "endColumn": 100,
-                        "endOffset": 2112
+                        "endOffset": 2043
                     }
                 }
             }
