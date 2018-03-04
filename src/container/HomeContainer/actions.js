@@ -53,7 +53,7 @@ export function fetchMapListSuccess(mapList: Array) {
 export const reloadFlats = filter => {
     return dispatch => {
         dispatch(clearFlatsList())
-        dispatch(fetchFlats(filter));
+        dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
     }
 }
 

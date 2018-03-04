@@ -49,7 +49,7 @@ export interface Props {
 
 const { height, width } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0922;
+const LATITUDE_DELTA = 0.3122;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const ROOM_ENUM = {
     ONE: "ONE_ROOM",
@@ -263,8 +263,8 @@ class Filter extends React.Component<Props, State> {
           const polygons  = this.state.polygons ? this.state.polygons : []
           const editing = this.state.editing ? this.state.editing : [];
 
-          console.log(polygons)
-          console.log(editing)
+          // console.log(polygons)
+          // console.log(editing)
 
           this.setState({
               polygons: [...polygons, editing],
@@ -289,10 +289,6 @@ class Filter extends React.Component<Props, State> {
               editing: null,
           });
       }
-      //console.log(arr)
-      // console.log(copy)
-      // console.log(this.state.editing)
-      // console.log(copy)
   }
 
   render() {
@@ -535,8 +531,8 @@ class Filter extends React.Component<Props, State> {
                     alignSelf: "center"
                   }}
                   initialRegion={{
-                    latitude: 53.902863,
-                    longitude: 27.551579,
+                    latitude: 53.902231,
+                    longitude: 27.561876,
                     latitudeDelta: LATITUDE_DELTA,
                     longitudeDelta: LONGITUDE_DELTA
                   }}
