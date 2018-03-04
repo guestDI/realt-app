@@ -33,7 +33,7 @@ class HomeContainer extends React.Component<Props, State> {
           duration: 850,
           delay: 500,
       })
-      this.props.fetchFilter()
+      // this.props.fetchFilter()
       // console.log(filter)
 
     // this.props.fetchFlats(filter);
