@@ -147,7 +147,8 @@ class Home extends React.Component<Props, State> {
                 list={this.props.list}
                 onListEndReached={this.handleLoadMore}
                 isListLoading={this.props.loadingState}
-                // onRefresh={this.props.handleRefresh}
+                isListRefreshing={this.props.refreshListState}
+                onRefreshList={this.props.refreshFlatsList}
               />
             </Tab>
             <Tab
@@ -180,21 +181,7 @@ class Home extends React.Component<Props, State> {
               <FavoriteFlats
                   navigation={this.props.navigation}
                   list={this.props.favorites}
-                  // onListEndReached={this.handleLoadMore}
-                  // isListLoading={this.props.loadingState}
-                  // onRefresh={this.props.handleRefresh}
               />
-              {/*{this.props.favorites ?*/}
-                {/*this.props.favorites.map((flat, index) => {*/}
-                {/*return (*/}
-                  {/*<Text key={index}>{flat.address}</Text>*/}
-                {/*)*/}
-              {/*}) : <View style={{ paddingTop: 20, alignItems: 'center' }}>*/}
-                      {/*<Text style={{fontSize: 16}}>*/}
-                        {/*Вы пока не отслеживаете ни одной квартиры.*/}
-                      {/*</Text>*/}
-                    {/*</View>*/}
-              {/*}*/}
             </Tab>
           </Tabs>
           {/*</Container>*/}

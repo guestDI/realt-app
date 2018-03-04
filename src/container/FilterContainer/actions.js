@@ -23,13 +23,12 @@ export function fetchFilter() {
 
 export function addFilter(filter: Object) {
   return dispatch => {
-      setFilter(filter);
-      // console.log(filter)
-      reloadFlats(filter)(dispatch);
-      reloadFlatsOnMap(filter)(dispatch)
       dispatch({
           type: "ADD_FILTER",
           filter
       });
+      setFilter(filter);
+      reloadFlats(filter)(dispatch);
+      reloadFlatsOnMap(filter)(dispatch)
   }
 }

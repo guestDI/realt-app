@@ -2,6 +2,7 @@ const initialState = {
   list: [],
   mapList: [],
   listIsLoading: false,
+  listIsRefreshing: false,
   isLoading: true
 };
 
@@ -26,6 +27,13 @@ export default function(state: any = initialState, action: Function) {
           ...state,
           mapList: []
       };
+  }
+
+  if (action.type === "LIST_IS_REFRESHING") {
+    return {
+      ...state,
+      listIsRefreshing: action.listIsRefreshing
+    };
   }
 
   if (action.type === "LIST_IS_LOADING") {

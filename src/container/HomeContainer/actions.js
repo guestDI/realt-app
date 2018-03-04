@@ -43,11 +43,27 @@ export function mapListIsLoading(bool: boolean) {
   };
 }
 
+export function listIsRefreshing(bool: boolean) {
+    return {
+        type: "LIST_IS_REFRESHING",
+        listIsRefreshing: bool
+    };
+}
+
 export function fetchMapListSuccess(mapList: Array) {
   return {
     type: "FETCH_MAP_LIST_SUCCESS",
     mapList
   };
+}
+
+export const refreshFlats = filter => {
+    return dispatch => {
+        dispatch(listIsRefreshing(true))
+        dispatch(clearFlatsList())
+        dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
+        // dispatch(fetchFlatsOnMap(Object.assign({}, filter, {page: 0})));
+    }
 }
 
 export const reloadFlats = filter => {
@@ -94,6 +110,7 @@ export const fetchFlats = filter => {
       .then(response => response.data)
       .then(flats => dispatch(fetchListSuccess(flats)))
       .then(() => dispatch(listIsLoading(false)))
+      .then(() => dispatch(listIsRefreshing(false)))
       .catch(e => {
         console.error(e);
         dispatch(fetchListHasErrored(true))

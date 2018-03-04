@@ -38,8 +38,10 @@ export interface Props {
 export interface State {
   monthPlus: number;
 }
-
 const { height, width } = Dimensions.get("window");
+const ASPECT_RATIO = width / height;
+const LATITUDE_DELTA = 0.3122;
+const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
 class FlatsMap extends React.Component<Props, State> {
@@ -72,10 +74,10 @@ class FlatsMap extends React.Component<Props, State> {
         <MapView
           style={{ flex: 1, width: width, height: height * 0.5 }}
           initialRegion={{
-            latitude: 53.902863,
-            longitude: 27.551579,
-            latitudeDelta: 0.2192,
-            longitudeDelta: 0.1191
+            latitude: 53.902231,
+            longitude: 27.561876,
+            latitudeDelta: LATITUDE_DELTA,
+            longitudeDelta: LONGITUDE_DELTA
           }}
           showsUserLocation={true}
           loadingEnabled={true}
