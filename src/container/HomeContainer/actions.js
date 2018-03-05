@@ -17,6 +17,13 @@ export function fetchListSuccess(list: Array) {
   };
 }
 
+export function isResultsEmpty(bool: boolean){
+    return {
+        type: "LIST_IS_EMPTY",
+        listIsEmpty: bool
+    };
+}
+
 export function clearFlatsList() {
     // console.log('clear')
     return {
@@ -63,7 +70,7 @@ export const refreshFlats = filter => {
         dispatch(listIsRefreshing(true))
         dispatch(clearFlatsList())
         dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
-        // dispatch(fetchFlatsOnMap(Object.assign({}, filter, {page: 0})));
+        dispatch(fetchFlatsOnMap(Object.assign({}, filter, {page: 0})));
     }
 }
 
@@ -120,9 +127,14 @@ export const fetchFlats = filter => {
         }
       )
       .then(response => response.data)
+        // .then(flats => {
+        //     dispatch(isResultsEmpty(!flats || flats.length == 0));
+        //     return flats;
+        // })
       .then(flats => dispatch(fetchListSuccess(flats)))
       .then(() => dispatch(listIsLoading(false)))
       .then(() => dispatch(listIsRefreshing(false)))
+
       .catch(e => {
         console.error(e);
         dispatch(fetchListHasErrored(true))

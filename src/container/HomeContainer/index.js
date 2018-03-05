@@ -73,7 +73,7 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   loadMore = page => {
-    // if (this.props.noMoreData) {
+    // if (this.props.listIsEmpty) {
     //   return;
     // }
     let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: page});
@@ -86,7 +86,6 @@ function bindAction(dispatch) {
     fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
     initFlatsLoad: () => dispatch(initFlatsLoad()),
-    // reloadFlatsOnMap: filter => dispatch(reloadFlatsOnMap(filter)),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
     fetchFilter: () => dispatch(fetchFilter()),
       getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
@@ -101,6 +100,7 @@ const mapStateToProps = state => ({
   mapData: state.homeReducer.mapList,
   isLoading: state.homeReducer.isLoading,
   filter: state.filterReducer.filter,
-    favoriteFlats: state.flatReducer.favoriteFlats,
+  favoriteFlats: state.flatReducer.favoriteFlats,
+  listIsEmpty: state.homeReducer.listIsEmpty
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

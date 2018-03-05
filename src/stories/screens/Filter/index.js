@@ -80,6 +80,7 @@ class Filter extends React.Component<Props, State> {
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: "ANY_SUBWAY",
       mapScrollEnabled: false,
+      regionIsChanging: true
     };
   }
 
@@ -105,7 +106,7 @@ class Filter extends React.Component<Props, State> {
   onPress(e) {
     if(this.state.mapScrollEnabled && this.state.polygons.length===0){
         const { editing, creatingHole } = this.state;
-        if (!editing) {
+        if (!editing && this.state.regionIsChanging) {
             this.setState({
                 editing: {
                     id: id++,
@@ -140,12 +141,13 @@ class Filter extends React.Component<Props, State> {
   }
 
   // onRegionChangeComplete(e){
-  //
+  //     console.log('completed', e.hasOwnProperty('latitude'))
   // }
   //
   // onRegionChange(e){
+  //     console.log('change', e.hasOwnProperty('latitude'))
   //     this.setState({
-  //         regionChanged: e.hasOwnProperty("latitude")
+  //         regionIsChanging: e.hasOwnProperty('latitude')
   //     });
   // }
 

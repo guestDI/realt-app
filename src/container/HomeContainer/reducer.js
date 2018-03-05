@@ -3,7 +3,8 @@ const initialState = {
   mapList: [],
   listIsLoading: false,
   listIsRefreshing: false,
-  isLoading: true
+  isLoading: true,
+  listIsEmpty: false
 };
 
 export default function(state: any = initialState, action: Function) {
@@ -15,12 +16,18 @@ export default function(state: any = initialState, action: Function) {
   }
 
   if (action.type === "LIST_CLEAR") {
-      console.log("List Clear Reducer")
       return {
           ...state,
           list: []
       };
   }
+
+    if (action.type === "LIST_IS_EMPTY") {
+        return {
+            ...state,
+            listIsEmpty: action.listIsEmpty
+        };
+    }
 
   if (action.type === "MAP_CLEAR") {
       return {
