@@ -15,7 +15,7 @@ export default function(state: any = initialState, action: Function) {
   }
 
   if (action.type === "LIST_CLEAR") {
-      // console.log("List Clear Reducer")
+      console.log("List Clear Reducer")
       return {
           ...state,
           list: []

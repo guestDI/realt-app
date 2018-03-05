@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Home from "../../stories/screens/Home";
 import flats from "./data_test";
 import SplashScreen from 'react-native-smart-splash-screen'
-import { fetchFlats, fetchFlatsOnMap, refreshFlats } from "./actions";
+import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./actions";
 import { fetchFilter } from '../FilterContainer/actions'
 import { fetchFavoritesFlats } from '../FlatPageContainer/actions'
 
@@ -33,7 +33,10 @@ class HomeContainer extends React.Component<Props, State> {
           duration: 850,
           delay: 500,
       })
-      // this.props.fetchFilter()
+
+      // let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: 0});
+      this.props.initFlatsLoad()
+      // this.props.reloadFlatsOnMap(filter)
       // console.log(filter)
 
     // this.props.fetchFlats(filter);
@@ -49,6 +52,7 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   render() {
+    // console.log(this.props.data)
     return (
       <Home
         navigation={this.props.navigation}
@@ -81,6 +85,8 @@ function bindAction(dispatch) {
   return {
     fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
+    initFlatsLoad: () => dispatch(initFlatsLoad()),
+    // reloadFlatsOnMap: filter => dispatch(reloadFlatsOnMap(filter)),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
     fetchFilter: () => dispatch(fetchFilter()),
       getFavoriteFlats: () => dispatch(fetchFavoritesFlats())

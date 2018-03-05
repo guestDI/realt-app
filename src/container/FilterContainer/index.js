@@ -10,7 +10,7 @@ export interface Props {
 export interface State {}
 class FilterContainer extends React.Component<Props, State> {
   componentDidMount() {
-    this.props.fetchFilter();
+    // this.props.fetchFilter();
     // console.log(this.props.data)
   }
 

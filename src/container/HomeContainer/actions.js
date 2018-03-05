@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from 'qs'
-import { getFavoriteFlat, saveFavoriteFlat } from "../../asyncStorage";
+import { getFavoriteFlat, saveFavoriteFlat, getFilter } from "../../asyncStorage";
 import { formatLocation } from "../../utils/utils";
 
 export function listIsLoading(bool: boolean) {
@@ -18,6 +18,7 @@ export function fetchListSuccess(list: Array) {
 }
 
 export function clearFlatsList() {
+    // console.log('clear')
     return {
         type: "LIST_CLEAR",
     }
@@ -63,6 +64,17 @@ export const refreshFlats = filter => {
         dispatch(clearFlatsList())
         dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
         // dispatch(fetchFlatsOnMap(Object.assign({}, filter, {page: 0})));
+    }
+}
+
+export const initFlatsLoad = () => {
+    return dispatch => {
+        dispatch(clearFlatsList())
+        getFilter(function(filter) {
+            // dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
+            fetchFlats(Object.assign({}, filter, {page: 0}))(dispatch);
+            fetchFlatsOnMap(Object.assign({}, filter, {page: 0}))(dispatch)
+        });
     }
 }
 

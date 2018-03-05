@@ -79,7 +79,7 @@ class Filter extends React.Component<Props, State> {
       coordinates: [],
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: "ANY_SUBWAY",
-      mapScrollEnabled: false
+      mapScrollEnabled: false,
     };
   }
 
@@ -95,7 +95,7 @@ class Filter extends React.Component<Props, State> {
         twoRooms: rooms.includes(ROOM_ENUM.TWO),
         threeRooms: rooms.includes(ROOM_ENUM.THREE),
         fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
-        polygons: nextProps.filter.coordinates
+        polygons: polygons
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
       });
@@ -103,7 +103,7 @@ class Filter extends React.Component<Props, State> {
   }
 
   onPress(e) {
-    if(this.state.mapScrollEnabled ){
+    if(this.state.mapScrollEnabled && this.state.polygons.length===0){
         const { editing, creatingHole } = this.state;
         if (!editing) {
             this.setState({
@@ -138,6 +138,16 @@ class Filter extends React.Component<Props, State> {
     }
     // console.log(this.state.editing)
   }
+
+  // onRegionChangeComplete(e){
+  //
+  // }
+  //
+  // onRegionChange(e){
+  //     this.setState({
+  //         regionChanged: e.hasOwnProperty("latitude")
+  //     });
+  // }
 
   onValueChanged = value => {
     this.setState({
@@ -262,9 +272,6 @@ class Filter extends React.Component<Props, State> {
 
           const polygons  = this.state.polygons ? this.state.polygons : []
           const editing = this.state.editing ? this.state.editing : [];
-
-          // console.log(polygons)
-          // console.log(editing)
 
           this.setState({
               polygons: [...polygons, editing],
@@ -540,6 +547,8 @@ class Filter extends React.Component<Props, State> {
                   showsTraffic={false}
                   loadingEnabled={true}
                   // scrollEnabled
+                  // onRegionChangeComplete={e => this.onRegionChangeComplete(e)}
+                  // onRegionChange={ e=> this.onRegionChange(e)}
                   onPress={e => this.onPress(e)}
                   {...mapOptions}
                 >
