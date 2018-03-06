@@ -40,17 +40,17 @@ export interface Props {
 
 const { height, width } = Dimensions.get("window");
 
-class FlatRow extends React.Component<Props, State> {
+class FlatRow extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
-    this.state = {
-      fullReadComment: false
-    };
   }
 
   onRowPress = () => {
     if (this.props.onRowPressed) {
-      this.props.onRowPressed(this.props.flat);
+      //for little bit smoother click animation
+        setTimeout(() => {
+            this.props.onRowPressed(this.props.flat);
+        }, 100)
     }
   };
 
