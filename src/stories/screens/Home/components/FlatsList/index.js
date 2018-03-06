@@ -48,7 +48,6 @@ class FlatsList extends React.Component<Props, State> {
       loading: this.props.isListLoading,
       page: 0,
       error: null,
-      refreshing: this.props.isListRefreshing
     };
   }
 
@@ -59,23 +58,7 @@ class FlatsList extends React.Component<Props, State> {
             });
         }
 
-        if (this.props.isListRefreshing !== nextProps.isListRefreshing) {
-            this.setState({
-                refreshing: nextProps.isListRefreshing,
-            });
-        }
     }
-
-  handleRefresh = () => {
-    this.setState(
-      {
-        refreshing: true
-      },
-      () => {
-        this.props.onRefreshList();
-      }
-    );
-  };
 
   loadMoreFlats = () => {
     let currentPage = this.state.page + 1;
@@ -122,8 +105,8 @@ class FlatsList extends React.Component<Props, State> {
           // ItemSeparatorComponent={this.renderSeparator}
           // ListHeaderComponent={this.renderHeader}
           ListFooterComponent={this.renderFooter}
-          onRefresh={this.handleRefresh}
-          refreshing={this.state.refreshing}
+          onRefresh={this.props.onRefreshList}
+          refreshing={this.props.isListRefreshing}
           onEndReached={this.loadMoreFlats}
           onEndReachedThreshold={2}
         />

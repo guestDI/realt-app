@@ -68,8 +68,7 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   handleRefresh = () => {
-      let filter = Object.assign({}, this.props.filter );
-      this.props.refreshFlats(this.props.filter );
+      this.props.refreshFlats(this.props.filter);
   }
 
   loadMore = page => {
@@ -101,6 +100,6 @@ const mapStateToProps = state => ({
   isLoading: state.homeReducer.isLoading,
   filter: state.filterReducer.filter,
   favoriteFlats: state.flatReducer.favoriteFlats,
-  listIsEmpty: state.homeReducer.listIsEmpty
+  listIsEmpty: state.homeReducer.listIsEmpty,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);
