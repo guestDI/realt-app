@@ -6,20 +6,16 @@ import { Image, ImageBackground } from "react-native";
 const routes = [
   {
     route: "Home",
-    caption: "Home"
+    caption: "Список"
   },
-  {
-    route: "Friends",
-    caption: "Friends"
-  },
-  {
-    route: "Profile",
-    caption: "Profile"
-  },
-  {
-    route: "Logout",
-    caption: "Logout"
-  }
+    {
+      route: "Map",
+        caption: "Карта",
+    },
+    {
+        route: "Favorite",
+        caption: "Избранное",
+    },
 ];
 
 export interface Props {

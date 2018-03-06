@@ -29,9 +29,7 @@ import {
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
-import FlatsList from "./components/FlatsList/index";
 import FlatsMap from "./components/FlatsMap";
-import FavoriteFlats from './components/FavoriteFlats'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -111,7 +109,7 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Left>
           <Body>
-            <Title>Аренда</Title>
+            <Title>Карта</Title>
           </Body>
           <Right>
             <Button
@@ -142,14 +140,10 @@ class Home extends React.Component<Props, State> {
               activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
               textStyle={{ color: "#959ba6", fontSize: 14 }}
             >*/}
-              <FlatsList
+            <FlatsMap
                 navigation={this.props.navigation}
-                list={this.props.list}
-                onListEndReached={this.handleLoadMore}
-                isListLoading={this.props.loadingState}
-                isListRefreshing={this.props.refreshListState}
-                onRefreshList={this.props.refreshFlatsList}
-              />
+                list={this.props.flatsOnMap}
+            />
             {/*</Tab>
             <Tab
               heading={
