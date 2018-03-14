@@ -563,7 +563,8 @@ class Filter extends React.Component<Props, State> {
                             longitude: obj.longitude
                           }}
                           // onPress={() => console.log(index)}
-                          image={require("../../../../assets/images/pin.png")}
+                          // image={require("../../../../assets/images/pin.png")}
+
                           onCalloutPress={() => this.removeMarker(index)}
                         >
                           <MapView.Callout>

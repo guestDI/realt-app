@@ -90,7 +90,8 @@ class FlatsMap extends React.Component<Props, State> {
                   latitude: flat.latitude,
                   longitude: flat.longitude
                 }}
-                image={require("../../../../../../assets/images/pin1.png")}
+                // image={require("../../../../../../assets/images/pin1.png")}
+
                 onCalloutPress={() =>
                   this.props.navigation.navigate("FlatPage", {
                     flat: flat

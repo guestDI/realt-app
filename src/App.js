@@ -15,8 +15,6 @@ const Drawer = DrawerNavigator(
     Home: { screen: Home },
       Map: { screen: Map },
       Favorite: { screen: Favorite },
-    // Friends: { screen: Friends },
-    // Profile: {screen: UserProfile}
   },
   {
     initialRouteName: "Home",
@@ -31,8 +29,6 @@ const App = StackNavigator(
     FlatPage: { screen: FlatPage },
     Filter: { screen: Filter },
     Drawer: { screen: Drawer }
-    // FriendsRating: { screen: FriendsRating },
-    // FriendProfile: { screen: FriendProfile }
   },
   {
     initialRouteName: "Drawer",

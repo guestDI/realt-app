@@ -116,6 +116,22 @@ class Home extends React.Component<Props, State> {
           <Right>
             <Button
                 style={{zIndex: 9999}}
+                transparent onPress={() => this.props.navigation.navigate("Map")}>
+              <Icon
+                  active
+                  name="map"
+              />
+            </Button>
+            <Button
+                style={{zIndex: 9999}}
+                transparent onPress={() => this.props.navigation.navigate("Favorite")}>
+              <Icon
+                  active
+                  name="md-star"
+              />
+            </Button>
+            <Button
+                style={{zIndex: 9999}}
                 transparent onPress={() => this.props.navigation.navigate("Filter")}>
               <Icon
                 active
