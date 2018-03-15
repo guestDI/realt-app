@@ -79,7 +79,8 @@ class Filter extends React.Component<Props, State> {
       coordinates: [],
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: "ANY_SUBWAY",
-      mapScrollEnabled: false,
+      mapScrollEnabled: true,
+      mapIsEditable: false,
       regionIsChanging: true
     };
   }
@@ -104,7 +105,7 @@ class Filter extends React.Component<Props, State> {
   }
 
   onPress(e) {
-    if(this.state.mapScrollEnabled && this.state.polygons.length===0){
+    if(this.state.mapIsEditable && this.state.polygons.length===0){
         const { editing, creatingHole } = this.state;
         if (!editing && this.state.regionIsChanging) {
             this.setState({
@@ -267,10 +268,10 @@ class Filter extends React.Component<Props, State> {
 
   onEditHandler = () => {
       this.setState({
-          mapScrollEnabled: !this.state.mapScrollEnabled,
+          mapIsEditable: !this.state.mapIsEditable,
       });
 
-      if(this.state.mapScrollEnabled && this.state.editing !== null && this.state.editing.coordinates.length > 0){
+      if(this.state.mapIsEditable && this.state.editing !== null && this.state.editing.coordinates.length > 0){
 
           const polygons  = this.state.polygons ? this.state.polygons : []
           const editing = this.state.editing ? this.state.editing : [];
@@ -507,7 +508,7 @@ class Filter extends React.Component<Props, State> {
                 <View style={{flex: 1, flexDirection: 'row', paddingTop: 5, paddingBottom: 5,
                     alignItems: "center", justifyContent: 'space-between'}}>
                   <View style={{left: width*0.05, width: width*0.4,}}>
-                      {this.state.mapScrollEnabled ?
+                      {this.state.mapIsEditable ?
                           <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
                                   onPress={() => this.onEditHandler()}>
                             <Text>Сохранить область</Text>
