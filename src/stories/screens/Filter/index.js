@@ -31,7 +31,9 @@ import {
   ScrollView,
   Slider,
   TouchableOpacity,
-  Alert
+  Alert,
+  Keyboard,
+    TouchableWithoutFeedback
 } from "react-native";
 const Item = Picker.Item;
 
@@ -351,9 +353,9 @@ class Filter extends React.Component<Props, State> {
             </Button>
           </Right>
         </Header>
-        <Content>
-          <View style={{ flex: 1, flexDirection: "column" }}>
-            <ScrollView style={{ backgroundColor: "#FFFFFF" }}>
+        <Content style={{ backgroundColor: "#FFFFFF" }} keyboardDismissMode="on-drag">
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+            <View style={{ flex: 1, flexDirection: "column" }}>
               <View style={{ flex: 1, alignItems: "center" }}>
                 <View
                   style={{
@@ -633,8 +635,8 @@ class Filter extends React.Component<Props, State> {
                 {/*<Icon name='add' />*/}
                 {/*</Button>*/}
               </View>
-            </ScrollView>
-          </View>
+            </View>
+          </TouchableWithoutFeedback>
         </Content>
       </Container>
     );
