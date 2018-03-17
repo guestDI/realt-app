@@ -99,7 +99,9 @@ class FlatsList extends React.Component<Props, State> {
             initialNumToRender={3}
           data={this.props.list}
           renderItem={({ item, index }) => (
-            <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress} />
+              <View style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
+                <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress} />
+              </View>
           )}
           keyExtractor={item => item.id}
           // ItemSeparatorComponent={this.renderSeparator}

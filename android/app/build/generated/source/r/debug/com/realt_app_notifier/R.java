@@ -2323,6 +2323,7 @@ containing a value of this type.
     }
     public static final class mipmap {
         public static final int ic_launcher=0x7f030000;
+        public static final int ic_launcher_1=0x7f030001;
     }
     public static final class string {
         public static final int abc_action_bar_home_description=0x7f070000;
