@@ -27,7 +27,8 @@ import {
   FlatList,
   ActivityIndicator,
   ImageBackground,
-  TouchableOpacity
+  TouchableOpacity,
+    Animated
 } from "react-native";
 import formatDate from "../../../utils/utils";
 
@@ -76,27 +77,50 @@ class FlatRow extends React.PureComponent<Props, State> {
         }
     }
 
+  scrollX = new Animated.Value(0)
+
   render() {
+    let position = Animated.divide(this.scrollX, width);
+
     return (
       <View style={{flex: 1, width: width * 0.9, alignSelf: 'center', backgroundColor: 'white', paddingTop: 15}}>
-        <ScrollView
-          horizontal
-          pagingEnabled
-          showsHorizontalScrollIndicator={false}
-          style={styles.rowScrollContainer}
-        >
-        {this.props.flat.photos.map((image, index) => {
-          return(
-            <Image
-              key={index}
-              style={styles.cardImage}
-              source={{uri: image}}
-              borderRadius={3}
-            />
-          )
-        })}
-        </ScrollView>
-      {/*</View>*/}
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+            <ScrollView
+              horizontal
+              pagingEnabled
+              showsHorizontalScrollIndicator={false}
+              style={styles.rowScrollContainer}
+              onScroll={Animated.event(
+                  [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
+              )}
+            >
+            {this.props.flat.photos.map((image, index) => {
+              return(
+                <Image
+                  key={index}
+                  style={styles.cardImage}
+                  source={{uri: image}}
+                  borderRadius={3}
+                />
+              )
+            })}
+            </ScrollView>
+            <View style={{ flexDirection: 'row' }}>
+              {this.props.flat.photos.map((_, i) => {
+                  let opacity = position.interpolate({
+                      inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],
+                      outputRange: [0.3, 1, 1, 1, 0.3],
+                      extrapolate: 'clamp'
+                  });
+                return (
+                  <Animated.View
+                    key={i}
+                    style={{ opacity, height: 7, width: 7, backgroundColor: '#595959', margin: 5, borderRadius: 5 }}
+                  />
+                  );
+              })}
+            </View>
+        </View>
       <TouchableOpacity onPress={this.onRowPress}>
           <View style={{ flexDirection: "row" }}>
             <Text style={{ fontSize: 20, fontWeight: '700',  paddingBottom: 5, color: '#242424' }}>
