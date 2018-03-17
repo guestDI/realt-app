@@ -15,6 +15,7 @@ import {
   Text
 } from "native-base";
 import {
+  Image,
   View,
   SectionList,
   FlatList,
@@ -95,6 +96,7 @@ class FlatsList extends React.Component<Props, State> {
 
   render() {
     return (
+        <View>
         <FlatList
             initialNumToRender={3}
           data={this.props.list}
@@ -112,6 +114,16 @@ class FlatsList extends React.Component<Props, State> {
           onEndReached={this.loadMoreFlats}
           onEndReachedThreshold={2}
         />
+          <TouchableOpacity onPress={() => this.props.navigation.navigate("Map")}
+                            style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, flexDirection: 'row', alignItems: 'center'}}>
+            <Image
+                resizeMode="contain"
+                source={require("../../../../../../assets/images/Map_64.png")}
+                style={{ height: 64, width: 64 }}
+            />
+          </TouchableOpacity>
+        </View>
+
     );
   }
 

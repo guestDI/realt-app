@@ -101,7 +101,8 @@ class FlatRow extends React.PureComponent<Props, State> {
                   style={styles.cardImage}
                   source={{uri: image}}
                   borderRadius={3}
-                />
+                >
+                </Image>
               )
             })}
             </ScrollView>
@@ -153,106 +154,6 @@ class FlatRow extends React.PureComponent<Props, State> {
             </Text>
           </View>
       </TouchableOpacity>
-      {/*<View style={{ flexDirection: "row" }}>*/}
-        {/*<View style={{ flexDirection: "column", alignItems: "center" }}>*/}
-          {/*<View style={{ paddingTop: 3 }}>*/}
-            {/*<ImageBackground*/}
-              {/*source={{ uri: this.props.flat.smallPhoto }}*/}
-              {/*style={{ height: height * 0.1, width: width * 0.25 }}*/}
-            {/*/>*/}
-          {/*</View>*/}
-          {/*<View style={{ paddingTop: 5, width: width * 0.25 }}>*/}
-            {/*<View*/}
-              {/*style={{*/}
-                {/*padding: 5,*/}
-                {/*borderWidth: 1,*/}
-                {/*borderColor: "#bec4cf",*/}
-                {/*borderRadius: 2,*/}
-                {/*alignItems: "center"*/}
-              {/*}}*/}
-            {/*>*/}
-              {/*<Text style={{ fontSize: 14 }}>*/}
-                {/*{this.props.flat.price}$ /месяц*/}
-              {/*</Text>*/}
-            {/*</View>*/}
-          {/*</View>*/}
-        {/*</View>*/}
-        {/*<View style={{ flex: 1, flexDirection: "column" }}>*/}
-          {/*<View style={{ flexDirection: "row" }}>*/}
-            {/*<View style={{ flexDirection: "row", alignItems: "center" }}>*/}
-              {/*<Icon*/}
-                  {/*name="home"*/}
-                  {/*style={{ fontSize: 16, color: "#9da3ae", paddingLeft: 5 }}*/}
-              {/*/>*/}
-              {/*<Text*/}
-                  {/*style={{ fontSize: 14, paddingLeft: 2, color: "#9da3ae" }}*/}
-              {/*>*/}
-                  {/*{this.getRoomsNumber(this.props.flat.rentType)}*/}
-              {/*</Text>*/}
-            {/*</View>*/}
-            {/*<View style={{ flexDirection: "row", alignItems: "center", paddingLeft: 3 }}>*/}
-              {/*<Icon*/}
-                {/*name="camera"*/}
-                {/*style={{ fontSize: 16, color: "#9da3ae", paddingLeft: 5 }}*/}
-              {/*/>*/}
-              {/*<Text*/}
-                {/*style={{*/}
-                  {/*fontSize: 12,*/}
-                  {/*color: "#9da3ae",*/}
-                  {/*padding: 3,*/}
-                  {/*paddingTop: 0,*/}
-                  {/*paddingBottom: 0*/}
-                {/*}}*/}
-              {/*>*/}
-                {/*{this.props.flat.photos.length}*/}
-              {/*</Text>*/}
-            {/*</View>*/}
-            {/*<View style={{ flexDirection: "row", alignItems: "center" }}>*/}
-              {/*<Icon*/}
-                {/*name="clock"*/}
-                {/*style={{ fontSize: 16, color: "#9da3ae", paddingLeft: 5 }}*/}
-              {/*/>*/}
-              {/*<Text*/}
-                {/*style={{ fontSize: 12, paddingLeft: 5, color: "#9da3ae" }}*/}
-              {/*>*/}
-                {/*{formatDate(this.props.flat.updatedOn)}*/}
-              {/*</Text>*/}
-            {/*</View>*/}
-          {/*</View>*/}
-          {/*<View>*/}
-            {/*<Text*/}
-              {/*numberOfLines={4}*/}
-              {/*style={{*/}
-                {/*fontSize: 14,*/}
-                {/*padding: 5,*/}
-                {/*paddingTop: 0,*/}
-                {/*paddingBottom: 0*/}
-              {/*}}*/}
-            {/*>*/}
-              {/*{this.props.flat.description}*/}
-            {/*</Text>*/}
-          {/*</View>*/}
-          {/*<View style={{ flexDirection: "row" }}>*/}
-            {/*{this.props.flat.contacts.map((num, index) => {*/}
-              {/*if (index <= 1) {*/}
-                {/*return (*/}
-                  {/*<Text*/}
-                    {/*style={{*/}
-                      {/*fontSize: 14,*/}
-                      {/*padding: 5,*/}
-                      {/*paddingTop: 10,*/}
-                      {/*paddingBottom: 0*/}
-                    {/*}}*/}
-                    {/*key={index}*/}
-                  {/*>*/}
-                    {/*{num}*/}
-                  {/*</Text>*/}
-                {/*);*/}
-              {/*}*/}
-            {/*})}*/}
-          {/*</View>*/}
-        {/*</View>*/}
-      {/*</View>*/}
       </View>
     );
   }
@@ -279,6 +180,7 @@ const styles = StyleSheet.create({
   rowScrollContainer: {
     flex: 1,
     height: height * 0.3,
+      zIndex: 1
   },
   cardImage: {
     flex: 1,
