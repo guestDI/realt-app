@@ -97,23 +97,23 @@ class FlatsList extends React.Component<Props, State> {
   render() {
     return (
         <View>
-        <FlatList
-            initialNumToRender={3}
-          data={this.props.list}
-          renderItem={({ item, index }) => (
-              <View style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
-                <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress} />
-              </View>
-          )}
-          keyExtractor={item => item.id}
-          // ItemSeparatorComponent={this.renderSeparator}
-          // ListHeaderComponent={this.renderHeader}
-          ListFooterComponent={this.renderFooter}
-          onRefresh={this.props.onRefreshList}
-          refreshing={this.props.isListRefreshing}
-          onEndReached={this.loadMoreFlats}
-          onEndReachedThreshold={2}
-        />
+          <FlatList
+              initialNumToRender={3}
+            data={this.props.list}
+            renderItem={({ item, index }) => (
+                <View style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
+                  <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress} />
+                </View>
+            )}
+            keyExtractor={item => item.id}
+            // ItemSeparatorComponent={this.renderSeparator}
+            // ListHeaderComponent={this.renderHeader}
+            ListFooterComponent={this.renderFooter}
+            onRefresh={this.props.onRefreshList}
+            refreshing={this.props.isListRefreshing}
+            onEndReached={this.loadMoreFlats}
+            onEndReachedThreshold={2}
+          />
           <TouchableOpacity onPress={() => this.props.navigation.navigate("Map")}
                             style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, flexDirection: 'row', alignItems: 'center'}}>
             <Image
