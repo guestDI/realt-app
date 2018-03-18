@@ -12,7 +12,8 @@ import {
   List,
   ListItem,
   Thumbnail,
-  Text
+  Text,
+  Footer
 } from "native-base";
 import {
   Image,
@@ -25,9 +26,7 @@ import {
   Dimensions,
   ActivityIndicator
 } from "react-native";
-import moment from "moment";
 import FlatRow from "../../../../common/FlatRow";
-import styles from "./styles";
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -96,7 +95,7 @@ class FlatsList extends React.Component<Props, State> {
 
   render() {
     return (
-        <View>
+        <Container>
           <FlatList
               removeClippedSubviews
               disableVirtualization
@@ -124,7 +123,7 @@ class FlatsList extends React.Component<Props, State> {
                     style={{ height: 64, width: 64 }}
                 />
             </TouchableOpacity>
-        </View>
+        </Container>
 
     );
   }
