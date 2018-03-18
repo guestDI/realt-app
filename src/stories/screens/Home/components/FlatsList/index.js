@@ -96,9 +96,11 @@ class FlatsList extends React.Component<Props, State> {
   };
 
   onFlatRowPress = val => {
-    this.props.navigation.navigate("FlatPage", {
-      flat: val
-    });
+      setTimeout(() => {
+          this.props.navigation.navigate("FlatPage", {
+              flat: val
+          });
+      }, 1);
   };
 
   render() {
