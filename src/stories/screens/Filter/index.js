@@ -133,26 +133,15 @@ class Filter extends React.Component<Props, State> {
             this.setState({
                 editing: {
                     ...editing,
-                    id: id++, // keep incrementing id to trigger display refresh
+                    id: id++,
                     coordinates: [...editing.coordinates],
                     holes
                 }
             });
         }
     }
-    // console.log(this.state.editing)
-  }
 
-  // onRegionChangeComplete(e){
-  //     console.log('completed', e.hasOwnProperty('latitude'))
-  // }
-  //
-  // onRegionChange(e){
-  //     console.log('change', e.hasOwnProperty('latitude'))
-  //     this.setState({
-  //         regionIsChanging: e.hasOwnProperty('latitude')
-  //     });
-  // }
+  }
 
   onValueChanged = value => {
     this.setState({
@@ -194,12 +183,9 @@ class Filter extends React.Component<Props, State> {
     this.setState({
       rooms: roomsNum
     });
-    // console.log(roomsNum)
   };
 
   reset = () => {
-    // if(this.state.minPrice==="" && this.state.maxPrice==="" && )
-
     Alert.alert("Подтвердите", "Вы действительно хотите очистить фильтр?", [
       {
         text: "Отменить",
@@ -228,17 +214,7 @@ class Filter extends React.Component<Props, State> {
       }
     ]);
 
-    // this.setState({
-    //     polygons: [],
-    //     editing: null,
-    //     creatingHole: false,
-    //     minPrice: "",
-    //     maxPrice: "",
-    //     rooms: [],
-    //     coordinates: [],
-    //     // selectedOwnerType: 'OWNER_AND_AGENT',
-    //     // selectedSubway: 'ANY_SUBWAY'
-    // });
+
   };
 
   onFilterSaved = () => {
@@ -273,7 +249,7 @@ class Filter extends React.Component<Props, State> {
           mapIsEditable: !this.state.mapIsEditable,
       });
 
-      if(this.state.mapIsEditable && this.state.editing !== null && this.state.editing.coordinates.length > 0){
+      if(this.state.editing !== null && this.state.editing.coordinates.length > 0){
 
           const polygons  = this.state.polygons ? this.state.polygons : []
           const editing = this.state.editing ? this.state.editing : [];
@@ -283,7 +259,6 @@ class Filter extends React.Component<Props, State> {
               editing: null,
               creatingHole: false
           });
-          // console.log(this.state.editing)
       }
   }
 
@@ -304,13 +279,12 @@ class Filter extends React.Component<Props, State> {
   }
 
   render() {
-    // console.log("render", this.props.filter);
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
     };
 
     if (this.state.editing) {
-      mapOptions.scrollEnabled = false;
+      // mapOptions.scrollEnabled = false;
       mapOptions.onPanDrag = e => this.onPress(e);
     }
 

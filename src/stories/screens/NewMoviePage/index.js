@@ -327,16 +327,29 @@ class FlatPage extends React.Component<Props, State> {
                 Описание
               </Text>
             </View>
-            <Text
-              style={{
-                fontSize: 16,
-                paddingLeft: 10,
-                paddingTop: 5,
-                paddingBottom: 5
+              {!this.props.flat.description || 0 === this.props.flat.description.length ?
+              <Text
+                  style={{
+                  fontSize: 14,
+                  paddingLeft: 10,
+                  paddingTop: 5,
+                  paddingBottom: 5,
+                  fontStyle: 'italic'
               }}
-            >
+                  >
+              Описание отсутствует
+                  </Text> :
+              < Text
+                  style={{
+                  fontSize: 16,
+                  paddingLeft: 10,
+                  paddingTop: 5,
+                  paddingBottom: 5
+              }}
+                  >
               {this.props.flat.description}
-            </Text>
+                  </Text>
+              }
             <View style={{ flexDirection: "row" }}>
               <Text
                 style={{
@@ -344,7 +357,8 @@ class FlatPage extends React.Component<Props, State> {
                   paddingLeft: 10,
                   fontWeight: "bold",
                   paddingRight: 5,
-                  paddingBottom: 10
+                  paddingBottom: 10,
+                  paddingTop: 5
                 }}
               >
                 Источник:
@@ -359,6 +373,7 @@ class FlatPage extends React.Component<Props, State> {
                 <Text
                   style={{
                     fontSize: 16,
+                    paddingTop: 5,
                     color: "blue",
                     textDecorationLine: "underline"
                   }}
