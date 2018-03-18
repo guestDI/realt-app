@@ -31,6 +31,7 @@ import {
     Animated
 } from "react-native";
 import formatDate from "../../../utils/utils";
+import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 
 export interface Props {
   navigation: any;
@@ -85,27 +86,30 @@ class FlatRow extends React.PureComponent<Props, State> {
     return (
       <View style={{flex: 1, width: width * 0.9, alignSelf: 'center', backgroundColor: 'white', paddingTop: 15}}>
         <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-            <ScrollView
+            <LazyloadScrollView
               horizontal
               pagingEnabled
               showsHorizontalScrollIndicator={false}
               style={styles.rowScrollContainer}
+              name={`lazyload-list${this.props.flat.id}`}
               onScroll={Animated.event(
                   [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
               )}
             >
             {this.props.flat.photos.map((image, index) => {
               return(
-                <Image
-                  key={index}
-                  style={styles.cardImage}
-                  source={{uri: image}}
-                  borderRadius={3}
-                >
-                </Image>
+                  <TouchableOpacity key={index} onPress={this.onRowPress} activeOpacity={1}>
+                    <LazyloadImage
+                      style={styles.cardImage}
+                      host={`lazyload-list${this.props.flat.id}`}
+                      source={{uri: image}}
+                      borderRadius={3}
+                    >
+                    </LazyloadImage>
+                  </TouchableOpacity>
               )
             })}
-            </ScrollView>
+            </LazyloadScrollView>
             <View style={{ flexDirection: 'row' }}>
               {this.props.flat.photos.map((_, i) => {
                   let opacity = position.interpolate({

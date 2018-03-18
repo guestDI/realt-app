@@ -98,10 +98,12 @@ class FlatsList extends React.Component<Props, State> {
     return (
         <View>
           <FlatList
+              removeClippedSubviews
+              disableVirtualization
               initialNumToRender={3}
             data={this.props.list}
             renderItem={({ item, index }) => (
-                <View style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
+                <View key={index} style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
                   <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress} />
                 </View>
             )}

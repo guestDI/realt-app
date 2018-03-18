@@ -32,6 +32,7 @@ import {
 import { Card } from "react-native-elements";
 import ImageView from "./components/ImageView";
 import MapView from 'react-native-maps';
+import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import formatDate from "../../../utils/utils";
 
 export interface Props {
@@ -202,10 +203,11 @@ class FlatPage extends React.Component<Props, State> {
         <View style={{ flex: 1 }}>
           <ScrollView style={{ backgroundColor: "#FFFFFF" }} ref="_scrollView">
             <View style={styles.scrollContainer}>
-              <ScrollView
+              <LazyloadScrollView
                 horizontal
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
+                name="flat-image-list"
               >
                 {photos.map((image, index) => (
                   <TouchableOpacity
@@ -215,14 +217,15 @@ class FlatPage extends React.Component<Props, State> {
                       this.viewerHandler(this.props.flat.photos.indexOf(image))
                     }
                   >
-                    <Image
+                    <LazyloadImage
                       key={index}
+                      host="flat-image-list"
                       style={styles.cardImage}
                       source={{ uri: image }}
                     />
                   </TouchableOpacity>
                 ))}
-              </ScrollView>
+              </LazyloadScrollView>
             </View>
             <View style={{ flex: 1 }}>
               <View style={{ flexDirection: "column", paddingLeft: 10 }}>
