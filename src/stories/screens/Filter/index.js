@@ -283,11 +283,6 @@ class Filter extends React.Component<Props, State> {
       scrollEnabled: this.state.mapScrollEnabled
     };
 
-    if (this.state.editing) {
-      // mapOptions.scrollEnabled = false;
-      mapOptions.onPanDrag = e => this.onPress(e);
-    }
-
     let { minPrice, maxPrice, editing } = this.state;
     return (
       <Container>
@@ -525,6 +520,7 @@ class Filter extends React.Component<Props, State> {
                   showsUserLocation={true}
                   showsTraffic={false}
                   loadingEnabled={true}
+                  // moveOnMarkerPress={false}
                   // scrollEnabled
                   // onRegionChangeComplete={e => this.onRegionChangeComplete(e)}
                   // onRegionChange={ e=> this.onRegionChange(e)}
