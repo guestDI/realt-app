@@ -427,7 +427,6 @@ class FlatPage extends React.Component<Props, State> {
                     longitude: this.props.flat.longitude
                   }}
                   title={this.props.flat.address}
-                  // image={require("../../../../assets/images/home-icon.png")}
                 />
               </MapView>
             </View>
@@ -447,9 +446,9 @@ class FlatPage extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
+    width: width,
     height: height * 0.4,
-    borderWidth: 1,
-    borderColor: "#a5abb6",
+
     marginBottom: 5
   },
   cardImage: {
