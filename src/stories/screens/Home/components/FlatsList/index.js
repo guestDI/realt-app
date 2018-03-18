@@ -72,6 +72,14 @@ class FlatsList extends React.Component<Props, State> {
     );
   };
 
+  onRefresh = () => {
+      this.setState({
+          page: 0,
+      }, () => {
+          this.props.onRefreshList();
+      })
+  }
+
   renderFooter = () => {
     if (!this.state.loading) return null;
     return (
@@ -110,7 +118,7 @@ class FlatsList extends React.Component<Props, State> {
             // ItemSeparatorComponent={this.renderSeparator}
             // ListHeaderComponent={this.renderHeader}
             ListFooterComponent={this.renderFooter}
-            onRefresh={this.props.onRefreshList}
+            onRefresh={this.onRefresh}
             refreshing={this.props.isListRefreshing}
             onEndReached={this.loadMoreFlats}
             onEndReachedThreshold={2}
