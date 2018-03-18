@@ -141,66 +141,14 @@ class Home extends React.Component<Props, State> {
           </Right>
         </Header>
         <View style={{ flex: 1 }}>
-          {/*<Container style={{marginTop: '2%'}}>*/}
-          {/*<Tabs
-            tabContainerStyle={{ height: 50 }}
-            tabBarPosition="top"
-            tabBarUnderlineStyle={{ backgroundColor: "#bf6141" }}
-          >
-            <Tab
-              heading={
-                <TabHeading>
-                  <Icon name="list" />
-                </TabHeading>
-              }
-              activeTabStyle={{ backgroundColor: "#FFF" }}
-              tabStyle={{ backgroundColor: "#FFF" }}
-              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
-              textStyle={{ color: "#959ba6", fontSize: 14 }}
-            >*/}
-              <FlatsList
-                navigation={this.props.navigation}
-                list={this.props.list}
-                onListEndReached={this.handleLoadMore}
-                isListLoading={this.props.loadingState}
-                isListRefreshing={this.props.refreshListState}
-                onRefreshList={this.props.refreshFlatsList}
-              />
-            {/*</Tab>
-            <Tab
-              heading={
-                <TabHeading>
-                  <Icon name="ios-map-outline" />
-                </TabHeading>
-              }
-              activeTabStyle={{ backgroundColor: "#FFF" }}
-              tabStyle={{ backgroundColor: "#FFF" }}
-              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
-              textStyle={{ color: "#959ba6", fontSize: 14 }}
-            >
-              <FlatsMap
-                navigation={this.props.navigation}
-                list={this.props.flatsOnMap}
-              />
-            </Tab>
-            <Tab
-              heading={
-                <TabHeading>
-                  <Icon name="star" />
-                </TabHeading>
-              }
-              activeTabStyle={{ backgroundColor: "#FFF" }}
-              tabStyle={{ backgroundColor: "#FFF" }}
-              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
-              textStyle={{ color: "#959ba6", fontSize: 14 }}
-            >
-              <FavoriteFlats
-                  navigation={this.props.navigation}
-                  list={this.props.favorites}
-              />
-            </Tab>
-          </Tabs>*/}
-          {/*</Container>*/}
+          <FlatsList
+            navigation={this.props.navigation}
+            list={this.props.list}
+            onListEndReached={this.handleLoadMore}
+            isListLoading={this.props.loadingState}
+            isListRefreshing={this.props.refreshListState}
+            onRefreshList={this.props.refreshFlatsList}
+          />
         </View>
       </Container>
     );

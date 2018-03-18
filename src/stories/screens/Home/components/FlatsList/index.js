@@ -97,9 +97,9 @@ class FlatsList extends React.Component<Props, State> {
     return (
         <Container>
           <FlatList
-              removeClippedSubviews
-              disableVirtualization
-              initialNumToRender={3}
+            removeClippedSubviews
+            disableVirtualization
+            initialNumToRender={3}
             data={this.props.list}
             renderItem={({ item, index }) => (
                 <View key={index} style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
@@ -117,11 +117,11 @@ class FlatsList extends React.Component<Props, State> {
           />
             <TouchableOpacity onPress={() => this.props.navigation.navigate("Map")}
                               style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, }}>
-                <Image
-                    resizeMode="contain"
-                    source={require("../../../../../../assets/images/Map_64_1.png")}
-                    style={{ height: 64, width: 64 }}
-                />
+              <Image
+                resizeMode="contain"
+                source={require("../../../../../../assets/images/Map_64_1.png")}
+                style={{ height: 64, width: 64 }}
+              />
             </TouchableOpacity>
         </Container>
 

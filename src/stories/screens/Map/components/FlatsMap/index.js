@@ -22,7 +22,8 @@ import {
   Platform,
   NativeModules,
   Dimensions,
-  ActivityIndicator
+  ActivityIndicator,
+  Image
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
@@ -70,7 +71,7 @@ class FlatsMap extends React.Component<Props, State> {
 
   render() {
     return (
-      <View style={{ flex: 1 }}>
+      <Container style={{ flex: 1 }}>
         <MapView
           style={{ flex: 1, width: width, height: height * 0.5 }}
           initialRegion={{
@@ -106,7 +107,15 @@ class FlatsMap extends React.Component<Props, State> {
             // this.printMarker(flat.latitude, flat.longitude, flat.price);
           })}
         </MapView>
-      </View>
+        <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")}
+                          style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, }}>
+          <Image
+            resizeMode="contain"
+            source={require("../../../../../../assets/images/List_64.png")}
+            style={{ height: 64, width: 64 }}
+          />
+        </TouchableOpacity>
+      </Container>
     );
   }
 }
