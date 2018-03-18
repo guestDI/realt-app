@@ -1,0 +1,8 @@
+# iOS
+app_identifier "com.myapp.app" # The bundle identifier of your app
+apple_id "me@gmail.com" # Your Apple email address
+team_id "1234ABCD"  # Developer Portal Team ID
+
+# Android
+json_key_file "google-play-api-secret.json"
+package_name "com.realt_app_notifier"

@@ -1,0 +1,28 @@
+fastlane_version '2.53.1'
+
+default_platform :android
+
+before_all do
+  #ensure_git_branch
+  #ensure_git_status_clean
+  #git_pull
+end
+
+platform :ios do
+   # iOS Lanes
+end
+
+platform :android do
+  desc 'Build the Android application.'
+  lane :build do
+    gradle(task: 'clean', project_dir: 'android/')
+    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
+  end
+
+  lane :beta do
+    gradle(task: 'clean', project_dir: 'android/')
+    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
+    upload_to_play_store(track: 'beta')
+    #slack(message: 'Successfully distributed a new beta build')
+  end
+end
