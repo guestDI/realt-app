@@ -116,14 +116,14 @@ class FlatsList extends React.Component<Props, State> {
             onEndReached={this.loadMoreFlats}
             onEndReachedThreshold={2}
           />
-          <TouchableOpacity onPress={() => this.props.navigation.navigate("Map")}
-                            style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, flexDirection: 'row', alignItems: 'center'}}>
-            <Image
-                resizeMode="contain"
-                source={require("../../../../../../assets/images/Map_64_1.png")}
-                style={{ height: 64, width: 64 }}
-            />
-          </TouchableOpacity>
+            <TouchableOpacity onPress={() => this.props.navigation.navigate("Map")}
+                              style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, }}>
+                <Image
+                    resizeMode="contain"
+                    source={require("../../../../../../assets/images/Map_64_1.png")}
+                    style={{ height: 64, width: 64 }}
+                />
+            </TouchableOpacity>
         </View>
 
     );
