@@ -78,7 +78,6 @@ export const initFlatsLoad = () => {
     return dispatch => {
         dispatch(clearFlatsList())
         getFilter(function(filter) {
-            // dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
             fetchFlats(Object.assign({}, filter, {page: 0}))(dispatch);
             fetchFlatsOnMap(Object.assign({}, filter, {page: 0}))(dispatch)
         });
@@ -127,10 +126,6 @@ export const fetchFlats = filter => {
         }
       )
       .then(response => response.data)
-        // .then(flats => {
-        //     dispatch(isResultsEmpty(!flats || flats.length == 0));
-        //     return flats;
-        // })
       .then(flats => dispatch(fetchListSuccess(flats)))
       .then(() => dispatch(listIsLoading(false)))
       .then(() => dispatch(listIsRefreshing(false)))

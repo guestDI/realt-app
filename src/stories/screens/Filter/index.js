@@ -83,7 +83,7 @@ class Filter extends React.Component<Props, State> {
       selectedSubway: "ANY_SUBWAY",
       mapScrollEnabled: true,
       mapIsEditable: false,
-      regionIsChanging: true
+      regionIsChanging: false
     };
   }
 
@@ -109,7 +109,7 @@ class Filter extends React.Component<Props, State> {
   onPress(e) {
     if(this.state.mapIsEditable && this.state.polygons.length===0){
         const { editing, creatingHole } = this.state;
-        if (!editing && this.state.regionIsChanging) {
+        if (!editing ) {
             this.setState({
                 editing: {
                     id: id++,

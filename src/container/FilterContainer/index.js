@@ -10,8 +10,7 @@ export interface Props {
 export interface State {}
 class FilterContainer extends React.Component<Props, State> {
   componentDidMount() {
-    // this.props.fetchFilter();
-    // console.log(this.props.data)
+    this.props.fetchFilter();
   }
 
   render() {
@@ -37,6 +36,5 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   filter: state.filterReducer.filter
-
 });
 export default connect(mapStateToProps, bindAction)(FilterContainer);
