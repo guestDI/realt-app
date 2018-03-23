@@ -75,7 +75,7 @@ class FlatPreview extends React.Component<Props, State> {
 const styles = StyleSheet.create({
   previewContainer: {
     flex: 1,
-    height: height * 0.25,
+    // height: height * 0.15,
     width: width * 0.5,
     flexDirection: "column"
     // borderWidth: 1,
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
   },
   cardImage: {
     width: "100%",
-    height: "65%"
+    height: "60%"
   }
 });
 

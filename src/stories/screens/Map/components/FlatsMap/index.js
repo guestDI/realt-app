@@ -23,10 +23,13 @@ import {
   NativeModules,
   Dimensions,
   ActivityIndicator,
-  Image
+  Image,
+  Animated,
+  ScrollView,
+  StyleSheet,
 } from "react-native";
-import moment from "moment";
-import styles from "./styles";
+
+import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import FlatPreview from "./components/FlatPreview/index";
 import MapView from 'react-native-maps';
 const { StatusBarManager } = NativeModules;
@@ -44,6 +47,9 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.3122;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+const CARD_HEIGHT = height / 4;
+const CARD_WIDTH = CARD_HEIGHT - 50;
+
 
 class FlatsMap extends React.Component<Props, State> {
   constructor(props) {
@@ -55,6 +61,11 @@ class FlatsMap extends React.Component<Props, State> {
       refreshing: false
     };
   }
+
+    componentWillMount() {
+        this.index = 0;
+        this.animation = new Animated.Value(0);
+    }
 
   componentDidMount() {
     // this.makeRemoteRequest();
@@ -73,7 +84,7 @@ class FlatsMap extends React.Component<Props, State> {
     return (
       <Container style={{ flex: 1 }}>
         <MapView
-          style={{ flex: 1, width: width, height: height * 0.5 }}
+          style={{ flex: 3, width: width, height: height}}
           initialRegion={{
             latitude: 53.902231,
             longitude: 27.561876,
@@ -91,7 +102,6 @@ class FlatsMap extends React.Component<Props, State> {
                   latitude: flat.latitude,
                   longitude: flat.longitude
                 }}
-                // image={require("../../../../../../assets/images/pin1.png")}
 
                 onCalloutPress={() =>
                   this.props.navigation.navigate("FlatPage", {
@@ -107,17 +117,94 @@ class FlatsMap extends React.Component<Props, State> {
             // this.printMarker(flat.latitude, flat.longitude, flat.price);
           })}
         </MapView>
-        <TouchableOpacity onPress={() => this.props.navigation.navigate("Home")}
-                          style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, }}>
-          <Image
-            resizeMode="contain"
-            source={require("../../../../../../assets/images/List_64.png")}
-            style={{ height: 64, width: 64 }}
-          />
-        </TouchableOpacity>
+        <View style={{ flex: 2}}>
+          <ScrollView
+            horizontal
+            scrollEventThrottle={1}
+            showsHorizontalScrollIndicator={false}
+            // style={styles.cardScrollContainer}
+            snapToInterval={CARD_WIDTH}
+            // onScroll={Animated.event(
+            //     [
+            //         {
+            //             nativeEvent: {
+            //                 contentOffset: {
+            //                     x: this.animation,
+            //                 },
+            //             },
+            //         },
+            //     ],
+            //     { useNativeDriver: true }
+            // )}
+            style={styles.scrollView}
+            contentContainerStyle={styles.endPadding}
+          >
+            {this.props.list.map((flat, index) => {
+              return(
+                  <View style={{flex: 1}} key={index}>
+                    <FlatPreview flat={flat} />
+                    {/*<Image
+                        source={{uri: flat.smallPhoto}}
+                        style={styles.cardImage}
+                        resizeMode="cover"
+                    />*/}
+                    {/*<LazyloadImage*/}
+                        {/*style={styles.cardImage}*/}
+                        {/*host={`lazyload-list${flat.id}`}*/}
+                        {/*source={{uri: flat.smallPhoto}}*/}
+                        {/*borderRadius={3}*/}
+                    {/*>*/}
+                    {/*</LazyloadImage>*/}
+                  </View>
+              )
+            })}
+          </ScrollView>
+        </View>
       </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+    scrollView: {
+
+    },
+    endPadding: {
+        paddingRight: width - CARD_WIDTH,
+    },
+    card: {
+        padding: 10,
+        elevation: 2,
+        backgroundColor: "#FFF",
+        marginHorizontal: 10,
+        shadowColor: "#000",
+        shadowRadius: 5,
+        shadowOpacity: 0.3,
+        shadowOffset: { x: 2, y: -2 },
+        height: CARD_HEIGHT,
+        width: CARD_WIDTH,
+        overflow: "hidden",
+    },
+    textContent: {
+        flex: 1,
+    },
+    cardTitle: {
+        fontSize: 12,
+        marginTop: 5,
+        fontWeight: "bold",
+    },
+    cardDescription: {
+        fontSize: 12,
+        color: "#444",
+    },
+    cardScrollContainer: {
+        flex: 1,
+        // height: height * 0.15,
+        zIndex: 1
+    }
+});
 
 export default FlatsMap;

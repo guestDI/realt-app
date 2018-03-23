@@ -147,7 +147,7 @@ class FlatRow extends React.PureComponent<Props, State> {
                 name="clock"
                 style={{ fontSize: 16, color: "#505050", }}
               />
-              <Text style={{ fontSize: 16, paddingLeft: 5, color: "#505050" }}>
+              <Text style={{ fontSize: 14, paddingLeft: 5, color: "#505050" }}>
                 {formatDate(this.props.flat.updatedOn)}
               </Text>
             </View>

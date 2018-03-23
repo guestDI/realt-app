@@ -244,10 +244,10 @@ class FlatPage extends React.Component<Props, State> {
                     </Text>
                   </View>
                   <View style={{ flexDirection: "column", right: 10 }}>
-                    <Text style={{ fontSize: 12, color: "#8c919c" }}>
+                    <Text style={{ fontSize: 14, color: "#8c919c",  }}>
                       Обновлено:{" "}
                     </Text>
-                    <Text style={{ fontSize: 12, color: "#8c919c" }}>
+                    <Text style={{ fontSize: 14, color: "#8c919c" }}>
                       {formatDate(this.props.flat.updatedOn)}
                     </Text>
                   </View>
