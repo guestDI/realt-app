@@ -140,7 +140,7 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Right>
         </Header>
-        <View style={{ flex: 1 }}>
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
           <FlatsList
             navigation={this.props.navigation}
             list={this.props.list}

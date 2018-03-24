@@ -44,12 +44,11 @@ export interface State {
 }
 const { height, width } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.3122;
+const LATITUDE_DELTA = 0.2122;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-const CARD_HEIGHT = height / 4;
-const CARD_WIDTH = CARD_HEIGHT - 50;
-
+const CARD_HEIGHT = height / 3;
+const CARD_WIDTH = CARD_HEIGHT - 20;
 
 class FlatsMap extends React.Component<Props, State> {
   constructor(props) {
@@ -58,17 +57,52 @@ class FlatsMap extends React.Component<Props, State> {
       loading: false,
       page: 0,
       error: null,
-      refreshing: false
+      refreshing: false,
+      region: {
+        latitude: 53.902231,
+        longitude: 27.561876,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA
+      }
     };
   }
 
-    componentWillMount() {
-        this.index = 0;
-        this.animation = new Animated.Value(0);
-    }
+  componentWillMount() {
+    this.index = 0;
+    this.animation = new Animated.Value(0);
+  }
 
   componentDidMount() {
-    // this.makeRemoteRequest();
+    this.animation.addListener(({ value }) => {
+      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
+        if (index >= this.props.list.length) {
+          index = this.props.list.length - 1;
+        }
+
+        if (index <= 0) {
+          index = 0;
+        }
+
+        clearTimeout(this.regionTimeout);
+        this.regionTimeout = setTimeout(() => {
+          if (this.index !== index) {
+            this.index = index;
+            const coordinate={
+              latitude: this.props.list[index].latitude,
+              longitude: this.props.list[index].longitude
+            }
+            // const { coordinate } = this.props.list[index];
+            this.map.animateToRegion(
+              {
+                ...coordinate,
+                latitudeDelta: this.state.region.latitudeDelta,
+                longitudeDelta: this.state.region.longitudeDelta,
+              },
+              350
+            );
+          }
+        }, 10);
+    });
   }
 
   onPreviewPress = val => {
@@ -81,9 +115,29 @@ class FlatsMap extends React.Component<Props, State> {
   };
 
   render() {
+      const interpolations = this.props.list.map((flat, index) => {
+          const inputRange = [
+              (index - 1) * CARD_WIDTH,
+              index * CARD_WIDTH,
+              ((index + 1) * CARD_WIDTH),
+          ];
+          const scale = this.animation.interpolate({
+              inputRange,
+              outputRange: [1, 2.5, 1],
+              extrapolate: "clamp",
+          });
+          const opacity = this.animation.interpolate({
+              inputRange,
+              outputRange: [0.35, 1, 0.35],
+              extrapolate: "clamp",
+          });
+          return { scale, opacity };
+      });
+
     return (
       <Container style={{ flex: 1 }}>
         <MapView
+          ref={map => this.map = map}
           style={{ flex: 3, width: width, height: height}}
           initialRegion={{
             latitude: 53.902231,
@@ -94,71 +148,66 @@ class FlatsMap extends React.Component<Props, State> {
           showsUserLocation={true}
           loadingEnabled={true}
         >
-          {this.props.list.map(flat => {
+
+          {this.props.list.map((flat, index) => {
+            const scaleStyle = {
+              transform: [
+                {
+                  scale: interpolations[index].scale,
+                   },
+              ],
+            };
+              const opacityStyle = {
+                opacity: interpolations[index].opacity,
+              };
+
             return (
               <MapView.Marker
                 key={flat.originalId}
                 coordinate={{
                   latitude: flat.latitude,
                   longitude: flat.longitude
-                }}
+                }}>
 
-                onCalloutPress={() =>
-                  this.props.navigation.navigate("FlatPage", {
-                    flat: flat
-                  })
-                }
-              >
-                <MapView.Callout>
-                  <FlatPreview flat={flat} />
-                </MapView.Callout>
+                <Animated.View style={styles.markerWrap}>
+                  {/*<Animated.View style={styles.ring}/>*/}
+                  <Animated.View style={styles.marker}/>
+                  <Text style={styles.price}>${flat.price}</Text>
+                </Animated.View>
               </MapView.Marker>
             );
             // this.printMarker(flat.latitude, flat.longitude, flat.price);
           })}
         </MapView>
-        <View style={{ flex: 2}}>
-          <ScrollView
+        <View style={{ flex: 2, backgroundColor: 'white'}}>
+          <Animated.ScrollView
             horizontal
             scrollEventThrottle={1}
             showsHorizontalScrollIndicator={false}
-            // style={styles.cardScrollContainer}
             snapToInterval={CARD_WIDTH}
-            // onScroll={Animated.event(
-            //     [
-            //         {
-            //             nativeEvent: {
-            //                 contentOffset: {
-            //                     x: this.animation,
-            //                 },
-            //             },
-            //         },
-            //     ],
-            //     { useNativeDriver: true }
-            // )}
-            style={styles.scrollView}
+            onScroll={Animated.event(
+              [
+                {
+                  nativeEvent: {
+                    contentOffset: {
+                      x: this.animation,
+                    },
+                  },
+                },
+              ],
+              { useNativeDriver: true },
+            )}
+            // style={styles.scrollView}
             contentContainerStyle={styles.endPadding}
           >
             {this.props.list.map((flat, index) => {
               return(
                   <View style={{flex: 1}} key={index}>
                     <FlatPreview flat={flat} />
-                    {/*<Image
-                        source={{uri: flat.smallPhoto}}
-                        style={styles.cardImage}
-                        resizeMode="cover"
-                    />*/}
-                    {/*<LazyloadImage*/}
-                        {/*style={styles.cardImage}*/}
-                        {/*host={`lazyload-list${flat.id}`}*/}
-                        {/*source={{uri: flat.smallPhoto}}*/}
-                        {/*borderRadius={3}*/}
-                    {/*>*/}
-                    {/*</LazyloadImage>*/}
                   </View>
               )
             })}
-          </ScrollView>
+          </Animated.ScrollView>
         </View>
       </Container>
     );
@@ -169,42 +218,36 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
     },
-    scrollView: {
-
-    },
     endPadding: {
         paddingRight: width - CARD_WIDTH,
     },
-    card: {
-        padding: 10,
-        elevation: 2,
-        backgroundColor: "#FFF",
-        marginHorizontal: 10,
-        shadowColor: "#000",
-        shadowRadius: 5,
-        shadowOpacity: 0.3,
-        shadowOffset: { x: 2, y: -2 },
-        height: CARD_HEIGHT,
-        width: CARD_WIDTH,
-        overflow: "hidden",
+    markerWrap: {
+        alignItems: "center",
+        justifyContent: "center",
     },
-    textContent: {
-        flex: 1,
+    ring: {
+        width: 24,
+        height: 24,
+        borderRadius: 12,
+        backgroundColor: "yellow",
+        // position: "absolute",
+        borderWidth: 1,
+        // borderColor: "yellow",
     },
-    cardTitle: {
-        fontSize: 12,
-        marginTop: 5,
-        fontWeight: "bold",
+    price: {
+      position: "absolute",
+      color: 'white',
+      fontSize: 8,
+      fontWeight: "700"
     },
-    cardDescription: {
-        fontSize: 12,
-        color: "#444",
+    marker: {
+        width: 24,
+        height: 24,
+        borderRadius: 12,
+        borderWidth: 2,
+        borderColor: '#1e823c',
+        backgroundColor: "#23ad4d",
     },
-    cardScrollContainer: {
-        flex: 1,
-        // height: height * 0.15,
-        zIndex: 1
-    }
 });
 
 export default FlatsMap;
