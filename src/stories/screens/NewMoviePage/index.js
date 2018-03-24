@@ -189,11 +189,11 @@ class FlatPage extends React.Component<Props, State> {
             >
               {this.state.favorite ?
                   <Icon
-                      name="ios-star"
+                      name="md-heart"
                       style={{ fontSize: 28, color: "yellow" }}
                   /> :
                   <Icon
-                      name="ios-star-outline"
+                      name="md-heart-outline"
                       style={{ fontSize: 28, color: "yellow" }}
                   />
               }
