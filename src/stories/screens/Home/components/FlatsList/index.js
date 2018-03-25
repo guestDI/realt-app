@@ -106,25 +106,27 @@ class FlatsList extends React.Component<Props, State> {
   render() {
     return (
         <Container>
-          <FlatList
-            removeClippedSubviews
-            disableVirtualization
-            initialNumToRender={3}
-            data={this.props.list}
-            renderItem={({ item, index }) => (
-                <View key={index} style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
-                  <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress} />
-                </View>
-            )}
-            keyExtractor={item => item.id}
-            // ItemSeparatorComponent={this.renderSeparator}
-            // ListHeaderComponent={this.renderHeader}
-            ListFooterComponent={this.renderFooter}
-            onRefresh={this.onRefresh}
-            refreshing={this.props.isListRefreshing}
-            onEndReached={this.loadMoreFlats}
-            onEndReachedThreshold={2}
-          />
+            {this.props.list && this.props.list.length > 0 &&
+            <FlatList
+                removeClippedSubviews
+                disableVirtualization
+                initialNumToRender={3}
+                data={this.props.list}
+                renderItem={({item, index}) => (
+                    <View key={index} style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
+                        <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress}/>
+                    </View>
+                )}
+                keyExtractor={item => item.id}
+                // ItemSeparatorComponent={this.renderSeparator}
+                // ListHeaderComponent={this.renderHeader}
+                ListFooterComponent={this.renderFooter}
+                onRefresh={this.onRefresh}
+                refreshing={this.props.isListRefreshing}
+                onEndReached={this.loadMoreFlats}
+                onEndReachedThreshold={2}
+            />
+            }
             <TouchableOpacity onPress={() => this.props.navigation.navigate("Map")}
                               style={{position: 'absolute', bottom: 20, right: 20, zIndex: 99999999999, }}>
               <Image
@@ -133,6 +135,7 @@ class FlatsList extends React.Component<Props, State> {
                 style={{ height: 64, width: 64 }}
               />
             </TouchableOpacity>
+
         </Container>
 
     );
