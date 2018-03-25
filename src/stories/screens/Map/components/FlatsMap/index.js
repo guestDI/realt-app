@@ -32,6 +32,7 @@ import {
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import FlatPreview from "./components/FlatPreview/index";
 import MapView from 'react-native-maps';
+import PriceMarker from '../FlatsMap/components/PriceMarker/PriceMarker'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -171,8 +172,9 @@ class FlatsMap extends React.Component<Props, State> {
 
                 <Animated.View style={styles.markerWrap}>
                   {/*<Animated.View style={styles.ring}/>*/}
-                  <Animated.View style={styles.marker}/>
-                  <Text style={styles.price}>${flat.price}</Text>
+                  <PriceMarker amount={flat.price}/>
+                  {/*<Animated.View style={styles.marker}/>*/}
+                  {/*<Text style={styles.price}>${flat.price}</Text>*/}
                 </Animated.View>
               </MapView.Marker>
             );
