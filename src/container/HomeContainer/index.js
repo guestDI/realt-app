@@ -69,7 +69,10 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   handleRefresh = () => {
-      this.props.refreshFlats(this.props.filter);
+      getFilter(filter => {
+          this.props.refreshFlats(filter);
+        }
+      );
   }
 
   loadMore = page => {
