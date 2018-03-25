@@ -9,33 +9,37 @@ import {
 
 class PriceMarker extends React.Component {
     render() {
-        const { amount } = this.props;
+        const { amount, style, selected } = this.props;
 
-        // const background = selected.interpolate({
-        //     inputRange: [0, 1],
-        //     outputRange: ['#FF5A5F', '#4da2ab'],
-        // });
-        //
-        // const border = selected.interpolate({
-        //     inputRange: [0, 1],
-        //     outputRange: ['#D23F44', '#007a87'],
-        // });
+        const background = selected.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['#FF5A5F', '#4da2ab'],
+        });
+
+        const border = selected.interpolate({
+            inputRange: [0, 1],
+            outputRange: ['#D23F44', '#007a87'],
+        });
 
         return (
-            <Animated.View style={styles.container}>
+            <Animated.View style={[styles.container, style]}>
                 <Animated.View
-                    style={
-                        styles.bubble
-                    }
+                    style={[
+                        styles.bubble,
+                      {
+                        backgroundColor: background,
+                        borderColor: border,
+                      },
+                    ]}
                 >
                     <Text style={styles.dollar}>$</Text>
                     <Text style={styles.amount}>{amount}</Text>
                 </Animated.View>
                 <Animated.View
-                    style={styles.arrowBorder}
+                    style={[styles.arrowBorder, { borderTopColor: border }]}
                 />
                 <Animated.View
-                    style={styles.arrow}
+                    style={[styles.arrow, { borderTopColor: background }]}
                 />
             </Animated.View>
         );

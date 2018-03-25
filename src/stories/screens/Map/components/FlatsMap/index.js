@@ -132,7 +132,12 @@ class FlatsMap extends React.Component<Props, State> {
               outputRange: [0.35, 1, 0.35],
               extrapolate: "clamp",
           });
-          return { scale, opacity };
+          const selected = this.animation.interpolate({
+              inputRange,
+              outputRange: [0, 1, 0],
+              extrapolate: 'clamp',
+          });
+          return { scale, opacity, selected };
       });
 
     return (
@@ -158,9 +163,12 @@ class FlatsMap extends React.Component<Props, State> {
                    },
               ],
             };
-              const opacityStyle = {
-                opacity: interpolations[index].opacity,
-              };
+
+            const opacityStyle = {
+              opacity: interpolations[index].opacity,
+            };
+
+
 
             return (
               <MapView.Marker
@@ -172,7 +180,14 @@ class FlatsMap extends React.Component<Props, State> {
 
                 <Animated.View style={styles.markerWrap}>
                   {/*<Animated.View style={styles.ring}/>*/}
-                  <PriceMarker amount={flat.price}/>
+                  <PriceMarker amount={flat.price} style={{
+                      opacity: interpolations[index].opacity,
+                      transform: [
+                          { scale: interpolations[index].scale },
+                      ],
+                  }}
+                  selected={interpolations[index].selected}
+                  />
                   {/*<Animated.View style={styles.marker}/>*/}
                   {/*<Text style={styles.price}>${flat.price}</Text>*/}
                 </Animated.View>
