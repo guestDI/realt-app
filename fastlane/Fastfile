@@ -3,7 +3,7 @@ fastlane_version '2.53.1'
 default_platform :android
 
 before_all do
-  #ensure_git_branch
+  ensure_git_branch
   #ensure_git_status_clean
   #git_pull
 end
@@ -25,4 +25,15 @@ platform :android do
     upload_to_play_store(track: 'beta')
     #slack(message: 'Successfully distributed a new beta build')
   end
+
+  lane :release do
+      gradle(task: 'clean', project_dir: 'android/')
+      gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
+      upload_to_play_store(track: 'production')
+      #slack(message: 'Successfully distributed a new release build')
+    end
+end
+
+after_all do |lane|
+  notify "Fastlane finished '#{lane}'" # Mac OS X Notification
 end

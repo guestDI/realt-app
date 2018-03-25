@@ -8,6 +8,7 @@ import SplashScreen from 'react-native-smart-splash-screen'
 import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./actions";
 import { fetchFilter } from '../FilterContainer/actions'
 import { fetchFavoritesFlats } from '../FlatPageContainer/actions'
+import {getFilter} from "../../asyncStorage";
 
 export interface Props {
   navigation: any;
@@ -75,8 +76,10 @@ class HomeContainer extends React.Component<Props, State> {
     // if (this.props.listIsEmpty) {
     //   return;
     // }
-    let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: page});
-    this.props.fetchFlats(filter);
+      getFilter(filter => {
+          let changedFilter = Object.assign({}, filter, {size: FLATS_ON_PAGE, page: page});
+          this.props.fetchFlats(changedFilter);
+      });
   };
 }
 

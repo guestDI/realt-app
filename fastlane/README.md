@@ -26,6 +26,11 @@ Build the Android application.
 fastlane android beta
 ```
 
+### android release
+```
+fastlane android release
+```
+
 
 ----
 
