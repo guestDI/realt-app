@@ -32,7 +32,7 @@ import {
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import FlatPreview from "./components/FlatPreview/index";
 import MapView from 'react-native-maps';
-import PriceMarker from '../FlatsMap/components/PriceMarker/PriceMarker'
+import PriceMarker from './components/PriceMarker'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -132,12 +132,8 @@ class FlatsMap extends React.Component<Props, State> {
               outputRange: [0.35, 1, 0.35],
               extrapolate: "clamp",
           });
-          const selected = this.animation.interpolate({
-              inputRange,
-              outputRange: [0, 1, 0],
-              extrapolate: 'clamp',
-          });
-          return { scale, opacity, selected };
+
+          return { scale, opacity};
       });
 
     return (
@@ -186,7 +182,6 @@ class FlatsMap extends React.Component<Props, State> {
                           { scale: interpolations[index].scale },
                       ],
                   }}
-                  selected={interpolations[index].selected}
                   />
                   {/*<Animated.View style={styles.marker}/>*/}
                   {/*<Text style={styles.price}>${flat.price}</Text>*/}
