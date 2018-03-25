@@ -9,37 +9,31 @@ import {
 
 class PriceMarker extends React.Component {
     render() {
-        const { amount, style, selected } = this.props;
+        const { amount, style } = this.props;
 
-        const background = selected.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['#FF5A5F', '#4da2ab'],
-        });
-
-        const border = selected.interpolate({
-            inputRange: [0, 1],
-            outputRange: ['#D23F44', '#007a87'],
-        });
+        // const background = selected.interpolate({
+        //     inputRange: [0, 1],
+        //     outputRange: ['#FF5A5F', '#4da2ab'],
+        // });
+        //
+        // const border = selected.interpolate({
+        //     inputRange: [0, 1],
+        //     outputRange: ['#D23F44', '#007a87'],
+        // });
 
         return (
             <Animated.View style={[styles.container, style]}>
                 <Animated.View
-                    style={[
-                        styles.bubble,
-                      {
-                        backgroundColor: background,
-                        borderColor: border,
-                      },
-                    ]}
+                    style={styles.bubble}
                 >
                     <Text style={styles.dollar}>$</Text>
                     <Text style={styles.amount}>{amount}</Text>
                 </Animated.View>
                 <Animated.View
-                    style={[styles.arrowBorder, { borderTopColor: border }]}
+                    style={styles.arrowBorder}
                 />
                 <Animated.View
-                    style={[styles.arrow, { borderTopColor: background }]}
+                    style={styles.arrow}
                 />
             </Animated.View>
         );
@@ -68,6 +62,18 @@ const styles = StyleSheet.create({
         borderColor: '#D23F44',
         borderWidth: 0.5,
     },
+    // selectedBubble: {
+    //     flex: 0,
+    //     position: 'absolute',
+    //     flexDirection: 'row',
+    //     alignSelf: 'flex-start',
+    //     backgroundColor: '#4da2ab',
+    //     borderColor: '#007a87',
+    //     paddingVertical: 2,
+    //     paddingHorizontal: 4,
+    //     borderRadius: 3,
+    //     borderWidth: 0.5,
+    // },
     dollar: {
         color: '#fff',
         fontSize: 10,
@@ -91,10 +97,6 @@ const styles = StyleSheet.create({
         borderTopColor: '#D23F44',
         alignSelf: 'center',
         marginTop: -0.5,
-    },
-    selectedBubble: {
-        backgroundColor: '#4da2ab',
-        borderColor: '#007a87',
     },
     selectedArrow: {
         borderTopColor: '#4da2ab',
