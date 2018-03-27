@@ -74,7 +74,7 @@ function bindAction(dispatch) {
   return {
     // fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
-    initFlatsLoad: () => dispatch(initFlatsLoad()),
+    // initFlatsLoad: () => dispatch(initFlatsLoad()),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
     fetchFilter: () => dispatch(fetchFilter()),
       getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
