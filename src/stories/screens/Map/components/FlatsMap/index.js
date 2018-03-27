@@ -32,7 +32,7 @@ import {
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import FlatPreview from "./components/FlatPreview/index";
 import MapView from 'react-native-maps';
-import PriceMarker from './components/PriceMarker'
+import PriceMarker from './components/PriceMarker/index'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
