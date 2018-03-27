@@ -47,10 +47,6 @@ class MapContainer extends React.Component<Props, State> {
     // });
   }
 
-  componentWillReceiveProps(){
-
-  }
-
   render() {
     // console.log(this.props.data)
     return (
@@ -76,7 +72,7 @@ class MapContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-    fetchFlats: filter => dispatch(fetchFlats(filter)),
+    // fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
     initFlatsLoad: () => dispatch(initFlatsLoad()),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
