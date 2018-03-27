@@ -27,15 +27,15 @@ class MapContainer extends React.Component<Props, State> {
 
   componentDidMount() {
     // this.props.fetchFilter()
-      this.props.getFavoriteFlats()
-      SplashScreen.close({
-          animationType: SplashScreen.animationType.scale,
-          duration: 850,
-          delay: 500,
-      })
+    //   this.props.getFavoriteFlats()
+    //   SplashScreen.close({
+    //       animationType: SplashScreen.animationType.scale,
+    //       duration: 850,
+    //       delay: 500,
+    //   })
 
       // let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: 0});
-      this.props.initFlatsLoad()
+      // this.props.initFlatsLoad()
       // this.props.reloadFlatsOnMap(filter)
       // console.log(filter)
 
@@ -82,7 +82,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  mapData: state.mapReducer.mapList,
+  mapData: state.homeReducer.list,
   filter: state.filterReducer.filter,
 });
 export default connect(mapStateToProps, bindAction)(MapContainer);
