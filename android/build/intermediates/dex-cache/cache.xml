@@ -3,273 +3,273 @@
 
     <item
         is-multidex="false"
-        jar="C:\Users\Dmitry\.gradle\caches\modules-2\files-2.1\com.google.code.findbugs\jsr305\3.0.0\5871fb60dc68d67da54a663c3fd636a10a532948\jsr305-3.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\jsr305-3.0.0_74bba3427df22eaa3d51412197b6ea2adc3fb4c1.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fresco\drawee\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-drawee-1.3.0_f233c42d89a1f17b2a3ec8e9e9ba663a1a204a8d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-1.3.0_4d6787a7d38ea0805403de6a08619ebff2c6f3df.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\realt_app_notifier\react-native-vector-icons\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f2cf527de8d0bd35d72088fafea02395ba4a9eec">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\realt_app_notifier-react-native-vector-icons-unspecified_e8509d6d5c5414da397e2acfd32844b8780ce857.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\realt_app_notifier\react-native-maps\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f9b3671860f93380368f4b21906e2e20401ec88e">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\realt_app_notifier-react-native-maps-unspecified_38b4388d0a2944b8ee5ef4a498f3c1b7d38c24a6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.android.support-animated-vector-drawable-23.4.0_e56b7494412da276ac977679b4fd5227d7ae5f17.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-v4-24.0.0_0c9f15421edad4d39b97f836489e304fa149855a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-okhttp3\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-okhttp3-1.3.0_cacd403a0b3c234abc6766757e96c78ba15c2ff6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fbcore\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-fbcore-1.3.0_09f241554caec583cf2d7e05002c08a163f737d3.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp\3.6.0\69edde9fc4b01c9fd51d25b83428837478c27254\okhttp-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\okhttp-3.6.0_664e49c60a581c3917e5429f9b884c94e06ff050.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fbui.textlayoutbuilder\textlayoutbuilder\1.0.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_1bfb5c5b060c741e3875e4b0c5186cf65051a415.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\AppData\Local\Android\Sdk\extras\android\m2repository\com\android\support\support-annotations\24.0.0\support-annotations-24.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\support-annotations-24.0.0_304b9b38e00ee884bfced078699e72ba2f13ad28.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.soloader\soloader\0.1.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.soloader-soloader-0.1.0_843bf766b0511cbf86ddb32609168165ccbab9ec.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\realt_app_notifier\react-native-smart-splashscreen\unspecified\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="65c5ddffe7b565ab1b933b842cf57b34971b02ba">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\realt_app_notifier-react-native-smart-splashscreen-unspecified_f1bccef7629b8ce1d2662ce6d565fce06ad5a6d8.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\.gradle\caches\modules-2\files-2.1\com.squareup.okhttp3\okhttp-urlconnection\3.6.0\3f9b16b774f2c36cfd86dd2053d0b3059531dacc\okhttp-urlconnection-3.6.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\okhttp-urlconnection-3.6.0_825d49d95110e154291abc0408042448fd10fecd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\.gradle\caches\modules-2\files-2.1\com.facebook.fbui.textlayoutbuilder\staticlayout-proxy\1.0\f162442a19fff13995fbd51ba414d9ee05579080\staticlayout-proxy-1.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\staticlayout-proxy-1.0_05a45e8f1a20ddcbf3c4c6db88b531058cd896a4.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-basement\10.2.4\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-basement-10.2.4_b8c010dc8f4aa6b77773281c4115a4aff5876b18.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-maps\10.2.4\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-maps-10.2.4_f5ae6c9bbd6fe9e519c11c467741e8f8cb4972c7.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fresco\imagepipeline-base\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-imagepipeline-base-1.3.0_5f7dbe482eb6b5fce04a9d43268614526b12771f.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.android.support-support-vector-drawable-23.4.0_bb4167a1eaa88a1923c315a9680f74c1a3be6382.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\.gradle\caches\modules-2\files-2.1\com.squareup.okio\okio\1.13.0\a9283170b7305c8d92d25aff02a6ab7e45d06cbe\okio-1.13.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\okio-1.13.0_e9e6b2094a7ab6a66e494eaaccf5eca9b9bd088a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\.gradle\caches\modules-2\files-2.1\com.parse.bolts\bolts-tasks\1.4.0\d85884acf6810a3bbbecb587f239005cbc846dc4\bolts-tasks-1.4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\bolts-tasks-1.4.0_0ecf027cab342aa84f4cb310547077a705e318e0.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="C:\Users\Dmitry\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\javax.inject-1_b752923a0b8b6b540fe4f122d1fd8284d8a17ab2.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-base\10.2.4\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-base-10.2.4_81321da97e9c9d7cb3417eaab4739112b4fe736d.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.google.android.gms\play-services-tasks\10.2.4\jars\classes.jar"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/10.2.4/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="5803db663655ef5cb38c6bcb17ba326fdb9edfbd">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.google.android.gms-play-services-tasks-10.2.4_6ad81f418d54a5e3c13be684cddac21b0f2196d1.jar" />
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.google.android.gms-play-services-tasks-10.2.4_a1ebdcc6bcaf88afa6a767a176b96632c298c8ee.jar" />
     </item>
     <item
         is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.android.support\support-v4\24.0.0\jars\libs\internal_impl-24.0.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\internal_impl-24.0.0_10c140a73290970810849bec30a6fda3608c9949.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.fresco\fresco\1.3.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.fresco-fresco-1.3.0_c5a771b339db6bb8a5ac1ca4c790ec8905cb885e.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\23.4.0\jars\classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.android.support-appcompat-v7-23.4.0_0f2c3c49c9e74f9d5e618027a5b0057afc3fc0d6.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.52.0\jars\libs\infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\infer-annotations-4.0_5dd6b0e15079efc308008e9cd7a8b1daa80b9015.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="D:\React\realt-app-notifier\android\app\build\intermediates\exploded-aar\com.facebook.react\react-native\0.52.0\jars\classes.jar"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="af61eb11ffb4296cab0c93218248a3dfcec0a84c">
-        <dex dex="D:\React\realt-app-notifier\android\app\build\intermediates\pre-dexed\debug\com.facebook.react-react-native-0.52.0_44cf9b18f33fab6b22112b4b5f0f080beffb38c3.jar" />
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.react-react-native-0.52.0_982e497f89ba3c2cd2d7bd5a7955e35976ea195a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fresco-fbcore-1.3.0_4d066de00d665a9a660208362c5e3f0dbe1e84b2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/realt_app_notifier/react-native-smart-splashscreen/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="65c5ddffe7b565ab1b933b842cf57b34971b02ba">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/realt_app_notifier-react-native-smart-splashscreen-unspecified_5874482ae00cf2ba1aed4db630304c3d35eddfd5.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.m2/repository/javax/inject/javax.inject/1/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/javax.inject-1_ea27ac0e51bc7971041d6a1eaa1339974b1805ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.android.support-support-vector-drawable-23.4.0_32284c250798c41494c31a39464e0688358d0758.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/10.2.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9ed08fab37c3a572da1d9ed2bf2e36c8d3e2bc48">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.google.android.gms-play-services-basement-10.2.4_b79195c70f17294188b92d790f7286aa7f4ac2eb.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/10.2.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6d0d5e86f5b7203834df01ed78ebfdd5cbf74d48">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.google.android.gms-play-services-maps-10.2.4_cba7b8bc08d8e32695dfffce48ed0dce94414f04.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.52.0/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/infer-annotations-4.0_f5bc8d48ae0a88ab0b86dab1ec7442999fd21895.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.gradle/caches/modules-2/files-2.1/com.squareup.okio/okio/1.13.0/a9283170b7305c8d92d25aff02a6ab7e45d06cbe/okio-1.13.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="a9283170b7305c8d92d25aff02a6ab7e45d06cbe">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/okio-1.13.0_cf0a74aace4f1a5a01f030d9e9545cd39c3263aa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/realt_app_notifier/react-native-vector-icons/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f2cf527de8d0bd35d72088fafea02395ba4a9eec">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/realt_app_notifier-react-native-vector-icons-unspecified_c16a7f77ee19aede839fb457224c87ce3cad46b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_e78b37929a0e3439e2692ee582653b2e47ce2079.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/support-annotations-24.0.0_a785dadfa214f1db2e172f3374b9fea62be33547.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fresco-imagepipeline-base-1.3.0_dddaef143a3c6dcc0e1df5d419c581a25f9fdeaa.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/realt_app_notifier/react-native-maps/unspecified/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f9b3671860f93380368f4b21906e2e20401ec88e">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/realt_app_notifier-react-native-maps-unspecified_ad0f2f98679b63108870f09f8486991904ba395f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fresco-drawee-1.3.0_77925eae48298be8f88739212fc16122fd6c7dbd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/jsr305/3.0.0/5871fb60dc68d67da54a663c3fd636a10a532948/jsr305-3.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/jsr305-3.0.0_f92717880e6d5110cf13c080f3b669243716af07.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.gradle/caches/modules-2/files-2.1/com.parse.bolts/bolts-tasks/1.4.0/d85884acf6810a3bbbecb587f239005cbc846dc4/bolts-tasks-1.4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/bolts-tasks-1.4.0_7ea88b4f20415afafb7309229c2b75f1576dade1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp-urlconnection/3.6.0/3f9b16b774f2c36cfd86dd2053d0b3059531dacc/okhttp-urlconnection-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="3f9b16b774f2c36cfd86dd2053d0b3059531dacc">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/okhttp-urlconnection-3.6.0_c3a5e5e3aa9b5b69557ff98b640aea336b058144.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fresco-imagepipeline-1.3.0_1afafdb9c159a3ad65fccf538a8b66b6dab62d37.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="548f06de403a9409f00554b3ee12a9fdea0e236c">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.android.support-appcompat-v7-23.4.0_346351382689444b8c5d07a64d9cf659451e267e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.soloader-soloader-0.1.0_e903d78fe2583a98aa93c80f9f12123a04834eae.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/23.4.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="de4db3785756bfb0915a9f59a9b3f2fea7407be4">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.android.support-animated-vector-drawable-23.4.0_fbdf032a95c8b26ec8103fc62ea094efb19f86c7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.android.support-support-v4-24.0.0_abfa1b8074b0c378b392804ba549d711e291b94e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_edd25d7fc3dcc8d6802121dc193e31ed0b15b931.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.m2/repository/com/squareup/okhttp3/okhttp/3.6.0/okhttp-3.6.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="69edde9fc4b01c9fd51d25b83428837478c27254">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/okhttp-3.6.0_fc61939dc8def563a24f76bf083c13b60589069f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/internal_impl-24.0.0_867f12628b8eae2f9a230cfb80cff72915d7cfcf.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/10.2.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="dd1d0d84da2cff18f741c63a9c3af7d9aa89fdd6">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.google.android.gms-play-services-base-10.2.4_06392ce7d688298b109494c3a9b2e4e7355460fd.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/com.facebook.fresco-fresco-1.3.0_814b36ba2cb6cf029b3c22d58ab4f922d8590276.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/romanventskus/.gradle/caches/modules-2/files-2.1/com.facebook.fbui.textlayoutbuilder/staticlayout-proxy/1.0/f162442a19fff13995fbd51ba414d9ee05579080/staticlayout-proxy-1.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f162442a19fff13995fbd51ba414d9ee05579080">
+        <dex dex="/Users/romanventskus/WebstormProjects/realt-app-notifier/android/app/build/intermediates/pre-dexed/release/staticlayout-proxy-1.0_fe563f643a9f2230e1a14876b70b75df9c78c737.jar" />
     </item>
 
 </items>
