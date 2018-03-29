@@ -1,19 +1,7 @@
 import * as React from "react";
 import {
-  Header,
-  Title,
-  Content,
-  Button,
+
   Icon,
-  Left,
-  Right,
-  Body,
-  Thumbnail,
-  List,
-  ListItem,
-  Card,
-  CardItem,
-  Container
 } from "native-base";
 
 import {
@@ -32,6 +20,7 @@ import {
 } from "react-native";
 import formatDate from "../../../utils/utils";
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
+import Paging from '../Paging'
 
 export interface Props {
   navigation: any;
@@ -46,6 +35,10 @@ const { height, width } = Dimensions.get("window");
 class FlatRow extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
+
+      this.state = {
+          currentIdx: 0,
+      };
   }
 
   onRowPress = () => {
@@ -78,6 +71,12 @@ class FlatRow extends React.PureComponent<Props, State> {
         }
     }
 
+  setIndex = idx => {
+      this.state = {
+          currentIdx: idx,
+      };
+  }
+
   scrollX = new Animated.Value(0)
 
   render() {
@@ -93,7 +92,7 @@ class FlatRow extends React.PureComponent<Props, State> {
               style={styles.rowScrollContainer}
               name={`lazyload-list${this.props.flat.id}`}
               onScroll={Animated.event(
-                  [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
+                   [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
               )}
             >
             {this.props.flat.photos.map((image, index) => {
@@ -110,21 +109,32 @@ class FlatRow extends React.PureComponent<Props, State> {
               )
             })}
             </LazyloadScrollView>
-            <View style={{ flexDirection: 'row' }}>
-              {this.props.flat.photos.map((_, i) => {
-                  let opacity = position.interpolate({
-                      inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],
-                      outputRange: [0.3, 1, 1, 1, 0.3],
-                      extrapolate: 'clamp'
-                  });
-                return (
-                  <Animated.View
-                    key={i}
-                    style={{ opacity, height: 7, width: 7, backgroundColor: '#595959', margin: 5, borderRadius: 5 }}
-                  />
-                  );
-              })}
-            </View>
+            <Paging
+                style={{position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999}}
+                numberOfPages={this.props.flat.photos.length}
+                currentPage={this.state.currentIdx}
+                hidesForSinglePage
+                pageIndicatorTintColor='gray'
+                currentPageIndicatorTintColor='white'
+                indicatorStyle={{borderRadius: 5}}
+                currentIndicatorStyle={{borderRadius: 5}}
+                indicatorSize={{width:8, height:8}}
+            />
+            {/*<View style={{ flexDirection: 'row' }}>*/}
+              {/*{this.props.flat.photos.map((_, i) => {*/}
+                  {/*let opacity = position.interpolate({*/}
+                      {/*inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],*/}
+                      {/*outputRange: [0.3, 1, 1, 1, 0.3],*/}
+                      {/*extrapolate: 'clamp'*/}
+                  {/*});*/}
+                {/*return (*/}
+                  {/*<Animated.View*/}
+                    {/*key={i}*/}
+                    {/*style={{ opacity, height: 7, width: 7, backgroundColor: '#595959', margin: 5, borderRadius: 5 }}*/}
+                  {/*/>*/}
+                  {/*);*/}
+              {/*})}*/}
+            {/*</View>*/}
         </View>
       <TouchableOpacity onPress={this.onRowPress}>
           <View style={{ flexDirection: "row" }}>

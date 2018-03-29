@@ -34,6 +34,8 @@ import ImageView from "./components/ImageView";
 import MapView from 'react-native-maps';
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import formatDate from "../../../utils/utils";
+import Paging from '../../common/Paging'
+
 
 export interface Props {
   navigation: any;
@@ -226,6 +228,17 @@ class FlatPage extends React.Component<Props, State> {
                   </TouchableOpacity>
                 ))}
               </LazyloadScrollView>
+              <Paging
+                  style={{position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999}}
+                  numberOfPages={this.props.flat.photos.length}
+                  currentPage={1}
+                  hidesForSinglePage
+                  pageIndicatorTintColor='gray'
+                  currentPageIndicatorTintColor='white'
+                  indicatorStyle={{borderRadius: 5}}
+                  currentIndicatorStyle={{borderRadius: 5}}
+                  indicatorSize={{width:8, height:8}}
+              />
             </View>
             <View style={{ flex: 1 }}>
               <View style={{ flexDirection: "column", paddingLeft: 10 }}>
