@@ -45,10 +45,9 @@ const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 const CARD_HEIGHT = height / 3;
 const CARD_WIDTH = CARD_HEIGHT - 20;
 
-class FlatPreview extends React.Component<Props, State> {
+class FlatPreview extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
-    this.state = {};
   }
 
     getRoomsNumber = room => {
