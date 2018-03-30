@@ -127,6 +127,12 @@ export const fetchFlats = filter => {
         }
       )
       .then(response => response.data)
+        .then(flats => {
+            return flats.map(flat => {
+                flat.photos[0] = flat.smallPhoto;
+                return flat;
+            })
+        })
       .then(flats => dispatch(fetchListSuccess(flats)))
       .then(() => dispatch(listIsLoading(false)))
       .then(() => dispatch(listIsRefreshing(false)))
