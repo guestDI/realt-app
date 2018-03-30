@@ -70,6 +70,7 @@ class FlatPreview extends React.Component<Props, State> {
     return (
       <View style={styles.card}>
         <Image
+            resizeMode='cover'
           source={{ uri: this.props.flat.smallPhoto }}
           style={styles.cardImage}
         />
@@ -118,7 +119,6 @@ const styles = StyleSheet.create({
   previewContainer: {
     flex: 1,
     // height: height * 0.15,
-    width: width * 0.5,
     flexDirection: "column"
     // borderWidth: 1,
     // borderColor: '#a5abb6',
@@ -133,8 +133,6 @@ const styles = StyleSheet.create({
       // shadowRadius: 5,
       // shadowOpacity: 0.3,
       // shadowOffset: { x: 2, y: -2 },
-      height: CARD_HEIGHT,
-      width: CARD_WIDTH,
       // overflow: "hidden",
     },
   cardImage: {

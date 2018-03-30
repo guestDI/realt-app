@@ -24,10 +24,11 @@ import {
   Dimensions,
   ActivityIndicator,
   Image,
-  Animated,
   ScrollView,
   StyleSheet,
 } from "react-native";
+
+import Carousel from 'react-native-snap-carousel';
 
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import FlatPreview from "./components/FlatPreview/index";
@@ -49,7 +50,8 @@ const LATITUDE_DELTA = 0.2122;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 const CARD_HEIGHT = height / 3;
-const CARD_WIDTH = CARD_HEIGHT - 20;
+const MARGIN_LEFT = 75;
+const CARD_WIDTH = width - MARGIN_LEFT * 2;
 
 class FlatsMap extends React.Component<Props, State> {
   constructor(props) {
@@ -66,44 +68,11 @@ class FlatsMap extends React.Component<Props, State> {
         longitudeDelta: LONGITUDE_DELTA
       }
     };
+    this.activeIndex = 0;
   }
 
   componentWillMount() {
     this.index = 0;
-    this.animation = new Animated.Value(0);
-  }
-
-  componentDidMount() {
-    this.animation.addListener(({ value }) => {
-      let index = Math.floor(value / CARD_WIDTH + 0.3); // animate 30% away from landing on the next item
-        if (index >= this.props.list.length) {
-          index = this.props.list.length - 1;
-        }
-
-        if (index <= 0) {
-          index = 0;
-        }
-
-        clearTimeout(this.regionTimeout);
-        this.regionTimeout = setTimeout(() => {
-          if (this.index !== index) {
-            this.index = index;
-            const coordinate={
-              latitude: this.props.list[index].latitude,
-              longitude: this.props.list[index].longitude
-            }
-            // const { coordinate } = this.props.list[index];
-            this.map.animateToRegion(
-              {
-                ...coordinate,
-                latitudeDelta: this.state.region.latitudeDelta,
-                longitudeDelta: this.state.region.longitudeDelta,
-              },
-              350
-            );
-          }
-        }, 10);
-    });
   }
 
   onPreviewPress = val => {
@@ -116,26 +85,6 @@ class FlatsMap extends React.Component<Props, State> {
   };
 
   render() {
-      const interpolations = this.props.list.map((flat, index) => {
-          const inputRange = [
-              (index - 1) * CARD_WIDTH,
-              index * CARD_WIDTH,
-              ((index + 1) * CARD_WIDTH),
-          ];
-          const scale = this.animation.interpolate({
-              inputRange,
-              outputRange: [1, 2.5, 1],
-              extrapolate: "clamp",
-          });
-          const opacity = this.animation.interpolate({
-              inputRange,
-              outputRange: [0.35, 1, 0.35],
-              extrapolate: "clamp",
-          });
-
-          return { scale, opacity};
-      });
-
     return (
       <Container style={{ flex: 1 }}>
         <MapView
@@ -147,83 +96,73 @@ class FlatsMap extends React.Component<Props, State> {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
           }}
+          onRegionChangeComplete={region => {
+              this.setState({
+                  region: region,
+              })
+          }}
           showsUserLocation={true}
           loadingEnabled={true}
         >
 
           {this.props.list.map((flat, index) => {
-            const scaleStyle = {
-              transform: [
-                {
-                  scale: interpolations[index].scale,
-                   },
-              ],
-            };
-
-            const opacityStyle = {
-              opacity: interpolations[index].opacity,
-            };
 
 
 
             return (
               <MapView.Marker
                 key={flat.originalId}
+                pinColor={index === this.activeIndex ? 'green' : 'red'}
                 coordinate={{
                   latitude: flat.latitude,
                   longitude: flat.longitude
                 }}>
 
-                <Animated.View style={styles.markerWrap}>
-                  {/*<Animated.View style={styles.ring}/>*/}
-                  <PriceMarker amount={flat.price} style={{
-                      opacity: interpolations[index].opacity,
-                      transform: [
-                          { scale: interpolations[index].scale },
-                      ],
-                  }}
-                  />
-                  {/*<Animated.View style={styles.marker}/>*/}
-                  {/*<Text style={styles.price}>${flat.price}</Text>*/}
-                </Animated.View>
               </MapView.Marker>
             );
-            // this.printMarker(flat.latitude, flat.longitude, flat.price);
           })}
         </MapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
-          <Animated.ScrollView
-            horizontal
-            scrollEventThrottle={1}
-            showsHorizontalScrollIndicator={false}
-            snapToInterval={CARD_WIDTH}
-            onScroll={Animated.event(
-              [
-                {
-                  nativeEvent: {
-                    contentOffset: {
-                      x: this.animation,
-                    },
-                  },
-                },
-              ],
-              { useNativeDriver: true },
-            )}
-            // style={styles.scrollView}
-            contentContainerStyle={styles.endPadding}
-          >
-            {this.props.list.map((flat, index) => {
-              return(
-                  <View style={{flex: 1}} key={index}>
-                    <FlatPreview flat={flat} />
-                  </View>
-              )
-            })}
-          </Animated.ScrollView>
+            <Carousel
+                containerCustomStyle={{marginLeft: - 2 * MARGIN_LEFT}}
+                ref={(c) => { this._carousel = c; }}
+                data={this.props.list}
+                renderItem={this._renderItem}
+                itemWidth={CARD_WIDTH}
+                enableMomentum={true}
+                decelerationRate={0.9}
+                sliderWidth={width + 2 * MARGIN_LEFT}
+                onSnapToItem={(index) => {
+                        let flat = this.props.list[index];
+                    let coordinate = {
+                        latitude: flat.latitude,
+                        longitude: flat.longitude
+                    };
+                    this.activeIndex = index;
+
+                    this.map.animateToRegion(
+                        {
+                            ...coordinate,
+                            latitudeDelta: this.state.region.latitudeDelta,
+                            longitudeDelta: this.state.region.longitudeDelta,
+                        },
+                        350
+                    );
+
+                }}
+            />
         </View>
       </Container>
     );
   }
+
+    _renderItem ({item, index}) {
+        return (
+            <View style={{width: CARD_WIDTH, height: CARD_HEIGHT}}>
+                <FlatPreview flat={item} key={index}/>
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({

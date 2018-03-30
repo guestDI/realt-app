@@ -17,8 +17,8 @@ export interface Props {
 }
 export interface State {}
 
-const FLATS_ON_PAGE = 10;
-const FLATS_ON_MAP = 150;
+const FLATS_ON_PAGE = 150;
+const FLATS_ON_MAP = 100;
 
 class MapContainer extends React.Component<Props, State> {
   constructor(props) {
@@ -26,25 +26,8 @@ class MapContainer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    // this.props.fetchFilter()
-    //   this.props.getFavoriteFlats()
-    //   SplashScreen.close({
-    //       animationType: SplashScreen.animationType.scale,
-    //       duration: 850,
-    //       delay: 500,
-    //   })
+      this.props.initFlatsLoad()
 
-      // let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: 0});
-      // this.props.initFlatsLoad()
-      // this.props.reloadFlatsOnMap(filter)
-      // console.log(filter)
-
-    // this.props.fetchFlats(filter);
-
-    // this.props.fetchFlatsOnMap({
-    //   page: 0,
-    //   size: FLATS_ON_MAP
-    // });
   }
 
   render() {
@@ -57,24 +40,13 @@ class MapContainer extends React.Component<Props, State> {
     );
   }
 
-  handleRefresh = () => {
-      this.props.refreshFlats(this.props.filter);
-  }
-
-  loadMore = page => {
-    // if (this.props.listIsEmpty) {
-    //   return;
-    // }
-    let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: page});
-    this.props.fetchFlats(filter);
-  };
 }
 
 function bindAction(dispatch) {
   return {
     // fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
-    // initFlatsLoad: () => dispatch(initFlatsLoad()),
+     initFlatsLoad: () => dispatch(initFlatsLoad()),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
     fetchFilter: () => dispatch(fetchFilter()),
       getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
@@ -82,7 +54,7 @@ function bindAction(dispatch) {
 }
 
 const mapStateToProps = state => ({
-  mapData: state.homeReducer.list,
+  mapData: state.mapReducer.mapList,
   filter: state.filterReducer.filter,
 });
 export default connect(mapStateToProps, bindAction)(MapContainer);

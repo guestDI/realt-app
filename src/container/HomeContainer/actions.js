@@ -79,7 +79,7 @@ export const initFlatsLoad = () => {
         dispatch(clearFlatsList())
         getFilter(function(filter) {
             fetchFlats(Object.assign({}, filter, {page: 0}))(dispatch);
-            fetchFlatsOnMap(Object.assign({}, filter, {page: 0}))(dispatch)
+            fetchFlatsOnMap(Object.assign({}, filter, {size: 150, page: 0}))(dispatch)
         });
     }
 }

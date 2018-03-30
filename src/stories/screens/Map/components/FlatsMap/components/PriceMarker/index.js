@@ -4,6 +4,7 @@ import * as React from 'react';
 import {
     StyleSheet,
     Text,
+    View,
     Animated,
 } from 'react-native';
 
@@ -11,31 +12,21 @@ class PriceMarker extends React.Component {
     render() {
         const { amount, style } = this.props;
 
-        // const background = selected.interpolate({
-        //     inputRange: [0, 1],
-        //     outputRange: ['#FF5A5F', '#4da2ab'],
-        // });
-        //
-        // const border = selected.interpolate({
-        //     inputRange: [0, 1],
-        //     outputRange: ['#D23F44', '#007a87'],
-        // });
-
         return (
-            <Animated.View style={[styles.container, style]}>
+            <View style={[styles.container]}>
                 <Animated.View
                     style={styles.bubble}
                 >
                     <Text style={styles.dollar}>$</Text>
                     <Text style={styles.amount}>{amount}</Text>
                 </Animated.View>
-                <Animated.View
+                <View
                     style={styles.arrowBorder}
                 />
-                <Animated.View
+                <View
                     style={styles.arrow}
                 />
-            </Animated.View>
+            </View>
         );
     }
 }
