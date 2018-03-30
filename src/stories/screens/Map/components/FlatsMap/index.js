@@ -28,11 +28,13 @@ import {
   StyleSheet,
 } from "react-native";
 
+
 import Carousel from 'react-native-snap-carousel';
 
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import FlatPreview from "./components/FlatPreview/index";
-import MapView from 'react-native-maps';
+import {Marker, Callout} from 'react-native-maps';
+import ClusteredMapView from 'react-native-maps-super-cluster'
 import PriceMarker from './components/PriceMarker/index'
 const { StatusBarManager } = NativeModules;
 
@@ -46,7 +48,7 @@ export interface State {
 }
 const { height, width } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.2122;
+const LATITUDE_DELTA = 0.0422;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 const CARD_HEIGHT = height / 3;
@@ -84,10 +86,70 @@ class FlatsMap extends React.Component<Props, State> {
     // }
   };
 
+    renderCluster = (cluster, onPress) => {
+        const pointCount = cluster.pointCount,
+            coordinate = cluster.coordinate,
+            clusterId = cluster.clusterId
+
+        // use pointCount to calculate cluster size scaling
+        // and apply it to "style" prop below
+
+        // eventually get clustered points by using
+        // underlying SuperCluster instance
+        // Methods ref: https://github.com/mapbox/supercluster
+        const clusteringEngine = this.map.getClusteringEngine(),
+            clusteredPoints = clusteringEngine.getLeaves(clusterId, 100)
+
+        return (
+            <Marker coordinate={coordinate} onPress={onPress}>
+                <View style={styles.clusterContainer}>
+                    <Text style={styles.clusterText}>
+                        {pointCount}
+                    </Text>
+                </View>
+                {
+                    /*
+                      Eventually use <Callout /> to
+                      show clustered point thumbs, i.e.:
+                      <Callout>
+                        <ScrollView>
+                          {
+                            clusteredPoints.map(p => (
+                              <Image source={p.image}>
+                            ))
+                          }
+                        </ScrollView>
+                      </Callout>
+
+                      IMPORTANT: be aware that Marker's onPress event isn't really consistent when using Callout.
+                     */
+                }
+            </Marker>
+        )
+    }
+
+    renderMarker = (flat, index) => {
+        return (
+            <Marker
+                key={flat.originalId}
+                pinColor={index === this.activeIndex ? 'green' : 'red'}
+                coordinate={{
+                    latitude: flat.latitude,
+                    longitude: flat.longitude
+                }}>
+
+            </Marker>
+        )
+    }
+
   render() {
+        let data = this.props.list.map(flat => {
+            flat.location = {latitude: flat.latitude, longitude: flat.longitude}
+            return flat;
+        })
     return (
       <Container style={{ flex: 1 }}>
-        <MapView
+        <ClusteredMapView
           ref={map => this.map = map}
           style={{ flex: 3, width: width, height: height}}
           initialRegion={{
@@ -96,32 +158,13 @@ class FlatsMap extends React.Component<Props, State> {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
           }}
-          onRegionChangeComplete={region => {
-              this.setState({
-                  region: region,
-              })
-          }}
+          data={data}
           showsUserLocation={true}
           loadingEnabled={true}
+          renderMarker={this.renderMarker}
+          renderCluster={this.renderCluster}
         >
-
-          {this.props.list.map((flat, index) => {
-
-
-
-            return (
-              <MapView.Marker
-                key={flat.originalId}
-                pinColor={index === this.activeIndex ? 'green' : 'red'}
-                coordinate={{
-                  latitude: flat.latitude,
-                  longitude: flat.longitude
-                }}>
-
-              </MapView.Marker>
-            );
-          })}
-        </MapView>
+        </ClusteredMapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
             <Carousel
                 containerCustomStyle={{marginLeft: - 2 * MARGIN_LEFT}}
@@ -130,7 +173,7 @@ class FlatsMap extends React.Component<Props, State> {
                 renderItem={this._renderItem}
                 itemWidth={CARD_WIDTH}
                 enableMomentum={true}
-                decelerationRate={0.9}
+                decelerationRate={0.7}
                 sliderWidth={width + 2 * MARGIN_LEFT}
                 onSnapToItem={(index) => {
                         let flat = this.props.list[index];
@@ -140,14 +183,7 @@ class FlatsMap extends React.Component<Props, State> {
                     };
                     this.activeIndex = index;
 
-                    this.map.animateToRegion(
-                        {
-                            ...coordinate,
-                            latitudeDelta: this.state.region.latitudeDelta,
-                            longitudeDelta: this.state.region.longitudeDelta,
-                        },
-                        350
-                    );
+                    this.map.getMapRef().animateToCoordinate(coordinate);
 
                 }}
             />
@@ -175,6 +211,23 @@ const styles = StyleSheet.create({
     markerWrap: {
         alignItems: "center",
         justifyContent: "center",
+    },
+    clusterContainer: {
+        width: 30,
+        height: 30,
+        padding: 6,
+        borderWidth: 1,
+        borderRadius: 15,
+        alignItems: 'center',
+        borderColor: '#65bc46',
+        justifyContent: 'center',
+        backgroundColor: 'white',
+    },
+    clusterText: {
+        fontSize: 13,
+        color: '#65bc46',
+        fontWeight: '500',
+        textAlign: 'center',
     },
     ring: {
         width: 24,
