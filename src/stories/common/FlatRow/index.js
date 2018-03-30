@@ -37,7 +37,7 @@ class FlatRow extends React.PureComponent<Props, State> {
     super(props);
 
       this.state = {
-          currentIdx: 0,
+          activeSlide: 0,
       };
   }
 
@@ -92,8 +92,9 @@ class FlatRow extends React.PureComponent<Props, State> {
               style={styles.rowScrollContainer}
               name={`lazyload-list${this.props.flat.id}`}
               onScroll={Animated.event(
-                   [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
+                  [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
               )}
+
             >
             {this.props.flat.photos.map((image, index) => {
               return(
@@ -112,7 +113,7 @@ class FlatRow extends React.PureComponent<Props, State> {
             <Paging
                 style={{position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999}}
                 numberOfPages={this.props.flat.photos.length}
-                currentPage={this.state.currentIdx}
+                currentPage={this.state.activeSlide}
                 hidesForSinglePage
                 pageIndicatorTintColor='gray'
                 currentPageIndicatorTintColor='white'

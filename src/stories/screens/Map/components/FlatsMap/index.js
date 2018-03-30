@@ -192,10 +192,12 @@ class FlatsMap extends React.Component<Props, State> {
     );
   }
 
-    _renderItem ({item, index}) {
+    _renderItem = ({item, index}) => {
         return (
             <View style={{width: CARD_WIDTH, height: CARD_HEIGHT}}>
+              <TouchableOpacity key={index} onPress={() => this.onPreviewPress(item)} activeOpacity={1}>
                 <FlatPreview flat={item} key={index}/>
+              </TouchableOpacity>
             </View>
         );
     }
