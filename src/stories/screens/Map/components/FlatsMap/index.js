@@ -78,6 +78,7 @@ class FlatsMap extends React.Component<Props, State> {
   }
 
   onPreviewPress = val => {
+      console.log(val)
     this.props.navigation.navigate("FlatPage", {
       flat: val
     });
@@ -143,7 +144,8 @@ class FlatsMap extends React.Component<Props, State> {
     }
 
   render() {
-        let data = this.props.list.map(flat => {
+        let data = this.props.list.map((flat, index) => {
+            flat.index = index;
             flat.location = {latitude: flat.latitude, longitude: flat.longitude}
             return flat;
         })
@@ -158,11 +160,16 @@ class FlatsMap extends React.Component<Props, State> {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
           }}
+          onClusterPress={(clusteId, children) => {
+              let firstItem = children[0];
+              this._carousel.snapToItem(firstItem.index);
+          }}
           data={data}
           showsUserLocation={true}
           loadingEnabled={true}
           renderMarker={this.renderMarker}
           renderCluster={this.renderCluster}
+          removeClippedSubviews={true}
         >
         </ClusteredMapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
@@ -192,13 +199,17 @@ class FlatsMap extends React.Component<Props, State> {
     );
   }
 
-    _renderItem ({item, index}) {
+    _renderItem = ({item, index}) => {
         return (
             <View style={{width: CARD_WIDTH, height: CARD_HEIGHT}}>
-                <FlatPreview flat={item} key={index}/>
+                <TouchableOpacity
+                    onPress={() => this.onPreviewPress(item)}>
+                    <FlatPreview flat={item} key={index}/>
+                </TouchableOpacity>
             </View>
         );
     }
+
 }
 
 const styles = StyleSheet.create({
