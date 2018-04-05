@@ -2,6 +2,7 @@ import axios from "axios";
 import qs from 'qs'
 import { getFavoriteFlat, saveFavoriteFlat, getFilter } from "../../asyncStorage";
 import { formatLocation } from "../../utils/utils";
+import {AsyncStorage} from "react-native";
 
 export function listIsLoading(bool: boolean) {
   return {
@@ -100,6 +101,8 @@ export const reloadFlatsOnMap = filter => {
 
 export const fetchFlats = filter => {
     console.log('PAGE', filter.page)
+    const LAST_UPDATED_KEY = '@realrealt:last_updated';
+    AsyncStorage.setItem(LAST_UPDATED_KEY, new Date());
     let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
     let page = filter.page  ? filter.page : 0;
 
