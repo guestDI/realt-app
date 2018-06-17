@@ -138,24 +138,7 @@ class Home extends React.Component<Props, State> {
             </Button>
           </Right>
         </Header>
-        <View style={{ flex: 1 }}>
-          {/*<Container style={{marginTop: '2%'}}>*/}
-          {/*<Tabs
-            tabContainerStyle={{ height: 50 }}
-            tabBarPosition="top"
-            tabBarUnderlineStyle={{ backgroundColor: "#bf6141" }}
-          >
-            <Tab
-              heading={
-                <TabHeading>
-                  <Icon name="list" />
-                </TabHeading>
-              }
-              activeTabStyle={{ backgroundColor: "#FFF" }}
-              tabStyle={{ backgroundColor: "#FFF" }}
-              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
-              textStyle={{ color: "#959ba6", fontSize: 14 }}
-            >*/}
+        <View style={{ flex: 1, backgroundColor: 'white' }}>
             <FavoriteFlats
                 navigation={this.props.navigation}
                 list={this.props.favorites}
