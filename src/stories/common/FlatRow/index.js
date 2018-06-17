@@ -19,7 +19,8 @@ import {
     Animated
 } from "react-native";
 import formatDate from "../../../utils/utils";
-import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
+import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux'
+import Carousel from 'react-native-banner-carousel';
 import Paging from '../Paging'
 
 export interface Props {
@@ -31,6 +32,8 @@ export interface Props {
 }
 
 const { height, width } = Dimensions.get("window");
+const BannerWidth = Dimensions.get('window').width;
+const BannerHeight = 260;
 
 class FlatRow extends React.PureComponent<Props, State> {
   constructor(props) {
@@ -50,7 +53,16 @@ class FlatRow extends React.PureComponent<Props, State> {
     }
   };
 
-  printNumber = () => {
+    renderPage(image, index) {
+        return (
+            <View key={index}>
+                <Image style={{ width: BannerWidth, height: BannerHeight }} source={{ uri: image }} />
+            </View>
+        );
+    }
+
+
+    printNumber = () => {
     this.props.flat.contacts.map((num, index) => {
       return <Text key={index}>{num}</Text>;
     });
