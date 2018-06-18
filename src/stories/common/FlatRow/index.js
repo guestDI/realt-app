@@ -89,7 +89,11 @@ class FlatRow extends React.PureComponent<Props, State> {
       };
   }
 
-  scrollX = new Animated.Value(0)
+    handleItemVisibility(visibility, ref, props) {
+        console.log('visibility, ref, props', visibility, ref, props);
+    }
+
+    scrollX = new Animated.Value(0)
 
   render() {
     let position = Animated.divide(this.scrollX, width);
@@ -103,7 +107,7 @@ class FlatRow extends React.PureComponent<Props, State> {
               showsHorizontalScrollIndicator={false}
               style={styles.rowScrollContainer}
               name={`lazyload-list${this.props.flat.id}`}
-              onScroll={Animated.event(
+              onScroll={() => Animated.event(
                   [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
               )}
 
@@ -116,6 +120,7 @@ class FlatRow extends React.PureComponent<Props, State> {
                       host={`lazyload-list${this.props.flat.id}`}
                       source={{uri: image}}
                       borderRadius={3}
+
                     >
                     </LazyloadImage>
                   </TouchableOpacity>
@@ -133,10 +138,10 @@ class FlatRow extends React.PureComponent<Props, State> {
                 currentIndicatorStyle={{borderRadius: 5}}
                 indicatorSize={{width:8, height:8}}
             />
-            {/*<View style={{ flexDirection: 'row' }}>*/}
+            {/*<View style={{ flexDirection: 'row', position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999 }}>*/}
               {/*{this.props.flat.photos.map((_, i) => {*/}
                   {/*let opacity = position.interpolate({*/}
-                      {/*inputRange: [i - 0.50000000001, i - 0.5, i, i + 0.5, i + 0.50000000001],*/}
+                      {/*inputRange: [i - 0.50001, i - 0.5, i, i + 0.5, i + 0.50000000001],*/}
                       {/*outputRange: [0.3, 1, 1, 1, 0.3],*/}
                       {/*extrapolate: 'clamp'*/}
                   {/*});*/}

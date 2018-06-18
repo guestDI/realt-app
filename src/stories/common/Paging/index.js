@@ -24,6 +24,10 @@ export interface Props {
 }
 
 const { height, width } = Dimensions.get("window");
+const deviceWidth = Dimensions.get('window').width
+const FIXED_BAR_WIDTH = 280
+const BAR_SPACE = 10
+
 
 class Paging extends React.PureComponent<Props, State> {
   constructor(props) {
@@ -35,6 +39,7 @@ class Paging extends React.PureComponent<Props, State> {
     // }
 
   render() {
+
       let { style, ...props } = this.props;
 
       let defaultStyle = {
