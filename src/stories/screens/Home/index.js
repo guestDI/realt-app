@@ -1,4 +1,5 @@
 import * as React from "react";
+import {DotsLoader, TextLoader} from 'react-native-indicator';
 import {
   Container,
   Header,
@@ -27,6 +28,7 @@ import {
   Dimensions,
   ActivityIndicator
 } from "react-native";
+
 import moment from "moment";
 import styles from "./styles";
 import FlatsList from "./components/FlatsList/index";
@@ -141,6 +143,13 @@ class Home extends React.Component<Props, State> {
           </Right>
         </Header>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
+            {this.props.loadingState ?
+              <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
+                <DotsLoader size={12}/>
+                <View style={{marginTop: 5}}>
+                  <TextLoader text="Загрузка..."/>
+                </View>
+              </View> :
           <FlatsList
             navigation={this.props.navigation}
             list={this.props.list}
@@ -148,7 +157,7 @@ class Home extends React.Component<Props, State> {
             isListLoading={this.props.loadingState}
             isListRefreshing={this.props.refreshListState}
             onRefreshList={this.props.refreshFlatsList}
-          />
+          /> }
         </View>
       </Container>
     );

@@ -119,7 +119,7 @@ class FlatRow extends React.PureComponent<Props, State> {
                 return (
                   <Animated.View
                     key={i}
-                    style={{ opacity, height: 6, width: 6, backgroundColor: '#FFFFFF', margin: 3, borderRadius: 5, borderWidth: 1, borderColor: '#cdcdcd' }}
+                    style={{ opacity, height: 6, width: 6, backgroundColor: '#FFFFFF', margin: 3, borderRadius: 5}}
                   />
                   );
               })}
