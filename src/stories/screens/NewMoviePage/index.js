@@ -14,7 +14,8 @@ import {
   NativeModules,
   Platform,
   SectionList,
-  FlatList
+  FlatList,
+    Animated
 } from "react-native";
 import {
   Button,
@@ -164,8 +165,11 @@ class FlatPage extends React.Component<Props, State> {
     }
   }
 
+    scrollX = new Animated.Value(0)
+
   render() {
     const param = this.props.navigation.state.params;
+    let position = Animated.divide(this.scrollX, width*0.9);
 
     const photos = this.props.flat.photos ? this.props.flat.photos : [];
     return (
@@ -210,6 +214,10 @@ class FlatPage extends React.Component<Props, State> {
                 pagingEnabled
                 showsHorizontalScrollIndicator={false}
                 name="flat-image-list"
+                onScroll={Animated.event(
+                    [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
+                )}
+                scrollEventThrottle={10}
               >
                 {photos.map((image, index) => (
                   <TouchableOpacity
@@ -228,17 +236,22 @@ class FlatPage extends React.Component<Props, State> {
                   </TouchableOpacity>
                 ))}
               </LazyloadScrollView>
-              <Paging
-                  style={{position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999}}
-                  numberOfPages={this.props.flat.photos.length}
-                  currentPage={1}
-                  hidesForSinglePage
-                  pageIndicatorTintColor='gray'
-                  currentPageIndicatorTintColor='white'
-                  indicatorStyle={{borderRadius: 5}}
-                  currentIndicatorStyle={{borderRadius: 5}}
-                  indicatorSize={{width:8, height:8}}
-              />
+                {this.props.flat.photos.length > 1 ?
+                    <View style={{ flexDirection: 'row', position:'absolute', bottom:10, zIndex: 9999999 }}>
+                        {this.props.flat.photos.map((_, i) => {
+                            let opacity = position.interpolate({
+                                inputRange: [i - 1, i, i + 1], // each dot will need to have an opacity of 1 when position is equal to their index (i)
+                                outputRange: [0.2, 1, 0.2], // when position is not i, the opacity of the dot will animate to 0.3
+                                extrapolate: 'clamp'
+                            });
+                            return (
+                                <Animated.View
+                                    key={i}
+                                    style={{ opacity, height: 6, width: 6, backgroundColor: '#FFFFFF', margin: 3, borderRadius: 5}}
+                                />
+                            );
+                        })}
+                    </View> : null}
             </View>
             <View style={{ flex: 1 }}>
               <View style={{ flexDirection: "column", paddingLeft: 10 }}>
@@ -461,7 +474,8 @@ const styles = StyleSheet.create({
     flex: 1,
     width: width,
     height: height * 0.4,
-
+      justifyContent: 'center',
+      alignItems: 'center',
     marginBottom: 5
   },
   cardImage: {

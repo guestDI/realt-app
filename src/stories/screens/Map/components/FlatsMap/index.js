@@ -36,6 +36,7 @@ import FlatPreview from "./components/FlatPreview/index";
 import {Marker, Callout} from 'react-native-maps';
 import ClusteredMapView from 'react-native-maps-super-cluster'
 import PriceMarker from './components/PriceMarker/index'
+import MapView from "react-native-maps/lib/components/MapView";
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -87,47 +88,47 @@ class FlatsMap extends React.Component<Props, State> {
     // }
   };
 
-    renderCluster = (cluster, onPress) => {
-        const pointCount = cluster.pointCount,
-            coordinate = cluster.coordinate,
-            clusterId = cluster.clusterId
-
-        // use pointCount to calculate cluster size scaling
-        // and apply it to "style" prop below
-
-        // eventually get clustered points by using
-        // underlying SuperCluster instance
-        // Methods ref: https://github.com/mapbox/supercluster
-        const clusteringEngine = this.map.getClusteringEngine(),
-            clusteredPoints = clusteringEngine.getLeaves(clusterId, 100)
-
-        return (
-            <Marker coordinate={coordinate} onPress={onPress}>
-                <View style={styles.clusterContainer}>
-                    <Text style={styles.clusterText}>
-                        {pointCount}
-                    </Text>
-                </View>
-                {
-                    /*
-                      Eventually use <Callout /> to
-                      show clustered point thumbs, i.e.:
-                      <Callout>
-                        <ScrollView>
-                          {
-                            clusteredPoints.map(p => (
-                              <Image source={p.image}>
-                            ))
-                          }
-                        </ScrollView>
-                      </Callout>
-
-                      IMPORTANT: be aware that Marker's onPress event isn't really consistent when using Callout.
-                     */
-                }
-            </Marker>
-        )
-    }
+    // renderCluster = (cluster, onPress) => {
+    //     const pointCount = cluster.pointCount,
+    //         coordinate = cluster.coordinate,
+    //         clusterId = cluster.clusterId
+    //
+    //     // use pointCount to calculate cluster size scaling
+    //     // and apply it to "style" prop below
+    //
+    //     // eventually get clustered points by using
+    //     // underlying SuperCluster instance
+    //     // Methods ref: https://github.com/mapbox/supercluster
+    //     const clusteringEngine = this.map.getClusteringEngine(),
+    //         clusteredPoints = clusteringEngine.getLeaves(clusterId, 100)
+    //
+    //     return (
+    //         <Marker coordinate={coordinate} onPress={onPress}>
+    //             <View style={styles.clusterContainer}>
+    //                 <Text style={styles.clusterText}>
+    //                     {pointCount}
+    //                 </Text>
+    //             </View>
+    //             {
+    //                 /*
+    //                   Eventually use <Callout /> to
+    //                   show clustered point thumbs, i.e.:
+    //                   <Callout>
+    //                     <ScrollView>
+    //                       {
+    //                         clusteredPoints.map(p => (
+    //                           <Image source={p.image}>
+    //                         ))
+    //                       }
+    //                     </ScrollView>
+    //                   </Callout>
+    //
+    //                   IMPORTANT: be aware that Marker's onPress event isn't really consistent when using Callout.
+    //                  */
+    //             }
+    //         </Marker>
+    //     )
+    // }
 
     renderMarker = (flat, index) => {
         return (
@@ -151,7 +152,7 @@ class FlatsMap extends React.Component<Props, State> {
         })
     return (
       <Container style={{ flex: 1 }}>
-        <ClusteredMapView
+        <MapView
           ref={map => this.map = map}
           style={{ flex: 3, width: width, height: height}}
           initialRegion={{
@@ -164,14 +165,29 @@ class FlatsMap extends React.Component<Props, State> {
               let firstItem = children[0];
               this._carousel.snapToItem(firstItem.index);
           }}
-          data={data}
+          // data={data}
           showsUserLocation={true}
           loadingEnabled={true}
           renderMarker={this.renderMarker}
-          renderCluster={this.renderCluster}
-          removeClippedSubviews={true}
+          // renderCluster={this.renderCluster}
+          // removeClippedSubviews={true}
         >
-        </ClusteredMapView>
+
+            {this.props.list.map((flat, index) => {
+                return (
+                    <MapView.Marker
+                        key={flat.originalId}
+                        pinColor={index === this.activeIndex ? 'green' : 'red'}
+                        coordinate={{
+                            latitude: flat.latitude,
+                            longitude: flat.longitude
+                        }}>
+
+                    </MapView.Marker>
+                );
+            })}
+
+        </MapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
             <Carousel
                 containerCustomStyle={{marginLeft: - 2 * MARGIN_LEFT}}
@@ -189,8 +205,16 @@ class FlatsMap extends React.Component<Props, State> {
                         longitude: flat.longitude
                     };
                     this.activeIndex = index;
+                    this.map.animateToRegion(
+                        {
+                            ...coordinate,
+                            latitudeDelta: this.state.region.latitudeDelta,
+                            longitudeDelta: this.state.region.longitudeDelta,
+                        },
+                        350
+                    );
 
-                    this.map.getMapRef().animateToCoordinate(coordinate);
+                    // this.map.getMapRef().animateToCoordinate(coordinate);
 
                 }}
             />

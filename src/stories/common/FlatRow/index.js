@@ -53,15 +53,6 @@ class FlatRow extends React.PureComponent<Props, State> {
     }
   };
 
-    renderPage(image, index) {
-        return (
-            <View key={index}>
-                <Image style={{ width: BannerWidth, height: BannerHeight }} source={{ uri: image }} />
-            </View>
-        );
-    }
-
-
     printNumber = () => {
     this.props.flat.contacts.map((num, index) => {
       return <Text key={index}>{num}</Text>;
@@ -83,20 +74,10 @@ class FlatRow extends React.PureComponent<Props, State> {
         }
     }
 
-  setIndex = idx => {
-      this.state = {
-          currentIdx: idx,
-      };
-  }
-
-    handleItemVisibility(visibility, ref, props) {
-        console.log('visibility, ref, props', visibility, ref, props);
-    }
-
-    scrollX = new Animated.Value(0)
+  scrollX = new Animated.Value(0)
 
   render() {
-    let position = Animated.divide(this.scrollX, width);
+    let position = Animated.divide(this.scrollX, width*0.9);
 
     return (
       <View style={{flex: 1, width: width * 0.9, alignSelf: 'center', backgroundColor: 'white', paddingTop: 15}}>
@@ -107,10 +88,10 @@ class FlatRow extends React.PureComponent<Props, State> {
               showsHorizontalScrollIndicator={false}
               style={styles.rowScrollContainer}
               name={`lazyload-list${this.props.flat.id}`}
-              onScroll={() => Animated.event(
+              onScroll={Animated.event(
                   [{ nativeEvent: { contentOffset: { x: this.scrollX } } }]
               )}
-
+              scrollEventThrottle={10}
             >
             {this.props.flat.photos.map((image, index) => {
               return(
@@ -127,32 +108,22 @@ class FlatRow extends React.PureComponent<Props, State> {
               )
             })}
             </LazyloadScrollView>
-            <Paging
-                style={{position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999}}
-                numberOfPages={this.props.flat.photos.length}
-                currentPage={this.state.activeSlide}
-                hidesForSinglePage
-                pageIndicatorTintColor='gray'
-                currentPageIndicatorTintColor='white'
-                indicatorStyle={{borderRadius: 5}}
-                currentIndicatorStyle={{borderRadius: 5}}
-                indicatorSize={{width:8, height:8}}
-            />
-            {/*<View style={{ flexDirection: 'row', position:'absolute', left:0, right:0, bottom:10, zIndex: 9999999 }}>*/}
-              {/*{this.props.flat.photos.map((_, i) => {*/}
-                  {/*let opacity = position.interpolate({*/}
-                      {/*inputRange: [i - 0.50001, i - 0.5, i, i + 0.5, i + 0.50000000001],*/}
-                      {/*outputRange: [0.3, 1, 1, 1, 0.3],*/}
-                      {/*extrapolate: 'clamp'*/}
-                  {/*});*/}
-                {/*return (*/}
-                  {/*<Animated.View*/}
-                    {/*key={i}*/}
-                    {/*style={{ opacity, height: 7, width: 7, backgroundColor: '#595959', margin: 5, borderRadius: 5 }}*/}
-                  {/*/>*/}
-                  {/*);*/}
-              {/*})}*/}
-            {/*</View>*/}
+            {this.props.flat.photos.length > 1 ?
+            <View style={{ flexDirection: 'row', position:'absolute', bottom:10, zIndex: 9999999 }}>
+              {this.props.flat.photos.map((_, i) => {
+                  let opacity = position.interpolate({
+                      inputRange: [i - 1, i, i + 1], // each dot will need to have an opacity of 1 when position is equal to their index (i)
+                      outputRange: [0.2, 1, 0.2], // when position is not i, the opacity of the dot will animate to 0.3
+                      extrapolate: 'clamp'
+                  });
+                return (
+                  <Animated.View
+                    key={i}
+                    style={{ opacity, height: 6, width: 6, backgroundColor: '#FFFFFF', margin: 3, borderRadius: 5, borderWidth: 1, borderColor: '#cdcdcd' }}
+                  />
+                  );
+              })}
+            </View> : null}
         </View>
       <TouchableOpacity onPress={this.onRowPress}>
           <View style={{ flexDirection: "row" }}>
