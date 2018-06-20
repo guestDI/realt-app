@@ -64,6 +64,7 @@ class HomeContainer extends React.Component<Props, State> {
         refreshListState={this.props.listIsRefreshing}
         favorites={this.props.favoriteFlats}
         refreshFlatsList={this.handleRefresh}
+        isInitialLoad={this.props.isInitialLoad}
       />
     );
   }
@@ -107,5 +108,6 @@ const mapStateToProps = state => ({
   filter: state.filterReducer.filter,
   favoriteFlats: state.flatReducer.favoriteFlats,
   listIsEmpty: state.homeReducer.listIsEmpty,
+  isInitialLoad: state.homeReducer.isInitialLoad,
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

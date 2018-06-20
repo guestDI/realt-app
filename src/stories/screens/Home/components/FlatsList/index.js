@@ -117,7 +117,7 @@ class FlatsList extends React.Component<Props, State> {
                         <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress}/>
                     </View>
                 )}
-                keyExtractor={item => item.id}
+                keyExtractor={item => `${item.id}`}
                 // ItemSeparatorComponent={this.renderSeparator}
                 // ListHeaderComponent={this.renderHeader}
                 ListFooterComponent={this.renderFooter}

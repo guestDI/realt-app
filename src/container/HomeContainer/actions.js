@@ -24,6 +24,13 @@ export function isResultsEmpty(bool: boolean){
     };
 }
 
+export function isInitialLoad(bool: boolean){
+    return {
+        type: "INITIAL_LOAD",
+        isInitialLoad: bool
+    };
+}
+
 export function clearFlatsList() {
     // console.log('clear')
     return {
@@ -77,6 +84,7 @@ export const refreshFlats = filter => {
 export const initFlatsLoad = () => {
     return dispatch => {
         dispatch(clearFlatsList())
+        dispatch(isInitialLoad(true));
         getFilter(function(filter) {
             fetchFlats(Object.assign({}, filter, {page: 0}))(dispatch);
             fetchFlatsOnMap(Object.assign({}, filter, {size: 150, page: 0}))(dispatch)
@@ -86,6 +94,7 @@ export const initFlatsLoad = () => {
 
 export const reloadFlats = filter => {
     return dispatch => {
+        dispatch(isInitialLoad(false));
         dispatch(clearFlatsList())
         dispatch(fetchFlats(Object.assign({}, filter, {page: 0})));
     }
@@ -93,13 +102,14 @@ export const reloadFlats = filter => {
 
 export const reloadFlatsOnMap = filter => {
     return dispatch => {
+        dispatch(isInitialLoad(false));
         dispatch(clearFlatsOnMap())
         dispatch(fetchFlatsOnMap(filter));
     }
 }
 
 export const fetchFlats = filter => {
-    console.log('PAGE', filter.page)
+    // console.log('PAGE', filter.page)
     let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
     let page = filter.page  ? filter.page : 0;
 
@@ -114,6 +124,7 @@ export const fetchFlats = filter => {
     }
 
   return dispatch => {
+    dispatch(isInitialLoad(false));
     dispatch(listIsLoading(true));
     dispatch(fetchListHasErrored(false));
 
@@ -158,6 +169,7 @@ export const fetchFlatsOnMap = filter => {
     }
 
   return dispatch => {
+    dispatch(isInitialLoad(false));
     dispatch(mapListIsLoading(true));
     axios
       .get(

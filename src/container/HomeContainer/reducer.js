@@ -4,7 +4,8 @@ const initialState = {
   listIsLoading: false,
   listIsRefreshing: false,
   isLoading: true,
-  listIsEmpty: false
+  listIsEmpty: false,
+  isInitialLoad: true
 };
 
 export default function(state: any = initialState, action: Function) {
@@ -26,6 +27,13 @@ export default function(state: any = initialState, action: Function) {
         return {
             ...state,
             listIsEmpty: action.listIsEmpty
+        };
+    }
+
+    if (action.type === "INITIAL_LOAD") {
+        return {
+            ...state,
+            isInitialLoad: action.isInitialLoad
         };
     }
 

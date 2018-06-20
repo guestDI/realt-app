@@ -143,41 +143,6 @@ class Home extends React.Component<Props, State> {
                 navigation={this.props.navigation}
                 list={this.props.favorites}
             />
-            {/*</Tab>
-            <Tab
-              heading={
-                <TabHeading>
-                  <Icon name="ios-map-outline" />
-                </TabHeading>
-              }
-              activeTabStyle={{ backgroundColor: "#FFF" }}
-              tabStyle={{ backgroundColor: "#FFF" }}
-              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
-              textStyle={{ color: "#959ba6", fontSize: 14 }}
-            >
-              <FlatsMap
-                navigation={this.props.navigation}
-                list={this.props.flatsOnMap}
-              />
-            </Tab>
-            <Tab
-              heading={
-                <TabHeading>
-                  <Icon name="star" />
-                </TabHeading>
-              }
-              activeTabStyle={{ backgroundColor: "#FFF" }}
-              tabStyle={{ backgroundColor: "#FFF" }}
-              activeTextStyle={{ color: "#bf6141", fontSize: 15 }}
-              textStyle={{ color: "#959ba6", fontSize: 14 }}
-            >
-              <FavoriteFlats
-                  navigation={this.props.navigation}
-                  list={this.props.favorites}
-              />
-            </Tab>
-          </Tabs>*/}
-          {/*</Container>*/}
         </View>
       </Container>
     );

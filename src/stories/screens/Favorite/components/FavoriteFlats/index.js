@@ -1,14 +1,5 @@
 import * as React from "react";
 import {
-  Container,
-  Header,
-  Title,
-  Content,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Right,
   List,
   ListItem,
   Thumbnail,
@@ -22,7 +13,8 @@ import {
   Platform,
   NativeModules,
   Dimensions,
-  ActivityIndicator
+  ActivityIndicator,
+    Image
 } from "react-native";
 
 import FlatRow from "../../../../common/FlatRow";
@@ -93,9 +85,15 @@ class FavoriteFlats extends React.Component<Props, State> {
               // onEndReachedThreshold={2}
               /> :
               <View style={{alignItems: 'center', paddingTop: 20}}>
-                <Text style={{fontSize: 16}}>Отслеживаемые квартиры отсутствуют</Text>
+                <Image
+                    resizeMode="contain"
+                    source={require("../../../../../../assets/images/empty_fav.png")}
+                    style={{ height: 200, width: 200 }}
+                />
+                <Text style={{fontSize: 18}}>Отслеживаемые квартиры отсутствуют</Text>
               </View>
           }
+
       </List>
     );
   }
