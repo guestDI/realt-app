@@ -60,6 +60,7 @@ class FlatsMap extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
+      polygons: this.props.filter.coordinates,
       loading: false,
       page: 0,
       error: null,
@@ -73,6 +74,15 @@ class FlatsMap extends React.Component<Props, State> {
     };
     this.activeIndex = 0;
   }
+
+    componentWillReceiveProps(nextProps) {
+        if (this.props.filter !== nextProps.filter) {
+            let polygons = nextProps.filter.coordinates ? nextProps.filter.coordinates : [];
+            this.setState({
+                polygons: polygons
+            });
+        }
+    }
 
   componentWillMount() {
     this.index = 0;
@@ -130,19 +140,19 @@ class FlatsMap extends React.Component<Props, State> {
     //     )
     // }
 
-    renderMarker = (flat, index) => {
-        return (
-            <Marker
-                key={flat.originalId}
-                pinColor={index === this.activeIndex ? 'green' : 'red'}
-                coordinate={{
-                    latitude: flat.latitude,
-                    longitude: flat.longitude
-                }}>
-
-            </Marker>
-        )
-    }
+    // renderMarker = (flat, index) => {
+    //     return (
+    //         <Marker
+    //             key={index}
+    //             pinColor={index === this.activeIndex ? 'green' : 'red'}
+    //             coordinate={{
+    //                 latitude: flat.latitude,
+    //                 longitude: flat.longitude
+    //             }}>
+    //
+    //         </Marker>
+    //     )
+    // }
 
   render() {
         let initialLocation = {
@@ -178,14 +188,14 @@ class FlatsMap extends React.Component<Props, State> {
           // data={data}
           showsUserLocation={true}
           loadingEnabled={true}
-          renderMarker={this.renderMarker}
+          // renderMarker={this.renderMarker}
           // renderCluster={this.renderCluster}
           // removeClippedSubviews={true}
         >
             {this.props.list.map((flat, index) => {
                 return (
                     <Marker
-                        key={flat.originalId}
+                        key={index}
                         pinColor={index === this.activeIndex ? 'green' : 'red'}
                         coordinate={{
                             latitude: flat.latitude,
@@ -194,6 +204,15 @@ class FlatsMap extends React.Component<Props, State> {
                     </Marker>
                 )
             })}
+            {this.state.polygons && this.state.polygons.map(polygon => (
+                <MapView.Polygon
+                    key={polygon.id}
+                    coordinates={polygon.coordinates}
+                    strokeColor="#84666680"
+                    fillColor="#e6e2e252"
+                    strokeWidth={1}
+                />
+            ))}
         </MapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
             <Carousel

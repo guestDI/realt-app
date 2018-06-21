@@ -26,6 +26,7 @@ class MapContainer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
+      this.props.fetchFilter()
       this.props.initFlatsLoad()
 
   }
@@ -36,6 +37,7 @@ class MapContainer extends React.Component<Props, State> {
       <Map
         navigation={this.props.navigation}
         flatsOnMap={this.props.mapData}
+        filter={this.props.filter}
       />
     );
   }

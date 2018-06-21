@@ -94,6 +94,7 @@ class Map extends React.Component<Props, State> {
   };
 
   render() {
+      // console.log(1, this.props.filter)
     return (
       <Container>
         <Header>
@@ -142,6 +143,7 @@ class Map extends React.Component<Props, State> {
             <FlatsMap
                 navigation={this.props.navigation}
                 list={this.props.flatsOnMap}
+                filter={this.props.filter}
             />
         </View>
       </Container>
