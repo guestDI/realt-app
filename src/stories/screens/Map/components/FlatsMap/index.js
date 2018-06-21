@@ -55,11 +55,14 @@ const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 const CARD_HEIGHT = height / 3;
 const MARGIN_LEFT = 75;
 const CARD_WIDTH = width - MARGIN_LEFT * 2;
+const usualMarker = require('../../../../../../assets/images/pin1.png');
+const selectedMarker = require('../../../../../../assets/images/pin.png');
 
 class FlatsMap extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
+        selectedMarkerIndex: 0,
       polygons: this.props.filter.coordinates,
       loading: false,
       page: 0,
@@ -97,6 +100,14 @@ class FlatsMap extends React.Component<Props, State> {
     //     this.props.onFlatPreviewPressed(val);
     // }
   };
+
+    onPressMarker(e, index) {
+        this.setState({selectedMarkerIndex: index});
+    }
+
+    getSelectedMarker(index) {
+        this.setState({selectedMarkerIndex: index});
+    }
 
     // renderCluster = (cluster, onPress) => {
     //     const pointCount = cluster.pointCount,
@@ -195,8 +206,11 @@ class FlatsMap extends React.Component<Props, State> {
             {this.props.list.map((flat, index) => {
                 return (
                     <Marker
-                        key={index}
-                        pinColor={index === this.activeIndex ? 'green' : 'red'}
+                        style={this.state.selectedMarkerIndex === index ? {opacity: 1, zIndex: 999999999} : {opacity: 0.8}}
+                        key={`marker-${index}`}
+                        pinColor={this.state.selectedMarkerIndex === index ? 'green' : 'red'}
+                        onPress={(e) => this.onPressMarker(e, index)}
+                        // image={this.state.selectedMarkerIndex === index ? selectedMarker : usualMarker}
                         coordinate={{
                             latitude: flat.latitude,
                             longitude: flat.longitude
@@ -239,7 +253,7 @@ class FlatsMap extends React.Component<Props, State> {
                         },
                         350
                     );
-
+                    this.getSelectedMarker(index)
                     // this.map.getMapRef().animateToCoordinate(coordinate);
 
                 }}
