@@ -62,7 +62,8 @@ class FlatsMap extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-        selectedMarkerIndex: 0,
+      selectedMarkerIndex: 0,
+      firstItem: 0,
       polygons: this.props.filter.coordinates,
       loading: false,
       page: 0,
@@ -102,7 +103,10 @@ class FlatsMap extends React.Component<Props, State> {
   };
 
     onPressMarker(e, index) {
-        this.setState({selectedMarkerIndex: index});
+        this.setState({
+            selectedMarkerIndex: index,
+            firstItem: index
+        });
     }
 
     getSelectedMarker(index) {
@@ -197,6 +201,7 @@ class FlatsMap extends React.Component<Props, State> {
           //     this._carousel.snapToItem(firstItem.index);
           // }}
           // data={data}
+          onRegionChangeComplete={(region) => console.log(region)}
           showsUserLocation={true}
           loadingEnabled={true}
           // renderMarker={this.renderMarker}
@@ -233,6 +238,7 @@ class FlatsMap extends React.Component<Props, State> {
                 containerCustomStyle={{marginLeft: - 2 * MARGIN_LEFT}}
                 ref={(c) => { this._carousel = c; }}
                 data={this.props.list}
+                firstItem={this.state.firstItem}
                 renderItem={this._renderItem}
                 itemWidth={CARD_WIDTH}
                 enableMomentum={true}
@@ -244,14 +250,14 @@ class FlatsMap extends React.Component<Props, State> {
                         latitude: flat.latitude,
                         longitude: flat.longitude
                     };
-                    this.activeIndex = index;
+                    // this.activeIndex = index;
                     this.map.animateToRegion(
                         {
                             ...coordinate,
                             latitudeDelta: this.state.region.latitudeDelta,
                             longitudeDelta: this.state.region.longitudeDelta,
                         },
-                        350
+                        500
                     );
                     this.getSelectedMarker(index)
                     // this.map.getMapRef().animateToCoordinate(coordinate);
