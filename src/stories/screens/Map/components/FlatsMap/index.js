@@ -49,7 +49,7 @@ export interface State {
 }
 const { height, width } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0422;
+const LATITUDE_DELTA = 0.0722;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 const CARD_HEIGHT = height / 3;
@@ -145,26 +145,36 @@ class FlatsMap extends React.Component<Props, State> {
     }
 
   render() {
-        let data = this.props.list.map((flat, index) => {
-            flat.index = index;
-            flat.location = {latitude: flat.latitude, longitude: flat.longitude}
-            return flat;
-        })
+        let initialLocation = {
+            latitude: 53.902231,
+            longitude: 27.561876,
+        }
+
+        if(this.props.list.length > 0) {
+            initialLocation.latitude = this.props.list[0].latitude
+            initialLocation.longitude = this.props.list[0].longitude
+        }
+
+        // let data = this.props.list.map((flat, index) => {
+        //     flat.index = index;
+        //     flat.location = {latitude: flat.latitude, longitude: flat.longitude}
+        //     return flat;
+        // })
     return (
       <Container style={{ flex: 1 }}>
         <MapView
           ref={map => this.map = map}
           style={{ flex: 3, width: width, height: height}}
           initialRegion={{
-            latitude: 53.902231,
-            longitude: 27.561876,
+            latitude: initialLocation.latitude,
+            longitude: initialLocation.longitude,
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
           }}
-          onClusterPress={(clusteId, children) => {
-              let firstItem = children[0];
-              this._carousel.snapToItem(firstItem.index);
-          }}
+          // onClusterPress={(clusteId, children) => {
+          //     let firstItem = children[0];
+          //     this._carousel.snapToItem(firstItem.index);
+          // }}
           // data={data}
           showsUserLocation={true}
           loadingEnabled={true}
@@ -172,21 +182,18 @@ class FlatsMap extends React.Component<Props, State> {
           // renderCluster={this.renderCluster}
           // removeClippedSubviews={true}
         >
-
             {this.props.list.map((flat, index) => {
                 return (
-                    <MapView.Marker
+                    <Marker
                         key={flat.originalId}
                         pinColor={index === this.activeIndex ? 'green' : 'red'}
                         coordinate={{
                             latitude: flat.latitude,
                             longitude: flat.longitude
                         }}>
-
-                    </MapView.Marker>
-                );
+                    </Marker>
+                )
             })}
-
         </MapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
             <Carousel

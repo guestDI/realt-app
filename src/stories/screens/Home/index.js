@@ -143,21 +143,23 @@ class Home extends React.Component<Props, State> {
           </Right>
         </Header>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
-            {this.props.loadingState ?
+            {/*{console.log(this.props.isInitialLoad)}*/}
+            {this.props.isInitialLoad ?
               <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
                 <DotsLoader size={12}/>
                 <View style={{marginTop: 5}}>
                   <TextLoader text="Загрузка..."/>
                 </View>
               </View> :
-          <FlatsList
-            navigation={this.props.navigation}
-            list={this.props.list}
-            onListEndReached={this.handleLoadMore}
-            isListLoading={this.props.loadingState}
-            isListRefreshing={this.props.refreshListState}
-            onRefreshList={this.props.refreshFlatsList}
-          /> }
+                <FlatsList
+                navigation={this.props.navigation}
+                list={this.props.list}
+                onListEndReached={this.handleLoadMore}
+                isListLoading={this.props.loadingState}
+                isListRefreshing={this.props.refreshListState}
+                onRefreshList={this.props.refreshFlatsList}
+                />
+            }
         </View>
       </Container>
     );
