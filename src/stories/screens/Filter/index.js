@@ -231,7 +231,6 @@ class Filter extends React.Component<Props, State> {
     };
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
-    // console.log(this.state.polygons[0].coordinates)
     this.props.navigation.goBack();
   };
 

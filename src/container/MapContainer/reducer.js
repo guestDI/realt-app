@@ -14,7 +14,7 @@ export default function(state: any = initialState, action: Function) {
   if (action.type === "FETCH_MAP_LIST_SUCCESS") {
     return {
       ...state,
-      mapList: [...state.mapList, ...action.mapList]
+      mapList: action.mapList
     };
   }
 

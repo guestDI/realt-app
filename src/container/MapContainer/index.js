@@ -38,6 +38,7 @@ class MapContainer extends React.Component<Props, State> {
         navigation={this.props.navigation}
         flatsOnMap={this.props.mapData}
         filter={this.props.filter}
+        fetchFlats={this.props.fetchFlatsOnMap}
       />
     );
   }

@@ -86,6 +86,7 @@ export const initFlatsLoad = () => {
         dispatch(clearFlatsList())
         dispatch(isInitialLoad(true));
         getFilter(function(filter) {
+            // console.log(filter)
             fetchFlats(Object.assign({}, filter, {page: 0}))(dispatch);
             fetchFlatsOnMap(Object.assign({}, filter, {size: 150, page: 0}))(dispatch)
         });
@@ -109,7 +110,7 @@ export const reloadFlatsOnMap = filter => {
 }
 
 export const fetchFlats = filter => {
-    // console.log('PAGE', filter.page)
+    // console.log('PAGE', filter.coordinates)
     let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
     let page = filter.page  ? filter.page : 0;
 
@@ -180,9 +181,12 @@ export const fetchFlatsOnMap = filter => {
               }
           }
       )
-      .then(response => response.data)
+      .then(response => {
+          const data = response.data;
+          console.log('count of flats', data.length);
+          return data;
+      })
       .then(flatsOnMap => dispatch(fetchMapListSuccess(flatsOnMap)))
-      // .then(() => dispatch(usersFetchSuccess()))
       .catch(e => {
         console.error(e);
       });

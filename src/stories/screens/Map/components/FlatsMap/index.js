@@ -169,7 +169,47 @@ class FlatsMap extends React.Component<Props, State> {
     //     )
     // }
 
+    setCurrentRegion = (location) => {
+        let filter = this.props.filter;
+        let tempLong = location.longitude - location.longitudeDelta;
+        let tempLat = location.latitude + location.latitudeDelta;
+
+
+
+        let bottomLeftLat = location.latitude
+        let bottomLeftLong = location.longitude
+
+        let topLeftLong = location.longitude - location.longitudeDelta
+        let topLeftLat = location.latitude + location.latitudeDelta
+
+        let topRightLat = topLeftLat
+        let topRightLong = location.longitude + location.longitudeDelta
+
+        let bottomRightLat = location.latitude
+        let bottomRightLong = location.longitude + location.longitudeDelta
+
+
+        let coordinates = [
+                { latitude: bottomLeftLat, longitude: bottomLeftLong },
+                { latitude: topLeftLat, longitude: topLeftLong },
+                { latitude: topRightLat, longitude: topRightLong },
+                { latitude: bottomRightLat, longitude: bottomRightLong },
+                { latitude: bottomLeftLat, longitude: bottomLeftLong },
+            ]
+
+        let coordinatesWrapper = [
+            {coordinates, holes: [], id: 0}
+        ];
+
+        filter.coordinates = coordinatesWrapper;
+
+        // console.log(filter)
+        this.props.fetchByRegion(filter)
+        // return filter;
+    }
+
   render() {
+        console.log('LENGTH IN RENDER !!!!!', this.props.list.length)
         let initialLocation = {
             latitude: 53.902231,
             longitude: 27.561876,
@@ -180,11 +220,6 @@ class FlatsMap extends React.Component<Props, State> {
             initialLocation.longitude = this.props.list[0].longitude
         }
 
-        // let data = this.props.list.map((flat, index) => {
-        //     flat.index = index;
-        //     flat.location = {latitude: flat.latitude, longitude: flat.longitude}
-        //     return flat;
-        // })
     return (
       <Container style={{ flex: 1 }}>
         <MapView
@@ -196,12 +231,7 @@ class FlatsMap extends React.Component<Props, State> {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
           }}
-          // onClusterPress={(clusteId, children) => {
-          //     let firstItem = children[0];
-          //     this._carousel.snapToItem(firstItem.index);
-          // }}
-          // data={data}
-          onRegionChangeComplete={(region) => console.log(region)}
+          onRegionChangeComplete={this.setCurrentRegion}
           showsUserLocation={true}
           loadingEnabled={true}
           // renderMarker={this.renderMarker}
