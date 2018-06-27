@@ -66,17 +66,15 @@ class FlatPreview extends React.PureComponent<Props, State> {
     }
 
   render() {
+      // console.log(this.props.activeIndex)
+      let style = this.props.activeIndex===this.props.flatIndex ? styles.activeCard : styles.card
     return (
-      <View style={styles.card}>
+      <View style={style}>
         <Image
             resizeMode='cover'
           source={{ uri: this.props.flat.smallPhoto }}
           style={styles.cardImage}
         />
-        {/*<View style={{ flexDirection: "column" }}>*/}
-          {/*<Text style={{ fontSize: 14 }}>{this.props.flat.address}</Text>*/}
-          {/*<Text>{this.props.flat.price}$</Text>*/}
-        {/*</View>*/}
         <View style={{ flexDirection: "row" }}>
           <Text numberOfLines={1} style={{ fontSize: 15, fontWeight: '700',  paddingBottom: 4, color: '#242424' }}>
               {this.props.flat.title}
@@ -92,23 +90,12 @@ class FlatPreview extends React.PureComponent<Props, State> {
                 {this.getRoomsNumber(this.props.flat.rentType)}
             </Text>
           </View>
-          {/*<View style={{ flexDirection: "row", alignItems: 'center'}}>*/}
-            {/*<Icon*/}
-                {/*name="clock"*/}
-                {/*style={{ fontSize: 12, color: "#505050", }}*/}
-            {/*/>*/}
-            {/*<Text style={{ fontSize: 12, paddingLeft: 5, color: "#505050" }}>*/}
-                {/*{formatDate(this.props.flat.updatedOn)}*/}
-            {/*</Text>*/}
-          {/*</View>*/}
         </View>
         <View style={{paddingTop: 4}}>
           <Text style={{ fontSize: 18, color: '#505050', fontWeight: '700' }}>
             ${this.props.flat.price}
           </Text>
         </View>
-        {/*<ImageBackground style={styles.cardImage} source={{uri: this.props.flat.photos[0]}} />*/}
-        {/*<Text>111111111</Text>*/}
       </View>
     );
   }
@@ -117,23 +104,20 @@ class FlatPreview extends React.PureComponent<Props, State> {
 const styles = StyleSheet.create({
   previewContainer: {
     flex: 1,
-    // height: height * 0.15,
     flexDirection: "column"
-    // borderWidth: 1,
-    // borderColor: '#a5abb6',
-    // marginBottom: 5
   },
-    card: {
-      paddingTop: 10,
-      // elevation: 2,
-      backgroundColor: "#FFF",
-      marginHorizontal: 10,
-      // shadowColor: "#000",
-      // shadowRadius: 5,
-      // shadowOpacity: 0.3,
-      // shadowOffset: { x: 2, y: -2 },
-      // overflow: "hidden",
-    },
+  card: {
+    marginTop: 5,
+    backgroundColor: "#FFF",
+    marginHorizontal: 10,
+  },
+  activeCard: {
+    marginTop: 5,
+    backgroundColor: "#FFF",
+    marginHorizontal: 10,
+    borderTopWidth: 4,
+    borderTopColor: 'green'
+  },
   cardImage: {
     width: "100%",
     height: "68%"

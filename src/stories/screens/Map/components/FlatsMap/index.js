@@ -1,18 +1,6 @@
 import * as React from "react";
 import {
   Container,
-  Header,
-  Title,
-  Content,
-  Button,
-  Icon,
-  Left,
-  Body,
-  Right,
-  List,
-  ListItem,
-  Thumbnail,
-  Text
 } from "native-base";
 import {
   View,
@@ -28,7 +16,7 @@ import {
   StyleSheet,
 } from "react-native";
 
-
+import {DotsLoader, TextLoader} from 'react-native-indicator';
 import Carousel from 'react-native-snap-carousel';
 
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
@@ -169,32 +157,35 @@ class FlatsMap extends React.Component<Props, State> {
     //     )
     // }
 
+    setCurrentDeltas = location => {
+        this.setState({
+            region: {
+                latitudeDelta: location.latitudeDelta,
+                longitudeDelta: location.longitudeDelta
+            }
+        });
+    }
+
     setCurrentRegion = (location) => {
         let filter = this.props.filter;
         let tempLong = location.longitude - location.longitudeDelta;
         let tempLat = location.latitude + location.latitudeDelta;
 
+        let topRightLat = tempLat
+        let topRightLong = tempLong + location.longitudeDelta*2
 
+        let bottomRightLat = topRightLat - location.latitudeDelta*2
+        let bottomRightLong = topRightLong
 
-        let bottomLeftLat = location.latitude
-        let bottomLeftLong = location.longitude
-
-        let topLeftLong = location.longitude - location.longitudeDelta
-        let topLeftLat = location.latitude + location.latitudeDelta
-
-        let topRightLat = topLeftLat
-        let topRightLong = location.longitude + location.longitudeDelta
-
-        let bottomRightLat = location.latitude
-        let bottomRightLong = location.longitude + location.longitudeDelta
-
+        let bottomLeftLat = bottomRightLat
+        let bottomLeftLong = bottomRightLong - location.longitudeDelta*2
 
         let coordinates = [
-                { latitude: bottomLeftLat, longitude: bottomLeftLong },
-                { latitude: topLeftLat, longitude: topLeftLong },
+                { latitude: tempLat, longitude: tempLong },
                 { latitude: topRightLat, longitude: topRightLong },
                 { latitude: bottomRightLat, longitude: bottomRightLong },
                 { latitude: bottomLeftLat, longitude: bottomLeftLong },
+                { latitude: tempLat, longitude: tempLong },
             ]
 
         let coordinatesWrapper = [
@@ -209,7 +200,7 @@ class FlatsMap extends React.Component<Props, State> {
     }
 
   render() {
-        console.log('LENGTH IN RENDER !!!!!', this.props.list.length)
+        // console.log('LENGTH IN RENDER !!!!!', this.props.list.length)
         let initialLocation = {
             latitude: 53.902231,
             longitude: 27.561876,
@@ -231,9 +222,11 @@ class FlatsMap extends React.Component<Props, State> {
             latitudeDelta: LATITUDE_DELTA,
             longitudeDelta: LONGITUDE_DELTA
           }}
-          onRegionChangeComplete={this.setCurrentRegion}
+          onRegionChangeComplete={this.setCurrentDeltas}
           showsUserLocation={true}
           loadingEnabled={true}
+          showsTraffic={false}
+          showsPointsOfInterest={false}
           // renderMarker={this.renderMarker}
           // renderCluster={this.renderCluster}
           // removeClippedSubviews={true}
@@ -244,7 +237,7 @@ class FlatsMap extends React.Component<Props, State> {
                         style={this.state.selectedMarkerIndex === index ? {opacity: 1, zIndex: 999999999} : {opacity: 0.8}}
                         key={`marker-${index}`}
                         pinColor={this.state.selectedMarkerIndex === index ? 'green' : 'red'}
-                        onPress={(e) => this.onPressMarker(e, index)}
+                        // onPress={(e) => this.onPressMarker(e, index)}
                         // image={this.state.selectedMarkerIndex === index ? selectedMarker : usualMarker}
                         coordinate={{
                             latitude: flat.latitude,
@@ -264,47 +257,59 @@ class FlatsMap extends React.Component<Props, State> {
             ))}
         </MapView>
         <View style={{ flex: 2, backgroundColor: 'white'}}>
-            <Carousel
-                containerCustomStyle={{marginLeft: - 2 * MARGIN_LEFT}}
-                ref={(c) => { this._carousel = c; }}
-                data={this.props.list}
-                firstItem={this.state.firstItem}
-                renderItem={this._renderItem}
-                itemWidth={CARD_WIDTH}
-                enableMomentum={true}
-                decelerationRate={0.7}
-                sliderWidth={width + 2 * MARGIN_LEFT}
-                onSnapToItem={(index) => {
+            {this.props.mapIsLoading ?
+                <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
+                    <DotsLoader size={12}/>
+                    <View style={{marginTop: 5}}>
+                        <TextLoader text="Загрузка..."/>
+                    </View>
+                </View> :
+                <Carousel
+                    containerCustomStyle={{marginLeft: -2 * MARGIN_LEFT}}
+                    ref={(c) => {
+                        this._carousel = c;
+                    }}
+                    data={this.props.list}
+                    firstItem={this.state.firstItem}
+                    renderItem={this._renderItem}
+                    itemWidth={CARD_WIDTH}
+                    enableMomentum={true}
+                    decelerationRate={0.7}
+                    sliderWidth={width + 2 * MARGIN_LEFT}
+                    onSnapToItem={(index) => {
                         let flat = this.props.list[index];
-                    let coordinate = {
-                        latitude: flat.latitude,
-                        longitude: flat.longitude
-                    };
-                    // this.activeIndex = index;
-                    this.map.animateToRegion(
-                        {
-                            ...coordinate,
-                            latitudeDelta: this.state.region.latitudeDelta,
-                            longitudeDelta: this.state.region.longitudeDelta,
-                        },
-                        500
-                    );
-                    this.getSelectedMarker(index)
-                    // this.map.getMapRef().animateToCoordinate(coordinate);
+                        let coordinate = {
+                            latitude: flat.latitude,
+                            longitude: flat.longitude
+                        };
+                        this.activeIndex = index;
+                        this.map.animateToRegion(
+                            {
+                                ...coordinate,
+                                latitudeDelta: this.state.region.latitudeDelta,
+                                longitudeDelta: this.state.region.longitudeDelta,
+                            },
+                            500
+                        );
+                        this.getSelectedMarker(index)
+                        // this.map.getMapRef().animateToCoordinate(coordinate);
 
-                }}
-            />
-        </View>
+                    }}
+                />
+            }
+
+            </View>
       </Container>
     );
   }
 
     _renderItem = ({item, index}) => {
+        // console.log(index)
         return (
             <View style={{width: CARD_WIDTH, height: CARD_HEIGHT}}>
                 <TouchableOpacity
                     onPress={() => this.onPreviewPress(item)}>
-                    <FlatPreview flat={item} key={index}/>
+                    <FlatPreview flat={item} flatIndex={index} activeIndex={this.activeIndex} key={index}/>
                 </TouchableOpacity>
             </View>
         );

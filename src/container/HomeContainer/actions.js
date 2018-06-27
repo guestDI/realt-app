@@ -183,10 +183,11 @@ export const fetchFlatsOnMap = filter => {
       )
       .then(response => {
           const data = response.data;
-          console.log('count of flats', data.length);
+          // console.log('count of flats', data.length);
           return data;
       })
       .then(flatsOnMap => dispatch(fetchMapListSuccess(flatsOnMap)))
+      .then(() => dispatch(mapListIsLoading(false)))
       .catch(e => {
         console.error(e);
       });

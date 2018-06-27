@@ -39,6 +39,7 @@ class MapContainer extends React.Component<Props, State> {
         flatsOnMap={this.props.mapData}
         filter={this.props.filter}
         fetchFlats={this.props.fetchFlatsOnMap}
+        mapListIsLoading={this.props.isLoading}
       />
     );
   }
@@ -47,7 +48,6 @@ class MapContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-    // fetchFlats: filter => dispatch(fetchFlats(filter)),
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
      initFlatsLoad: () => dispatch(initFlatsLoad()),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
@@ -59,5 +59,6 @@ function bindAction(dispatch) {
 const mapStateToProps = state => ({
   mapData: state.mapReducer.mapList,
   filter: state.filterReducer.filter,
+  isLoading: state.homeReducer.isLoading,
 });
 export default connect(mapStateToProps, bindAction)(MapContainer);

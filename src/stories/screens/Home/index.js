@@ -4,19 +4,11 @@ import {
   Container,
   Header,
   Title,
-  Content,
   Button,
   Icon,
   Left,
   Body,
   Right,
-  List,
-  ListItem,
-  Thumbnail,
-  Text,
-  Tab,
-  Tabs,
-  TabHeading
 } from "native-base";
 import {
   View,
@@ -29,8 +21,6 @@ import {
   ActivityIndicator
 } from "react-native";
 
-import moment from "moment";
-import styles from "./styles";
 import FlatsList from "./components/FlatsList/index";
 import FlatsMap from "./components/FlatsMap";
 import FavoriteFlats from './components/FavoriteFlats'

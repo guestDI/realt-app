@@ -10,8 +10,8 @@ import flatReducer from "../container/FlatPageContainer/reducer";
 export default combineReducers({
   form: formReducer,
   homeReducer,
-    mapReducer,
+  mapReducer,
   ratedFriendsReducer,
   filterReducer,
-    flatReducer
+  flatReducer
 });

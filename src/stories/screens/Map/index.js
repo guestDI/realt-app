@@ -145,6 +145,7 @@ class Map extends React.Component<Props, State> {
                 list={this.props.flatsOnMap}
                 filter={this.props.filter}
                 fetchByRegion={this.props.fetchFlats}
+                mapIsLoading={this.props.mapListIsLoading}
             />
         </View>
       </Container>
