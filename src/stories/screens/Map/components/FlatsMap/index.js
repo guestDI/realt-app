@@ -237,8 +237,7 @@ class FlatsMap extends React.Component<Props, State> {
                         style={this.state.selectedMarkerIndex === index ? {opacity: 1, zIndex: 999999999} : {opacity: 0.8}}
                         key={`marker-${index}`}
                         pinColor={this.state.selectedMarkerIndex === index ? 'green' : 'red'}
-                        // onPress={(e) => this.onPressMarker(e, index)}
-                        // image={this.state.selectedMarkerIndex === index ? selectedMarker : usualMarker}
+                        onPress={(e) => this.onPressMarker(e, index)}
                         coordinate={{
                             latitude: flat.latitude,
                             longitude: flat.longitude
@@ -260,9 +259,6 @@ class FlatsMap extends React.Component<Props, State> {
             {this.props.mapIsLoading ?
                 <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
                     <DotsLoader size={12}/>
-                    <View style={{marginTop: 5}}>
-                        <TextLoader text="Загрузка..."/>
-                    </View>
                 </View> :
                 <Carousel
                     containerCustomStyle={{marginLeft: -2 * MARGIN_LEFT}}
