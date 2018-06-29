@@ -142,6 +142,7 @@ class Home extends React.Component<Props, State> {
             <FavoriteFlats
                 navigation={this.props.navigation}
                 list={this.props.favorites}
+                removeFromFavorites={this.props.removeFavoriteFlat}
             />
         </View>
       </Container>

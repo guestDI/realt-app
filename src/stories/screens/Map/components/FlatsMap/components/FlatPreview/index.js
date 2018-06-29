@@ -6,7 +6,7 @@ import {
   Content,
   Button,
   Icon,
-  Left,
+  Toast,
   Body,
   Right,
   List,
@@ -48,6 +48,10 @@ const CARD_WIDTH = CARD_HEIGHT - 20;
 class FlatPreview extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
+
+      this.state = {
+          favorite: false
+      };
   }
 
     getRoomsNumber = room => {
@@ -65,6 +69,29 @@ class FlatPreview extends React.PureComponent<Props, State> {
         }
     }
 
+    manageFavoriteState = () => {
+        if(this.state.favorite){
+            // this.props.removeFavoriteFlat(this.props.flat.id)
+            Toast.show({
+                text: "Удалено из избранного",
+                position: 'bottom',
+                buttonText: 'Скрыть',
+                duration: 1500
+            })
+        } else {
+            // this.props.addFavoriteFlat(this.props.flat)
+            Toast.show({
+                text: "Добавлено в избранное",
+                position: 'bottom',
+                buttonText: 'Скрыть',
+                duration: 1500
+            })
+        }
+        this.setState({
+            favorite: !this.state.favorite
+        });
+    };
+
   render() {
       // console.log(this.props.activeIndex)
       let style = this.props.activeIndex===this.props.flatIndex ? styles.activeCard : styles.card
@@ -75,6 +102,22 @@ class FlatPreview extends React.PureComponent<Props, State> {
           source={{ uri: this.props.flat.smallPhoto }}
           style={styles.cardImage}
         />
+          <Button transparent
+                  rounded
+                  style={{zIndex: 9999, position:'absolute', top: 6, right: 6}}
+                  onPress={() => this.manageFavoriteState()}
+          >
+              {this.state.favorite ?
+                  <Icon
+                      name="md-heart"
+                      style={{ fontSize: 28, color: "#ff5367" }}
+                  /> :
+                  <Icon
+                      name="md-heart-outline"
+                      style={{ fontSize: 28, color: "#FFFFFF" }}
+                  />
+              }
+          </Button>
         <View style={{ flexDirection: "row" }}>
           <Text numberOfLines={1} style={{ fontSize: 15, fontWeight: '700',  paddingBottom: 4, color: '#242424' }}>
               {this.props.flat.title}

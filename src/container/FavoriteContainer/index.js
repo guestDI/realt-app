@@ -7,7 +7,7 @@ import flats from "./data_test";
 import SplashScreen from 'react-native-smart-splash-screen'
 import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./actions";
 import { fetchFilter } from '../FilterContainer/actions'
-import { fetchFavoritesFlats } from '../FlatPageContainer/actions'
+import { fetchFavoritesFlats, removeFromFavorite } from '../FlatPageContainer/actions'
 
 export interface Props {
   navigation: any;
@@ -47,16 +47,13 @@ class FavoriteContainer extends React.Component<Props, State> {
     // });
   }
 
-  componentWillReceiveProps(){
-
-  }
-
   render() {
     // console.log(this.props.data)
     return (
       <Favorite
         navigation={this.props.navigation}
         favorites={this.props.favoriteFlats}
+        removeFavoriteFlat={this.props.removeFlatFromFavorites}
       />
     );
   }
@@ -64,7 +61,8 @@ class FavoriteContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-      getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
+      getFavoriteFlats: () => dispatch(fetchFavoritesFlats()),
+      removeFlatFromFavorites: id => dispatch(removeFromFavorite(id))
   };
 }
 

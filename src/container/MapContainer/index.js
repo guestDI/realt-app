@@ -7,7 +7,7 @@ import flats from "./data_test";
 import SplashScreen from 'react-native-smart-splash-screen'
 import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./../HomeContainer/actions";
 import { fetchFilter } from '../FilterContainer/actions'
-import { fetchFavoritesFlats } from '../FlatPageContainer/actions'
+import { fetchFavoritesFlats, addFavoriteFlat, removeFromFavorite } from '../FlatPageContainer/actions'
 
 export interface Props {
   navigation: any;
@@ -40,6 +40,8 @@ class MapContainer extends React.Component<Props, State> {
         filter={this.props.filter}
         fetchFlats={this.props.fetchFlatsOnMap}
         mapListIsLoading={this.props.isLoading}
+        addFavoriteFlat={this.props.addFlatToFavorites}
+        removeFavoriteFlat={this.props.removeFlatFromFavorites}
       />
     );
   }
@@ -49,10 +51,12 @@ class MapContainer extends React.Component<Props, State> {
 function bindAction(dispatch) {
   return {
     fetchFlatsOnMap: filter => dispatch(fetchFlatsOnMap(filter)),
-     initFlatsLoad: () => dispatch(initFlatsLoad()),
+    initFlatsLoad: () => dispatch(initFlatsLoad()),
     refreshFlats: filter => dispatch(refreshFlats(filter)),
     fetchFilter: () => dispatch(fetchFilter()),
-      getFavoriteFlats: () => dispatch(fetchFavoritesFlats())
+    getFavoriteFlats: () => dispatch(fetchFavoritesFlats()),
+    addFlatToFavorites: (favoriteFlat) => dispatch(addFavoriteFlat(favoriteFlat)),
+    removeFlatFromFavorites: id => dispatch(removeFromFavorite(id))
   };
 }
 
@@ -60,5 +64,6 @@ const mapStateToProps = state => ({
   mapData: state.mapReducer.mapList,
   filter: state.filterReducer.filter,
   isLoading: state.homeReducer.isLoading,
+    favoriteFlats: state.flatReducer.favoriteFlats,
 });
 export default connect(mapStateToProps, bindAction)(MapContainer);

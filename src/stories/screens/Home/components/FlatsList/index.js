@@ -114,7 +114,8 @@ class FlatsList extends React.Component<Props, State> {
                 data={this.props.list}
                 renderItem={({item, index}) => (
                     <View key={index} style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
-                        <FlatRow key={index} flat={item} onRowPressed={this.onFlatRowPress}/>
+                        <FlatRow key={index} flat={item} addFavoriteFlat={this.props.addFavoriteFlat} removeFavoriteFlat={this.props.removeFavoriteFlat}
+                                 onRowPressed={this.onFlatRowPress} favoriteFlats={this.props.favoriteFlats}/>
                     </View>
                 )}
                 keyExtractor={item => `${item.id}`}

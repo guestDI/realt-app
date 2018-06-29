@@ -479,26 +479,26 @@ class Filter extends React.Component<Props, State> {
                     alignItems: "center", justifyContent: 'space-between'}}>
                   <View style={{left: width*0.05, width: width*0.4,}}>
                       {this.state.mapIsEditable ?
-                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#3f51b5'}}
                                   onPress={() => this.onEditHandler()}>
-                            <Text>Сохранить область</Text>
+                            <Text style={{color: "#ffffff"}}>Сохранить область</Text>
                           </Button> :
-                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#3f51b5'}}
                                   onPress={() => this.onEditHandler()}>
-                            <Text>Выделить область</Text>
+                            <Text style={{color: "#ffffff"}}>Выделить область</Text>
                           </Button>
                       }
 
                   </View>
                   <View style={{right: width*0.05, width: width*0.4,}}>
                       {this.state.polygons && this.state.polygons.length > 0 || this.state.editing !== null ?
-                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#3f51b5'}}
                                   onPress={() => this.resetMap()}>
-                            <Text>Очистить область</Text>
+                            <Text style={{color: "#ffffff"}}>Очистить область</Text>
                           </Button> :
-                          <Button disabled rounded bordered small style={{width: '100%', justifyContent: 'center'}}
+                          <Button disabled rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#93969b'}}
                                   onPress={() => this.resetMap()}>
-                            <Text>Очистить область</Text>
+                            <Text style={{color: "#ffffff"}}>Очистить область</Text>
                           </Button>
                       }
                   </View>

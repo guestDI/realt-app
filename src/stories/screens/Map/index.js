@@ -146,6 +146,8 @@ class Map extends React.Component<Props, State> {
                 filter={this.props.filter}
                 fetchByRegion={this.props.fetchFlats}
                 mapIsLoading={this.props.mapListIsLoading}
+                addFavoriteFlat={this.props.addFavoriteFlat}
+                removeFavoriteFlat={this.props.removeFavoriteFlat}
             />
         </View>
       </Container>

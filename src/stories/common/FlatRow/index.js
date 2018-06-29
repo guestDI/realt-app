@@ -1,7 +1,8 @@
 import * as React from "react";
 import {
-
+Button,
   Icon,
+    Toast
 } from "native-base";
 
 import {
@@ -41,8 +42,18 @@ class FlatRow extends React.PureComponent<Props, State> {
 
       this.state = {
           activeSlide: 0,
+          // favorite: false
+          favorite: this.checkIfFavorite(props.favoriteFlats)
       };
   }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.favoriteFlats && this.props.favoriteFlats !== nextProps.favoriteFlats) {
+            this.setState({
+                favorite: this.checkIfFavorite(nextProps.favoriteFlats),
+            });
+        }
+    }
 
   onRowPress = () => {
     if (this.props.onRowPressed) {
@@ -73,6 +84,45 @@ class FlatRow extends React.PureComponent<Props, State> {
                 return "";
         }
     }
+
+    checkIfFavorite = (props) => {
+        // console.log(props)
+        if (props) {
+            let flatId = this.props.flat.id;
+
+            let collet = props.filter(flat => {
+                let id = flat.id
+                return flatId === id;
+            })
+
+            return collet.length > 0;
+        } else {
+            return false;
+        }
+    }
+
+    manageFavoriteState = () => {
+        if(this.state.favorite){
+            this.props.removeFavoriteFlat(this.props.flat.id)
+            Toast.show({
+                text: "Удалено из избранного",
+                position: 'bottom',
+                buttonText: 'Скрыть',
+                duration: 1500
+            })
+        } else {
+            this.props.addFavoriteFlat(this.props.flat)
+            Toast.show({
+                text: "Добавлено в избранное",
+                position: 'bottom',
+                buttonText: 'Скрыть',
+                duration: 1500
+            })
+        }
+        this.setState({
+            favorite: !this.state.favorite
+        });
+    };
 
   scrollX = new Animated.Value(0)
 
@@ -108,6 +158,22 @@ class FlatRow extends React.PureComponent<Props, State> {
               )
             })}
             </LazyloadScrollView>
+            <Button transparent
+                    rounded
+                    style={{zIndex: 9999, position:'absolute', top: 8, right: 8}}
+                    onPress={() => this.manageFavoriteState()}
+            >
+                {this.state.favorite ?
+                    <Icon
+                        name="md-heart"
+                        style={{ fontSize: 28, color: "#ff5367" }}
+                    /> :
+                    <Icon
+                        name="md-heart-outline"
+                        style={{ fontSize: 28, color: "#FFFFFF" }}
+                    />
+                }
+            </Button>
             {this.props.flat.photos.length > 1 ?
             <View style={{ flexDirection: 'row', position:'absolute', bottom:10, zIndex: 9999999 }}>
               {this.props.flat.photos.map((_, i) => {
@@ -151,7 +217,7 @@ class FlatRow extends React.PureComponent<Props, State> {
               </Text>
             </View>
           </View>
-          <View style={{paddingTop: 5}}>
+          <View style={{paddingTop: 5, flexDirection: "row", alignItems: 'center', justifyContent: "space-between"}}>
             <Text style={{ fontSize: 24, color: '#505050', fontWeight: '700' }}>
               ${this.props.flat.price}
             </Text>

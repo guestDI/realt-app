@@ -190,17 +190,18 @@ class FlatPage extends React.Component<Props, State> {
           </Body>
           <Right>
             <Button transparent
+                    rounded
                     style={{zIndex: 9999}}
                     onPress={() => this.manageFavoriteState()}
             >
               {this.state.favorite ?
                   <Icon
                       name="md-heart"
-                      style={{ fontSize: 28, color: "yellow" }}
+                      style={{ fontSize: 26, color: "#ff5367" }}
                   /> :
                   <Icon
                       name="md-heart-outline"
-                      style={{ fontSize: 28, color: "yellow" }}
+                      style={{ fontSize: 26, color: "#FFFFFF" }}
                   />
               }
             </Button>

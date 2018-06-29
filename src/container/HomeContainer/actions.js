@@ -150,7 +150,7 @@ export const fetchFlats = filter => {
       .then(() => dispatch(listIsRefreshing(false)))
 
       .catch(e => {
-        console.error(e);
+        console.log(e);
         dispatch(fetchListHasErrored(true))
       });
   };
@@ -189,7 +189,7 @@ export const fetchFlatsOnMap = filter => {
       .then(flatsOnMap => dispatch(fetchMapListSuccess(flatsOnMap)))
       .then(() => dispatch(mapListIsLoading(false)))
       .catch(e => {
-        console.error(e);
+        console.log(e.message);
       });
   };
 };

@@ -142,12 +142,15 @@ class Home extends React.Component<Props, State> {
                 </View>
               </View> :
                 <FlatsList
-                navigation={this.props.navigation}
-                list={this.props.list}
-                onListEndReached={this.handleLoadMore}
-                isListLoading={this.props.loadingState}
-                isListRefreshing={this.props.refreshListState}
-                onRefreshList={this.props.refreshFlatsList}
+                  navigation={this.props.navigation}
+                  list={this.props.list}
+                  onListEndReached={this.handleLoadMore}
+                  isListLoading={this.props.loadingState}
+                  isListRefreshing={this.props.refreshListState}
+                  onRefreshList={this.props.refreshFlatsList}
+                  favoriteFlats={this.props.favorites}
+                  addFavoriteFlat={this.props.addFavoriteFlat}
+                  removeFavoriteFlat={this.props.removeFavoriteFlat}
                 />
             }
         </View>

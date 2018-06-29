@@ -74,7 +74,8 @@ class FavoriteFlats extends React.Component<Props, State> {
               data={this.props.list}
               initialNumToRender={3}
               renderItem={({item, index}) => (
-              <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} />
+              <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
+                       favoriteFlats={this.props.list}/>
               )}
               keyExtractor={item => item.originalId}
               // ItemSeparatorComponent={this.renderSeparator}
