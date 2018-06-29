@@ -50,9 +50,17 @@ class FlatPreview extends React.PureComponent<Props, State> {
     super(props);
 
       this.state = {
-          favorite: false
+          favorite: this.checkIfFavorite(props.favoriteFlats)
       };
   }
+
+    componentWillReceiveProps(nextProps) {
+        if (nextProps.favoriteFlats && this.props.favoriteFlats !== nextProps.favoriteFlats) {
+            this.setState({
+                favorite: this.checkIfFavorite(nextProps.favoriteFlats),
+            });
+        }
+    }
 
     getRoomsNumber = room => {
         switch (room) {
@@ -69,9 +77,24 @@ class FlatPreview extends React.PureComponent<Props, State> {
         }
     }
 
+    checkIfFavorite = (props) => {
+        if (props) {
+            let flatId = this.props.flat.id;
+
+            let collet = props.filter(flat => {
+                let id = flat.id
+                return flatId === id;
+            })
+
+            return collet.length > 0;
+        } else {
+            return false;
+        }
+    }
+
     manageFavoriteState = () => {
         if(this.state.favorite){
-            // this.props.removeFavoriteFlat(this.props.flat.id)
+            this.props.removeFavoriteFlat(this.props.flat.id)
             Toast.show({
                 text: "Удалено из избранного",
                 position: 'bottom',
@@ -79,7 +102,7 @@ class FlatPreview extends React.PureComponent<Props, State> {
                 duration: 1500
             })
         } else {
-            // this.props.addFavoriteFlat(this.props.flat)
+            this.props.addFavoriteFlat(this.props.flat)
             Toast.show({
                 text: "Добавлено в избранное",
                 position: 'bottom',

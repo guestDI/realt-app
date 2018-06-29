@@ -148,6 +148,7 @@ class Map extends React.Component<Props, State> {
                 mapIsLoading={this.props.mapListIsLoading}
                 addFavoriteFlat={this.props.addFavoriteFlat}
                 removeFavoriteFlat={this.props.removeFavoriteFlat}
+                favoriteFlats={this.props.favoriteFlats}
             />
         </View>
       </Container>

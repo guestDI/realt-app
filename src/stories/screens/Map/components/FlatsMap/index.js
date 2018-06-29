@@ -101,62 +101,6 @@ class FlatsMap extends React.Component<Props, State> {
         this.setState({selectedMarkerIndex: index});
     }
 
-    // renderCluster = (cluster, onPress) => {
-    //     const pointCount = cluster.pointCount,
-    //         coordinate = cluster.coordinate,
-    //         clusterId = cluster.clusterId
-    //
-    //     // use pointCount to calculate cluster size scaling
-    //     // and apply it to "style" prop below
-    //
-    //     // eventually get clustered points by using
-    //     // underlying SuperCluster instance
-    //     // Methods ref: https://github.com/mapbox/supercluster
-    //     const clusteringEngine = this.map.getClusteringEngine(),
-    //         clusteredPoints = clusteringEngine.getLeaves(clusterId, 100)
-    //
-    //     return (
-    //         <Marker coordinate={coordinate} onPress={onPress}>
-    //             <View style={styles.clusterContainer}>
-    //                 <Text style={styles.clusterText}>
-    //                     {pointCount}
-    //                 </Text>
-    //             </View>
-    //             {
-    //                 /*
-    //                   Eventually use <Callout /> to
-    //                   show clustered point thumbs, i.e.:
-    //                   <Callout>
-    //                     <ScrollView>
-    //                       {
-    //                         clusteredPoints.map(p => (
-    //                           <Image source={p.image}>
-    //                         ))
-    //                       }
-    //                     </ScrollView>
-    //                   </Callout>
-    //
-    //                   IMPORTANT: be aware that Marker's onPress event isn't really consistent when using Callout.
-    //                  */
-    //             }
-    //         </Marker>
-    //     )
-    // }
-
-    // renderMarker = (flat, index) => {
-    //     return (
-    //         <Marker
-    //             key={index}
-    //             pinColor={index === this.activeIndex ? 'green' : 'red'}
-    //             coordinate={{
-    //                 latitude: flat.latitude,
-    //                 longitude: flat.longitude
-    //             }}>
-    //
-    //         </Marker>
-    //     )
-    // }
-
     setCurrentDeltas = location => {
         this.setState({
             region: {
@@ -194,13 +138,11 @@ class FlatsMap extends React.Component<Props, State> {
 
         filter.coordinates = coordinatesWrapper;
 
-        // console.log(filter)
         this.props.fetchByRegion(filter)
-        // return filter;
+
     }
 
   render() {
-        // console.log('LENGTH IN RENDER !!!!!', this.props.list.length)
         let initialLocation = {
             latitude: 53.902231,
             longitude: 27.561876,
@@ -300,13 +242,13 @@ class FlatsMap extends React.Component<Props, State> {
   }
 
     _renderItem = ({item, index}) => {
-        // console.log(index)
-        // console.log(this.activeIndex)
         return (
             <View style={{width: CARD_WIDTH, height: CARD_HEIGHT}}>
                 <TouchableOpacity
                     onPress={() => this.onPreviewPress(item)}>
-                    <FlatPreview flat={item} flatIndex={index} activeIndex={this.activeIndex} key={index}/>
+                    <FlatPreview flat={item} flatIndex={index} activeIndex={this.activeIndex} key={index}
+                                 removeFavoriteFlat={this.props.removeFavoriteFlat} favoriteFlats={this.props.favoriteFlats}
+                                 addFavoriteFlat={this.props.addFavoriteFlat}/>
                 </TouchableOpacity>
             </View>
         );

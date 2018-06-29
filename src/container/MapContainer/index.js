@@ -40,6 +40,7 @@ class MapContainer extends React.Component<Props, State> {
         filter={this.props.filter}
         fetchFlats={this.props.fetchFlatsOnMap}
         mapListIsLoading={this.props.isLoading}
+        favoriteFlats={this.props.favoriteFlats}
         addFavoriteFlat={this.props.addFlatToFavorites}
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
       />
