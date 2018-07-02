@@ -95,6 +95,21 @@ class FlatsList extends React.Component<Props, State> {
     );
   };
 
+    renderSeparator = () => {
+        return (
+          <View
+            style={{
+              height: 1,
+              width: width * 0.9,
+              backgroundColor: "#c9cbc9",
+              alignSelf: 'center',
+              marginTop: 10
+             }}
+          />
+        );
+    };
+
+
   onFlatRowPress = val => {
       setTimeout(() => {
           this.props.navigation.navigate("FlatPage", {
@@ -119,7 +134,7 @@ class FlatsList extends React.Component<Props, State> {
                     </View>
                 )}
                 keyExtractor={item => `${item.id}`}
-                // ItemSeparatorComponent={this.renderSeparator}
+                ItemSeparatorComponent={this.renderSeparator}
                 // ListHeaderComponent={this.renderHeader}
                 ListFooterComponent={this.renderFooter}
                 onRefresh={this.onRefresh}

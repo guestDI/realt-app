@@ -25,7 +25,8 @@ import {
   Platform,
   NativeModules,
   Dimensions,
-  ActivityIndicator
+  ActivityIndicator,
+    StatusBar
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
@@ -97,7 +98,12 @@ class Map extends React.Component<Props, State> {
       // console.log(1, this.props.filter)
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#a3a3a3' }}>
+          <StatusBar
+              barStyle={ 'dark-content'}
+              backgroundColor={'#FFFFFF'}
+              translucent={false}
+          />
           <Left>
             <Button
                 style={{zIndex: 9999}}
@@ -106,11 +112,12 @@ class Map extends React.Component<Props, State> {
               <Icon
                 active
                 name="menu"
+                style={{color: "#414141"}}
               />
             </Button>
           </Left>
           <Body>
-            <Title>Карта</Title>
+            <Title style={{color: "#414141"}}>Карта</Title>
           </Body>
           <Right>
             <Button
@@ -119,6 +126,7 @@ class Map extends React.Component<Props, State> {
               <Icon
                   active
                   name="md-list"
+                  style={{color: "#414141"}}
               />
             </Button>
             <Button
@@ -127,6 +135,7 @@ class Map extends React.Component<Props, State> {
               <Icon
                   active
                   name="md-star"
+                  style={{color: "#414141"}}
               />
             </Button>
             <Button
@@ -135,6 +144,7 @@ class Map extends React.Component<Props, State> {
               <Icon
                 active
                 name="options"
+                style={{color: "#414141"}}
               />
             </Button>
           </Right>

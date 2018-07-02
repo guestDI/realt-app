@@ -18,7 +18,8 @@ import {
   Platform,
   NativeModules,
   Dimensions,
-  ActivityIndicator
+  ActivityIndicator,
+    StatusBar
 } from "react-native";
 
 import FlatsList from "./components/FlatsList/index";
@@ -90,20 +91,26 @@ class Home extends React.Component<Props, State> {
   render() {
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#D8D8D8' }}>
+          <StatusBar
+              barStyle={ 'dark-content'}
+              backgroundColor={'#FFFFFF'}
+              translucent={false}
+          />
           <Left>
             <Button
                 style={{zIndex: 9999}}
                 onPress={() => this.props.navigation.navigate("DrawerOpen")}
                 transparent>
               <Icon
+                style={{color: "#414141"}}
                 active
                 name="menu"
               />
             </Button>
           </Left>
           <Body>
-            <Title>Аренда</Title>
+            <Title style={{color: "#414141"}}>Список</Title>
           </Body>
           <Right>
             <Button
@@ -112,6 +119,7 @@ class Home extends React.Component<Props, State> {
               <Icon
                   active
                   name="map"
+                  style={{color: "#414141"}}
               />
             </Button>
             <Button
@@ -120,6 +128,7 @@ class Home extends React.Component<Props, State> {
               <Icon
                   active
                   name="md-star"
+                  style={{color: "#414141", zIndex: 9999}}
               />
             </Button>
             <Button
@@ -128,6 +137,7 @@ class Home extends React.Component<Props, State> {
               <Icon
                 active
                 name="options"
+                style={{color: "#414141", zIndex: 9999}}
               />
             </Button>
           </Right>

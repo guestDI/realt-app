@@ -16,7 +16,7 @@ import {
   SectionList,
   FlatList,
     Animated,
-    Share
+    Share,
 } from "react-native";
 import {
   Button,
@@ -29,9 +29,11 @@ import {
   Content,
   Left,
   Body,
-  Right
+  Right,
+    Footer,
+    FooterTab
 } from "native-base";
-import { Card } from "react-native-elements";
+import { Button as ButtonElement } from "react-native-elements";
 import ImageView from "./components/ImageView";
 import MapView from 'react-native-maps';
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
@@ -190,19 +192,24 @@ class FlatPage extends React.Component<Props, State> {
     const photos = this.props.flat.photos ? this.props.flat.photos : [];
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#D8D8D8' }}>
+            <StatusBar
+                barStyle={ 'dark-content'}
+                backgroundColor={'#FFFFFF'}
+                translucent={false}
+            />
           <Left>
             {/*<Button transparent>*/}
               <Icon
                 active
-                style={{color: "white", zIndex: 9999}}
+                style={{color: "#414141", zIndex: 9999}}
                 name="arrow-back"
                 onPress={() => this.props.navigation.goBack()}
               />
             {/*</Button>*/}
           </Left>
           <Body>
-            <Title>Аренда</Title>
+            <Title style={{color: "#414141"}}>Аренда</Title>
           </Body>
           <Right>
             <Button transparent
@@ -212,7 +219,7 @@ class FlatPage extends React.Component<Props, State> {
             >
               <Icon
                   active
-                  style={{color: "white", zIndex: 9999}}
+                  style={{color: "#414141", zIndex: 9999}}
                   name="share"
               />
             </Button>
@@ -228,7 +235,7 @@ class FlatPage extends React.Component<Props, State> {
                   /> :
                   <Icon
                       name="md-heart-outline"
-                      style={{ fontSize: 26, color: "#FFFFFF" }}
+                      style={{ fontSize: 26, color: "#414141" }}
                   />
               }
             </Button>
@@ -306,11 +313,11 @@ class FlatPage extends React.Component<Props, State> {
                     </Text>
                   </View>
                 </View>
-                <Text
-                  style={{ fontSize: 32, fontWeight: "bold", paddingLeft: 5 }}
-                >
-                  {this.props.flat.price} $
-                </Text>
+                {/*<Text*/}
+                  {/*style={{ fontSize: 32, fontWeight: "bold", paddingLeft: 5 }}*/}
+                {/*>*/}
+                  {/*{this.props.flat.price} $*/}
+                {/*</Text>*/}
                 <View style={{ flexDirection: "row", alignItems: "center" }}>
                   <Image
                     resizeMode="contain"
@@ -492,6 +499,32 @@ class FlatPage extends React.Component<Props, State> {
             onClose={this.onCloseViewerHandler}
           />
         </View>
+          <Footer style={{height: '10%', }}>
+              <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#d8d8d8'}}>
+                  <View  style={{
+                      flex: 1,
+                      flexDirection: "row",
+                      justifyContent: "space-between",
+                      alignItems: 'center'
+                  }}>
+                      <View style={{marginLeft: 15}}>
+                          <Text
+                              style={{ fontSize: 24, fontWeight: "bold", paddingLeft: 5, color: '#414141' }}
+                          >
+                              ${this.props.flat.price}
+                          </Text>
+                      </View>
+                      <View style={{marginRight: 10, width: '40%'}}>
+                          <ButtonElement style={{width: '100%', justifyContent: 'center'}}
+                              raised
+                              borderRadius={5}
+                              backgroundColor='#4fd344'
+                              icon={{name: 'md-call', type: 'ionicon'}}
+                              title='Позвонить' />
+                      </View>
+                  </View>
+              </FooterTab>
+          </Footer>
       </Container>
     );
   }

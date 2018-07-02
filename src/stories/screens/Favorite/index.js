@@ -25,7 +25,8 @@ import {
   Platform,
   NativeModules,
   Dimensions,
-  ActivityIndicator
+  ActivityIndicator,
+    StatusBar
 } from "react-native";
 import moment from "moment";
 import styles from "./styles";
@@ -96,20 +97,26 @@ class Home extends React.Component<Props, State> {
   render() {
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#a3a3a3' }}>
+          <StatusBar
+              barStyle={ 'dark-content'}
+              backgroundColor={'#FFFFFF'}
+              translucent={false}
+          />
           <Left>
             <Button
                 style={{zIndex: 9999}}
                 onPress={() => this.props.navigation.navigate("DrawerOpen")}
                 transparent>
               <Icon
+                style={{color: "#414141"}}
                 active
                 name="menu"
               />
             </Button>
           </Left>
           <Body>
-            <Title>Аренда</Title>
+            <Title style={{color: "#414141"}}>Избранное</Title>
           </Body>
           <Right>
             <Button
@@ -118,6 +125,7 @@ class Home extends React.Component<Props, State> {
               <Icon
                   active
                   name="md-list"
+                  style={{color: "#414141"}}
               />
             </Button>
             <Button
@@ -126,6 +134,7 @@ class Home extends React.Component<Props, State> {
               <Icon
                   active
                   name="map"
+                  style={{color: "#414141"}}
               />
             </Button>
             <Button
@@ -134,6 +143,7 @@ class Home extends React.Component<Props, State> {
               <Icon
                 active
                 name="options"
+                style={{color: "#414141"}}
               />
             </Button>
           </Right>
