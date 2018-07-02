@@ -33,7 +33,8 @@ import {
   TouchableOpacity,
   Alert,
   Keyboard,
-    TouchableWithoutFeedback
+    TouchableWithoutFeedback,
+    StatusBar
 } from "react-native";
 const Item = Picker.Item;
 
@@ -285,20 +286,26 @@ class Filter extends React.Component<Props, State> {
     let { minPrice, maxPrice, editing } = this.state;
     return (
       <Container>
-        <Header>
+        <Header style={{ backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#D8D8D8' }}>
+            <StatusBar
+                barStyle={ 'dark-content'}
+                backgroundColor={'#FFFFFF'}
+                translucent={false}
+            />
           <Left>
             <Button
                 style={{zIndex: 9999}}
                 onPress={() => this.props.navigation.goBack()}
                 transparent>
               <Icon
+                  style={{color: "#414141", zIndex: 9999}}
                 active
                 name="arrow-back"
               />
             </Button>
           </Left>
           <Body>
-            <Title>Фильтр</Title>
+            <Title style={{color: "#414141"}}>Фильтр</Title>
           </Body>
           <Right>
             <Button
@@ -307,7 +314,7 @@ class Filter extends React.Component<Props, State> {
                 transparent>
               <Icon
                 name="checkmark"
-                style={{ fontSize: 28 }}
+                style={{ fontSize: 28, color: "#414141", }}
               />
             </Button>
             <Button transparent
@@ -316,7 +323,7 @@ class Filter extends React.Component<Props, State> {
             >
               <Icon
                 name="trash"
-                style={{ fontSize: 28 }}
+                style={{ fontSize: 28, color: "#414141", }}
               />
             </Button>
           </Right>
