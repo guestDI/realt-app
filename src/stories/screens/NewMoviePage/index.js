@@ -15,7 +15,8 @@ import {
   Platform,
   SectionList,
   FlatList,
-    Animated
+    Animated,
+    Share
 } from "react-native";
 import {
   Button,
@@ -137,6 +138,21 @@ class FlatPage extends React.Component<Props, State> {
     });
   };
 
+  shareLink = () => {
+      Share.share({
+          message: this.props.flat.url,
+          url: this.props.flat.url,
+          title: this.props.flat.address
+      }, {
+          // Android only:
+          dialogTitle: 'Поделиться ссылкой',
+          // iOS only:
+          excludedActivityTypes: [
+              'com.apple.UIKit.activity.PostToTwitter'
+          ]
+      })
+  }
+
   getSource = source => {
     switch (source) {
       case "ONLINER":
@@ -169,7 +185,7 @@ class FlatPage extends React.Component<Props, State> {
 
   render() {
     const param = this.props.navigation.state.params;
-    let position = Animated.divide(this.scrollX, width*0.9);
+    let position = Animated.divide(this.scrollX, width);
 
     const photos = this.props.flat.photos ? this.props.flat.photos : [];
     return (
@@ -189,6 +205,17 @@ class FlatPage extends React.Component<Props, State> {
             <Title>Аренда</Title>
           </Body>
           <Right>
+            <Button transparent
+                    rounded
+                    style={{zIndex: 9999}}
+                    onPress={() => this.shareLink()}
+            >
+              <Icon
+                  active
+                  style={{color: "white", zIndex: 9999}}
+                  name="share"
+              />
+            </Button>
             <Button transparent
                     rounded
                     style={{zIndex: 9999}}
@@ -222,7 +249,7 @@ class FlatPage extends React.Component<Props, State> {
               >
                 {photos.map((image, index) => (
                   <TouchableOpacity
-                    key={index}
+                    key={`${index}`}
                     activeOpacity={0.7}
                     onPress={() =>
                       this.viewerHandler(this.props.flat.photos.indexOf(image))
