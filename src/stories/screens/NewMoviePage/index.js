@@ -514,13 +514,21 @@ class FlatPage extends React.Component<Props, State> {
                               ${this.props.flat.price}
                           </Text>
                       </View>
-                      <View style={{marginRight: 10, width: '40%'}}>
-                          <ButtonElement style={{width: '100%', justifyContent: 'center'}}
-                              raised
-                              borderRadius={5}
-                              backgroundColor='#4fd344'
-                              icon={{name: 'md-call', type: 'ionicon'}}
-                              title='Позвонить' />
+                      <View style={{marginRight: 10, width: '15%'}}>
+                          <TouchableOpacity style={{width: 60, height: 60, justifyContent: 'center',
+                              alignItems: 'center', backgroundColor: '#4fd344', borderRadius: 50}}>
+                              <Icon
+                                  active
+                                  style={{color: "#FFFFFF", zIndex: 9999}}
+                                  name="md-call"
+                              />
+                          </TouchableOpacity>
+                          {/*<ButtonElement style={{width: '100%', justifyContent: 'center'}}*/}
+                              {/*raised*/}
+                              {/*borderRadius={5}*/}
+                              {/*backgroundColor='#4fd344'*/}
+                              {/*icon={{name: 'md-call', type: 'ionicon'}}*/}
+                              {/*title='Позвонить' />*/}
                       </View>
                   </View>
               </FooterTab>
