@@ -38,6 +38,7 @@ import ImageView from "./components/ImageView";
 import MapView from 'react-native-maps';
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import formatDate from "../../../utils/utils";
+import Modal from 'react-native-modalbox';
 import Paging from '../../common/Paging'
 
 
@@ -65,6 +66,9 @@ class FlatPage extends React.Component<Props, State> {
     super(props);
 
     this.state = {
+        isOpen: false,
+        isDisabled: false,
+        swipeToClose: true,
       alert: null,
       visible: false,
       viewerVisible: false,
@@ -191,6 +195,10 @@ class FlatPage extends React.Component<Props, State> {
             Linking.openURL("tel:" + num).catch(err =>
                 console.error("An error occurred", err)
             )
+        } else {
+            this.setState({
+                isOpen: true
+            });
         }
     }
 
@@ -544,6 +552,11 @@ class FlatPage extends React.Component<Props, State> {
                   </View>
               </FooterTab>
           </Footer>
+          <Modal isOpen={this.state.isOpen} onClosed={() => this.setState({isOpen: false})} style={[styles.modal, styles.modal4]} backButtonClose={true}
+                 position={"bottom"} ref={"modal4"}>
+              <Text style={styles.text}>Modal on bottom with backdrop</Text>
+              {/*<Slider style={{width: 200}} value={this.state.sliderValue} onValueChange={(value) => this.setState({sliderValue: value})} />*/}
+          </Modal>
       </Container>
     );
   }
@@ -567,7 +580,14 @@ const styles = StyleSheet.create({
     width: width / 3,
     height: 100,
     margin: 1
-  }
+  },
+    modal: {
+        justifyContent: 'center',
+        alignItems: 'center'
+    },
+    modal4: {
+        height: 300
+    },
 });
 
 export default FlatPage;
