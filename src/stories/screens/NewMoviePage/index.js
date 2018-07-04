@@ -185,6 +185,15 @@ class FlatPage extends React.Component<Props, State> {
 
     scrollX = new Animated.Value(0)
 
+    callLandlord = () => {
+        if(this.props.flat.contacts.length === 1){
+            let num = this.props.flat.contacts[0];
+            Linking.openURL("tel:" + num).catch(err =>
+                console.error("An error occurred", err)
+            )
+        }
+    }
+
   render() {
     const param = this.props.navigation.state.params;
     let position = Animated.divide(this.scrollX, width);
@@ -318,27 +327,27 @@ class FlatPage extends React.Component<Props, State> {
                 {/*>*/}
                   {/*{this.props.flat.price} $*/}
                 {/*</Text>*/}
-                <View style={{ flexDirection: "row", alignItems: "center" }}>
-                  <Image
-                    resizeMode="contain"
-                    source={require("../../../../assets/images/location-icon-grey.png")}
-                    style={{ height: 24, width: 35 }}
-                  />
-                  <TouchableOpacity
-                    activeOpacity={0.7}
-                    onPress={() => this.onAddressClick()}
-                  >
-                    <Text
-                      style={{
-                        fontSize: 16,
-                        color: "blue",
-                        textDecorationLine: "underline"
-                      }}
-                    >
-                      {this.props.flat.address}
-                    </Text>
-                  </TouchableOpacity>
-                </View>
+                {/*<View style={{ flexDirection: "row", alignItems: "center" }}>*/}
+                  {/*<Image*/}
+                    {/*resizeMode="contain"*/}
+                    {/*source={require("../../../../assets/images/location-icon-grey.png")}*/}
+                    {/*style={{ height: 24, width: 35 }}*/}
+                  {/*/>*/}
+                  {/*<TouchableOpacity*/}
+                    {/*activeOpacity={0.7}*/}
+                    {/*onPress={() => this.onAddressClick()}*/}
+                  {/*>*/}
+                    {/*<Text*/}
+                      {/*style={{*/}
+                        {/*fontSize: 16,*/}
+                        {/*color: "blue",*/}
+                        {/*textDecorationLine: "underline"*/}
+                      {/*}}*/}
+                    {/*>*/}
+                      {/*{this.props.flat.address}*/}
+                    {/*</Text>*/}
+                  {/*</TouchableOpacity>*/}
+                {/*</View>*/}
                 {this.props.flat.contacts.map((num, index) => {
                   return (
                     <View
@@ -364,8 +373,6 @@ class FlatPage extends React.Component<Props, State> {
                         <Text
                           style={{
                             fontSize: 16,
-                            color: "blue",
-                            textDecorationLine: "underline"
                           }}
                         >
                           {num}
@@ -378,107 +385,103 @@ class FlatPage extends React.Component<Props, State> {
             </View>
             <View
               style={{
+                width: width * 0.9,
+                alignSelf: "center",
                 borderBottomWidth: 1,
-                borderColor: "#aaafba",
-                width: width * 0.95,
-                alignSelf: "center"
+                borderBottomColor: '#ebedeb',
               }}
             >
-              <Text style={{ fontSize: 24, padding: 5, color: "#8c919c" }}>
-                Описание
+              <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10}}>
+                 Описание
               </Text>
-            </View>
-              {!this.props.flat.description || 0 === this.props.flat.description.length ?
-              <Text
-                  style={{
-                  fontSize: 14,
-                  paddingLeft: 10,
-                  paddingTop: 5,
-                  paddingBottom: 5,
-                  fontStyle: 'italic'
-              }}
-                  >
-              Описание отсутствует
-                  </Text> :
-              < Text
-                  style={{
-                  fontSize: 16,
-                  paddingLeft: 10,
-                  paddingTop: 5,
-                  paddingBottom: 5
-              }}
-                  >
-              {this.props.flat.description}
-                  </Text>
-              }
-            <View style={{ flexDirection: "row" }}>
-              <Text
-                style={{
-                  fontSize: 18,
-                  paddingLeft: 10,
-                  fontWeight: "bold",
-                  paddingRight: 5,
-                  paddingBottom: 10,
-                  paddingTop: 5
-                }}
-              >
-                Источник:
-              </Text>
-              <TouchableOpacity
-                onPress={() =>
-                  Linking.openURL(this.props.flat.url).catch(err =>
-                    console.error("An error occurred", err)
-                  )
+                {!this.props.flat.description || 0 === this.props.flat.description.length ?
+                    <Text
+                        style={{
+                            fontSize: 14,
+                            paddingTop: 5,
+                            paddingBottom: 5,
+                            fontStyle: 'italic',
+                            color: '#474c57'
+                        }}
+                    >
+                        Описание отсутствует
+                    </Text> :
+                    < Text
+                        style={{
+                            fontSize: 16,
+                            paddingTop: 5,
+                            paddingBottom: 5,
+                            color: '#474c57'
+                        }}
+                    >
+                        {this.props.flat.description}
+                    </Text>
                 }
-              >
-                <Text
-                  style={{
-                    fontSize: 16,
-                    paddingTop: 5,
-                    color: "blue",
-                    textDecorationLine: "underline"
-                  }}
-                >
-                  {this.getSource(this.props.flat.source)}
-                </Text>
-              </TouchableOpacity>
-            </View>
+                <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            fontWeight: "bold",
+                            paddingRight: 5,
+                            paddingBottom: 10,
+                            paddingTop: 5,
+                            color: "#474c57"
+                        }}
+                    >
+                        Источник:
+                    </Text>
+                    <TouchableOpacity style={{flexDirection: "row", alignItems: 'flex-end', paddingBottom: 10,}}
+                        onPress={() =>
+                            Linking.openURL(this.props.flat.url).catch(err =>
+                                console.error("An error occurred", err)
+                            )
+                        }
+                    >
+                        <Text
+                            style={{
+                                fontSize: 16,
+                                paddingTop: 5,
+                                color: "#474c57",
+                            }}
+                        >
+                            {this.getSource(this.props.flat.source)}
+                        </Text>
+                        <Image
+                            resizeMode="contain"
+                            source={require("../../../../assets/images/new_window.png")}
+                            style={{ height: 25, width: 25, paddingLeft: 3 }}
+                        />
+                    </TouchableOpacity>
+                </View>
+            </View >
             <View
               style={{
-                borderBottomWidth: 1,
-                borderColor: "#aaafba",
-                width: width * 0.95,
-                alignSelf: "center"
+                width: width * 0.9,
+                alignSelf: "center",
+                marginBottom: 5,
+                  marginTop: 20
               }}
             >
-              <Text style={{ fontSize: 24, padding: 5, color: "#8c919c" }}>
-                Местоположение
+              <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10}}>
+                Место
               </Text>
+                <Text style={{ fontSize: 18, color: "#474c57" }}>
+                    {this.props.flat.address}
+                </Text>
             </View>
-            <View style={{ flex: 1, flexDirection: "row" }}>
-              <View style={{ flexDirection: "column", paddingLeft: 10 }}>
-                <Text style={{ fontSize: 18, padding: 5, color: "#8c919c" }}>
-                  Район
-                </Text>
-                <Text style={{ fontSize: 18, padding: 5, color: "#8c919c" }}>
-                  Улица
-                </Text>
-              </View>
-              <View style={{ flexDirection: "column" }}>
-                <Text style={{ fontSize: 18, padding: 5 }}>Район</Text>
-                <Text style={{ fontSize: 18, padding: 5 }}>
-                  {this.props.flat.address}
-                </Text>
-              </View>
-            </View>
+            {/*<View >*/}
+              {/*<View style={{ flexDirection: "column", paddingLeft: width*0.1 }}>*/}
+                  {/**/}
+              {/*</View>*/}
+            {/*</View>*/}
             <View>
               <MapView
-                style={{ flex: 1, width: width, height: height * 0.5 }}
+                style={{ flex: 1, width: width*0.9, height: height * 0.4, alignSelf: 'center' }}
                 initialRegion={{
                   latitude: this.props.flat.latitude,
                   longitude: this.props.flat.longitude,
-                  latitudeDelta: 0.025,
-                  longitudeDelta: 0.005
+                  latitudeDelta: 0.027,
+                  longitudeDelta: 0.007
                 }}
                 showsTraffic={false}
               >
@@ -488,6 +491,7 @@ class FlatPage extends React.Component<Props, State> {
                     longitude: this.props.flat.longitude
                   }}
                   title={this.props.flat.address}
+                  image={require('../../../../assets/images/home-icon.png')}
                 />
               </MapView>
             </View>
@@ -499,36 +503,43 @@ class FlatPage extends React.Component<Props, State> {
             onClose={this.onCloseViewerHandler}
           />
         </View>
-          <Footer style={{height: '10%', }}>
-              <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#d8d8d8'}}>
+          <Footer style={{height: '10%',}}>
+              <FooterTab style={{backgroundColor: '#FFFFFF', borderWidth: 1, borderTopColor: '#eeeeee'}}>
                   <View  style={{
                       flex: 1,
                       flexDirection: "row",
                       justifyContent: "space-between",
                       alignItems: 'center'
                   }}>
-                      <View style={{marginLeft: 15}}>
+                      <View style={{marginLeft: 15, flex: 1, flexDirection: 'row', alignItems: 'flex-end'}}>
                           <Text
-                              style={{ fontSize: 24, fontWeight: "bold", paddingLeft: 5, color: '#414141' }}
+                              style={{ fontSize: 22, fontWeight: "bold", paddingLeft: 5, color: '#414141' }}
                           >
                               ${this.props.flat.price}
                           </Text>
+                          <Text
+                              style={{ fontSize: 12, fontWeight: "bold", paddingLeft: 5, color: '#8c8c8c', paddingBottom: 3 }}
+                          >
+                              В МЕСЯЦ
+                          </Text>
                       </View>
-                      <View style={{marginRight: 10, width: '15%'}}>
-                          <TouchableOpacity style={{width: 60, height: 60, justifyContent: 'center',
-                              alignItems: 'center', backgroundColor: '#4fd344', borderRadius: 50}}>
-                              <Icon
-                                  active
-                                  style={{color: "#FFFFFF", zIndex: 9999}}
-                                  name="md-call"
-                              />
-                          </TouchableOpacity>
-                          {/*<ButtonElement style={{width: '100%', justifyContent: 'center'}}*/}
-                              {/*raised*/}
-                              {/*borderRadius={5}*/}
-                              {/*backgroundColor='#4fd344'*/}
-                              {/*icon={{name: 'md-call', type: 'ionicon'}}*/}
-                              {/*title='Позвонить' />*/}
+                      <View style={{marginRight: 10, width: '40%'}}>
+                          {/*<TouchableOpacity style={{width: 60, height: 60, justifyContent: 'center',*/}
+                              {/*alignItems: 'center', backgroundColor: '#4fd344', borderRadius: 50}}>*/}
+                              {/*<Icon*/}
+                                  {/*active*/}
+                                  {/*style={{color: "#FFFFFF", zIndex: 9999}}*/}
+                                  {/*name="md-call"*/}
+                              {/*/>*/}
+                          {/*</TouchableOpacity>*/}
+                          <ButtonElement style={{width: '100%', justifyContent: 'center'}}
+                              raised
+                              bordered
+                              borderRadius={5}
+                              backgroundColor='#4fd344'
+                              icon={{name: 'md-call', type: 'ionicon'}}
+                              title='Позвонить'
+                              onPress={() => this.callLandlord()} />
                       </View>
                   </View>
               </FooterTab>
@@ -542,7 +553,7 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     width: width,
-    height: height * 0.4,
+    height: height * 0.5,
       justifyContent: 'center',
       alignItems: 'center',
     marginBottom: 5
