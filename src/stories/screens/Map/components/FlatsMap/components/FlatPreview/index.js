@@ -148,10 +148,11 @@ class FlatPreview extends React.PureComponent<Props, State> {
         </View>
         <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center' }}>
           <View style={{ flexDirection: "row", alignItems: 'center'}}>
-            <Icon
-                name="home"
-                style={{ fontSize: 14, color: "#505050",}}
-            />
+              <Image
+                  resizeMode="contain"
+                  source={require("../../../../../../../../assets/images/sofa.png")}
+                  style={{ height: 25, width: 25 }}
+              />
             <Text style={{ fontSize: 14, paddingLeft: 2, color: "#505050" }}>
                 {this.getRoomsNumber(this.props.flat.rentType)}
             </Text>
