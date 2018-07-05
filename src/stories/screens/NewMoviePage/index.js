@@ -60,6 +60,7 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
+const arr = ['11111111', '222222222']
 
 class FlatPage extends React.Component<Props, State> {
   constructor(props) {
@@ -202,6 +203,7 @@ class FlatPage extends React.Component<Props, State> {
         }
     }
 
+
   render() {
     const param = this.props.navigation.state.params;
     let position = Animated.divide(this.scrollX, width);
@@ -305,7 +307,7 @@ class FlatPage extends React.Component<Props, State> {
                         })}
                     </View> : null}
             </View>
-            <View style={{ flex: 1 }}>
+            <View style={{ flex: 1, width: width * 0.92, alignSelf: "center", marginBottom: 10, marginTop: 5}}>
               <View style={{ flexDirection: "column", paddingLeft: 10 }}>
                 <View
                   style={{
@@ -314,92 +316,40 @@ class FlatPage extends React.Component<Props, State> {
                     justifyContent: "space-between"
                   }}
                 >
-                  <View>
+                  <View style={{ flexDirection: "row", right: 10, alignItems: 'center' }}>
+                      <Image
+                          resizeMode="contain"
+                          source={require("../../../../assets/images/sofa.png")}
+                          style={{ height: 50, width: 50 }}
+                      />
                     <Text
-                      style={{ fontSize: 24, fontWeight: "bold", padding: 5 }}
+                      style={{ fontSize: 22, fontWeight: "bold", paddingLeft: 5, color: "#474c57" }}
                     >
                       {this.getRoomsNumber(this.props.flat.rentType)}
                     </Text>
                   </View>
-                  <View style={{ flexDirection: "column", right: 10 }}>
-                    <Text style={{ fontSize: 14, color: "#8c919c",  }}>
-                      Обновлено:{" "}
-                    </Text>
-                    <Text style={{ fontSize: 14, color: "#8c919c" }}>
+                  <View style={{ flexDirection: "row" , alignItems: 'center'}}>
+                    <Image
+                      resizeMode="contain"
+                      source={require("../../../../assets/images/recent_copy.png")}
+                      style={{ height: 20, width: 20 }}
+                    />
+                    <Text style={{ fontSize: 12, paddingLeft: 5, color: "#8b909b" }}>
                       {formatDate(this.props.flat.updatedOn)}
                     </Text>
                   </View>
                 </View>
-                {/*<Text*/}
-                  {/*style={{ fontSize: 32, fontWeight: "bold", paddingLeft: 5 }}*/}
-                {/*>*/}
-                  {/*{this.props.flat.price} $*/}
-                {/*</Text>*/}
-                {/*<View style={{ flexDirection: "row", alignItems: "center" }}>*/}
-                  {/*<Image*/}
-                    {/*resizeMode="contain"*/}
-                    {/*source={require("../../../../assets/images/location-icon-grey.png")}*/}
-                    {/*style={{ height: 24, width: 35 }}*/}
-                  {/*/>*/}
-                  {/*<TouchableOpacity*/}
-                    {/*activeOpacity={0.7}*/}
-                    {/*onPress={() => this.onAddressClick()}*/}
-                  {/*>*/}
-                    {/*<Text*/}
-                      {/*style={{*/}
-                        {/*fontSize: 16,*/}
-                        {/*color: "blue",*/}
-                        {/*textDecorationLine: "underline"*/}
-                      {/*}}*/}
-                    {/*>*/}
-                      {/*{this.props.flat.address}*/}
-                    {/*</Text>*/}
-                  {/*</TouchableOpacity>*/}
-                {/*</View>*/}
-                {this.props.flat.contacts.map((num, index) => {
-                  return (
-                    <View
-                      key={index}
-                      style={{
-                        flexDirection: "row",
-                        alignItems: "center",
-                        paddingTop: 5
-                      }}
-                    >
-                      <Image
-                        resizeMode="contain"
-                        source={require("../../../../assets/images/phone-512.png")}
-                        style={{ height: 24, width: 35 }}
-                      />
-                      <TouchableOpacity
-                        onPress={() =>
-                          Linking.openURL("tel:" + num).catch(err =>
-                            console.error("An error occurred", err)
-                          )
-                        }
-                      >
-                        <Text
-                          style={{
-                            fontSize: 16,
-                          }}
-                        >
-                          {num}
-                        </Text>
-                      </TouchableOpacity>
-                    </View>
-                  );
-                })}
               </View>
             </View>
             <View
               style={{
-                width: width * 0.9,
+                width: width * 0.92,
                 alignSelf: "center",
                 borderBottomWidth: 1,
                 borderBottomColor: '#ebedeb',
               }}
             >
-              <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10}}>
+              <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10, }}>
                  Описание
               </Text>
                 {!this.props.flat.description || 0 === this.props.flat.description.length ?
@@ -409,7 +359,8 @@ class FlatPage extends React.Component<Props, State> {
                             paddingTop: 5,
                             paddingBottom: 5,
                             fontStyle: 'italic',
-                            color: '#474c57'
+                            color: '#474c57',
+                            letterSpacing: 1
                         }}
                     >
                         Описание отсутствует
@@ -419,7 +370,8 @@ class FlatPage extends React.Component<Props, State> {
                             fontSize: 16,
                             paddingTop: 5,
                             paddingBottom: 5,
-                            color: '#474c57'
+                            color: '#474c57',
+                            letterSpacing: 1
                         }}
                     >
                         {this.props.flat.description}
@@ -428,7 +380,7 @@ class FlatPage extends React.Component<Props, State> {
                 <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
                     <Text
                         style={{
-                            fontSize: 16,
+                            fontSize: 18,
                             fontWeight: "bold",
                             paddingRight: 5,
                             paddingBottom: 10,
@@ -447,7 +399,7 @@ class FlatPage extends React.Component<Props, State> {
                     >
                         <Text
                             style={{
-                                fontSize: 16,
+                                fontSize: 18,
                                 paddingTop: 5,
                                 color: "#474c57",
                             }}
@@ -464,7 +416,7 @@ class FlatPage extends React.Component<Props, State> {
             </View >
             <View
               style={{
-                width: width * 0.9,
+                width: width * 0.92,
                 alignSelf: "center",
                 marginBottom: 5,
                   marginTop: 20
@@ -484,7 +436,7 @@ class FlatPage extends React.Component<Props, State> {
             {/*</View>*/}
             <View>
               <MapView
-                style={{ flex: 1, width: width*0.9, height: height * 0.4, alignSelf: 'center' }}
+                style={{ flex: 1, width: width*0.92, height: height * 0.4, alignSelf: 'center' }}
                 initialRegion={{
                   latitude: this.props.flat.latitude,
                   longitude: this.props.flat.longitude,
@@ -512,7 +464,7 @@ class FlatPage extends React.Component<Props, State> {
           />
         </View>
           <Footer style={{height: '10%',}}>
-              <FooterTab style={{backgroundColor: '#FFFFFF', borderWidth: 1, borderTopColor: '#eeeeee'}}>
+              <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee'}}>
                   <View  style={{
                       flex: 1,
                       flexDirection: "row",
@@ -553,8 +505,36 @@ class FlatPage extends React.Component<Props, State> {
               </FooterTab>
           </Footer>
           <Modal isOpen={this.state.isOpen} onClosed={() => this.setState({isOpen: false})} style={[styles.modal, styles.modal4]} backButtonClose={true}
-                 position={"bottom"} ref={"modal4"}>
-              <Text style={styles.text}>Modal on bottom with backdrop</Text>
+                 position={"bottom"} ref={"modal4" }>
+              <Text style={{ fontSize: 15, color: '#8c8c8c', paddingTop: 10, paddingBottom: 10 }}>Выберите номер для звонка</Text>
+              {this.props.flat.contacts.map((num, index) => {
+                  return (
+                      <View
+                          key={index}
+                          style={{
+                              alignItems: "center",
+                              paddingBottom: 15,
+                          }}
+                      >
+                          {/*<Image*/}
+                              {/*resizeMode="contain"*/}
+                              {/*source={require("../../../../assets/images/phone-512.png")}*/}
+                              {/*style={{ height: 35, width: 35 }}*/}
+                          {/*/>*/}
+                          <ButtonElement style={{width: '100%', justifyContent: 'center'}}
+                                         rounded
+                                         borderRadius={5}
+                                         backgroundColor='#4fd344'
+                                         icon={{name: 'md-call', type: 'ionicon'}}
+                                         title={num}
+                                         onPress={() =>
+                                             Linking.openURL("tel:" + num).catch(err =>
+                                                 console.error("An error occurred", err)
+                                             )
+                                         } />
+                      </View>
+                  );
+              })}
               {/*<Slider style={{width: 200}} value={this.state.sliderValue} onValueChange={(value) => this.setState({sliderValue: value})} />*/}
           </Modal>
       </Container>
@@ -566,9 +546,9 @@ const styles = StyleSheet.create({
   scrollContainer: {
     flex: 1,
     width: width,
-    height: height * 0.5,
-      justifyContent: 'center',
-      alignItems: 'center',
+    height: height * 0.6,
+    justifyContent: 'center',
+    alignItems: 'center',
     marginBottom: 5
   },
   cardImage: {
@@ -581,13 +561,14 @@ const styles = StyleSheet.create({
     height: 100,
     margin: 1
   },
-    modal: {
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
-    modal4: {
-        height: 300
-    },
+  modal: {
+    justifyContent: 'center',
+    alignItems: 'center',
+      bottom: '10%'
+  },
+  modal4: {
+    height: 'auto',
+  },
 });
 
 export default FlatPage;

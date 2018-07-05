@@ -199,26 +199,28 @@ class FlatRow extends React.PureComponent<Props, State> {
           </View>
           <View style={{ flexDirection: "row", justifyContent: "space-between", alignItems: 'center' }}>
             <View style={{ flexDirection: "row", alignItems: 'center'}}>
-              <Icon
-                name="home"
-                style={{ fontSize: 16, color: "#505050",}}
+              <Image
+                resizeMode="contain"
+                source={require("../../../../assets/images/sofa.png")}
+                style={{ height: 30, width: 30 }}
               />
-              <Text style={{ fontSize: 16, paddingLeft: 2, color: "#505050" }}>
+              <Text style={{ fontSize: 16, paddingLeft: 3, color: "#414141" }}>
                 {this.getRoomsNumber(this.props.flat.rentType)}
               </Text>
             </View>
             <View style={{ flexDirection: "row", alignItems: 'center'}}>
-              <Icon
-                name="clock"
-                style={{ fontSize: 16, color: "#505050", }}
+              <Image
+                resizeMode="contain"
+                source={require("../../../../assets/images/recent.png")}
+                style={{ height: 20, width: 20 }}
               />
-              <Text style={{ fontSize: 14, paddingLeft: 5, color: "#505050" }}>
+              <Text style={{ fontSize: 14, paddingLeft: 5, color: "#414141" }}>
                 {formatDate(this.props.flat.updatedOn)}
               </Text>
             </View>
           </View>
           <View style={{paddingTop: 5, flexDirection: "row", alignItems: 'center', justifyContent: "space-between"}}>
-            <Text style={{ fontSize: 24, color: '#505050', fontWeight: '700' }}>
+            <Text style={{ fontSize: 24, color: '#414141', fontWeight: '700' }}>
               ${this.props.flat.price}
             </Text>
           </View>
