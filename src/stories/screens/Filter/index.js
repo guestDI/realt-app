@@ -25,7 +25,6 @@ import {
   Image,
   View,
   Dimensions,
-  Modal,
   StyleSheet,
   TextInput,
   ScrollView,
@@ -36,6 +35,7 @@ import {
     TouchableWithoutFeedback,
     StatusBar
 } from "react-native";
+import Modal from 'react-native-modalbox';
 const Item = Picker.Item;
 
 export interface Props {

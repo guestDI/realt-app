@@ -67,6 +67,7 @@ class HomeContainer extends React.Component<Props, State> {
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
         refreshFlatsList={this.handleRefresh}
         isInitialLoad={this.props.isInitialLoad}
+        networkState={this.props.networkError}
       />
     );
   }
@@ -113,5 +114,6 @@ const mapStateToProps = state => ({
   favoriteFlats: state.flatReducer.favoriteFlats,
   listIsEmpty: state.homeReducer.listIsEmpty,
   isInitialLoad: state.homeReducer.isInitialLoad,
+  networkError: state.homeReducer.networkError
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

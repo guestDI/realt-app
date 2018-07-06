@@ -5,7 +5,8 @@ const initialState = {
   listIsRefreshing: false,
   isLoading: true,
   listIsEmpty: false,
-  isInitialLoad: true
+  isInitialLoad: true,
+  networkError: false
 };
 
 export default function(state: any = initialState, action: Function) {
@@ -63,6 +64,13 @@ export default function(state: any = initialState, action: Function) {
           ...state,
           listHasErrored: action.listHasErrored
       };
+  }
+
+  if (action.type === "NETWORK_ERROR") {
+    return {
+      ...state,
+      networkError: action.networkError
+    };
   }
 
   if (action.type === "FETCH_MAP_LIST_SUCCESS") {

@@ -43,6 +43,7 @@ class MapContainer extends React.Component<Props, State> {
         favoriteFlats={this.props.favoriteFlats}
         addFavoriteFlat={this.props.addFlatToFavorites}
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
+        networkState={this.props.networkError}
       />
     );
   }
@@ -66,5 +67,6 @@ const mapStateToProps = state => ({
   filter: state.filterReducer.filter,
   isLoading: state.homeReducer.isLoading,
     favoriteFlats: state.flatReducer.favoriteFlats,
+    networkError: state.homeReducer.networkError
 });
 export default connect(mapStateToProps, bindAction)(MapContainer);

@@ -24,6 +24,7 @@ import FlatPreview from "./components/FlatPreview/index";
 import {Marker, Callout} from 'react-native-maps';
 import ClusteredMapView from 'react-native-maps-super-cluster'
 import PriceMarker from './components/PriceMarker/index'
+import NetworkError from '../../../../common/NetworkError'
 import MapView from "react-native-maps/lib/components/MapView";
 const { StatusBarManager } = NativeModules;
 
@@ -81,7 +82,7 @@ class FlatsMap extends React.Component<Props, State> {
   }
 
   onPreviewPress = val => {
-      console.log(val)
+      // console.log(val)
     this.props.navigation.navigate("FlatPage", {
       flat: val
     });
@@ -148,96 +149,103 @@ class FlatsMap extends React.Component<Props, State> {
             longitude: 27.561876,
         }
 
-        if(this.props.list.length > 0) {
+        if(this.props.list && this.props.list.length > 0) {
             initialLocation.latitude = this.props.list[0].latitude
             initialLocation.longitude = this.props.list[0].longitude
         }
 
     return (
-      <Container style={{ flex: 1 }}>
-        <MapView
-          ref={map => this.map = map}
-          style={{ flex: 3, width: width, height: height}}
-          initialRegion={{
-            latitude: initialLocation.latitude,
-            longitude: initialLocation.longitude,
-            latitudeDelta: LATITUDE_DELTA,
-            longitudeDelta: LONGITUDE_DELTA
-          }}
-          onRegionChangeComplete={this.setCurrentDeltas}
-          showsUserLocation={true}
-          loadingEnabled={true}
-          showsTraffic={false}
-          showsPointsOfInterest={false}
-          // renderMarker={this.renderMarker}
-          // renderCluster={this.renderCluster}
-          // removeClippedSubviews={true}
-        >
-            {this.props.list.map((flat, index) => {
-                return (
-                    <Marker
-                        style={this.state.selectedMarkerIndex === index ? {opacity: 1, zIndex: 999999999} : {opacity: 0.8}}
-                        key={`marker-${index}`}
-                        pinColor={this.state.selectedMarkerIndex === index ? 'green' : 'red'}
-                        onPress={(e) => this.onPressMarker(e, index)}
-                        coordinate={{
-                            latitude: flat.latitude,
-                            longitude: flat.longitude
-                        }}>
-                    </Marker>
-                )
-            })}
-            {this.state.polygons && this.state.polygons.map(polygon => (
-                <MapView.Polygon
-                    key={polygon.id}
-                    coordinates={polygon.coordinates}
-                    strokeColor="#84666680"
-                    fillColor="#e6e2e252"
-                    strokeWidth={1}
-                />
-            ))}
-        </MapView>
-        <View style={{ flex: 2, backgroundColor: 'white'}}>
-            {this.props.mapIsLoading ?
-                <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
-                    <DotsLoader size={12}/>
-                </View> :
-                <Carousel
-                    containerCustomStyle={{marginLeft: -2 * MARGIN_LEFT}}
-                    ref={(c) => {
-                        this._carousel = c;
-                    }}
-                    data={this.props.list}
-                    firstItem={this.state.firstItem}
-                    renderItem={this._renderItem}
-                    itemWidth={CARD_WIDTH}
-                    enableMomentum={true}
-                    decelerationRate={0.7}
-                    sliderWidth={width + 2 * MARGIN_LEFT}
-                    onSnapToItem={(index) => {
-                        let flat = this.props.list[index];
-                        let coordinate = {
-                            latitude: flat.latitude,
-                            longitude: flat.longitude
-                        };
-                        this.activeIndex = index;
-                        this.map.animateToRegion(
-                            {
-                                ...coordinate,
-                                latitudeDelta: this.state.region.latitudeDelta,
-                                longitudeDelta: this.state.region.longitudeDelta,
-                            },
-                            500
-                        );
-                        this.getSelectedMarker(index)
-                        // this.map.getMapRef().animateToCoordinate(coordinate);
+       this.props.networkState ?
+       <View style={{flex: 1, backgroundColor: 'white'}}>
+           <NetworkError/>
+       </View>:
+                <Container style={{flex: 1, backgroundColor: 'white'}}>
+                    <MapView
+                        ref={map => this.map = map}
+                        style={{flex: 3, width: width, height: height}}
+                        initialRegion={{
+                            latitude: initialLocation.latitude,
+                            longitude: initialLocation.longitude,
+                            latitudeDelta: LATITUDE_DELTA,
+                            longitudeDelta: LONGITUDE_DELTA
+                        }}
+                        onRegionChangeComplete={this.setCurrentDeltas}
+                        showsUserLocation={true}
+                        loadingEnabled={true}
+                        showsTraffic={false}
+                        showsPointsOfInterest={false}
+                        // renderMarker={this.renderMarker}
+                        // renderCluster={this.renderCluster}
+                        // removeClippedSubviews={true}
+                    >
+                        {this.props.list ? this.props.list.map((flat, index) => {
+                            return (
+                                <Marker
+                                    style={this.state.selectedMarkerIndex === index ? {
+                                        opacity: 1,
+                                        zIndex: 999999999
+                                    } : {opacity: 0.8}}
+                                    key={`marker-${index}`}
+                                    pinColor={this.state.selectedMarkerIndex === index ? 'green' : 'red'}
+                                    onPress={(e) => this.onPressMarker(e, index)}
+                                    coordinate={{
+                                        latitude: flat.latitude,
+                                        longitude: flat.longitude
+                                    }}>
+                                </Marker>
+                            )
+                        }) : null}
+                        {this.state.polygons && this.state.polygons.map(polygon => (
+                            <MapView.Polygon
+                                key={polygon.id}
+                                coordinates={polygon.coordinates}
+                                strokeColor="#84666680"
+                                fillColor="#e6e2e252"
+                                strokeWidth={1}
+                            />
+                        ))}
+                    </MapView>
+                    <View style={{flex: 2, backgroundColor: 'white'}}>
+                        {this.props.mapIsLoading ?
+                            <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
+                                <DotsLoader size={12}/>
+                            </View> :
+                            <Carousel
+                                containerCustomStyle={{marginLeft: -2 * MARGIN_LEFT}}
+                                ref={(c) => {
+                                    this._carousel = c;
+                                }}
+                                data={this.props.list}
+                                firstItem={this.state.firstItem}
+                                renderItem={this._renderItem}
+                                itemWidth={CARD_WIDTH}
+                                enableMomentum={true}
+                                decelerationRate={0.7}
+                                sliderWidth={width + 2 * MARGIN_LEFT}
+                                onSnapToItem={(index) => {
+                                    let flat = this.props.list[index];
+                                    let coordinate = {
+                                        latitude: flat.latitude,
+                                        longitude: flat.longitude
+                                    };
+                                    this.activeIndex = index;
+                                    this.map.animateToRegion(
+                                        {
+                                            ...coordinate,
+                                            latitudeDelta: this.state.region.latitudeDelta,
+                                            longitudeDelta: this.state.region.longitudeDelta,
+                                        },
+                                        500
+                                    );
+                                    this.getSelectedMarker(index)
+                                    // this.map.getMapRef().animateToCoordinate(coordinate);
 
-                    }}
-                />
-            }
+                                }}
+                            />
+                        }
 
-            </View>
-      </Container>
+                    </View>
+                </Container>
     );
   }
 

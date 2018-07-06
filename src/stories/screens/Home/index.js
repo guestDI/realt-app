@@ -19,12 +19,14 @@ import {
   NativeModules,
   Dimensions,
   ActivityIndicator,
-    StatusBar
+    StatusBar,
+    Text
 } from "react-native";
 
 import FlatsList from "./components/FlatsList/index";
 import FlatsMap from "./components/FlatsMap";
 import FavoriteFlats from './components/FavoriteFlats'
+import NetworkError from '../../common/NetworkError'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -144,7 +146,7 @@ class Home extends React.Component<Props, State> {
         </Header>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             {/*{console.log(this.props.isInitialLoad)}*/}
-            {this.props.isInitialLoad ?
+            {this.props.networkState ? <NetworkError/> : this.props.isInitialLoad ?
               <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
                 <DotsLoader size={12}/>
                 <View style={{marginTop: 5}}>

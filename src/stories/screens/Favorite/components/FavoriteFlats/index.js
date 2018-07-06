@@ -67,35 +67,34 @@ class FavoriteFlats extends React.Component<Props, State> {
 
   render() {
     return (
-      <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
-          {this.props.list.length > 0 ?
-          <FlatList
+        this.props.list.length === 0 ?
+            <View style={{flex: 1, flexDirection: 'column', position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, justifyContent: 'center', alignItems: 'center'}}>
+              <Image
+                  resizeMode="contain"
+                  source={require("../../../../../../assets/images/nothing.png")}
+                  style={{ height: 130, width: 130 }}
+              />
+              <Text style={{fontSize: 20, marginTop: 5, color: "#414141"}}>Пока здесь ничего нет</Text>
+            </View> :
+            <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
+                    <FlatList
 
-              data={this.props.list}
-              initialNumToRender={3}
-              renderItem={({item, index}) => (
-              <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
-                       favoriteFlats={this.props.list}/>
-              )}
-              keyExtractor={item => item.originalId}
-              // ItemSeparatorComponent={this.renderSeparator}
-              // ListHeaderComponent={this.renderHeader}
-              ListFooterComponent={this.renderFooter}
-              // onRefresh={this.handleRefresh}
-              // refreshing={this.state.refreshing}
-              // onEndReachedThreshold={2}
-              /> :
-              <View style={{alignItems: 'center', paddingTop: 20}}>
-                <Image
-                    resizeMode="contain"
-                    source={require("../../../../../../assets/images/empty_fav.png")}
-                    style={{ height: 200, width: 200 }}
-                />
-                <Text style={{fontSize: 18}}>Отслеживаемые квартиры отсутствуют</Text>
-              </View>
-          }
+                        data={this.props.list}
+                        initialNumToRender={3}
+                        renderItem={({item, index}) => (
+                            <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
+                                     favoriteFlats={this.props.list}/>
+                        )}
+                        keyExtractor={item => item.originalId}
+                        // ItemSeparatorComponent={this.renderSeparator}
+                        // ListHeaderComponent={this.renderHeader}
+                        ListFooterComponent={this.renderFooter}
+                        // onRefresh={this.handleRefresh}
+                        // refreshing={this.state.refreshing}
+                        // onEndReachedThreshold={2}
+                    />
+            </List>
 
-      </List>
     );
   }
 

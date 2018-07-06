@@ -72,6 +72,13 @@ export function fetchMapListSuccess(mapList: Array) {
   };
 }
 
+export function networkError(bool: boolean) {
+  return {
+    type: "NETWORK_ERROR",
+    networkError: bool
+  };
+}
+
 export const refreshFlats = filter => {
     return dispatch => {
         dispatch(listIsRefreshing(true))
@@ -148,9 +155,13 @@ export const fetchFlats = filter => {
       .then(flats => dispatch(fetchListSuccess(flats)))
       .then(() => dispatch(listIsLoading(false)))
       .then(() => dispatch(listIsRefreshing(false)))
+      .then(() => dispatch(networkError(false)))
 
       .catch(e => {
-        console.log(e);
+        console.log(e.message);
+        if(e.message === 'Network Error'){
+          dispatch(networkError(true))
+        }
         dispatch(fetchListHasErrored(true))
       });
   };
@@ -188,8 +199,12 @@ export const fetchFlatsOnMap = filter => {
       })
       .then(flatsOnMap => dispatch(fetchMapListSuccess(flatsOnMap)))
       .then(() => dispatch(mapListIsLoading(false)))
+      .then(() => dispatch(networkError(false)))
       .catch(e => {
         console.log(e.message);
+        if(e.message === 'Network Error'){
+           dispatch(networkError(true))
+        }
       });
   };
 };

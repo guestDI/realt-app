@@ -159,6 +159,7 @@ class Map extends React.Component<Props, State> {
                 addFavoriteFlat={this.props.addFavoriteFlat}
                 removeFavoriteFlat={this.props.removeFavoriteFlat}
                 favoriteFlats={this.props.favoriteFlats}
+                networkState={this.props.networkState}
             />
         </View>
       </Container>
