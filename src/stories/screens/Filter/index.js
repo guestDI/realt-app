@@ -14,9 +14,12 @@ import {
   Form,
   Input,
   Picker,
-  Item as FormItem
+  Item as FormItem,
+    Footer,
+    FooterTab
 } from "native-base";
 import { TextField } from "react-native-material-textfield";
+import { Button as ButtonElement } from "react-native-elements";
 import ToggleButton from "./components/ToggleButton";
 import MapView from 'react-native-maps';
 import { MINSK_COORDINATES } from '../../../utils/coordinates'
@@ -285,8 +288,8 @@ class Filter extends React.Component<Props, State> {
 
     let { minPrice, maxPrice, editing } = this.state;
     return (
-      <Container>
-        <Header style={{ backgroundColor: '#FFFFFF', borderBottomWidth: 1, borderBottomColor: '#D8D8D8' }}>
+      <Container style={{backgroundColor: '#FFFFFF'}}>
+        <Header style={{ backgroundColor: '#FFFFFF', }}>
             <StatusBar
                 barStyle={ 'dark-content'}
                 backgroundColor={'#FFFFFF'}
@@ -294,139 +297,136 @@ class Filter extends React.Component<Props, State> {
             />
           <Left>
             <Button
-                style={{zIndex: 9999}}
+                style={{marginLeft: 2, zIndex: 9999}}
                 onPress={() => this.props.navigation.goBack()}
                 transparent>
               <Icon
                   style={{color: "#414141", zIndex: 9999}}
                 active
-                name="arrow-back"
+                name="close"
               />
             </Button>
           </Left>
-          <Body>
-            <Title style={{color: "#414141"}}>Фильтр</Title>
-          </Body>
+          {/*<Body>*/}
+            {/*<Title style={{color: "#414141"}}>Фильтр</Title>*/}
+          {/*</Body>*/}
           <Right>
-            <Button
-                style={{zIndex: 9999}}
-                onPress={this.onFilterSaved}
-                transparent>
-              <Icon
-                name="checkmark"
-                style={{ fontSize: 28, color: "#414141", }}
-              />
-            </Button>
-            <Button transparent
-                    style={{zIndex: 9999}}
-                    onPress={this.reset}
-            >
-              <Icon
-                name="trash"
-                style={{ fontSize: 28, color: "#414141", }}
-              />
-            </Button>
+              <TouchableOpacity onPress={this.reset} style={{marginRight: 2}}>
+                  <Text>Очистить</Text>
+              </TouchableOpacity>
+            {/*<Button transparent*/}
+                    {/*style={{zIndex: 9999}}*/}
+                    {/*onPress={this.reset}*/}
+            {/*>*/}
+              {/*<Icon*/}
+                {/*name="trash"*/}
+                {/*style={{ fontSize: 28, color: "#414141", }}*/}
+              {/*/>*/}
+            {/*</Button>*/}
           </Right>
         </Header>
-        <Content style={{ backgroundColor: "#FFFFFF" }} keyboardDismissMode="on-drag">
+        <Content style={{ backgroundColor: "#FFFFFF", marginTop: 10 }} keyboardDismissMode="on-drag">
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={{ flex: 1, flexDirection: "column" }}>
-              <View style={{ flex: 1, alignItems: "center" }}>
+              <View style={{ flex: 1, alignItems: "center", width: width*0.9, alignSelf: 'center' }}>
                 <View
                   style={{
                     borderBottomWidth: 1,
-                    borderColor: "#c7ccd7",
+                    borderColor: "#e5e5e5",
                     width: width * 0.9
                   }}
                 >
-                  <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
-                    Цена
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: "#414141" }}>
+                    Ценовой диапазон
                   </Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    justifyContent: "center",
-                    paddingLeft: 10,
-                    paddingRight: 10
-                  }}
-                >
-                  <TextField
-                    label="Минимальная цена"
-                    value={minPrice}
-                    containerStyle={{ paddingRight: 10, width: width * 0.45 }}
-                    animationDuration={50}
-                    keyboardType={"numeric"}
-                    maxLength={5}
-                    onChangeText={minPrice => this.setState({ minPrice })}
-                  />
-                  <TextField
-                    label="Максимальная цена"
-                    value={maxPrice}
-                    containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
-                    animationDuration={50}
-                    keyboardType={"numeric"}
-                    maxLength={5}
-                    onChangeText={maxPrice => this.setState({ maxPrice })}
-                  />
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            paddingLeft: 10,
+                            paddingRight: 10,
+                            paddingBottom: 20
+                        }}
+                    >
+                        <TextField
+                            label="Минимальная цена"
+                            value={minPrice}
+                            containerStyle={{ paddingRight: 10, width: width * 0.45 }}
+                            animationDuration={50}
+                            keyboardType={"numeric"}
+                            maxLength={5}
+                            onChangeText={minPrice => this.setState({ minPrice })}
+                        />
+                        <TextField
+                            label="Максимальная цена"
+                            value={maxPrice}
+                            containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
+                            animationDuration={50}
+                            keyboardType={"numeric"}
+                            maxLength={5}
+                            onChangeText={maxPrice => this.setState({ maxPrice })}
+                        />
+                    </View>
                 </View>
               </View>
-              <View style={{ flex: 1, alignItems: "center", paddingTop: 10 }}>
+
+              <View style={{ flex: 1, alignItems: "center", paddingTop: 20 }}>
                 <View
                   style={{
                     borderBottomWidth: 1,
-                    borderColor: "#c7ccd7",
+                    borderColor: "#e5e5e5",
                     width: width * 0.9
                   }}
                 >
-                  <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: "#414141", paddingBottom: 15 }}>
                     Количество комнат
                   </Text>
-                </View>
-                <View
-                  style={{
-                    flexDirection: "row",
-                    width: width * 0.9,
-                    justifyContent: "center",
-                    alignItems: "center"
-                  }}
-                >
-                  <ToggleButton
-                    onColor={"#3f51b5"}
-                    effect={"pulse"}
-                    status={this.state.oneRoom}
-                    _onPress={status => {
-                      this.getRoomsNumber(status, ROOM_ENUM.ONE);
-                    }}
-                    text="1"
-                  />
-                  <ToggleButton
-                    onColor={"#3f51b5"}
-                    effect={"pulse"}
-                    status={this.state.twoRooms}
-                    _onPress={status => {
-                      this.getRoomsNumber(status, ROOM_ENUM.TWO);
-                    }}
-                    text="2"
-                  />
-                  <ToggleButton
-                    onColor={"#3f51b5"}
-                    effect={"pulse"}
-                    status={this.state.threeRooms}
-                    _onPress={status => {
-                      this.getRoomsNumber(status, ROOM_ENUM.THREE);
-                    }}
-                    text="3"
-                  />
-                  <ToggleButton
-                    onColor={"#3f51b5"}
-                    effect={"pulse"}
-                    status={this.state.fourOrMore}
-                    _onPress={status => {
-                      this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
-                    }}
-                    text="4+"
-                  />
+                    <View
+                        style={{
+                            flexDirection: "row",
+                            width: width * 0.9,
+                            justifyContent: "center",
+                            alignItems: "center",
+                            paddingBottom: 20
+                        }}
+                    >
+                        <ToggleButton
+                            onColor={"#463737b5"}
+                            effect={"pulse"}
+                            status={this.state.oneRoom}
+                            _onPress={status => {
+                                this.getRoomsNumber(status, ROOM_ENUM.ONE);
+                            }}
+                            text="1"
+                        />
+                        <ToggleButton
+                            onColor={"#463737b5"}
+                            effect={"pulse"}
+                            status={this.state.twoRooms}
+                            _onPress={status => {
+                                this.getRoomsNumber(status, ROOM_ENUM.TWO);
+                            }}
+                            text="2"
+                        />
+                        <ToggleButton
+                            onColor={"#463737b5"}
+                            effect={"pulse"}
+                            status={this.state.threeRooms}
+                            _onPress={status => {
+                                this.getRoomsNumber(status, ROOM_ENUM.THREE);
+                            }}
+                            text="3"
+                        />
+                        <ToggleButton
+                            onColor={"#463737b5"}
+                            effect={"pulse"}
+                            status={this.state.fourOrMore}
+                            _onPress={status => {
+                                this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
+                            }}
+                            text="4+"
+                        />
+                    </View>
                 </View>
               </View>
               {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
@@ -468,29 +468,27 @@ class Filter extends React.Component<Props, State> {
               {/*</Picker>*/}
               {/*</View>*/}
               {/*</View>*/}
-              <View style={{ flex: 1 }}>
+              <View style={{ flex: 1, paddingTop: 20 }}>
                 <View
                   style={{
-                    borderBottomWidth: 1,
-                    borderColor: "#aaafba",
                     width: width * 0.9,
                     alignSelf: "center"
                   }}
                 >
                   {/*3f51b5*/}
-                  <Text style={{ fontSize: 20, padding: 5, color: "#8c919c" }}>
+                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: "#414141", paddingBottom: 15 }}>
                     Местоположение на карте
                   </Text>
                 </View>
-                <View style={{flex: 1, flexDirection: 'row', paddingTop: 5, paddingBottom: 5,
+                <View style={{flex: 1, flexDirection: 'row', paddingTop: 5, paddingBottom: 15,
                     alignItems: "center", justifyContent: 'space-between'}}>
                   <View style={{left: width*0.05, width: width*0.4,}}>
                       {this.state.mapIsEditable ?
-                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#3f51b5'}}
+                          <Button bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#463737b5'}}
                                   onPress={() => this.onEditHandler()}>
                             <Text style={{color: "#ffffff"}}>Сохранить область</Text>
                           </Button> :
-                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#3f51b5'}}
+                          <Button bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#463737b5'}}
                                   onPress={() => this.onEditHandler()}>
                             <Text style={{color: "#ffffff"}}>Выделить область</Text>
                           </Button>
@@ -499,11 +497,11 @@ class Filter extends React.Component<Props, State> {
                   </View>
                   <View style={{right: width*0.05, width: width*0.4,}}>
                       {this.state.polygons && this.state.polygons.length > 0 || this.state.editing !== null ?
-                          <Button rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#3f51b5'}}
+                          <Button bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#463737b5'}}
                                   onPress={() => this.resetMap()}>
                             <Text style={{color: "#ffffff"}}>Очистить область</Text>
                           </Button> :
-                          <Button disabled rounded bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#93969b'}}
+                          <Button disabled bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#93969b'}}
                                   onPress={() => this.resetMap()}>
                             <Text style={{color: "#ffffff"}}>Очистить область</Text>
                           </Button>
@@ -513,8 +511,8 @@ class Filter extends React.Component<Props, State> {
                 <MapView
                   style={{
                     flex: 1,
-                    width: width * 0.99,
-                    height: height * 0.7,
+                    width: width * 0.90,
+                    height: height * 0.6,
                     alignSelf: "center"
                   }}
                   initialRegion={{
@@ -575,7 +573,7 @@ class Filter extends React.Component<Props, State> {
                     />
                   )}
                 </MapView>
-                <View style={styles.buttonContainer}>
+                <View style={styles.buttonContainer}/>
                   {/*{this.state.editing && (*/}
                     {/*<TouchableOpacity*/}
                       {/*onPress={() => this.createHole()}*/}
@@ -594,7 +592,7 @@ class Filter extends React.Component<Props, State> {
                       {/*<Text>Finish</Text>*/}
                     {/*</TouchableOpacity>*/}
                   {/*)}*/}
-                </View>
+
                 {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
                 {/*<Icon name='remove' />*/}
                 {/*</Button>*/}
@@ -614,6 +612,15 @@ class Filter extends React.Component<Props, State> {
             </View>
           </TouchableWithoutFeedback>
         </Content>
+          <Footer style={{height: '10%'}}>
+              <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
+                  <TouchableOpacity style={{height: '75%', width: '80%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
+                      shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1, backgroundColor: '#463737c9' }}
+                                     onPress={this.onFilterSaved}>
+                          <Text style={{fontWeight: 'bold', color: '#FFFFFF'}}>Показать доступные квартиры</Text>
+                  </TouchableOpacity>
+              </FooterTab>
+          </Footer>
       </Container>
     );
   }
@@ -645,9 +652,7 @@ const styles = StyleSheet.create({
     marginHorizontal: 10
   },
   buttonContainer: {
-    flexDirection: "row",
-    marginVertical: 20,
-    backgroundColor: "transparent"
+    marginVertical: 5,
   }
 });
 
