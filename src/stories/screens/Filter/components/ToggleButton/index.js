@@ -88,14 +88,14 @@ class ToggleButton extends React.Component<Props, State> {
             paddingLeft: 20,
             borderWidth: 1,
               borderRadius: 2,
-            borderColor: '#463737b5',
+            borderColor: '#52ab86d4',
               shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1,
             backgroundColor: this.props.status ? this.props.onColor : "white"
           }}
         >
           <Text
             style={{
-              color: this.props.status ? "white" : "#463737b5",
+              color: this.props.status ? "white" : "#52ab86d4",
               fontWeight: "bold"
             }}
           >
