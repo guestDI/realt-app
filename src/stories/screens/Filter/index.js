@@ -355,6 +355,7 @@ class Filter extends React.Component<Props, State> {
                             animationDuration={50}
                             keyboardType={"numeric"}
                             maxLength={5}
+                            tintColor="rgb(135,179,87)"
                             onChangeText={minPrice => this.setState({ minPrice })}
                         />
                         <TextField
@@ -363,6 +364,7 @@ class Filter extends React.Component<Props, State> {
                             containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
                             animationDuration={50}
                             keyboardType={"numeric"}
+                            tintColor="rgb(135,179,87)"
                             maxLength={5}
                             onChangeText={maxPrice => this.setState({ maxPrice })}
                         />
@@ -391,7 +393,7 @@ class Filter extends React.Component<Props, State> {
                         }}
                     >
                         <ToggleButton
-                            onColor={"#52ab86d4"}
+                            onColor={"#87b357c4"}
                             effect={"pulse"}
                             status={this.state.oneRoom}
                             _onPress={status => {
@@ -400,7 +402,7 @@ class Filter extends React.Component<Props, State> {
                             text="1"
                         />
                         <ToggleButton
-                            onColor={"#52ab86d4"}
+                            onColor={"#87b357c4"}
                             effect={"pulse"}
                             status={this.state.twoRooms}
                             _onPress={status => {
@@ -409,7 +411,7 @@ class Filter extends React.Component<Props, State> {
                             text="2"
                         />
                         <ToggleButton
-                            onColor={"#52ab86d4"}
+                            onColor={"#87b357c4"}
                             effect={"pulse"}
                             status={this.state.threeRooms}
                             _onPress={status => {
@@ -418,7 +420,7 @@ class Filter extends React.Component<Props, State> {
                             text="3"
                         />
                         <ToggleButton
-                            onColor={"#52ab86d4"}
+                            onColor={"#87b357c4"}
                             effect={"pulse"}
                             status={this.state.fourOrMore}
                             _onPress={status => {
@@ -485,7 +487,7 @@ class Filter extends React.Component<Props, State> {
                   <View style={{left: width*0.05, width: width*0.4,}}>
                       {this.state.mapIsEditable ?
                           <TouchableOpacity style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
-                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#52ab86d4' }}
+                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
                                             onPress={() => this.onEditHandler()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Сохранить область</Text>
                           </TouchableOpacity> :
@@ -494,7 +496,7 @@ class Filter extends React.Component<Props, State> {
                           //   <Text style={{color: "#ffffff"}}>Сохранить область</Text>
                           // </Button> :
                           <TouchableOpacity style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
-                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#52ab86d4' }}
+                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
                                             onPress={() => this.onEditHandler()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Выделить область</Text>
                           </TouchableOpacity>
@@ -508,7 +510,7 @@ class Filter extends React.Component<Props, State> {
                   <View style={{right: width*0.05, width: width*0.4,}}>
                       {this.state.polygons && this.state.polygons.length > 0 || this.state.editing !== null ?
                           <TouchableOpacity style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
-                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#52ab86d4' }}
+                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
                                             onPress={() => this.resetMap()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Очистить область</Text>
                           </TouchableOpacity> :
@@ -531,7 +533,7 @@ class Filter extends React.Component<Props, State> {
                 <MapView
                   style={{
                     flex: 1,
-                    width: width * 0.90,
+                    width: width * 0.99,
                     height: height * 0.6,
                     alignSelf: "center"
                   }}
@@ -635,7 +637,7 @@ class Filter extends React.Component<Props, State> {
           <Footer style={{height: '10%'}}>
               <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
                   <TouchableOpacity style={{height: '75%', width: '80%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
-                      shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1, backgroundColor: '#52ab86d4' }}
+                      shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
                                      onPress={this.onFilterSaved}>
                           <Text style={{fontWeight: 'bold', color: '#FFFFFF'}}>Показать доступные квартиры</Text>
                   </TouchableOpacity>

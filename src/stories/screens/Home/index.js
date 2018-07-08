@@ -146,7 +146,7 @@ class Home extends React.Component<Props, State> {
         </Header>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             {/*{console.log(this.props.isInitialLoad)}*/}
-            {this.props.networkState ? <NetworkError/> : this.props.isInitialLoad ?
+            {this.props.networkState ? <NetworkError refresh={this.props.refreshFlatsList}/> : this.props.isInitialLoad ?
               <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
                 <DotsLoader size={12}/>
                 <View style={{marginTop: 5}}>

@@ -1,19 +1,6 @@
 import * as React from "react";
 import {
-  Header,
-  Title,
-  Content,
   Text,
-  Button,
-  Icon,
-  Left,
-  Right,
-  Body,
-  Thumbnail,
-  Container,
-  Form,
-  Item,
-  Input
 } from "native-base";
 
 import {
@@ -40,7 +27,7 @@ export interface Props {
 
 const { height, width } = Dimensions.get("window");
 
-class ToggleButton extends React.Component<Props, State> {
+class ToggleButton extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -88,14 +75,14 @@ class ToggleButton extends React.Component<Props, State> {
             paddingLeft: 20,
             borderWidth: 1,
               borderRadius: 2,
-            borderColor: '#52ab86d4',
+            borderColor: '#87b357c4',
               shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1,
             backgroundColor: this.props.status ? this.props.onColor : "white"
           }}
         >
           <Text
             style={{
-              color: this.props.status ? "white" : "#52ab86d4",
+              color: this.props.status ? "white" : "#87b357c4",
               fontWeight: "bold"
             }}
           >

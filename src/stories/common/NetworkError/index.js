@@ -44,7 +44,7 @@ class NetworkError extends React.PureComponent<Props, State> {
                 style={{ height: 90, width: 130 }}
             />
             <Text style={{color: "#414141", fontSize: 20,}} >Проверьте состояние сети</Text>
-            <TouchableOpacity style={{marginTop: 10, borderWidth: 1, borderColor: '#D8D8D8', borderRadius: 3}}>
+            <TouchableOpacity style={{marginTop: 10, borderWidth: 1, borderColor: '#D8D8D8', borderRadius: 3}} onPress={this.props.refresh}>
                 <Text style={{fontSize: 16, padding: 5, paddingLeft: 10, paddingRight: 10}}>повторить</Text>
             </TouchableOpacity>
         </View>
