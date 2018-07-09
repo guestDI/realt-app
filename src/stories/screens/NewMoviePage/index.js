@@ -451,7 +451,7 @@ class FlatPage extends React.Component<Props, State> {
                     longitude: this.props.flat.longitude
                   }}
                   title={this.props.flat.address}
-                  image={require('../../../../assets/images/home-icon.png')}
+                  // image={require('../../../../assets/images/home-icon.png') }
                 />
               </MapView>
             </View>
