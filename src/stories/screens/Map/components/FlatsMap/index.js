@@ -187,7 +187,7 @@ class FlatsMap extends React.Component<Props, State> {
                                 renderItem={this._renderItem}
                                 itemWidth={CARD_WIDTH}
                                 enableMomentum={true}
-                                decelerationRate={0.7}
+                                decelerationRate={0.5}
                                 sliderWidth={width + 2 * MARGIN_LEFT}
                                 onSnapToItem={(index) => {
                                     let flat = this.props.list[index];
@@ -202,7 +202,7 @@ class FlatsMap extends React.Component<Props, State> {
                                             latitudeDelta: this.state.region.latitudeDelta,
                                             longitudeDelta: this.state.region.longitudeDelta,
                                         },
-                                        500
+                                        700
                                     );
                                     this.getSelectedMarker(index)
                                     // this.map.getMapRef().animateToCoordinate(coordinate);

@@ -128,7 +128,7 @@ class FlatPreview extends React.PureComponent<Props, State> {
           <Button transparent
                   rounded
                   style={{zIndex: 9999, position:'absolute', top: 6, right: 6}}
-                  onPress={() => this.manageFavoriteState()}
+                  // onPress={() => this.manageFavoriteState()}
           >
               {this.state.favorite ?
                   <Icon
