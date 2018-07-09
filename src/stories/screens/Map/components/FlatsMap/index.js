@@ -23,7 +23,6 @@ import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-la
 import FlatPreview from "./components/FlatPreview/index";
 import {Marker, Callout} from 'react-native-maps';
 import ClusteredMapView from 'react-native-maps-super-cluster'
-import PriceMarker from './components/PriceMarker/index'
 import NetworkError from '../../../../common/NetworkError'
 import MapView from "react-native-maps/lib/components/MapView";
 const { StatusBarManager } = NativeModules;
@@ -109,38 +108,6 @@ class FlatsMap extends React.Component<Props, State> {
                 longitudeDelta: location.longitudeDelta
             }
         });
-    }
-
-    setCurrentRegion = (location) => {
-        let filter = this.props.filter;
-        let tempLong = location.longitude - location.longitudeDelta;
-        let tempLat = location.latitude + location.latitudeDelta;
-
-        let topRightLat = tempLat
-        let topRightLong = tempLong + location.longitudeDelta*2
-
-        let bottomRightLat = topRightLat - location.latitudeDelta*2
-        let bottomRightLong = topRightLong
-
-        let bottomLeftLat = bottomRightLat
-        let bottomLeftLong = bottomRightLong - location.longitudeDelta*2
-
-        let coordinates = [
-                { latitude: tempLat, longitude: tempLong },
-                { latitude: topRightLat, longitude: topRightLong },
-                { latitude: bottomRightLat, longitude: bottomRightLong },
-                { latitude: bottomLeftLat, longitude: bottomLeftLong },
-                { latitude: tempLat, longitude: tempLong },
-            ]
-
-        let coordinatesWrapper = [
-            {coordinates, holes: [], id: 0}
-        ];
-
-        filter.coordinates = coordinatesWrapper;
-
-        this.props.fetchByRegion(filter)
-
     }
 
   render() {

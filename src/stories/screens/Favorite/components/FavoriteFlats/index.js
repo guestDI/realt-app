@@ -74,7 +74,7 @@ class FavoriteFlats extends React.Component<Props, State> {
                   source={require("../../../../../../assets/images/nothing.png")}
                   style={{ height: 130, width: 130 }}
               />
-              <Text style={{fontSize: 20, marginTop: 5, color: "#414141"}}>Пока здесь ничего нет</Text>
+              <Text style={{fontSize: 20, marginTop: 5, color: "#737373"}}>Пока здесь ничего нет</Text>
             </View> :
             <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                     <FlatList

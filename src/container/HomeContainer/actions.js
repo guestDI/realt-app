@@ -163,6 +163,7 @@ export const fetchFlats = filter => {
           dispatch(networkError(true))
         }
         dispatch(fetchListHasErrored(true))
+        dispatch(listIsLoading(false))
       });
   };
 };

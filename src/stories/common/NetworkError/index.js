@@ -14,7 +14,13 @@ import {
     Animated,
     TouchableWithoutFeedback
 } from "react-native";
+
+import {
+    Icon,
+} from "native-base";
+
 import { Button as ButtonElement } from "react-native-elements";
+import {DotsLoader, RippleLoader, RotationCircleLoader, CirclesRotationScaleLoader} from 'react-native-indicator';
 
 export interface Props {
   navigation: any;
@@ -43,10 +49,18 @@ class NetworkError extends React.PureComponent<Props, State> {
                 source={require("../../../../assets/images/network_1.png")}
                 style={{ height: 90, width: 130 }}
             />
-            <Text style={{color: "#414141", fontSize: 20,}} >Проверьте состояние сети</Text>
-            <TouchableOpacity style={{marginTop: 10, borderWidth: 1, borderColor: '#D8D8D8', borderRadius: 3}} onPress={this.props.refresh}>
-                <Text style={{fontSize: 16, padding: 5, paddingLeft: 10, paddingRight: 10}}>повторить</Text>
-            </TouchableOpacity>
+            <Text style={{color: "#737373", fontSize: 20,}} >Проверьте состояние сети</Text>
+                <TouchableOpacity style={{marginTop: 10}}
+                                  onPress={this.props.refresh}>
+                    {this.props.loadingState ? <CirclesRotationScaleLoader color="#737373" size={38}/> :
+                        <Icon
+                            style={{color: "#737373", fontSize: 38}}
+                            active
+                            name="md-refresh"
+
+                        />
+                    }
+                </TouchableOpacity>
         </View>
     );
   }
