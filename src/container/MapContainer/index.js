@@ -8,6 +8,7 @@ import SplashScreen from 'react-native-smart-splash-screen'
 import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./../HomeContainer/actions";
 import { fetchFilter } from '../FilterContainer/actions'
 import { fetchFavoritesFlats, addFavoriteFlat, removeFromFavorite } from '../FlatPageContainer/actions'
+import {getFilter} from "../../asyncStorage";
 
 export interface Props {
   navigation: any;
@@ -30,9 +31,14 @@ class MapContainer extends React.Component<Props, State> {
       this.props.initFlatsLoad()
 
   }
+    handleRefresh = () => {
+        getFilter(filter => {
+                this.props.refreshFlats(filter);
+            }
+        );
+    }
 
   render() {
-    // console.log(this.props.data)
     return (
       <Map
         navigation={this.props.navigation}
@@ -44,6 +50,7 @@ class MapContainer extends React.Component<Props, State> {
         addFavoriteFlat={this.props.addFlatToFavorites}
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
         networkState={this.props.networkError}
+        refreshFlatsList={this.handleRefresh}
       />
     );
   }

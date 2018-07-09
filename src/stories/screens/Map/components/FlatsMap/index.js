@@ -157,7 +157,7 @@ class FlatsMap extends React.Component<Props, State> {
     return (
        this.props.networkState ?
        <View style={{flex: 1, backgroundColor: 'white'}}>
-           <NetworkError/>
+           <NetworkError refresh={this.props.refreshFlatsList}/>
        </View>:
                 <Container style={{flex: 1, backgroundColor: 'white'}}>
                     <MapView

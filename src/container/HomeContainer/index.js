@@ -48,12 +48,7 @@ class HomeContainer extends React.Component<Props, State> {
     // });
   }
 
-  componentWillReceiveProps(){
-
-  }
-
   render() {
-    // console.log(this.props.data)
     return (
       <Home
         navigation={this.props.navigation}

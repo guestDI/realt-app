@@ -160,6 +160,7 @@ class Map extends React.Component<Props, State> {
                 removeFavoriteFlat={this.props.removeFavoriteFlat}
                 favoriteFlats={this.props.favoriteFlats}
                 networkState={this.props.networkState}
+                refreshFlatsList={this.props.refreshFlatsList}
             />
         </View>
       </Container>

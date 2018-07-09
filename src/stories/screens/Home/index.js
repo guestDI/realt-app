@@ -49,7 +49,8 @@ class Home extends React.Component<Props, State> {
       page: 0,
       error: null,
       refreshing: false,
-      visible: false
+      visible: false,
+      onNetworkStateChanged: false,
     };
   }
 
@@ -89,6 +90,12 @@ class Home extends React.Component<Props, State> {
       flat: val
     });
   };
+
+  // onRefresh = () => {
+  //   this.setState({
+  //     onNetworkStateChanged: !this.state.onNetworkStateChanged
+  // })
+  // }
 
   render() {
     return (
