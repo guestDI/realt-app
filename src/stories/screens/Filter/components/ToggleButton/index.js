@@ -68,6 +68,7 @@ class ToggleButton extends React.PureComponent<Props, State> {
         <Animatable.View
           ref="view"
           style={{
+              flex: 1,
             margin: 5,
             paddingTop: 10,
             paddingBottom: 10,
@@ -75,6 +76,8 @@ class ToggleButton extends React.PureComponent<Props, State> {
             paddingLeft: 20,
             borderWidth: 1,
               borderRadius: 2,
+              alignItems: 'center',
+              justifyContent: 'center',
             borderColor: '#87b357c4',
               shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1,
             backgroundColor: this.props.status ? this.props.onColor : "white"

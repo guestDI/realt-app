@@ -1,15 +1,12 @@
 import * as React from "react";
 import {
   Header,
-  Title,
   Content,
   Text,
   Button,
   Icon,
   Left,
   Right,
-  Body,
-  Thumbnail,
   Container,
   Form,
   Input,
@@ -38,7 +35,6 @@ import {
     TouchableWithoutFeedback,
     StatusBar
 } from "react-native";
-import Modal from 'react-native-modalbox';
 const Item = Picker.Item;
 
 export interface Props {
@@ -58,6 +54,7 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.3122;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const ROOM_ENUM = {
+    ROOM: "ROOM",
     ONE: "ONE_ROOM",
     TWO: "TWO_ROOMS",
     THREE: "THREE_ROOMS",
@@ -78,6 +75,8 @@ class Filter extends React.Component<Props, State> {
       minPrice: this.props.filter.minPrice,
       maxPrice: this.props.filter.maxPrice,
       rooms: this.props.filter.rooms,
+      flat: this.checkWholeFlatStatus(rooms),
+      room: rooms.includes(ROOM_ENUM.ROOM),
       oneRoom: rooms.includes(ROOM_ENUM.ONE),
       twoRooms: rooms.includes(ROOM_ENUM.TWO),
       threeRooms: rooms.includes(ROOM_ENUM.THREE),
@@ -87,7 +86,7 @@ class Filter extends React.Component<Props, State> {
       selectedSubway: "ANY_SUBWAY",
       mapScrollEnabled: true,
       mapIsEditable: false,
-      regionIsChanging: false
+      regionIsChanging: false,
     };
   }
 
@@ -99,6 +98,8 @@ class Filter extends React.Component<Props, State> {
         minPrice: nextProps.filter.minPrice,
         maxPrice: nextProps.filter.maxPrice,
         rooms: rooms,
+        flat: this.checkWholeFlatStatus(rooms),
+        room: rooms.includes(ROOM_ENUM.ROOM),
         oneRoom: rooms.includes(ROOM_ENUM.ONE),
         twoRooms: rooms.includes(ROOM_ENUM.TWO),
         threeRooms: rooms.includes(ROOM_ENUM.THREE),
@@ -159,6 +160,25 @@ class Filter extends React.Component<Props, State> {
     });
   };
 
+  manageWholeFlatSearch = () => {
+      this.setState({
+          flat: !this.state.flat
+      })
+  }
+
+  checkWholeFlatStatus = arr => {
+      let flatContainsRoom = false;
+      if(arr){
+          for (let room in ROOM_ENUM) {
+              if(arr.includes(ROOM_ENUM[room])){
+                  flatContainsRoom = true
+              }
+          }
+      }
+      console.log(flatContainsRoom)
+      return flatContainsRoom;
+  }
+
   getRoomsNumber = (status, room) => {
     let roomsNum = this.state.rooms;
 
@@ -170,6 +190,9 @@ class Filter extends React.Component<Props, State> {
     }
 
     switch(room){
+        case ROOM_ENUM.ROOM:
+          this.setState({room: status});
+          break;
         case ROOM_ENUM.ONE:
           this.setState({oneRoom: status});
           break;
@@ -187,6 +210,7 @@ class Filter extends React.Component<Props, State> {
     this.setState({
       rooms: roomsNum
     });
+    console.log(roomsNum)
   };
 
   reset = () => {
@@ -207,6 +231,7 @@ class Filter extends React.Component<Props, State> {
             maxPrice: "",
             rooms: [],
             coordinates: [],
+            room: false,
             oneRoom: false,
             twoRooms: false,
             threeRooms: false,
@@ -307,28 +332,119 @@ class Filter extends React.Component<Props, State> {
               />
             </Button>
           </Left>
-          {/*<Body>*/}
-            {/*<Title style={{color: "#414141"}}>Фильтр</Title>*/}
-          {/*</Body>*/}
           <Right>
               <TouchableOpacity onPress={this.reset} style={{marginRight: 2}}>
                   <Text>Очистить</Text>
               </TouchableOpacity>
-            {/*<Button transparent*/}
-                    {/*style={{zIndex: 9999}}*/}
-                    {/*onPress={this.reset}*/}
-            {/*>*/}
-              {/*<Icon*/}
-                {/*name="trash"*/}
-                {/*style={{ fontSize: 28, color: "#414141", }}*/}
-              {/*/>*/}
-            {/*</Button>*/}
           </Right>
         </Header>
         <Content style={{ backgroundColor: "#FFFFFF", marginTop: 10 }} keyboardDismissMode="on-drag">
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
             <View style={{ flex: 1, flexDirection: "column" }}>
-              <View style={{ flex: 1, alignItems: "center", width: width*0.9, alignSelf: 'center' }}>
+                <View style={{ flex: 1, alignItems: "center", paddingTop: 20 }}>
+                    <View
+                        style={{
+                            borderBottomWidth: 1,
+                            borderColor: "#e5e5e5",
+                            width: width * 0.9,
+                            flex: 1,
+                        }}
+                    >
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: "#414141", paddingBottom: 15 }}>
+                            Тип жилья
+                        </Text>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                width: width * 0.8,
+                                paddingBottom: 20,
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                alignSelf: 'center'
+                            }}
+                        >
+                            <ToggleButton
+                                onColor={"#87b357c4"}
+                                effect={"pulse"}
+                                status={this.state.flat}
+                                _onPress={status => {
+                                  this.manageWholeFlatSearch(status);
+                                }}
+                                text="Квартира"
+                            />
+                            <ToggleButton
+                                onColor={"#87b357c4"}
+                                effect={"pulse"}
+                                status={this.state.room}
+                                _onPress={status => {
+                                    this.getRoomsNumber(status, ROOM_ENUM.ROOM);
+                                }}
+                                text="Комната"
+                            />
+                        </View>
+                    </View>
+                </View>
+                <View style={{ flex: 1, alignItems: "center", paddingTop: 20 }}>
+                    <View
+                        style={{
+                            borderBottomWidth: 1,
+                            borderColor: "#e5e5e5",
+                            width: width * 0.9
+                        }}
+                    >
+                        <Text style={{ fontSize: 18, fontWeight: 'bold', color: "#414141", paddingBottom: 15 }}>
+                            Количество комнат
+                        </Text>
+                        <View
+                            style={{
+                                flexDirection: "row",
+                                width: width * 0.8,
+                                justifyContent: "center",
+                                alignItems: "center",
+                                paddingBottom: 20,
+                                alignSelf: 'center'
+                            }}
+                        >
+                            <ToggleButton
+                                onColor={"#87b357c4"}
+                                effect={"pulse"}
+                                status={this.state.oneRoom}
+                                _onPress={status => {
+                                    this.getRoomsNumber(status, ROOM_ENUM.ONE);
+                                }}
+                                text="1"
+                            />
+                            <ToggleButton
+                                onColor={"#87b357c4"}
+                                effect={"pulse"}
+                                status={this.state.twoRooms}
+                                _onPress={status => {
+                                    this.getRoomsNumber(status, ROOM_ENUM.TWO);
+                                }}
+                                text="2"
+                            />
+                            <ToggleButton
+                                onColor={"#87b357c4"}
+                                effect={"pulse"}
+                                status={this.state.threeRooms}
+                                _onPress={status => {
+                                    this.getRoomsNumber(status, ROOM_ENUM.THREE);
+                                }}
+                                text="3"
+                            />
+                            <ToggleButton
+                                onColor={"#87b357c4"}
+                                effect={"pulse"}
+                                status={this.state.fourOrMore}
+                                _onPress={status => {
+                                    this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
+                                }}
+                                text="4+"
+                            />
+                        </View>
+                    </View>
+                </View>
+              <View style={{ flex: 1, alignItems: "center", width: width*0.9, alignSelf: 'center', paddingTop: 20 }}>
                 <View
                   style={{
                     borderBottomWidth: 1,
@@ -343,13 +459,14 @@ class Filter extends React.Component<Props, State> {
                         style={{
                             flexDirection: "row",
                             justifyContent: "center",
-                            paddingLeft: 10,
-                            paddingRight: 10,
-                            paddingBottom: 20
+                            paddingBottom: 20,
+                            width: width * 0.8,
+                            alignSelf: 'center'
                         }}
                     >
                         <TextField
                             label="Минимальная цена"
+                            fontSize={14}
                             value={minPrice}
                             containerStyle={{ paddingRight: 10, width: width * 0.45 }}
                             animationDuration={50}
@@ -360,6 +477,7 @@ class Filter extends React.Component<Props, State> {
                         />
                         <TextField
                             label="Максимальная цена"
+                            fontSize={14}
                             value={maxPrice}
                             containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
                             animationDuration={50}
@@ -372,65 +490,7 @@ class Filter extends React.Component<Props, State> {
                 </View>
               </View>
 
-              <View style={{ flex: 1, alignItems: "center", paddingTop: 20 }}>
-                <View
-                  style={{
-                    borderBottomWidth: 1,
-                    borderColor: "#e5e5e5",
-                    width: width * 0.9
-                  }}
-                >
-                  <Text style={{ fontSize: 18, fontWeight: 'bold', color: "#414141", paddingBottom: 15 }}>
-                    Количество комнат
-                  </Text>
-                    <View
-                        style={{
-                            flexDirection: "row",
-                            width: width * 0.9,
-                            justifyContent: "center",
-                            alignItems: "center",
-                            paddingBottom: 20
-                        }}
-                    >
-                        <ToggleButton
-                            onColor={"#87b357c4"}
-                            effect={"pulse"}
-                            status={this.state.oneRoom}
-                            _onPress={status => {
-                                this.getRoomsNumber(status, ROOM_ENUM.ONE);
-                            }}
-                            text="1"
-                        />
-                        <ToggleButton
-                            onColor={"#87b357c4"}
-                            effect={"pulse"}
-                            status={this.state.twoRooms}
-                            _onPress={status => {
-                                this.getRoomsNumber(status, ROOM_ENUM.TWO);
-                            }}
-                            text="2"
-                        />
-                        <ToggleButton
-                            onColor={"#87b357c4"}
-                            effect={"pulse"}
-                            status={this.state.threeRooms}
-                            _onPress={status => {
-                                this.getRoomsNumber(status, ROOM_ENUM.THREE);
-                            }}
-                            text="3"
-                        />
-                        <ToggleButton
-                            onColor={"#87b357c4"}
-                            effect={"pulse"}
-                            status={this.state.fourOrMore}
-                            _onPress={status => {
-                                this.getRoomsNumber(status, ROOM_ENUM.FOUR_OR_MORE);
-                            }}
-                            text="4+"
-                        />
-                    </View>
-                </View>
-              </View>
+
               {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
               {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>*/}
               {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>*/}
@@ -485,25 +545,22 @@ class Filter extends React.Component<Props, State> {
                 <View style={{flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 15,
                     alignItems: "center", justifyContent: 'space-between'}}>
                   <View style={{left: width*0.05, width: width*0.4,}}>
-                      {this.state.mapIsEditable ?
+                      {
+                      this.state.mapIsEditable ?
                           <TouchableOpacity style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
                               shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
                                             onPress={() => this.onEditHandler()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Сохранить область</Text>
+                          </TouchableOpacity> : this.state.polygons && this.state.polygons.length > 0 ?
+                          <TouchableOpacity disabled={true} style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
+                              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#93969b' }}>
+                              <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Выделить область</Text>
                           </TouchableOpacity> :
-                          // <Button bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#52ab86d4'}}
-                          //         onPress={() => this.onEditHandler()}>
-                          //   <Text style={{color: "#ffffff"}}>Сохранить область</Text>
-                          // </Button> :
                           <TouchableOpacity style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
                               shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
                                             onPress={() => this.onEditHandler()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Выделить область</Text>
                           </TouchableOpacity>
-                          // <Button bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#52ab86d4'}}
-                          //         onPress={() => this.onEditHandler()}>
-                          //   <Text style={{color: "#ffffff"}}>Выделить область</Text>
-                          // </Button>
                       }
 
                   </View>
@@ -514,20 +571,12 @@ class Filter extends React.Component<Props, State> {
                                             onPress={() => this.resetMap()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Очистить область</Text>
                           </TouchableOpacity> :
-                          // <Button bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#52ab86d4'}}
-                          //         onPress={() => this.resetMap()}>
-                          //   <Text style={{color: "#ffffff"}}>Очистить область</Text>
-                          // </Button> :
-                          <TouchableOpacity style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
+                          <TouchableOpacity disabled={true} style={{height: '100%', width: '100%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
                               shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.7, shadowRadius: 2, elevation: 1, backgroundColor: '#93969b' }}
                                             onPress={() => this.resetMap()}>
                               <Text style={{fontWeight: 'bold', color: '#FFFFFF', paddingTop: 5, paddingBottom: 5}}>Очистить область</Text>
                           </TouchableOpacity>
-                          // <Button disabled bordered small style={{width: '100%', justifyContent: 'center', backgroundColor: '#93969b'}}
-                          //         onPress={() => this.resetMap()}>
-                          //   <Text style={{color: "#ffffff"}}>Очистить область</Text>
-                          // </Button>
-                      }
+                        }
                   </View>
                 </View>
                 <MapView
