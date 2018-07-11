@@ -72,6 +72,8 @@ class FlatRow extends React.PureComponent<Props, State> {
 
     getRoomsNumber = room => {
         switch (room) {
+            case "ROOM":
+                return "комната отдельно"
             case "ONE_ROOM":
                 return "1 комната";
             case "TWO_ROOMS":
@@ -128,6 +130,7 @@ class FlatRow extends React.PureComponent<Props, State> {
 
   render() {
     let position = Animated.divide(this.scrollX, width*0.9);
+    // console.log(this.props.flat.rentType)
 
     return (
       <View style={{flex: 1, width: width * 0.9, alignSelf: 'center', backgroundColor: 'white', paddingTop: 15}}>
@@ -192,7 +195,7 @@ class FlatRow extends React.PureComponent<Props, State> {
             </View> : null}
         </View>
       <TouchableOpacity onPress={this.onRowPress}>
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: "row", marginTop: 3 }}>
             <Text style={{ fontSize: 20, fontWeight: '700',  paddingBottom: 5, color: '#242424' }}>
               {this.props.flat.title}
             </Text>

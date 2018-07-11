@@ -175,6 +175,8 @@ class FlatPage extends React.Component<Props, State> {
 
   getRoomsNumber = room => {
     switch (room) {
+      case "ROOM":
+        return "комната отдельно"
       case "ONE_ROOM":
         return "1 комнатная";
       case "TWO_ROOMS":
@@ -320,10 +322,10 @@ class FlatPage extends React.Component<Props, State> {
                       <Image
                           resizeMode="contain"
                           source={require("../../../../assets/images/sofa.png")}
-                          style={{ height: 50, width: 50 }}
+                          style={{ height: 45, width: 45 }}
                       />
                     <Text
-                      style={{ fontSize: 22, fontWeight: "bold", paddingLeft: 5, color: "#474c57" }}
+                      style={{ fontSize: 20, fontWeight: "bold", paddingLeft: 5, color: "#474c57" }}
                     >
                       {this.getRoomsNumber(this.props.flat.rentType)}
                     </Text>
@@ -377,7 +379,23 @@ class FlatPage extends React.Component<Props, State> {
                         {this.props.flat.description}
                     </Text>
                 }
-                <View style={{ flex: 1, flexDirection: "row", alignItems: 'center' }}>
+
+                {!this.props.flat.condition || 0 === this.props.flat.condition.length ?
+                    null :
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            paddingTop: 5,
+                            paddingBottom: 5,
+                            color: '#474c57',
+                            letterSpacing: 1
+                        }}
+                        >
+                        {this.props.flat.condition}
+                    </Text>
+
+                }
+                <View style={{ flex: 1, flexDirection: "row", alignItems: 'center', marginTop: 10 }}>
                     <Text
                         style={{
                             fontSize: 18,
