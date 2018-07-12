@@ -39,7 +39,6 @@ import MapView from 'react-native-maps';
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import formatDate from "../../../utils/utils";
 import Modal from 'react-native-modalbox';
-import Paging from '../../common/Paging'
 
 
 export interface Props {
@@ -60,7 +59,7 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-const arr = ['fridge', 'stove', 'wifi', 'wash', 'tv', 'air_condition']
+// const arr = ['fridge', 'stove', 'wifi', 'wash', 'tv', 'air_condition']
 
 class FlatPage extends React.Component<Props, State> {
   constructor(props) {
@@ -230,13 +229,13 @@ class FlatPage extends React.Component<Props, State> {
     }
 
     returnFacility = () => {
-      let strArr = this.props.flat.options.split(',')
       let arr = [];
-      strArr.map(c => {
-          arr.push(c.trim())
-      })
-        // this.props.flat.options.replace(/\s+/g, '');
-      // console.log(this.props.flat.options.split(','))
+      if(this.props.flat.options) {
+          let strArr = this.props.flat.options.split(',')
+          strArr.map(c => {
+              arr.push(c.trim())
+          })
+      }
       return arr;
     }
 
@@ -479,15 +478,27 @@ class FlatPage extends React.Component<Props, State> {
                 <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10, }}>
                     Удобства
                 </Text>
-                <View style={{
-                    flex: 1,
-                    flexDirection: 'row',
-                    flexWrap: 'wrap',
-                    width: width * 0.92,
-                    alignSelf: "center",
-                    // justifyContent: 'space-between',
-                }}>
-                    {this.returnFacility().map((cond, index) => {
+                {this.returnFacility().length === 0 ?
+                    <Text
+                        style={{
+                            fontSize: 16,
+                            paddingBottom: 5,
+                            fontStyle: 'italic',
+                            color: '#474c57',
+                            letterSpacing: 1,
+                            marginBottom: 5
+                        }}
+                    >
+                        Информация отсутствует
+                    </Text> :
+                    <View style={{
+                        flex: 1,
+                        flexDirection: 'row',
+                        flexWrap: 'wrap',
+                        width: width * 0.92,
+                        alignSelf: "center",
+                    }}>
+                        {this.returnFacility().map((cond, index) => {
                             return (
                                 <View key={index} style={{
                                     margin: 8,
@@ -509,9 +520,10 @@ class FlatPage extends React.Component<Props, State> {
                                     />
                                 </View>
                             )
-                    })
-                    }
-                </View>
+                        })
+                        }
+                    </View>
+                }
             </View>
             <View
               style={{
@@ -528,11 +540,6 @@ class FlatPage extends React.Component<Props, State> {
                     {this.props.flat.address}
                 </Text>
             </View>
-            {/*<View >*/}
-              {/*<View style={{ flexDirection: "column", paddingLeft: width*0.1 }}>*/}
-                  {/**/}
-              {/*</View>*/}
-            {/*</View>*/}
             <View>
               <MapView
                 style={{ flex: 1, width: width*0.92, height: height * 0.4, alignSelf: 'center' }}

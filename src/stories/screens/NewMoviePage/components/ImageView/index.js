@@ -1,18 +1,4 @@
 import * as React from "react";
-import {
-  Header,
-  Title,
-  Content,
-  Text,
-  Button,
-  Icon,
-  Left,
-  Right,
-  Body,
-  Thumbnail
-} from "native-base";
-import { Rating } from "react-native-elements";
-import { Card } from "react-native-elements";
 import Gallery from "react-native-image-gallery";
 
 import {
@@ -22,7 +8,8 @@ import {
   Modal,
   StyleSheet,
   TextInput,
-  ScrollView
+  ScrollView,
+    StatusBar
 } from "react-native";
 export interface Props {
   navigation: any;
@@ -45,7 +32,6 @@ class ImageView extends React.Component<Props, State> {
   }
 
   render() {
-    // const param = this.props.navigation.state.params;
     let wrappedImages = this.props.images.map(image => {
       return { source: { uri: image } };
     });
@@ -55,9 +41,15 @@ class ImageView extends React.Component<Props, State> {
         transparent={true}
         onDismiss={this.props.onClose}
         onRequestClose={this.props.onClose}
+        style={{height: height}}
       >
+        <StatusBar
+            barStyle={ 'light-content'}
+            backgroundColor={'#000000'}
+            translucent={false}
+        />
         <Gallery
-          style={{ flex: 1, backgroundColor: "black" }}
+          style={{ flex: 1, backgroundColor: "black", }}
           images={wrappedImages}
           initialPage={this.props.page}
         />
