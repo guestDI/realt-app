@@ -200,7 +200,7 @@ class Filter extends React.Component<Props, State> {
           rooms: roomsNum
       });
 
-      console.log(status)
+      // console.log(status)
 
   }
 
@@ -263,7 +263,7 @@ class Filter extends React.Component<Props, State> {
         });
     }
 
-    console.log(roomsNum)
+
   };
 
   reset = () => {
@@ -282,6 +282,7 @@ class Filter extends React.Component<Props, State> {
             creatingHole: false,
             minPrice: "",
             maxPrice: "",
+            flat: false,
             rooms: [],
             coordinates: [],
             room: false,
@@ -312,7 +313,7 @@ class Filter extends React.Component<Props, State> {
       page: 0,
     };
 
-    console.log(filter.rooms)
+    // console.log(filter.rooms)
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
     this.props.navigation.goBack();
