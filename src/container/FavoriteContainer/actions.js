@@ -119,8 +119,8 @@ export const fetchFlats = filter => {
 
     axios
       .get(
-        // "http://46.101.244.156:5555/flats", {
-              "http://192.168.32.27:8080/flats", {
+        "http://46.101.244.156:5555/flats", {
+              // "http://192.168.32.27:8080/flats", {
           params: Object.assign({}, f, {size: 10}),
           paramsSerializer: function(params) {
               return qs.stringify(params, {arrayFormat: 'repeat'})
@@ -160,8 +160,8 @@ export const fetchFlatsOnMap = filter => {
     dispatch(mapListIsLoading(true));
     axios
       .get(
-        // "http://46.101.244.156:5555/flats", {
-        "http://192.168.32.27:8080/flats", {
+        "http://46.101.244.156:5555/flats", {
+        // "http://192.168.32.27:8080/flats", {
               params: Object.assign({}, f, {size: 150, page: 0}),
               paramsSerializer: function(params) {
                   return qs.stringify(params, {arrayFormat: 'repeat'})
