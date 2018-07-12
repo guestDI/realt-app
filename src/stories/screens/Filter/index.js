@@ -161,21 +161,59 @@ class Filter extends React.Component<Props, State> {
   };
 
   manageWholeFlatSearch = () => {
+      let roomsNum = this.state.rooms;
+      let status = this.state.flat
+
       this.setState({
-          flat: !this.state.flat
+          flat: !status
       })
+
+      if (!status) {
+          for (let room in ROOM_ENUM) {
+              if(!roomsNum.includes(ROOM_ENUM[room])){
+                  roomsNum.push(ROOM_ENUM[room]);
+              }
+          }
+          this.setState({oneRoom: true});
+          this.setState({twoRooms: true});
+          this.setState({threeRooms: true});
+          this.setState({fourOrMore: true});
+      } else if (status) {
+          if(roomsNum.includes(ROOM_ENUM.ROOM)){
+              roomsNum = []
+              roomsNum.push(ROOM_ENUM.ROOM)
+              this.setState({oneRoom: false});
+              this.setState({twoRooms: false});
+              this.setState({threeRooms: false});
+              this.setState({fourOrMore: false});
+          } else {
+              roomsNum = []
+              this.setState({oneRoom: false});
+              this.setState({twoRooms: false});
+              this.setState({threeRooms: false});
+              this.setState({fourOrMore: false});
+          }
+      }
+
+
+      this.setState({
+          rooms: roomsNum
+      });
+
+      console.log(status)
+
   }
 
   checkWholeFlatStatus = arr => {
       let flatContainsRoom = false;
       if(arr){
           for (let room in ROOM_ENUM) {
-              if(arr.includes(ROOM_ENUM[room])){
+              if(ROOM_ENUM[room]!=="ROOM" && arr.includes(ROOM_ENUM[room])){
                   flatContainsRoom = true
               }
           }
       }
-      console.log(flatContainsRoom)
+      // console.log(flatContainsRoom)
       return flatContainsRoom;
   }
 
@@ -210,6 +248,21 @@ class Filter extends React.Component<Props, State> {
     this.setState({
       rooms: roomsNum
     });
+
+    if(roomsNum.length===1 && roomsNum.includes(ROOM_ENUM.ROOM)){
+          this.setState({
+              flat: false
+        })
+    } else if(roomsNum.length > 0 ){
+        this.setState({
+            flat: true
+        });
+    } else if(roomsNum.length === 0){
+        this.setState({
+            flat: false
+        });
+    }
+
     console.log(roomsNum)
   };
 
@@ -258,6 +311,8 @@ class Filter extends React.Component<Props, State> {
       coordinates: tempCoordinates,
       page: 0,
     };
+
+    console.log(filter.rooms)
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
     this.props.navigation.goBack();

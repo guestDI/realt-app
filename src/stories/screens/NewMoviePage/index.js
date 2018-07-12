@@ -60,7 +60,7 @@ const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
 const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-const arr = ['11111111', '222222222']
+const arr = ['fridge', 'stove', 'wifi', 'wash', 'tv', 'air_condition']
 
 class FlatPage extends React.Component<Props, State> {
   constructor(props) {
@@ -203,6 +203,41 @@ class FlatPage extends React.Component<Props, State> {
                 isOpen: true
             });
         }
+    }
+
+    printFacility = facility => {
+          switch (facility) {
+              case "Телевизор":
+                  return require("../../../../assets/images/conditions/tv.png")
+              case "Интернет":
+                  return require("../../../../assets/images/conditions/wifi.png")
+              case "Плита":
+                  return require("../../../../assets/images/conditions/stove.png")
+              case "Холодильник":
+                  return require("../../../../assets/images/conditions/fridge.png")
+              case "Кондиционер":
+                  return require("../../../../assets/images/conditions/air-conditioner.png")
+              case "Стиральная машина":
+                  return require("../../../../assets/images/conditions/washing-machine.png")
+              case "Лоджия или балкон":
+                  return require("../../../../assets/images/conditions/balcony.png")
+              case "Мебель":
+                  return require("../../../../assets/images/conditions/sofa.png")
+              case "Кухонная мебель":
+                  return require("../../../../assets/images/conditions/kitchen.png")
+          }
+        // Мебель, Кухонная мебель, Плита, Холодильник, Стиральная машина, Телевизор, Интернет, Лоджия или балкон
+    }
+
+    returnFacility = () => {
+      let strArr = this.props.flat.options.split(',')
+      let arr = [];
+      strArr.map(c => {
+          arr.push(c.trim())
+      })
+        // this.props.flat.options.replace(/\s+/g, '');
+      // console.log(this.props.flat.options.split(','))
+      return arr;
     }
 
 
@@ -432,6 +467,52 @@ class FlatPage extends React.Component<Props, State> {
                     </TouchableOpacity>
                 </View>
             </View >
+            <View
+                style={{
+                    width: width * 0.92,
+                    alignSelf: "center",
+                    borderBottomWidth: 1,
+                    borderBottomColor: '#ebedeb',
+                    marginTop: 20
+                }}
+            >
+                <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10, }}>
+                    Удобства
+                </Text>
+                <View style={{
+                    flex: 1,
+                    flexDirection: 'row',
+                    flexWrap: 'wrap',
+                    width: width * 0.92,
+                    alignSelf: "center",
+                    // justifyContent: 'space-between',
+                }}>
+                    {this.returnFacility().map((cond, index) => {
+                            return (
+                                <View key={index} style={{
+                                    margin: 8,
+                                    borderWidth: 1,
+                                    padding: 10,
+                                    borderRadius: 50,
+                                    shadowColor: '#000',
+                                    shadowOffset: {width: 0, height: 2},
+                                    shadowOpacity: 0.8,
+                                    shadowRadius: 2,
+                                    elevation: 1,
+                                    backgroundColor: "#87b357c4",
+                                    borderColor: "white"
+                                }}>
+                                    <Image
+                                        resizeMode="contain"
+                                        source={this.printFacility(cond)}
+                                        style={{height: 35, width: 35}}
+                                    />
+                                </View>
+                            )
+                    })
+                    }
+                </View>
+            </View>
             <View
               style={{
                 width: width * 0.92,
