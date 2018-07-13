@@ -164,13 +164,15 @@ class Filter extends React.Component<Props, State> {
       let roomsNum = this.state.rooms;
       let status = this.state.flat
 
+      let newStatus = !status
+
       this.setState({
-          flat: !status
+          flat: newStatus
       })
 
-      if (!status) {
+      if (newStatus) {
           for (let room in ROOM_ENUM) {
-              if(!roomsNum.includes(ROOM_ENUM[room])){
+              if(!roomsNum.includes(ROOM_ENUM[room]) && ROOM_ENUM[room] !=="ROOM"){
                   roomsNum.push(ROOM_ENUM[room]);
               }
           }
@@ -178,7 +180,7 @@ class Filter extends React.Component<Props, State> {
           this.setState({twoRooms: true});
           this.setState({threeRooms: true});
           this.setState({fourOrMore: true});
-      } else if (status) {
+      } else if (!newStatus) {
           if(roomsNum.includes(ROOM_ENUM.ROOM)){
               roomsNum = []
               roomsNum.push(ROOM_ENUM.ROOM)
@@ -245,11 +247,13 @@ class Filter extends React.Component<Props, State> {
           break;
     }
 
+      // console.log(roomsNum)
+
     this.setState({
       rooms: roomsNum
     });
 
-    if(roomsNum.length===1 && roomsNum.includes(ROOM_ENUM.ROOM)){
+    if(roomsNum.length===1 && roomsNum.includes(ROOM_ENUM.ROOM || roomsNum.length === 0)){
           this.setState({
               flat: false
         })
@@ -257,12 +261,7 @@ class Filter extends React.Component<Props, State> {
         this.setState({
             flat: true
         });
-    } else if(roomsNum.length === 0){
-        this.setState({
-            flat: false
-        });
     }
-
 
   };
 
@@ -313,7 +312,7 @@ class Filter extends React.Component<Props, State> {
       page: 0,
     };
 
-    // console.log(filter.rooms)
+
     this.props.onAddFilter(filter);
     // this.props.onFetchFilter();
     this.props.navigation.goBack();
@@ -360,6 +359,11 @@ class Filter extends React.Component<Props, State> {
               editing: null,
           });
       }
+  }
+
+  goBack = () => {
+
+
   }
 
   render() {
@@ -522,7 +526,7 @@ class Filter extends React.Component<Props, State> {
                     >
                         <TextField
                             label="Минимальная цена"
-                            fontSize={14}
+                            fontSize={16}
                             value={minPrice}
                             containerStyle={{ paddingRight: 10, width: width * 0.45 }}
                             animationDuration={50}
@@ -533,7 +537,7 @@ class Filter extends React.Component<Props, State> {
                         />
                         <TextField
                             label="Максимальная цена"
-                            fontSize={14}
+                            fontSize={16}
                             value={maxPrice}
                             containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
                             animationDuration={50}
