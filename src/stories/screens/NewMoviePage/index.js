@@ -265,9 +265,19 @@ class FlatPage extends React.Component<Props, State> {
             currentOptionPosition: Object.assign({}, this.state.optionsLocations[index]),
             currentOptionIndex: index
         })
-        console.log(this.state.optionsLocations[index])
+        //console.log(this.state.optionsLocations[index])
     }
 
+    closePopover = () => {
+        let status = this.state.isPopoverVisible
+
+        if(status === true) {
+            this.setState({
+                isPopoverVisible: false,
+
+            })
+        }
+    }
 
   render() {
     const param = this.props.navigation.state.params;
@@ -326,8 +336,8 @@ class FlatPage extends React.Component<Props, State> {
           </Right>
         </Header>
         <View style={{ flex: 1 }}>
-          <ScrollView style={{ backgroundColor: "#FFFFFF" }} ref="_scrollView">
-            <View style={styles.scrollContainer}>
+          <ScrollView style={{ backgroundColor: "#FFFFFF" }}  ref="_scrollView">
+            <View style={styles.scrollContainer} >
               <LazyloadScrollView
                 horizontal
                 pagingEnabled
@@ -529,7 +539,8 @@ class FlatPage extends React.Component<Props, State> {
                     }}>
                         {this.returnFacility().map((cond, index) => {
                             return (
-                                <TouchableOpacity onPress={() => this.togglePopover(index)} onLayout={this.onLayout} key={index} style={{
+                                <TouchableOpacity onPress={() => this.togglePopover(index)} onLayout={this.onLayout} key={index}
+                                                  activeOpacity={0.8} style={{
                                     margin: 8,
                                     borderWidth: 1,
                                     padding: 10,

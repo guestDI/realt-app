@@ -73,7 +73,7 @@ class Popover extends React.PureComponent<Props, State> {
           style={{
               position: 'absolute',
               left: this.props.optionPosition.x, top: this.props.optionPosition.y,
-            marginTop: 20,
+            //marginBottom: 30,
               //marginBottom: 20,
             //paddingTop: 5,
             //paddingBottom: 5,
