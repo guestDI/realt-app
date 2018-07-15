@@ -13,7 +13,8 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "node node_modules/jest/bin/jest.js",
-    "release": "cd android && ./gradlew assembleRelease"
+    "release": "cd android && ./gradlew assembleRelease",
+    "android-dev": "adb reverse tcp:8081 tcp:8081 && react-native run-android"
   },
   "jest": {
     "preset": "react-native"

@@ -8,8 +8,6 @@ import {
   Left,
   Right,
   Container,
-  Form,
-  Input,
   Picker,
   Item as FormItem,
     Footer,
