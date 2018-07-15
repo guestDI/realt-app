@@ -39,6 +39,7 @@ import MapView from 'react-native-maps';
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux';
 import formatDate from "../../../utils/utils";
 import Modal from 'react-native-modalbox';
+import Popover from "./components/Popover";
 
 
 export interface Props {
@@ -69,6 +70,9 @@ class FlatPage extends React.Component<Props, State> {
         isOpen: false,
         isDisabled: false,
         swipeToClose: true,
+        currentOptionPosition: {},
+        currentOptionIndex: 0,
+        isPopoverVisible: false,
       alert: null,
       visible: false,
       viewerVisible: false,
@@ -77,6 +81,7 @@ class FlatPage extends React.Component<Props, State> {
       statusBarColor: "rgba(0, 0, 0, 0.3)",
       friendsModalVisible: false,
       imageNumberSelected: 0,
+      optionsLocations: [],
       favorite: this.checkIfFavorite(this.props.favoriteFlats)
     };
       // console.log(this.checkIfFavorite(this.props.favoriteFlats))
@@ -237,6 +242,30 @@ class FlatPage extends React.Component<Props, State> {
           })
       }
       return arr;
+    }
+
+    onLayout = (event) => {
+      let options = this.state.optionsLocations.slice()
+      this.setState({
+        optionsLocations: [...options, event.nativeEvent.layout]
+      })
+      //console.log(event.nativeEvent.layout)
+    }
+
+    togglePopover = (index) => {
+        //Object.keys(obj)[0]
+        //console.log(1)
+        //for(let loc in this.state.optionsLocations){
+          //  console.log(loc, this.state.optionsLocations[loc])
+        //}
+        let status = this.state.isPopoverVisible
+
+        this.setState({
+            isPopoverVisible: !status,
+            currentOptionPosition: Object.assign({}, this.state.optionsLocations[index]),
+            currentOptionIndex: index
+        })
+        console.log(this.state.optionsLocations[index])
     }
 
 
@@ -500,7 +529,7 @@ class FlatPage extends React.Component<Props, State> {
                     }}>
                         {this.returnFacility().map((cond, index) => {
                             return (
-                                <View key={index} style={{
+                                <TouchableOpacity onPress={() => this.togglePopover(index)} onLayout={this.onLayout} key={index} style={{
                                     margin: 8,
                                     borderWidth: 1,
                                     padding: 10,
@@ -518,10 +547,19 @@ class FlatPage extends React.Component<Props, State> {
                                         source={this.printFacility(cond)}
                                         style={{height: 35, width: 35}}
                                     />
-                                </View>
+                                </TouchableOpacity>
+
                             )
                         })
                         }
+                        {this.state.isPopoverVisible ?
+                        <Popover
+                            onColor={"#87b357c4"}
+                            effect={"pulse"}
+                            status={true}
+                            text={this.returnFacility()[this.state.currentOptionIndex]}
+                            optionPosition={this.state.currentOptionPosition}
+                        /> : null }
                     </View>
                 }
             </View>

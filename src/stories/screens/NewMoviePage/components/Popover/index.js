@@ -68,11 +68,11 @@ class Popover extends React.PureComponent<Props, State> {
           console.log('y', this.props.optionLocation.optionY)
       }
     return (
-       <View style={{justifyContent: 'center', alignItems: 'center', position: 'absolute'}}>
        <Animatable.View
           ref="view"
           style={{
-              flex: 1,
+              position: 'absolute',
+              left: this.props.optionPosition.x, top: this.props.optionPosition.y,
             marginTop: 20,
               //marginBottom: 20,
             //paddingTop: 5,
@@ -100,8 +100,6 @@ class Popover extends React.PureComponent<Props, State> {
             {this.props.text}
           </Text>
         </Animatable.View>
-        {/*<View style={styles.arrowDown}/>*/}
-        </View>
 
     );
   }
