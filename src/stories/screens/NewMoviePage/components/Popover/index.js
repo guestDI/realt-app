@@ -123,6 +123,8 @@ class Popover extends React.PureComponent<Props, State> {
     }
 
   render() {
+      let width = this.props.text.length > 12 ? this.props.text.length*6.6 : this.props.text.length > 6 ?
+                    this.props.text.length*8 : this.props.text.length*10
       // if(this.props.optionLocation) {
       //     console.log('x', this.props.optionLocation.optionX)
       //     console.log('y', this.props.optionLocation.optionY)
@@ -141,18 +143,20 @@ class Popover extends React.PureComponent<Props, State> {
                 ref="view"
                 style={{
                     position: 'absolute',
-                    left: this.props.optionPosition.x, top: -30,
-                    paddingRight: 10,
-                    paddingLeft: 10,
+                    left: this.props.optionPosition.x, top: -15,
+                    paddingRight: 6,
+                    paddingLeft: 6,
                     borderWidth: 1,
                     borderRadius: 5,
                     zIndex: 99999,
-                    width: 'auto',
-                    // alignItems: 'center',
-                    // justifyContent: 'center',
+                    opacity: 0.9,
+                    width: width,
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    alignSelf: 'center',
                     borderColor: 'white',
                     shadowColor: '#777c87', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1,
-                    backgroundColor: "#777c87"
+                    backgroundColor: "#9499a4"
                 }}
             >
                 <Text
@@ -160,8 +164,9 @@ class Popover extends React.PureComponent<Props, State> {
                         color: "white",
                         fontWeight: "bold",
                         fontSize: 10,
-                        paddingTop: 5,
-                        paddingBottom: 5
+                        paddingTop: 3,
+                        paddingBottom: 3,
+
                     }}
                 >
                     {this.props.text}
