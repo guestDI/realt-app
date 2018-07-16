@@ -175,7 +175,7 @@ class FlatsMap extends React.Component<Props, State> {
                     <View style={{flex: 2, backgroundColor: 'white'}}>
                         {this.props.mapIsLoading ?
                             <View style={{flex: 1, alignSelf: 'center', justifyContent: 'center'}}>
-                                <DotsLoader size={12}/>
+                                <DotsLoader color={"#87b357c4"} size={12}/>
                             </View> :
                             <Carousel
                                 containerCustomStyle={{marginLeft: -2 * MARGIN_LEFT}}

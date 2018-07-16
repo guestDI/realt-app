@@ -39,8 +39,8 @@ class FlatLabel extends React.PureComponent<Props, State> {
           ref="view"
           style={{
             position: 'absolute',
-            paddingRight: 10,
-            paddingLeft: 10,
+            paddingRight: 8,
+            paddingLeft: 8,
             borderWidth: 1,
             borderRadius: 5,
             borderColor: 'white',
@@ -55,8 +55,8 @@ class FlatLabel extends React.PureComponent<Props, State> {
               color: "white",
               fontWeight: "bold",
                 fontSize: 12,
-                paddingTop: 5,
-                paddingBottom: 5,
+                paddingTop: 3,
+                paddingBottom: 3,
             }}
           >
             {this.props.text}

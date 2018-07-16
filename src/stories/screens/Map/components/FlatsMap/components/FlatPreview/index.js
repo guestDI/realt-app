@@ -1,17 +1,8 @@
 import * as React from "react";
 import {
-  Container,
-  Header,
-  Title,
-  Content,
   Button,
   Icon,
   Toast,
-  Body,
-  Right,
-  List,
-  ListItem,
-  Thumbnail,
   Text
 } from "native-base";
 import {
@@ -27,8 +18,7 @@ import {
   Image,
   ImageBackground
 } from "react-native";
-import moment from "moment";
-import formatDate from "../../../../../../../utils/utils";
+import FlatLabel from '../../../../../../common/FlatRow/FlatLabel'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -125,6 +115,8 @@ class FlatPreview extends React.PureComponent<Props, State> {
           source={{ uri: this.props.flat.smallPhoto }}
           style={styles.cardImage}
         />
+          {this.props.flat.landlordType !==null ?
+              <FlatLabel text={this.props.flat.landlordType} style={{zIndex: 9999, top: 15, left: 16}}/> : null}
           <Button transparent
                   rounded
                   style={{zIndex: 9999, position:'absolute', top: 6, right: 6}}
@@ -141,6 +133,7 @@ class FlatPreview extends React.PureComponent<Props, State> {
                   />
               }
           </Button>
+
         <View style={{ flexDirection: "row" }}>
           <Text numberOfLines={1} style={{ fontSize: 15, fontWeight: '700',  paddingBottom: 4, color: '#242424' }}>
               {this.props.flat.title}
