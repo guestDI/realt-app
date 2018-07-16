@@ -21,8 +21,7 @@ import {
 } from "react-native";
 import formatDate from "../../../utils/utils";
 import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux'
-import Carousel from 'react-native-banner-carousel';
-import Paging from '../Paging'
+import FlatLabel from './FlatLabel/index'
 
 export interface Props {
   navigation: any;
@@ -130,7 +129,7 @@ class FlatRow extends React.PureComponent<Props, State> {
 
   render() {
     let position = Animated.divide(this.scrollX, width*0.9);
-    // console.log(this.props.flat.rentType)
+    //console.log(this.props.flat)
 
     return (
       <View style={{flex: 1, width: width * 0.9, alignSelf: 'center', backgroundColor: 'white', paddingTop: 15}}>
@@ -161,6 +160,8 @@ class FlatRow extends React.PureComponent<Props, State> {
               )
             })}
             </LazyloadScrollView>
+            {this.props.flat.landlordType !==null ?
+            <FlatLabel text={this.props.flat.landlordType} style={{zIndex: 9999, top: 16, left: 16}}/> : null}
             <Button transparent
                     rounded
                     style={{zIndex: 9999, position:'absolute', top: 8, right: 8}}

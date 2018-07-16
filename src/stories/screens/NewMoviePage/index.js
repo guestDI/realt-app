@@ -209,29 +209,7 @@ class FlatPage extends React.Component<Props, State> {
         }
     }
 
-    printFacility = facility => {
-          switch (facility) {
-              case "Телевизор":
-                  return require("../../../../assets/images/conditions/tv.png")
-              case "Интернет":
-                  return require("../../../../assets/images/conditions/wifi.png")
-              case "Плита":
-                  return require("../../../../assets/images/conditions/stove.png")
-              case "Холодильник":
-                  return require("../../../../assets/images/conditions/fridge.png")
-              case "Кондиционер":
-                  return require("../../../../assets/images/conditions/air-conditioner.png")
-              case "Стиральная машина":
-                  return require("../../../../assets/images/conditions/washing-machine.png")
-              case "Лоджия или балкон":
-                  return require("../../../../assets/images/conditions/balcony.png")
-              case "Мебель":
-                  return require("../../../../assets/images/conditions/sofa.png")
-              case "Кухонная мебель":
-                  return require("../../../../assets/images/conditions/kitchen.png")
-          }
-        // Мебель, Кухонная мебель, Плита, Холодильник, Стиральная машина, Телевизор, Интернет, Лоджия или балкон
-    }
+
 
     returnFacility = () => {
       let arr = [];
@@ -244,29 +222,7 @@ class FlatPage extends React.Component<Props, State> {
       return arr;
     }
 
-    onLayout = (event) => {
-      let options = this.state.optionsLocations.slice()
-      this.setState({
-        optionsLocations: [...options, event.nativeEvent.layout]
-      })
-      //console.log(event.nativeEvent.layout)
-    }
 
-    togglePopover = (index) => {
-        //Object.keys(obj)[0]
-        //console.log(1)
-        //for(let loc in this.state.optionsLocations){
-          //  console.log(loc, this.state.optionsLocations[loc])
-        //}
-        let status = this.state.isPopoverVisible
-
-        this.setState({
-            isPopoverVisible: !status,
-            currentOptionPosition: Object.assign({}, this.state.optionsLocations[index]),
-            currentOptionIndex: index
-        })
-        //console.log(this.state.optionsLocations[index])
-    }
 
     closePopover = () => {
         let status = this.state.isPopoverVisible
@@ -514,7 +470,7 @@ class FlatPage extends React.Component<Props, State> {
                     marginTop: 20
                 }}
             >
-                <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 10, }}>
+                <Text style={{ fontSize: 24, color: "#474c57", fontWeight: "bold", marginBottom: 15, }}>
                     Удобства
                 </Text>
                 {this.returnFacility().length === 0 ?
@@ -539,38 +495,20 @@ class FlatPage extends React.Component<Props, State> {
                     }}>
                         {this.returnFacility().map((cond, index) => {
                             return (
-                                <TouchableOpacity onPress={() => this.togglePopover(index)} onLayout={this.onLayout} key={index}
-                                                  activeOpacity={0.8} style={{
-                                    margin: 8,
-                                    borderWidth: 1,
-                                    padding: 10,
-                                    borderRadius: 50,
-                                    shadowColor: '#000',
-                                    shadowOffset: {width: 0, height: 2},
-                                    shadowOpacity: 0.8,
-                                    shadowRadius: 2,
-                                    elevation: 1,
-                                    backgroundColor: "#87b357c4",
-                                    borderColor: "white"
-                                }}>
-                                    <Image
-                                        resizeMode="contain"
-                                        source={this.printFacility(cond)}
-                                        style={{height: 35, width: 35}}
-                                    />
-                                </TouchableOpacity>
+                                <Popover
+                                    onColor={"#87b357c4"}
+                                    effect={"pulse"}
+                                    status={true}
+                                    text={this.returnFacility()[index]}
+                                    optionPosition={this.state.currentOptionPosition}
+                                    index={index}
+                                    cond={cond}
+                                    key={index}
+                                />
 
                             )
                         })
                         }
-                        {this.state.isPopoverVisible ?
-                        <Popover
-                            onColor={"#87b357c4"}
-                            effect={"pulse"}
-                            status={true}
-                            text={this.returnFacility()[this.state.currentOptionIndex]}
-                            optionPosition={this.state.currentOptionPosition}
-                        /> : null }
                     </View>
                 }
             </View>
