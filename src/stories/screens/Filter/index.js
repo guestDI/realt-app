@@ -86,7 +86,7 @@ class Filter extends React.Component<Props, State> {
       mapIsEditable: false,
       regionIsChanging: false,
         errors: {},
-        textColor: 'rgba(135,179,87,0.77)'
+        textColor: 'rgba(65,65,65,1)'
     };
   }
 
@@ -542,7 +542,7 @@ class Filter extends React.Component<Props, State> {
                             keyboardType={"numeric"}
                             maxLength={5}
                             tintColor="rgb(135,179,87)"
-                            textColor="rgba(135,179,87,0.77)"
+                            textColor="rgba(65,65,65,1)"
                             onChangeText={minPrice => this.setState({ minPrice })}
                         />
                         <TextField
@@ -611,7 +611,6 @@ class Filter extends React.Component<Props, State> {
                               enabled={true}
                               selectedValue={this.state.selectedSubway}
                               onValueChange={this.onSubwayChanged}
-                              //itemStyle={{}}
                       >
                           <Item label="Не важно" value="ANY_SUBWAY" />
                           <Item label="Возле метро" value="NEAR_SUBWAY" />
