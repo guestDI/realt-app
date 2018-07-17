@@ -85,6 +85,8 @@ class Filter extends React.Component<Props, State> {
       mapScrollEnabled: true,
       mapIsEditable: false,
       regionIsChanging: false,
+        errors: {},
+        textColor: 'rgba(135,179,87,0.77)'
     };
   }
 
@@ -298,6 +300,7 @@ class Filter extends React.Component<Props, State> {
   };
 
   onFilterSaved = () => {
+      let errors = {};
       let polygons = this.state.polygons ? this.state.polygons.slice() : [];
       let tempCoordinates = polygons && polygons.length > 0 ? polygons : MINSK_COORDINATES
     let filter = {
@@ -310,10 +313,18 @@ class Filter extends React.Component<Props, State> {
       page: 0,
     };
 
+    if(this.state.maxPrice < this.state.minPrice){
+        errors['maxPrice'] = "Неверное значение"
 
-    this.props.onAddFilter(filter);
-    // this.props.onFetchFilter();
-    this.props.navigation.goBack();
+        this.setState({
+            errors: Object.assign({}, errors),
+            textColor: 'rgba(232,6,6,0.9)'
+        })
+    } else {
+        this.props.onAddFilter(filter);
+        this.props.navigation.goBack();
+    }
+
   };
 
   resetMap = () => {
@@ -531,6 +542,7 @@ class Filter extends React.Component<Props, State> {
                             keyboardType={"numeric"}
                             maxLength={5}
                             tintColor="rgb(135,179,87)"
+                            textColor="rgba(135,179,87,0.77)"
                             onChangeText={minPrice => this.setState({ minPrice })}
                         />
                         <TextField
@@ -541,7 +553,10 @@ class Filter extends React.Component<Props, State> {
                             animationDuration={50}
                             keyboardType={"numeric"}
                             tintColor="rgb(135,179,87)"
+                            textColor={this.state.textColor}
                             maxLength={5}
+                            error={this.state.errors['maxPrice']}
+                            errorColor="rgb(232,6,6)"
                             onChangeText={maxPrice => this.setState({ maxPrice })}
                         />
                     </View>
@@ -569,30 +584,14 @@ class Filter extends React.Component<Props, State> {
               {/*</View>*/}
               {/*</View>*/}
               {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
-              {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9, }}>*/}
-              {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Метро</Text>*/}
-              {/*</View>*/}
-              {/*<View style={{flex: 1, width: width*0.9}}>*/}
-              {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
-              {/*iosHeader="Выбрать"*/}
-              {/*placeholder="Выбрать"*/}
-              {/*mode="dropdown"*/}
-              {/*enabled={false}*/}
-              {/*selectedValue={this.state.selectedSubway}*/}
-              {/*onValueChange={this.onSubwayChanged}*/}
-              {/*>*/}
-              {/*<Item label="Не важно" value="ANY_SUBWAY" />*/}
-              {/*<Item label="Возле метро" value="NEAR_SUBWAY" />*/}
-              {/*<Item label="Московская линия" value="M_SUBWAY" />*/}
-              {/*<Item label="Автозаводская линия" value="A_SUBWAY" />*/}
-              {/*</Picker>*/}
-              {/*</View>*/}
+
               {/*</View>*/}
               <View style={{ flex: 1, paddingTop: 20 }}>
                 <View
                   style={{
                     width: width * 0.9,
-                    alignSelf: "center"
+                    alignSelf: "center",
+
                   }}
                 >
                   {/*3f51b5*/}
@@ -600,8 +599,28 @@ class Filter extends React.Component<Props, State> {
                     Местоположение на карте
                   </Text>
                 </View>
+                  {/*<View style={{width: width*0.9, }}>*/}
+                      {/*<Text style={{fontSize: 16, color: '#8c919c'}}>Метро</Text>*/}
+                  {/*</View>*/}
+                  <View style={{flex: 1, width: width*0.9, alignSelf: 'center', borderBottomWidth: 1,
+                      borderColor: "#e5e5e5",}}>
+                      <Picker style={{ color: '#414141', backgroundColor: 'white'}}
+                              iosHeader="Выбрать"
+                              placeholder="Выбрать"
+                              mode="dropdown"
+                              enabled={true}
+                              selectedValue={this.state.selectedSubway}
+                              onValueChange={this.onSubwayChanged}
+                              //itemStyle={{}}
+                      >
+                          <Item label="Не важно" value="ANY_SUBWAY" />
+                          <Item label="Возле метро" value="NEAR_SUBWAY" />
+                          <Item label="Московская линия" value="M_SUBWAY" />
+                          <Item label="Автозаводская линия" value="A_SUBWAY" />
+                      </Picker>
+                  </View>
                 <View style={{flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 15,
-                    alignItems: "center", justifyContent: 'space-between'}}>
+                    alignItems: "center", justifyContent: 'space-between',}}>
                   <View style={{left: width*0.05, width: width*0.4,}}>
                       {
                       this.state.mapIsEditable ?
