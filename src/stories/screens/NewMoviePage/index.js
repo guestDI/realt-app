@@ -21,12 +21,10 @@ import {
 import {
   Button,
   Icon,
-  Root,
   Toast,
   Container,
   Header,
   Title,
-  Content,
   Left,
   Body,
   Right,

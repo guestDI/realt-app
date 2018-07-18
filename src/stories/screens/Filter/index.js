@@ -9,7 +9,6 @@ import {
   Right,
   Container,
   Picker,
-  Item as FormItem,
     Footer,
     FooterTab
 } from "native-base";
@@ -18,7 +17,8 @@ import { Button as ButtonElement } from "react-native-elements";
 import ToggleButton from "./components/ToggleButton";
 import MapView from 'react-native-maps';
 import { MINSK_COORDINATES } from '../../../utils/coordinates'
-
+import { CheckBox } from 'react-native-elements'
+import Modal from 'react-native-modalbox';
 import {
   Image,
   View,
@@ -30,10 +30,172 @@ import {
   TouchableOpacity,
   Alert,
   Keyboard,
-    TouchableWithoutFeedback,
-    StatusBar
+  TouchableWithoutFeedback,
+  StatusBar
 } from "react-native";
 const Item = Picker.Item;
+const subway = [
+    {
+        label:"Не важно",
+        value:"NO_SUBWAY"
+    },
+    {
+        label:"Возле метро",
+        value:"NEAR_SUBWAY"
+    },
+    {
+        label:"Московская линия",
+        value:"M_SUBWAY"
+    },
+    {
+        label:"Автозаводская линия",
+        value:"A_SUBWAY"
+    }
+]
+
+const moscowLine = [
+    {
+      name: 'Малиновка',
+      latitude: 53.849514766118595,
+      longitude: 27.47477396132308,
+    },
+    {
+      name: 'Петровщина',
+      latitude: 53.86409541550409,
+      longitude: 27.48543534540238,
+    },
+    {
+      name: 'Михалово',
+      latitude: 53.87697133829262,
+      longitude: 27.497083671578253,
+    },
+    {
+      name: 'Грушевка',
+      latitude: 53.88670159904609,
+      longitude: 27.514727964062672,
+    },
+    {
+      name: 'Институт культуры',
+      latitude: 53.8851207418056,
+      longitude: 27.539060567245883},
+    {
+      name: 'Площадь Ленина',
+        latitude: 53.89478215031429,
+        longitude: 27.548201535568637,
+    },
+    {
+      name: 'Октябрьская',
+      latitude: 53.90234279419695,
+      longitude: 27.563050244675082,
+    },
+    {
+      name: 'Площадь Победы',
+      latitude: 53.908185223610324,
+      longitude: 27.57544904485735,
+    },
+    {
+      name: 'Площадь Якуба Коласа',
+      latitude: 53.91541485245974,
+      longitude: 27.58291631475481,
+    },
+    {
+      name: 'Академия наук',
+      latitude: 53.922188333885245,
+      longitude: 27.60046869054827,
+    },
+    {
+      name: 'Парк Челюскинцев',
+      latitude: 53.92400788790166,
+      longitude: 27.612012918148366,
+    },
+    {
+      name: 'Московская',
+      latitude: 53.92796101095204,
+      longitude: 27.627746237961105,
+    },
+    {
+      name: 'Восток',
+      latitude: 53.934473537717,
+      longitude: 27.65126772115923,
+    },
+    {
+      name: 'Борисовский тракт',
+      latitude: 53.9384256121576,
+      longitude: 27.66641296626267,
+    },
+    {
+      name: 'Уручье',
+      latitude: 53.94536599374774,
+      longitude: 27.68784077208693,
+    }
+]
+
+const zavodLine = [
+    {
+        name: 'Могилевская',
+        latitude: 53.861626980837315,
+        longitude: 27.674505745404076,
+    },
+    {
+        name: 'Партизанская',
+        latitude: 53.8751396877767,
+        longitude: 27.629530464642357,
+    },
+    {
+        name: 'Тракторный завод',
+        latitude: 53.8892454216473,
+        longitude: 27.61489085344192,
+    },
+    {
+        name: 'Пролетарская',
+        latitude: 53.88967538467137,
+        longitude: 27.585588256265055
+    },
+    {
+        name: 'Первомайская',
+        latitude: 53.89384832540525,
+        longitude: 27.57052497043742},
+    {
+        name: 'Купаловская',
+        latitude: 53.901409138247445,
+        longitude: 27.56095484867228,
+    },
+    {
+        name: 'Немига',
+        latitude: 53.90570731811712,
+        longitude: 27.553916732217203,
+    },
+    {
+        name: 'Фрунзенская',
+        latitude: 53.905353367072934,
+        longitude: 27.539110938454996,
+    },
+    {
+        name: 'Молодежная',
+        latitude: 53.906384222253706,
+        longitude: 27.52257467959521,
+    },
+    {
+        name: 'Пушкинская',
+        latitude: 53.90913983672495,
+        longitude: 27.49627575027239,
+    },
+    {
+        name: 'Спортивная',
+        latitude: 53.90850783112365,
+        longitude: 27.479839173429127
+    },
+    {
+        name: 'Кунцевщина',
+        latitude: 53.90654176441074,
+        longitude: 27.454132882230397,
+    },
+    {
+        name: 'Каменная горка',
+        latitude: 53.90694626813671,
+        longitude: 27.437739220731373
+    }
+]
 
 export interface Props {
   navigation: any;
@@ -67,6 +229,7 @@ class Filter extends React.Component<Props, State> {
       let rooms = this.props.filter.rooms ? this.props.filter.rooms : [];
       // let polygons = this.props.filter.coordinates ? this.props.filter.coordinates : [];
     this.state = {
+      isModalStationOpen: false,
       polygons: this.props.filter.coordinates,
       editing: null,
       creatingHole: false,
@@ -148,15 +311,10 @@ class Filter extends React.Component<Props, State> {
 
   }
 
-  onValueChanged = value => {
-    this.setState({
-      selectedOwnerType: value
-    });
-  };
-
   onSubwayChanged = value => {
     this.setState({
-      selectedSubway: value
+      selectedSubway: value,
+      isModalStationOpen: !this.state.isModalStationOpen
     });
   };
 
@@ -370,11 +528,6 @@ class Filter extends React.Component<Props, State> {
       }
   }
 
-  goBack = () => {
-
-
-  }
-
   render() {
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
@@ -536,6 +689,7 @@ class Filter extends React.Component<Props, State> {
                         <TextField
                             label="Минимальная цена"
                             fontSize={16}
+                            labelFontSize={14}
                             value={minPrice}
                             containerStyle={{ paddingRight: 10, width: width * 0.45 }}
                             animationDuration={50}
@@ -548,6 +702,7 @@ class Filter extends React.Component<Props, State> {
                         <TextField
                             label="Максимальная цена"
                             fontSize={16}
+                            labelFontSize={14}
                             value={maxPrice}
                             containerStyle={{ paddingLeft: 10, width: width * 0.45 }}
                             animationDuration={50}
@@ -599,24 +754,26 @@ class Filter extends React.Component<Props, State> {
                     Местоположение на карте
                   </Text>
                 </View>
-                  {/*<View style={{width: width*0.9, }}>*/}
-                      {/*<Text style={{fontSize: 16, color: '#8c919c'}}>Метро</Text>*/}
-                  {/*</View>*/}
                   <View style={{flex: 1, width: width*0.9, alignSelf: 'center', borderBottomWidth: 1,
-                      borderColor: "#e5e5e5",}}>
-                      <Picker style={{ color: '#414141', backgroundColor: 'white'}}
+                      borderColor: "#e5e5e5", marginBottom: 20}}>
+                      <Text style={{fontSize: 14, color: '#00000061'}}>Метро</Text>
+                      <View style={{ backgroundColor: 'white'}}>
+                        <Picker
+                            style={{color: '#414141', }}
                               iosHeader="Выбрать"
                               placeholder="Выбрать"
                               mode="dropdown"
                               enabled={true}
                               selectedValue={this.state.selectedSubway}
                               onValueChange={this.onSubwayChanged}
-                      >
-                          <Item label="Не важно" value="ANY_SUBWAY" />
-                          <Item label="Возле метро" value="NEAR_SUBWAY" />
-                          <Item label="Московская линия" value="M_SUBWAY" />
-                          <Item label="Автозаводская линия" value="A_SUBWAY" />
-                      </Picker>
+                        >
+                          {subway.map((i, index) => {
+                              return(
+                                  <Item key={index} label={i.label} value={i.value} />
+                                  )
+                          })}
+                        </Picker>
+                      </View>
                   </View>
                 <View style={{flex: 1, flexDirection: 'row', marginTop: 5, marginBottom: 15,
                     alignItems: "center", justifyContent: 'space-between',}}>
@@ -721,53 +878,48 @@ class Filter extends React.Component<Props, State> {
                   )}
                 </MapView>
                 <View style={styles.buttonContainer}/>
-                  {/*{this.state.editing && (*/}
-                    {/*<TouchableOpacity*/}
-                      {/*onPress={() => this.createHole()}*/}
-                      {/*style={[styles.bubble, styles.button]}*/}
-                    {/*>*/}
-                      {/*<Text>*/}
-                        {/*{this.state.creatingHole ? "Finish Hole" : "Create Hole"}*/}
-                      {/*</Text>*/}
-                    {/*</TouchableOpacity>*/}
-                  {/*)}*/}
-                  {/*{this.state.editing && (*/}
-                    {/*<TouchableOpacity*/}
-                      {/*onPress={() => this.finish()}*/}
-                      {/*style={[styles.bubble, styles.button]}*/}
-                    {/*>*/}
-                      {/*<Text>Finish</Text>*/}
-                    {/*</TouchableOpacity>*/}
-                  {/*)}*/}
-
-                {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
-                {/*<Icon name='remove' />*/}
-                {/*</Button>*/}
-                {/*<View style={{flex: 1, }}>*/}
-                {/*<TextField*/}
-                {/*label='Кол-во комнат'*/}
-                {/*value={maxPrice}*/}
-                {/*containerStyle={{paddingLeft: 10}}*/}
-                {/*animationDuration={50}*/}
-                {/*onChangeText={ (maxPrice) => this.setState({ maxPrice }) }*/}
-                {/*/>*/}
-                {/*</View>*/}
-                {/*<Button bordered style={{alignSelf: 'baseline'}}>*/}
-                {/*<Icon name='add' />*/}
-                {/*</Button>*/}
               </View>
             </View>
           </TouchableWithoutFeedback>
         </Content>
-          <Footer style={{height: '10%'}}>
-              <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
-                  <TouchableOpacity style={{height: '75%', width: '80%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
-                      shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
-                                     onPress={this.onFilterSaved}>
+          {this.state.isModalStationOpen ?
+              <Modal isOpen={this.state.isModalStationOpen} onClosed={() => this.setState({isModalStationOpen: false})}
+                     style={[styles.modal, styles.modal1]} backButtonClose={true}
+                     position={"bottom"} ref={"modal1" } swipeToClose={false} backdropPressToClose={false}>
+                  <Header style={{ backgroundColor: '#FFFFFF', }}>
+                      <StatusBar
+                          barStyle={ 'dark-content'}
+                          backgroundColor={'#FFFFFF'}
+                          translucent={false}
+                      />
+                      <Left>
+                          <Text>Выбрать все</Text>
+                      </Left>
+                  </Header>
+                    <ScrollView>
+                        {this.state.selectedSubway === 'M_SUBWAY' ? moscowLine.map((s, index)=>{
+                          return(
+                              <CheckBox
+                                  key={index}
+                                  title={s.name}
+                                  checked={true}
+                                  checkedColor={"#87b357c4"}
+                                  textStyle={{color:"#414141"}}
+                              />
+                          )
+                      }) : null}
+                    </ScrollView>
+              </Modal> :
+              <Footer style={{height: '10%'}}>
+                  <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
+                      <TouchableOpacity style={{height: '75%', width: '80%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
+                          shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4' }}
+                                        onPress={this.onFilterSaved}>
                           <Text style={{fontWeight: 'bold', color: '#FFFFFF'}}>Показать доступные квартиры</Text>
-                  </TouchableOpacity>
-              </FooterTab>
-          </Footer>
+                      </TouchableOpacity>
+                  </FooterTab>
+              </Footer>
+          }
       </Container>
     );
   }
@@ -800,7 +952,13 @@ const styles = StyleSheet.create({
   },
   buttonContainer: {
     marginVertical: 5,
-  }
+  },
+  modal: {
+
+  },
+  modal1: {
+    height: 'auto',
+  },
 });
 
 export default Filter;
