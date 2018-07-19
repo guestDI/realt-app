@@ -34,10 +34,10 @@ import {
   StatusBar
 } from "react-native";
 const Item = Picker.Item;
-const subway = [
+const subwaySelection = [
     {
         label:"Не важно",
-        value:"NO_SUBWAY"
+        value:"ANY_SUBWAY"
     },
     {
         label:"Возле метро",
@@ -243,6 +243,7 @@ class Filter extends React.Component<Props, State> {
       threeRooms: rooms.includes(ROOM_ENUM.THREE),
       fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
       coordinates: [],
+      subwayStations: [],
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: "ANY_SUBWAY",
       mapScrollEnabled: true,
@@ -312,10 +313,17 @@ class Filter extends React.Component<Props, State> {
   }
 
   onSubwayChanged = value => {
-    this.setState({
-      selectedSubway: value,
-      isModalStationOpen: !this.state.isModalStationOpen
-    });
+      if(value === 'M_SUBWAY' || value === 'A_SUBWAY'){
+          this.setState({
+              selectedSubway: value,
+              isModalStationOpen: !this.state.isModalStationOpen
+          });
+      } else {
+          this.setState({
+              selectedSubway: value,
+          });
+      }
+
   };
 
   manageWholeFlatSearch = () => {
@@ -532,6 +540,8 @@ class Filter extends React.Component<Props, State> {
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
     };
+
+    let subway = [];
 
     let { minPrice, maxPrice, editing } = this.state;
     return (
@@ -767,7 +777,7 @@ class Filter extends React.Component<Props, State> {
                               selectedValue={this.state.selectedSubway}
                               onValueChange={this.onSubwayChanged}
                         >
-                          {subway.map((i, index) => {
+                          {subwaySelection.map((i, index) => {
                               return(
                                   <Item key={index} label={i.label} value={i.value} />
                                   )
@@ -896,18 +906,30 @@ class Filter extends React.Component<Props, State> {
                           <Text>Выбрать все</Text>
                       </Left>
                   </Header>
-                    <ScrollView>
+                    <ScrollView style={{flexGrow: 1, marginBottom: 20}}>
                         {this.state.selectedSubway === 'M_SUBWAY' ? moscowLine.map((s, index)=>{
                           return(
-                              <CheckBox
+                                <CheckBox
                                   key={index}
                                   title={s.name}
                                   checked={true}
                                   checkedColor={"#87b357c4"}
                                   textStyle={{color:"#414141"}}
-                              />
+                                  //containerStyle={{borderColor: "#87b357c4", backgroundColor: '#FFF'}}
+                                />
                           )
-                      }) : null}
+                      }) : this.state.selectedSubway === 'A_SUBWAY' ?
+                            zavodLine.map((s, index)=>{
+                                return(
+                                      <CheckBox
+                                          style={{ flex: 1 }}
+                                        key={index}
+                                        title={s.name}
+                                        checked={true}
+                                        checkedColor={"#87b357c4"}
+                                        textStyle={{color:"#414141"}}
+                                      />
+                                )} ) : null }
                     </ScrollView>
               </Modal> :
               <Footer style={{height: '10%'}}>
@@ -954,10 +976,10 @@ const styles = StyleSheet.create({
     marginVertical: 5,
   },
   modal: {
-
+      flex: 1
   },
   modal1: {
-    height: 'auto',
+    height: height,
   },
 });
 
