@@ -37,43 +37,6 @@ class Popover extends React.PureComponent<Props, State> {
     };
   }
 
-    // componentWillReceiveProps(nextProps) {
-    //     if (this.props.status !== nextProps.status) {
-    //         this.setState({
-    //             status: nextProps.status,
-    //         });
-    //     }
-    // }
-
-  // _onPress() {
-  //   this.props._onPress(!this.state.status);
-  //   this.setState({ status: !this.state.status });
-  //   switch (this.props.effect) {
-  //     case "bounce":
-  //       this.refs.view.bounce(800);
-  //       break;
-  //     case "flash":
-  //       this.refs.view.flash(800);
-  //       break;
-  //     case "jello":
-  //       this.refs.view.jello(800);
-  //       break;
-  //     case "pulse":
-  //       this.refs.view.pulse(800);
-  //       break;
-  //   }
-  // }
-
-    // togglePopover = (index) => {
-    //     let status = this.state.isPopoverVisible
-    //
-    //     this.setState({
-    //         isPopoverVisible: !status,
-    //         currentOptionPosition: Object.assign({}, this.state.optionsLocations[index]),
-    //         currentOptionIndex: index
-    //     })
-    // }
-
     printFacility = facility => {
         switch (facility) {
             case "Телевизор":
@@ -103,7 +66,6 @@ class Popover extends React.PureComponent<Props, State> {
         this.setState({
             optionsLocations: [...options, event.nativeEvent.layout]
         })
-        //console.log(event.nativeEvent.layout)
     }
 
     togglePopover = () => {
@@ -125,10 +87,6 @@ class Popover extends React.PureComponent<Props, State> {
   render() {
       let width = this.props.text.length > 12 ? this.props.text.length*6.6 : this.props.text.length > 6 ?
                     this.props.text.length*8 : this.props.text.length*10
-      // if(this.props.optionLocation) {
-      //     console.log('x', this.props.optionLocation.optionX)
-      //     console.log('y', this.props.optionLocation.optionY)
-      // }
     return (
         <View key={this.props.index}>
             <TouchableOpacity onPress={this.togglePopover} onLayout={this.onLayout} key={`${this.props.index}`}

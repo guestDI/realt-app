@@ -1,7 +1,4 @@
 import * as React from "react";
-import {
-  Text,
-} from "native-base";
 
 import {
   Image,
@@ -15,88 +12,54 @@ import {
   TouchableOpacity,
   TouchableWithoutFeedback
 } from "react-native";
-import * as Animatable from "react-native-animatable";
-export interface Props {
-  navigation: any;
-}
+import { CheckBox } from 'react-native-elements'
+
 export interface State {}
-export interface Props {
-  navigation: any;
-  onSave: Function;
-}
 
 const { height, width } = Dimensions.get("window");
 
-class ToggleButton extends React.PureComponent<Props, State> {
+class StationCheckbox extends React.PureComponent<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
-      status: this.props.status
+      checked: this.props.checked
     };
   }
 
     componentWillReceiveProps(nextProps) {
-        if (this.props.status !== nextProps.status) {
+        if (this.props.checked !== nextProps.checked) {
             this.setState({
-                status: nextProps.status,
+                checked: nextProps.checked,
             });
         }
     }
 
-  _onPress() {
-    this.props._onPress(!this.state.status);
-    this.setState({ status: !this.state.status });
-    switch (this.props.effect) {
-      case "bounce":
-        this.refs.view.bounce(800);
-        break;
-      case "flash":
-        this.refs.view.flash(800);
-        break;
-      case "jello":
-        this.refs.view.jello(800);
-        break;
-      case "pulse":
-        this.refs.view.pulse(800);
-        break;
-    }
-  }
+    handleCheckboxState = () => {
+      let status = !this.state.checked
 
-  render() {
+        this.setState({
+            checked: !this.state.checked,
+        });
+        if (this.props.onCheckChanged) {
+            this.props.onCheckChanged(this.props.station, status);
+        }
+    }
+
+
+    render() {
     return (
-      <TouchableWithoutFeedback onPress={() => this._onPress()}>
-        <Animatable.View
-          ref="view"
-          style={{
-              flex: 1,
-            margin: 5,
-            paddingTop: 10,
-            paddingBottom: 10,
-            paddingRight: 20,
-            paddingLeft: 20,
-            borderWidth: 1,
-              borderRadius: 2,
-              alignItems: 'center',
-              justifyContent: 'center',
-            borderColor: '#87b357c4',
-              shadowColor: '#000', shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1,
-            backgroundColor: this.props.status ? this.props.onColor : "white"
-          }}
-        >
-          <Text
-            style={{
-              color: this.props.status ? "white" : "#87b357c4",
-              fontWeight: "bold"
-            }}
-          >
-            {this.props.text}
-          </Text>
-        </Animatable.View>
-      </TouchableWithoutFeedback>
+        <CheckBox
+            title={this.props.station.name}
+            checked={this.state.checked}
+            checkedColor={"#87b357c4"}
+            textStyle={{color:"#414141"}}
+            onPress={this.handleCheckboxState}
+            //containerStyle={{borderColor: "#87b357c4", backgroundColor: '#FFF'}}
+        />
     );
   }
 }
 
 const styles = StyleSheet.create({});
 
-export default ToggleButton;
+export default StationCheckbox;

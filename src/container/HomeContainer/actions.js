@@ -117,7 +117,6 @@ export const reloadFlatsOnMap = filter => {
 }
 
 export const fetchFlats = filter => {
-    // console.log('PAGE', filter.coordinates)
     let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
     let page = filter.page  ? filter.page : 0;
 

@@ -18,6 +18,7 @@ import ToggleButton from "./components/ToggleButton";
 import MapView from 'react-native-maps';
 import { MINSK_COORDINATES } from '../../../utils/coordinates'
 import { CheckBox } from 'react-native-elements'
+import StationCheckbox from './components/StationCheckbox/index'
 import Modal from 'react-native-modalbox';
 import {
   Image,
@@ -203,9 +204,6 @@ export interface Props {
 export interface State {}
 export interface Props {
   navigation: any;
-  img: string;
-  rate: ?number;
-  comment: ?string;
   onSave: Function;
 }
 
@@ -250,7 +248,9 @@ class Filter extends React.Component<Props, State> {
       mapIsEditable: false,
       regionIsChanging: false,
         errors: {},
-        textColor: 'rgba(65,65,65,1)'
+        textColor: 'rgba(65,65,65,1)',
+        moscowLineStations: [],
+        zavodLineStations: []
     };
   }
 
@@ -413,8 +413,6 @@ class Filter extends React.Component<Props, State> {
           break;
     }
 
-      // console.log(roomsNum)
-
     this.setState({
       rooms: roomsNum
     });
@@ -456,14 +454,32 @@ class Filter extends React.Component<Props, State> {
             threeRooms: false,
             fourOrMore: false,
             // selectedOwnerType: 'OWNER_AND_AGENT',
-            // selectedSubway: 'ANY_SUBWAY'
+            selectedSubway: 'ANY_SUBWAY'
           });
         }
       }
     ]);
 
-
   };
+
+  addStationToTheLine = (station, status) => {
+      if(this.state.selectedSubway === "M_SUBWAY"){
+          let stations = this.state.moscowLineStations.slice()
+          if(status){
+              this.setState({
+                  moscowLineStations: [...stations, station]
+              })
+          }
+      } else if(this.state.selectedSubway === "A_SUBWAY"){
+          let stations = this.state.zavodLineStations.slice()
+          if(status){
+              this.setState({
+                  zavodLineStations: [...stations, station]
+              })
+          }
+      }
+  }
+
 
   onFilterSaved = () => {
       let errors = {};
@@ -519,6 +535,14 @@ class Filter extends React.Component<Props, State> {
           });
       }
   }
+    onMoscowLineChanged = (val, status) => {
+      console.log(val)
+    }
+
+    onZavodLineChanged = (val, status) => {
+        console.log(val)
+    }
+
 
   removeMarker = (index) => {
       let arr = this.state.editing.coordinates.slice();
@@ -541,9 +565,8 @@ class Filter extends React.Component<Props, State> {
       scrollEnabled: this.state.mapScrollEnabled
     };
 
-    let subway = [];
-
     let { minPrice, maxPrice, editing } = this.state;
+
     return (
       <Container style={{backgroundColor: '#FFFFFF'}}>
         <Header style={{ backgroundColor: '#FFFFFF', }}>
@@ -909,26 +932,14 @@ class Filter extends React.Component<Props, State> {
                     <ScrollView style={{flexGrow: 1, marginBottom: 20}}>
                         {this.state.selectedSubway === 'M_SUBWAY' ? moscowLine.map((s, index)=>{
                           return(
-                                <CheckBox
-                                  key={index}
-                                  title={s.name}
-                                  checked={true}
-                                  checkedColor={"#87b357c4"}
-                                  textStyle={{color:"#414141"}}
-                                  //containerStyle={{borderColor: "#87b357c4", backgroundColor: '#FFF'}}
-                                />
+                              <StationCheckbox key={index} station={s} checked={true}
+                                               onCheckChanged={this.onMoscowLineChanged}/>
                           )
                       }) : this.state.selectedSubway === 'A_SUBWAY' ?
                             zavodLine.map((s, index)=>{
                                 return(
-                                      <CheckBox
-                                          style={{ flex: 1 }}
-                                        key={index}
-                                        title={s.name}
-                                        checked={true}
-                                        checkedColor={"#87b357c4"}
-                                        textStyle={{color:"#414141"}}
-                                      />
+                                    <StationCheckbox key={index} station={s} checked={true}
+                                                     onCheckChanged={this.onZavodLineChanged}/>
                                 )} ) : null }
                     </ScrollView>
               </Modal> :
