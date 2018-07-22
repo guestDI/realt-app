@@ -34,6 +34,7 @@ import {
   TouchableWithoutFeedback,
   StatusBar
 } from "react-native";
+import  StationsModal from './components/StationsModal/index'
 const Item = Picker.Item;
 const subwaySelection = [
     {
@@ -247,10 +248,10 @@ class Filter extends React.Component<Props, State> {
       mapScrollEnabled: true,
       mapIsEditable: false,
       regionIsChanging: false,
-        errors: {},
-        textColor: 'rgba(65,65,65,1)',
-        moscowLineStations: [],
-        zavodLineStations: []
+      errors: {},
+      textColor: 'rgba(65,65,65,1)',
+      moscowLineStations: [],
+      zavodLineStations: [],
     };
   }
 
@@ -462,25 +463,6 @@ class Filter extends React.Component<Props, State> {
 
   };
 
-  addStationToTheLine = (station, status) => {
-      if(this.state.selectedSubway === "M_SUBWAY"){
-          let stations = this.state.moscowLineStations.slice()
-          if(status){
-              this.setState({
-                  moscowLineStations: [...stations, station]
-              })
-          }
-      } else if(this.state.selectedSubway === "A_SUBWAY"){
-          let stations = this.state.zavodLineStations.slice()
-          if(status){
-              this.setState({
-                  zavodLineStations: [...stations, station]
-              })
-          }
-      }
-  }
-
-
   onFilterSaved = () => {
       let errors = {};
       let polygons = this.state.polygons ? this.state.polygons.slice() : [];
@@ -491,6 +473,8 @@ class Filter extends React.Component<Props, State> {
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
+      moscowLine: this.state.moscowLineStations,
+      zavodLine: this.state.zavodLineStations,
       coordinates: tempCoordinates,
       page: 0,
     };
@@ -535,14 +519,18 @@ class Filter extends React.Component<Props, State> {
           });
       }
   }
-    onMoscowLineChanged = (val, status) => {
-      console.log(val)
-    }
 
-    onZavodLineChanged = (val, status) => {
-        console.log(val)
+  onSelectedStationsSaved = (val) => {
+    if(this.state.selectedSubway === "M_SUBWAY"){
+      this.setState({
+        moscowLineStations: val.slice()
+      })
+    } else if(this.state.selectedSubway === "A_SUBWAY"){
+      this.setState({
+        zavodLineStations: val.slice()
+      })
     }
-
+  }
 
   removeMarker = (index) => {
       let arr = this.state.editing.coordinates.slice();
@@ -560,10 +548,19 @@ class Filter extends React.Component<Props, State> {
       }
   }
 
+  closeSubwayModal = () => {
+      this.setState({
+          isModalStationOpen: false
+      })
+  }
+
   render() {
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
     };
+
+    let selectedLine = this.state.selectedSubway === "M_SUBWAY" ? moscowLine : this.state.selectedSubway === "A_SUBWAY" ?
+        zavodLine : []
 
     let { minPrice, maxPrice, editing } = this.state;
 
@@ -750,30 +747,6 @@ class Filter extends React.Component<Props, State> {
                     </View>
                 </View>
               </View>
-
-
-              {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
-              {/*<View style={{borderBottomWidth: 1, borderColor: '#c7ccd7', width: width*0.9}}>*/}
-              {/*<Text style={{fontSize: 20, padding: 5, color: '#8c919c'}}>Тип объявлений</Text>*/}
-              {/*</View>*/}
-              {/*<View style={{flex: 1, width: width*0.9}}>*/}
-              {/*<Picker style={{ color: '#8c919c', backgroundColor: '#f5f5f5' }}*/}
-              {/*iosHeader="Выбрать"*/}
-              {/*placeholder="Выбрать"*/}
-              {/*mode="dropdown"*/}
-              {/*enabled={false}*/}
-              {/*selectedValue={this.state.selectedOwnerType}*/}
-              {/*onValueChange={this.onValueChanged}*/}
-              {/*>*/}
-              {/*<Item label="Не важно" value="ANY" />*/}
-              {/*<Item label="Только собственник" value="OWNER" />*/}
-              {/*<Item label="Собственник + агентства" value="OWNER_AND_AGENT" />*/}
-              {/*</Picker>*/}
-              {/*</View>*/}
-              {/*</View>*/}
-              {/*<View style={{flex: 1, alignItems: 'center', paddingTop: 10}}>*/}
-
-              {/*</View>*/}
               <View style={{ flex: 1, paddingTop: 20 }}>
                 <View
                   style={{
@@ -916,33 +889,10 @@ class Filter extends React.Component<Props, State> {
           </TouchableWithoutFeedback>
         </Content>
           {this.state.isModalStationOpen ?
-              <Modal isOpen={this.state.isModalStationOpen} onClosed={() => this.setState({isModalStationOpen: false})}
-                     style={[styles.modal, styles.modal1]} backButtonClose={true}
-                     position={"bottom"} ref={"modal1" } swipeToClose={false} backdropPressToClose={false}>
-                  <Header style={{ backgroundColor: '#FFFFFF', }}>
-                      <StatusBar
-                          barStyle={ 'dark-content'}
-                          backgroundColor={'#FFFFFF'}
-                          translucent={false}
-                      />
-                      <Left>
-                          <Text>Выбрать все</Text>
-                      </Left>
-                  </Header>
-                    <ScrollView style={{flexGrow: 1, marginBottom: 20}}>
-                        {this.state.selectedSubway === 'M_SUBWAY' ? moscowLine.map((s, index)=>{
-                          return(
-                              <StationCheckbox key={index} station={s} checked={true}
-                                               onCheckChanged={this.onMoscowLineChanged}/>
-                          )
-                      }) : this.state.selectedSubway === 'A_SUBWAY' ?
-                            zavodLine.map((s, index)=>{
-                                return(
-                                    <StationCheckbox key={index} station={s} checked={true}
-                                                     onCheckChanged={this.onZavodLineChanged}/>
-                                )} ) : null }
-                    </ScrollView>
-              </Modal> :
+              <StationsModal isModalStationOpen={this.state.isModalStationOpen} selectedSubway={this.state.selectedSubway}
+                             closeSubwayModal={this.closeSubwayModal} selectedLine={selectedLine}
+                             onStationsSaved={this.onSelectedStationsSaved}
+              /> :
               <Footer style={{height: '10%'}}>
                   <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
                       <TouchableOpacity style={{height: '75%', width: '80%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',

@@ -12,13 +12,6 @@ export function fetchFilter() {
 
   };
 
-  // let filter = getFilter(function(val) {
-  //    console.log(val)
-  // })
-  // return {
-  // 	type: "FETCH_FILTER_SUCCESS",
-  //    filter,
-  // };
 }
 
 export function addFilter(filter: Object) {

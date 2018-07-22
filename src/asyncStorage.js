@@ -5,7 +5,7 @@ export const setFilter = value => {
   let filter = JSON.stringify(value);
   // console.log(filter)
   AsyncStorage.setItem("filter", filter);
-
+console.log(filter)
   return value;
 };
 
