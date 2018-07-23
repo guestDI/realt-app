@@ -44,14 +44,6 @@ const subwaySelection = [
     {
         label:"Возле метро",
         value:"NEAR_SUBWAY"
-    },
-    {
-        label:"Московская линия",
-        value:"M_SUBWAY"
-    },
-    {
-        label:"Автозаводская линия",
-        value:"A_SUBWAY"
     }
 ]
 
@@ -314,16 +306,15 @@ class Filter extends React.Component<Props, State> {
   }
 
   onSubwayChanged = value => {
-      if(value === 'M_SUBWAY' || value === 'A_SUBWAY'){
-          this.setState({
-              selectedSubway: value,
-              isModalStationOpen: !this.state.isModalStationOpen
-          });
-      } else {
-          this.setState({
-              selectedSubway: value,
-          });
-      }
+      this.setState({
+          selectedSubway: value,
+      });
+
+    if(value === "NEAR_SUBWAY"){
+      this.setState({
+        isModalStationOpen: !this.state.isModalStationOpen
+      });
+    }
 
   };
 
@@ -368,8 +359,6 @@ class Filter extends React.Component<Props, State> {
       this.setState({
           rooms: roomsNum
       });
-
-      // console.log(status)
 
   }
 
@@ -558,9 +547,6 @@ class Filter extends React.Component<Props, State> {
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
     };
-
-    let selectedLine = this.state.selectedSubway === "M_SUBWAY" ? moscowLine : this.state.selectedSubway === "A_SUBWAY" ?
-        zavodLine : []
 
     let { minPrice, maxPrice, editing } = this.state;
 
@@ -890,7 +876,7 @@ class Filter extends React.Component<Props, State> {
         </Content>
           {this.state.isModalStationOpen ?
               <StationsModal isModalStationOpen={this.state.isModalStationOpen} selectedSubway={this.state.selectedSubway}
-                             closeSubwayModal={this.closeSubwayModal} selectedLine={selectedLine}
+                             closeSubwayModal={this.closeSubwayModal} moscowLine={moscowLine} zavodLine={zavodLine}
                              onStationsSaved={this.onSelectedStationsSaved}
               /> :
               <Footer style={{height: '10%'}}>

@@ -4,7 +4,9 @@ import {
     Header,
     Text,
     Footer,
-    FooterTab
+    FooterTab,
+    Content,
+    Icon
 } from "native-base";
 
 import {
@@ -22,10 +24,35 @@ import {
 import { CheckBox } from 'react-native-elements'
 import StationCheckbox from '../StationCheckbox/index'
 import Modal from 'react-native-modalbox';
+import Accordion from 'react-native-collapsible/Accordion';
 
 export interface State {}
 
 const { height, width } = Dimensions.get("window");
+const DataArray = [
+    { title: "m_line", content: "Московская линия" },
+    { title: "a_line", content: "Автозаводская линия" }
+];
+
+const zavodDataArray = [
+    { title: "a_line", content: "Автозаводская линия" }
+];
+
+const CONTENT = [
+    {
+        title: 'First',
+        content: 'third',
+    },
+    {
+        title: 'Second',
+        content: 'Second',
+    },
+    {
+        title: 'Third',
+        content: "Third",
+    },
+
+];
 
 class StationsModal extends React.PureComponent<Props, State> {
   constructor(props) {
@@ -43,12 +70,6 @@ class StationsModal extends React.PureComponent<Props, State> {
                 isModalStationOpen: nextProps.isModalStationOpen,
             });
         }
-
-        // if(this.props.selectedLineStations !== nextProps.selectedLineStations){
-        //     this.setState({
-        //         lineStations: nextProps.selectedLineStations,
-        //     });
-        // }
     }
 
     addStationToTheLine = (station, status) => {
@@ -67,7 +88,7 @@ class StationsModal extends React.PureComponent<Props, State> {
                     })
                 }
         }
-        //console.log(stations)
+
     }
 
   manageAllStationsState = () => {
@@ -84,11 +105,73 @@ class StationsModal extends React.PureComponent<Props, State> {
     this.props.closeSubwayModal()
   }
 
+   // _renderMoscowContent = content => {
+   //    return(
+   //    <ScrollView>
+   //     { this.props.moscowLine.map((s, index)=>{
+   //         return(
+   //             <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
+   //                 <StationCheckbox key={index} station={s} checked={false}
+   //                                  onCheckChanged={this.addStationToTheLine}/>
+   //             </View>
+   //         )
+   //     })}
+   //    </ScrollView>
+   //    )
+   //  }
+   //
+   //  _renderZavodContent = content => {
+   //      return(
+   //          <ScrollView>
+   //              { this.props.zavodLine.map((s, index)=>{
+   //                  return(
+   //                      <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
+   //                          <StationCheckbox key={index} station={s} checked={false}
+   //                                           onCheckChanged={this.addStationToTheLine}/>
+   //                      </View>
+   //                  )
+   //              })}
+   //          </ScrollView>
+   //      )
+   //  }
+
+    _renderSectionTitle = (section) => {
+        return (
+            <View style={styles.content}>
+                <Text>11111</Text>
+            </View>
+        );
+    }
+
+    _renderHeader = (section) => {
+        return (
+            <View style={styles.header}>
+                <Text style={styles.headerText}>{section.content}</Text>
+            </View>
+        );
+    }
+
+    _renderContent = (section) => {
+      let lines = section.title === "m_line" ? this.props.moscowLine.slice() : this.props.zavodLine.slice()
+        return(
+          <ScrollView>
+            { lines.map((s, index)=>{
+              return(
+                             <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
+                                 <StationCheckbox key={index} station={s} checked={false}
+                                                  onCheckChanged={this.addStationToTheLine}/>
+                             </View>
+                         )
+                     })}
+          </ScrollView>
+        )
+    }
+
   render() {
     return (
         <Modal isOpen={this.state.isModalOpen} onClosed={() => this.setState({isModalOpen: false})}
                style={[styles.modal, styles.modal1]} backButtonClose={true}
-               position={"bottom"} ref={"modal1" } swipeToClose={true} backdropPressToClose={false}>
+               position={"bottom"} ref={"modal1" } swipeToClose={false} backdropPressToClose={false}>
             <Header style={{ backgroundColor: '#FFF', borderBottomWidth: 1, borderBottomColor: '#dcdcdc'}}>
                 <StatusBar
                     barStyle={ 'dark-content'}
@@ -114,16 +197,17 @@ class StationsModal extends React.PureComponent<Props, State> {
                    </TouchableOpacity>
                 </View>
             </Header>
-            <ScrollView style={{flexGrow: 1, marginBottom: 10}}>
-                {this.props.selectedLine.map((s, index)=>{
-                    return(
-                        <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-                            <StationCheckbox key={index} station={s} checked={false}
-                                             onCheckChanged={this.addStationToTheLine}/>
-                        </View>
-                    )
-                })}
-            </ScrollView>
+            <Content padder>
+                <Accordion
+                    sections={DataArray}
+                    renderHeader={this._renderHeader}
+                    renderContent={this._renderContent}
+                />
+                {/*<Accordion dataArray={moscowDataArray} expanded={0} icon="ios-arrow-down" expandedIcon="ios-arrow-up"*/}
+                           {/*renderContent={this._renderMoscowContent}/>*/}
+                {/*<Accordion dataArray={zavodDataArray} expanded={1} icon="ios-arrow-down" expandedIcon="ios-arrow-up"*/}
+                           {/*renderContent={this._renderZavodContent}/>*/}
+            </Content>
             <Footer style={{height: '10%'}}>
                 <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
                     <TouchableOpacity style={{height: '75%', width: '80%', borderWidth: 1, borderRadius: 3, borderColor: '#FFFFFF' , alignItems: 'center', justifyContent: 'center',
@@ -144,6 +228,14 @@ const styles = StyleSheet.create({
     },
     modal1: {
         height: height,
+    },
+    header: {
+        backgroundColor: '#F5FCFF',
+        padding: 10,
+    },
+    content: {
+        padding: 20,
+        backgroundColor: '#fff',
     },
 });
 
