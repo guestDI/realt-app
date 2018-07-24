@@ -34,27 +34,7 @@ const DataArray = [
     { title: "a_line", content: "Автозаводская линия" }
 ];
 
-const zavodDataArray = [
-    { title: "a_line", content: "Автозаводская линия" }
-];
-
-const CONTENT = [
-    {
-        title: 'First',
-        content: 'third',
-    },
-    {
-        title: 'Second',
-        content: 'Second',
-    },
-    {
-        title: 'Third',
-        content: "Third",
-    },
-
-];
-
-class StationsModal extends React.PureComponent<Props, State> {
+class StationsModal extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -92,9 +72,22 @@ class StationsModal extends React.PureComponent<Props, State> {
     }
 
   manageAllStationsState = () => {
+    let currentState = !this.state.allStationsSelected
     this.setState({
-        allStationsSelected: !this.state.allStationsSelected
+        allStationsSelected: currentState
     })
+
+    if(currentState){
+        let commonArray = this.props.moscowLine.concat(this.props.zavodLine);
+        this.setState({
+            lineStations: commonArray
+        })
+    } else if(!currentState){
+        this.setState({
+            lineStations: []
+        })
+    }
+
   }
 
   saveSelectedStations = () => {
@@ -102,51 +95,19 @@ class StationsModal extends React.PureComponent<Props, State> {
       this.props.onStationsSaved(this.state.lineStations);
     }
 
+    console.log(this.state.lineStations)
     this.props.closeSubwayModal()
   }
-
-   // _renderMoscowContent = content => {
-   //    return(
-   //    <ScrollView>
-   //     { this.props.moscowLine.map((s, index)=>{
-   //         return(
-   //             <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-   //                 <StationCheckbox key={index} station={s} checked={false}
-   //                                  onCheckChanged={this.addStationToTheLine}/>
-   //             </View>
-   //         )
-   //     })}
-   //    </ScrollView>
-   //    )
-   //  }
-   //
-   //  _renderZavodContent = content => {
-   //      return(
-   //          <ScrollView>
-   //              { this.props.zavodLine.map((s, index)=>{
-   //                  return(
-   //                      <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-   //                          <StationCheckbox key={index} station={s} checked={false}
-   //                                           onCheckChanged={this.addStationToTheLine}/>
-   //                      </View>
-   //                  )
-   //              })}
-   //          </ScrollView>
-   //      )
-   //  }
-
-    _renderSectionTitle = (section) => {
-        return (
-            <View style={styles.content}>
-                <Text>11111</Text>
-            </View>
-        );
-    }
 
     _renderHeader = (section) => {
         return (
             <View style={styles.header}>
                 <Text style={styles.headerText}>{section.content}</Text>
+                <Icon
+                    active
+                    name="ios-arrow-down"
+                    style={{color: "#FFF", zIndex: 9999, fontSize: 18, marginRight: 10}}
+                />
             </View>
         );
     }
@@ -157,19 +118,22 @@ class StationsModal extends React.PureComponent<Props, State> {
           <ScrollView>
             { lines.map((s, index)=>{
               return(
-                             <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-                                 <StationCheckbox key={index} station={s} checked={false}
-                                                  onCheckChanged={this.addStationToTheLine}/>
-                             </View>
-                         )
-                     })}
+                <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
+                  <StationCheckbox key={index} station={s} checked={false}
+                                   onCheckChanged={this.addStationToTheLine}/>
+                </View>
+              )
+            })}
           </ScrollView>
         )
     }
 
   render() {
     return (
-        <Modal isOpen={this.state.isModalOpen} onClosed={() => this.setState({isModalOpen: false})}
+        <Modal isOpen={this.state.isModalOpen} onClosed={() => {
+            this.setState({isModalOpen: false});
+            this.props.closeSubwayModal();
+        }}
                style={[styles.modal, styles.modal1]} backButtonClose={true}
                position={"bottom"} ref={"modal1" } swipeToClose={false} backdropPressToClose={false}>
             <Header style={{ backgroundColor: '#FFF', borderBottomWidth: 1, borderBottomColor: '#dcdcdc'}}>
@@ -202,11 +166,8 @@ class StationsModal extends React.PureComponent<Props, State> {
                     sections={DataArray}
                     renderHeader={this._renderHeader}
                     renderContent={this._renderContent}
+                    //activeSection={0}
                 />
-                {/*<Accordion dataArray={moscowDataArray} expanded={0} icon="ios-arrow-down" expandedIcon="ios-arrow-up"*/}
-                           {/*renderContent={this._renderMoscowContent}/>*/}
-                {/*<Accordion dataArray={zavodDataArray} expanded={1} icon="ios-arrow-down" expandedIcon="ios-arrow-up"*/}
-                           {/*renderContent={this._renderZavodContent}/>*/}
             </Content>
             <Footer style={{height: '10%'}}>
                 <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>
@@ -230,8 +191,19 @@ const styles = StyleSheet.create({
         height: height,
     },
     header: {
-        backgroundColor: '#F5FCFF',
+        flex: 1,
+        flexDirection: "row",
+        justifyContent: "space-between",
+        alignItems: 'center',
+        backgroundColor: '#87b357c4',
         padding: 10,
+        borderRadius: 3,
+        marginBottom: 7
+    },
+    headerText: {
+      fontSize: 17,
+      fontWeight: "500",
+      color: '#FFF'
     },
     content: {
         padding: 20,
