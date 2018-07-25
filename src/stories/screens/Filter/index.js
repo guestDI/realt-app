@@ -236,12 +236,13 @@ class Filter extends React.Component<Props, State> {
       coordinates: [],
       subwayStations: [],
       selectedOwnerType: "OWNER_AND_AGENT",
-      selectedSubway: "ANY_SUBWAY",
+      selectedSubway: this.props.filter.subway,
       mapScrollEnabled: true,
       mapIsEditable: false,
       regionIsChanging: false,
       errors: {},
       textColor: 'rgba(65,65,65,1)',
+      savedLineStations: [],
       moscowLineStations: [],
       zavodLineStations: [],
     };
@@ -261,7 +262,8 @@ class Filter extends React.Component<Props, State> {
         twoRooms: rooms.includes(ROOM_ENUM.TWO),
         threeRooms: rooms.includes(ROOM_ENUM.THREE),
         fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
-        polygons: polygons
+        polygons: polygons,
+        selectedSubway: nextProps.subway,
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
       });
@@ -462,8 +464,7 @@ class Filter extends React.Component<Props, State> {
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
-      moscowLine: this.state.moscowLineStations,
-      zavodLine: this.state.zavodLineStations,
+      subwayStations: this.state.savedLineStations,
       coordinates: tempCoordinates,
       page: 0,
     };
@@ -509,16 +510,10 @@ class Filter extends React.Component<Props, State> {
       }
   }
 
-  onSelectedStationsSaved = (val) => {
-    if(this.state.selectedSubway === "M_SUBWAY"){
+  onSelectedStationsSaved = val => {
       this.setState({
-        moscowLineStations: val.slice()
+        savedLineStations: val.slice()
       })
-    } else if(this.state.selectedSubway === "A_SUBWAY"){
-      this.setState({
-        zavodLineStations: val.slice()
-      })
-    }
   }
 
   removeMarker = (index) => {
@@ -877,7 +872,7 @@ class Filter extends React.Component<Props, State> {
           {this.state.isModalStationOpen ?
               <StationsModal isModalStationOpen={this.state.isModalStationOpen} selectedSubway={this.state.selectedSubway}
                              closeSubwayModal={this.closeSubwayModal} moscowLine={moscowLine} zavodLine={zavodLine}
-                             onStationsSaved={this.onSelectedStationsSaved}
+                             onStationsSaved={this.onSelectedStationsSaved} stations={this.props.filter.subwayStations}
               /> :
               <Footer style={{height: '10%'}}>
                   <FooterTab style={{backgroundColor: '#FFFFFF', borderTopWidth: 1, borderTopColor: '#eeeeee', alignItems: 'center', justifyContent: 'center'}}>

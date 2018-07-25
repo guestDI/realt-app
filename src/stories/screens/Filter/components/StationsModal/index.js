@@ -37,10 +37,12 @@ const DataArray = [
 class StationsModal extends React.Component<Props, State> {
   constructor(props) {
     super(props);
+    let stations = this.props.stations ? this.props.stations : [];
+
     this.state = {
       isModalOpen: this.props.isModalStationOpen,
-      allStationsSelected: false,
-      lineStations: []
+      allStationsSelected: stations.length === this.props.moscowLine.length + this.props.zavodLine.length,
+      lineStations: stations.slice()
     };
   }
 
@@ -95,7 +97,7 @@ class StationsModal extends React.Component<Props, State> {
       this.props.onStationsSaved(this.state.lineStations);
     }
 
-    console.log(this.state.lineStations)
+//    console.log(this.state.lineStations)
     this.props.closeSubwayModal()
   }
 
@@ -112,14 +114,22 @@ class StationsModal extends React.Component<Props, State> {
         );
     }
 
+
+    checkStationInTheList = (station) => {
+        let stationIndex = this.state.lineStations.map(function(item) { return item.name; }).indexOf(station.name);
+        return stationIndex > -1;
+
+    }
+
     _renderContent = (section) => {
       let lines = section.title === "m_line" ? this.props.moscowLine.slice() : this.props.zavodLine.slice()
         return(
           <ScrollView>
             { lines.map((s, index)=>{
+              // let status =
               return(
                 <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-                  <StationCheckbox key={index} station={s} checked={false}
+                  <StationCheckbox key={index} station={s} checked={this.checkStationInTheList(s)}
                                    onCheckChanged={this.addStationToTheLine}/>
                 </View>
               )
