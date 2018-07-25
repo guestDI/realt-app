@@ -65,14 +65,15 @@ class FlatPage extends React.Component<Props, State> {
     super(props);
 
     this.state = {
-        isOpen: false,
-        isDisabled: false,
-        swipeToClose: true,
-        currentOptionPosition: {},
-        currentOptionIndex: 0,
-        isPopoverVisible: false,
+      isOpen: false,
+      isDisabled: false,
+      swipeToClose: true,
+      currentOptionPosition: {},
+      currentOptionIndex: 0,
+      isPopoverVisible: false,
       alert: null,
       visible: false,
+      navigationButtonVisible: true,
       viewerVisible: false,
       follow: false,
       fullRead: false,
@@ -207,6 +208,11 @@ class FlatPage extends React.Component<Props, State> {
         }
     }
 
+    callNavigation = () => {
+       Linking.openURL("geo:" + this.props.flat.latitude + "," + this.props.flat.longitude).catch(err =>
+         console.error("An error occurred", err)
+       )
+    }
 
 
     returnFacility = () => {
@@ -220,21 +226,21 @@ class FlatPage extends React.Component<Props, State> {
       return arr;
     }
 
+    navigationButtonVisibilityHandler = () =>{
+      if (this.state.navigationButtonVisible) {
+          this.setState({
+              navigationButtonVisible: false
+          })
+      }
+    }
 
-
-    closePopover = () => {
-        let status = this.state.isPopoverVisible
-
-        if(status === true) {
-            this.setState({
-                isPopoverVisible: false,
-
-            })
-        }
+    onRegionChangeCompleted = () =>{
+        this.setState({
+            navigationButtonVisible: true
+        })
     }
 
   render() {
-    const param = this.props.navigation.state.params;
     let position = Animated.divide(this.scrollX, width);
 
     const photos = this.props.flat.photos ? this.props.flat.photos : [];
@@ -535,6 +541,8 @@ class FlatPage extends React.Component<Props, State> {
                   longitudeDelta: 0.007
                 }}
                 showsTraffic={false}
+                onRegionChange={this.navigationButtonVisibilityHandler}
+                onRegionChangeComplete={this.onRegionChangeCompleted}
               >
                 <MapView.Marker
                   coordinate={{
@@ -545,6 +553,16 @@ class FlatPage extends React.Component<Props, State> {
                   // image={require('../../../../assets/images/home-icon.png') }
                 />
               </MapView>
+                {this.state.navigationButtonVisible ?
+                    <TouchableOpacity style={styles.navigationButton}
+                                      onPress={this.callNavigation}>
+                        <Icon
+                            active
+                            type="Feather" name="navigation"
+                            style={{color: "#FFF", fontSize: 16, marginRight: 7}}
+                        />
+                        <Text style={{fontWeight: 'bold', color: '#FFFFFF'}}>Построить маршрут</Text>
+                    </TouchableOpacity> : null }
             </View>
           </ScrollView>
           <ImageView
@@ -575,14 +593,6 @@ class FlatPage extends React.Component<Props, State> {
                           </Text>
                       </View>
                       <View style={{marginRight: 10, width: '40%'}}>
-                          {/*<TouchableOpacity style={{width: 60, height: 60, justifyContent: 'center',*/}
-                              {/*alignItems: 'center', backgroundColor: '#4fd344', borderRadius: 50}}>*/}
-                              {/*<Icon*/}
-                                  {/*active*/}
-                                  {/*style={{color: "#FFFFFF", zIndex: 9999}}*/}
-                                  {/*name="md-call"*/}
-                              {/*/>*/}
-                          {/*</TouchableOpacity>*/}
                           <ButtonElement style={{width: '100%', justifyContent: 'center'}}
                               raised
                               bordered
@@ -590,7 +600,7 @@ class FlatPage extends React.Component<Props, State> {
                               backgroundColor='#4fd344'
                               icon={{name: 'md-call', type: 'ionicon'}}
                               title='Позвонить'
-                              onPress={() => this.callLandlord()} />
+                              onPress={this.callLandlord} />
                       </View>
                   </View>
               </FooterTab>
@@ -612,8 +622,8 @@ class FlatPage extends React.Component<Props, State> {
                               {/*source={require("../../../../assets/images/phone-512.png")}*/}
                               {/*style={{ height: 35, width: 35 }}*/}
                           {/*/>*/}
-                          <ButtonElement style={{width: '100%', justifyContent: 'center'}}
-                                         rounded
+                          <ButtonElement style={{width: '100%', justifyContent: 'center',}}
+                                         raised
                                          borderRadius={5}
                                          backgroundColor='#4fd344'
                                          icon={{name: 'md-call', type: 'ionicon'}}
@@ -660,6 +670,22 @@ const styles = StyleSheet.create({
   modal4: {
     height: 'auto',
   },
+  navigationButton: {
+      position: 'absolute',
+      height: '15%',
+      top: 10,
+      width: width*0.87,
+      borderWidth: 1,
+      borderRadius: 3,
+      zIndex: 9999,
+      borderColor: '#FFFFFF' ,
+      flexDirection: 'row',
+      alignItems: 'center',
+      justifyContent: 'center',
+      alignSelf: 'center',
+      shadowColor: '#000',
+      shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1, backgroundColor: '#87b357c4'
+  }
 });
 
 export default FlatPage;
