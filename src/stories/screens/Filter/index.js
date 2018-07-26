@@ -250,7 +250,8 @@ class Filter extends React.Component<Props, State> {
   constructor(props) {
     super(props);
       let rooms = this.props.filter.rooms ? this.props.filter.rooms : [];
-      // let polygons = this.props.filter.coordinates ? this.props.filter.coordinates : [];
+      // let subway = this.props.filter.subway ? this.props.filter.subway : "ANY_SUBWAY";
+      // console.log(this.props.filter)
     this.state = {
       isModalStationOpen: false,
       polygons: this.props.filter.coordinates,
@@ -295,7 +296,7 @@ class Filter extends React.Component<Props, State> {
         threeRooms: rooms.includes(ROOM_ENUM.THREE),
         fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
         polygons: polygons,
-        selectedSubway: nextProps.subway,
+        // selectedSubway: nextProps.subway,
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
       });

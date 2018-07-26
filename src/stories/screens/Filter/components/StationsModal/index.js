@@ -116,20 +116,23 @@ class StationsModal extends React.Component<Props, State> {
 
 
     checkStationInTheList = (station) => {
-        let stationIndex = this.state.lineStations.map(function(item) { return item.name; }).indexOf(station.name);
-        return stationIndex > -1;
-
+        this.state.lineStations.map(item => {
+            if(item.name === station.name){
+                console.log(station.name)
+            }
+        })
+        return false;
     }
 
     _renderContent = (section) => {
       let lines = section.title === "m_line" ? this.props.moscowLine.slice() : this.props.zavodLine.slice()
-        return(
+
+      return(
           <ScrollView>
             { lines.map((s, index)=>{
-              // let status =
               return(
                 <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-                  <StationCheckbox key={index} station={s} checked={this.checkStationInTheList(s)}
+                  <StationCheckbox key={index} station={s} checked={true}
                                    onCheckChanged={this.addStationToTheLine}/>
                 </View>
               )
@@ -139,6 +142,7 @@ class StationsModal extends React.Component<Props, State> {
     }
 
   render() {
+      //console.log(this.props.stations)
     return (
         <Modal isOpen={this.state.isModalOpen} onClosed={() => {
             this.setState({isModalOpen: false});

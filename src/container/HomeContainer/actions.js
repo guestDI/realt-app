@@ -126,9 +126,12 @@ export const fetchFlats = filter => {
         rooms: filter.rooms,
         owner: filter.owner,
         subway: filter.subway,
+        circles: filter.subwayStations,
         location: formatLocation(coordinates),
         page: page
     }
+
+    //console.log(f)
 
   return dispatch => {
     dispatch(isInitialLoad(false));
