@@ -47,80 +47,98 @@ const subwaySelection = [
     }
 ]
 
+const radius = 1.5
+
 const moscowLine = [
     {
       name: 'Малиновка',
       latitude: 53.849514766118595,
       longitude: 27.47477396132308,
+      radiusInKm: radius
     },
     {
       name: 'Петровщина',
       latitude: 53.86409541550409,
       longitude: 27.48543534540238,
+        radiusInKm: radius
     },
     {
       name: 'Михалово',
       latitude: 53.87697133829262,
       longitude: 27.497083671578253,
+        radiusInKm: radius
     },
     {
       name: 'Грушевка',
       latitude: 53.88670159904609,
       longitude: 27.514727964062672,
+        radiusInKm: radius
     },
     {
       name: 'Институт культуры',
       latitude: 53.8851207418056,
-      longitude: 27.539060567245883},
+      longitude: 27.539060567245883,
+        radiusInKm: radius
+    },
     {
       name: 'Площадь Ленина',
         latitude: 53.89478215031429,
         longitude: 27.548201535568637,
+        radiusInKm: radius
     },
     {
       name: 'Октябрьская',
       latitude: 53.90234279419695,
       longitude: 27.563050244675082,
+        radiusInKm: radius
     },
     {
       name: 'Площадь Победы',
       latitude: 53.908185223610324,
       longitude: 27.57544904485735,
+        radiusInKm: radius
     },
     {
       name: 'Площадь Якуба Коласа',
       latitude: 53.91541485245974,
       longitude: 27.58291631475481,
+        radiusInKm: radius
     },
     {
       name: 'Академия наук',
       latitude: 53.922188333885245,
       longitude: 27.60046869054827,
+        radiusInKm: radius
     },
     {
       name: 'Парк Челюскинцев',
       latitude: 53.92400788790166,
       longitude: 27.612012918148366,
+        radiusInKm: radius
     },
     {
       name: 'Московская',
       latitude: 53.92796101095204,
       longitude: 27.627746237961105,
+        radiusInKm: radius
     },
     {
       name: 'Восток',
       latitude: 53.934473537717,
       longitude: 27.65126772115923,
+        radiusInKm: radius
     },
     {
       name: 'Борисовский тракт',
       latitude: 53.9384256121576,
       longitude: 27.66641296626267,
+        radiusInKm: radius
     },
     {
       name: 'Уручье',
       latitude: 53.94536599374774,
       longitude: 27.68784077208693,
+        radiusInKm: radius
     }
 ]
 
@@ -129,65 +147,79 @@ const zavodLine = [
         name: 'Могилевская',
         latitude: 53.861626980837315,
         longitude: 27.674505745404076,
+        radiusInKm: radius
     },
     {
         name: 'Партизанская',
         latitude: 53.8751396877767,
         longitude: 27.629530464642357,
+        radiusInKm: radius
     },
     {
         name: 'Тракторный завод',
         latitude: 53.8892454216473,
         longitude: 27.61489085344192,
+        radiusInKm: radius
     },
     {
         name: 'Пролетарская',
         latitude: 53.88967538467137,
-        longitude: 27.585588256265055
+        longitude: 27.585588256265055,
+        radiusInKm: radius
     },
     {
         name: 'Первомайская',
         latitude: 53.89384832540525,
-        longitude: 27.57052497043742},
+        longitude: 27.57052497043742,
+        radiusInKm: radius
+    },
     {
         name: 'Купаловская',
         latitude: 53.901409138247445,
         longitude: 27.56095484867228,
+        radiusInKm: radius
     },
     {
         name: 'Немига',
         latitude: 53.90570731811712,
         longitude: 27.553916732217203,
+        radiusInKm: radius
     },
     {
         name: 'Фрунзенская',
         latitude: 53.905353367072934,
         longitude: 27.539110938454996,
+        radiusInKm: radius
     },
     {
         name: 'Молодежная',
         latitude: 53.906384222253706,
         longitude: 27.52257467959521,
+        radiusInKm: radius
     },
     {
         name: 'Пушкинская',
         latitude: 53.90913983672495,
         longitude: 27.49627575027239,
+        radiusInKm: radius
     },
     {
         name: 'Спортивная',
         latitude: 53.90850783112365,
-        longitude: 27.479839173429127
+        longitude: 27.479839173429127,
+        radiusInKm: radius
     },
     {
         name: 'Кунцевщина',
         latitude: 53.90654176441074,
         longitude: 27.454132882230397,
+        radiusInKm: radius
     },
     {
         name: 'Каменная горка',
         latitude: 53.90694626813671,
-        longitude: 27.437739220731373
+        longitude: 27.437739220731373,
+        radiusInKm: radius
     }
 ]
 
@@ -458,16 +490,29 @@ class Filter extends React.Component<Props, State> {
       let errors = {};
       let polygons = this.state.polygons ? this.state.polygons.slice() : [];
       let tempCoordinates = polygons && polygons.length > 0 ? polygons : MINSK_COORDINATES
+      let stationsCoordinates = [];
+
+      if(this.state.savedLineStations) {
+          this.state.savedLineStations.map(station => {
+              stationsCoordinates.push({
+                  latitude: station.latitude,
+                  longitude: station.longitude,
+                  radiusInKm: station.radiusInKm
+              })
+          })
+      }
+
     let filter = {
       minPrice: this.state.minPrice,
       maxPrice: this.state.maxPrice,
       rooms: this.state.rooms,
       owner: this.state.selectedOwnerType,
       subway: this.state.selectedSubway,
-      subwayStations: this.state.savedLineStations,
+      subwayStations: stationsCoordinates,
       coordinates: tempCoordinates,
       page: 0,
     };
+
 
     if(this.state.maxPrice < this.state.minPrice){
         errors['maxPrice'] = "Неверное значение"

@@ -506,7 +506,7 @@ class FlatPage extends React.Component<Props, State> {
                                     text={this.returnFacility()[index]}
                                     optionPosition={this.state.currentOptionPosition}
                                     index={index}
-                                    cond={cond}
+                                    condition={this.returnFacility()[index]}
                                     key={index}
                                 />
 

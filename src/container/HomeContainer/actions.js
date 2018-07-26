@@ -177,9 +177,12 @@ export const fetchFlatsOnMap = filter => {
         rooms: filter.rooms,
         owner: filter.owner,
         subway: filter.subway,
+        circles: filter.subwayStations,
         location: formatLocation(coordinates),
         page: filter.page
     }
+
+    //console.log(f)
 
   return dispatch => {
     dispatch(isInitialLoad(false));

@@ -97,7 +97,7 @@ class StationsModal extends React.Component<Props, State> {
       this.props.onStationsSaved(this.state.lineStations);
     }
 
-//    console.log(this.state.lineStations)
+    // console.log(this.state.lineStations)
     this.props.closeSubwayModal()
   }
 

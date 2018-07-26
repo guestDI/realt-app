@@ -48,7 +48,7 @@ class Popover extends React.PureComponent<Props, State> {
             case "Холодильник":
                 return require("../../../../../../assets/images/conditions/fridge.png")
             case "Кондиционер":
-                return require("../../../../../../assets/images/conditions/air-conditioner.png")
+                return require("../../../../../../assets/images/conditions/air-cond.png")
             case "Стиральная машина":
                 return require("../../../../../../assets/images/conditions/washing-machine.png")
             case "Лоджия или балкон":
@@ -93,7 +93,7 @@ class Popover extends React.PureComponent<Props, State> {
                               activeOpacity={0.8} style={styles.iconContainer}>
                 <Image
                     resizeMode="contain"
-                    source={this.printFacility(this.props.cond)}
+                    source={this.printFacility(this.props.condition)}
                     style={{height: 34, width: 34}}
                 />
             </TouchableOpacity>
