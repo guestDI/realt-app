@@ -47,6 +47,7 @@ class StationCheckbox extends React.PureComponent<Props, State> {
 
 
     render() {
+      //console.log(this.state.checked)
     return (
         <CheckBox
             title={this.props.station.name}
@@ -59,7 +60,5 @@ class StationCheckbox extends React.PureComponent<Props, State> {
     );
   }
 }
-
-const styles = StyleSheet.create({});
 
 export default StationCheckbox;

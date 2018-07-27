@@ -118,21 +118,32 @@ class StationsModal extends React.Component<Props, State> {
     checkStationInTheList = (station) => {
         this.state.lineStations.map(item => {
             if(item.name === station.name){
-                console.log(station.name)
+                return true;
             }
         })
         return false;
     }
 
-    _renderContent = (section) => {
-      let lines = section.title === "m_line" ? this.props.moscowLine.slice() : this.props.zavodLine.slice()
+    _renderContent = section => {
+        let lines = section.title === "m_line" ? this.props.moscowLine.slice() : this.props.zavodLine.slice()
+
+        //console.log('s', this.state.lineStations)
+
+        lines.map((el, index) => {
+            let flatIndex = this.state.lineStations.map(item => {
+                return item.name;
+            }).indexOf(el.name);
+            lines[index].status = flatIndex > -1;
+        })
+
+        //console.log(lines)
 
       return(
           <ScrollView>
             { lines.map((s, index)=>{
               return(
                 <View key={index} style={{alignSelf: 'center', width: width*0.95,}}>
-                  <StationCheckbox key={index} station={s} checked={true}
+                  <StationCheckbox key={index} station={s} checked={s.status}
                                    onCheckChanged={this.addStationToTheLine}/>
                 </View>
               )
@@ -142,7 +153,7 @@ class StationsModal extends React.Component<Props, State> {
     }
 
   render() {
-      //console.log(this.props.stations)
+      //console.log('stations',this.props.stations)
     return (
         <Modal isOpen={this.state.isModalOpen} onClosed={() => {
             this.setState({isModalOpen: false});

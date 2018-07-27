@@ -496,6 +496,7 @@ class Filter extends React.Component<Props, State> {
       if(this.state.savedLineStations) {
           this.state.savedLineStations.map(station => {
               stationsCoordinates.push({
+                  name: station.name,
                   latitude: station.latitude,
                   longitude: station.longitude,
                   radiusInKm: station.radiusInKm
@@ -585,6 +586,9 @@ class Filter extends React.Component<Props, State> {
   }
 
   render() {
+
+      //console.log(this.props.filter.subwayStations)
+
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
     };

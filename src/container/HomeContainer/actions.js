@@ -119,6 +119,19 @@ export const reloadFlatsOnMap = filter => {
 export const fetchFlats = filter => {
     let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
     let page = filter.page  ? filter.page : 0;
+    // let subwayStations = filter.subwayStations ? filter.subwayStations : []
+    let subwayCoordinates = []
+
+    if(filter.subwayStations) {
+        filter.subwayStations.map(item => {
+            subwayCoordinates.push({
+                latitude: item.latitude,
+                longitude: item.longitude,
+                radiusInKm: item.radiusInKm
+            })
+        })
+    }
+
 
     let f = {
         minPrice: filter.minPrice,
@@ -126,7 +139,7 @@ export const fetchFlats = filter => {
         rooms: filter.rooms,
         owner: filter.owner,
         subway: filter.subway,
-        circles: filter.subwayStations,
+        circles: subwayCoordinates,
         location: formatLocation(coordinates),
         page: page
     }
@@ -174,13 +187,25 @@ export const fetchFlats = filter => {
 export const fetchFlatsOnMap = filter => {
     let coordinates = filter.coordinates && filter.coordinates.length > 0 ? filter.coordinates[0] : null;
 
+    let subwayCoordinates = []
+
+    if(filter.subwayStations) {
+        filter.subwayStations.map(item => {
+            subwayCoordinates.push({
+                latitude: item.latitude,
+                longitude: item.longitude,
+                radiusInKm: item.radiusInKm
+            })
+        })
+    }
+
     let f = {
         minPrice: filter.minPrice,
         maxPrice: filter.maxPrice,
         rooms: filter.rooms,
         owner: filter.owner,
         subway: filter.subway,
-        circles: filter.subwayStations,
+        circles: subwayCoordinates,
         location: formatLocation(coordinates),
         page: filter.page
     }
