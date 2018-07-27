@@ -18,6 +18,7 @@ import {
 } from "react-native";
 
 import FlatRow from "../../../../common/FlatRow";
+import NotActualLabel from "../NotActualLabel"
 
 const { StatusBarManager } = NativeModules;
 
@@ -78,12 +79,14 @@ class FavoriteFlats extends React.Component<Props, State> {
             </View> :
             <List containerStyle={{ borderTopWidth: 0, borderBottomWidth: 0 }}>
                     <FlatList
-
                         data={this.props.list}
                         initialNumToRender={3}
                         renderItem={({item, index}) => (
-                            <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
+                            <View>
+                                <NotActualLabel/>
+                                <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
                                      favoriteFlats={this.props.list}/>
+                            </View>
                         )}
                         keyExtractor={item => item.originalId}
                         // ItemSeparatorComponent={this.renderSeparator}

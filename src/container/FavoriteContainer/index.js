@@ -3,10 +3,7 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import Favorite from "../../stories/screens/Favorite";
-import flats from "./data_test";
 import SplashScreen from 'react-native-smart-splash-screen'
-import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./actions";
-import { fetchFilter } from '../FilterContainer/actions'
 import { fetchFavoritesFlats, removeFromFavorite } from '../FlatPageContainer/actions'
 
 export interface Props {
@@ -26,7 +23,6 @@ class FavoriteContainer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    // this.props.fetchFilter()
       this.props.getFavoriteFlats()
       SplashScreen.close({
           animationType: SplashScreen.animationType.scale,
@@ -34,25 +30,14 @@ class FavoriteContainer extends React.Component<Props, State> {
           delay: 500,
       })
 
-      // let filter = Object.assign({}, this.props.filter, {size: FLATS_ON_PAGE, page: 0});
-      //this.props.initFlatsLoad()
-      // this.props.reloadFlatsOnMap(filter)
-      // console.log(filter)
-
-    // this.props.fetchFlats(filter);
-
-    // this.props.fetchFlatsOnMap({
-    //   page: 0,
-    //   size: FLATS_ON_MAP
-    // });
   }
 
   render() {
-    // console.log(this.props.data)
     return (
       <Favorite
         navigation={this.props.navigation}
         favorites={this.props.favoriteFlats}
+        flatsList={this.props.data}
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
       />
     );
@@ -68,5 +53,6 @@ function bindAction(dispatch) {
 
 const mapStateToProps = state => ({
   favoriteFlats: state.flatReducer.favoriteFlats,
+  data: state.homeReducer.list,
 });
 export default connect(mapStateToProps, bindAction)(FavoriteContainer);

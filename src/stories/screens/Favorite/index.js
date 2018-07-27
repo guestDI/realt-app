@@ -33,7 +33,7 @@ export interface State {
   monthPlus: number;
 }
 
-class Home extends React.Component<Props, State> {
+class Favorite extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -140,6 +140,7 @@ class Home extends React.Component<Props, State> {
             <FavoriteFlats
                 navigation={this.props.navigation}
                 list={this.props.favorites}
+                flatsList={this.props.flatsList}
                 removeFromFavorites={this.props.removeFavoriteFlat}
             />
         </View>
@@ -149,4 +150,4 @@ class Home extends React.Component<Props, State> {
 
 }
 
-export default Home;
+export default Favorite;

@@ -63,12 +63,6 @@ class FlatRow extends React.PureComponent<Props, State> {
     }
   };
 
-    printNumber = () => {
-    this.props.flat.contacts.map((num, index) => {
-      return <Text key={index}>{num}</Text>;
-    });
-  };
-
     getRoomsNumber = room => {
         switch (room) {
             case "ROOM":
@@ -87,7 +81,6 @@ class FlatRow extends React.PureComponent<Props, State> {
     }
 
     checkIfFavorite = (props) => {
-        // console.log(props)
         if (props) {
             let flatId = this.props.flat.id;
 
@@ -129,7 +122,6 @@ class FlatRow extends React.PureComponent<Props, State> {
 
   render() {
     let position = Animated.divide(this.scrollX, width*0.9);
-    //console.log(this.props.flat)
 
     return (
       <View style={{flex: 1, width: width * 0.9, alignSelf: 'center', backgroundColor: 'white', paddingTop: 15}}>
@@ -164,17 +156,17 @@ class FlatRow extends React.PureComponent<Props, State> {
             <FlatLabel text={this.props.flat.landlordType} style={{zIndex: 9999, top: 16, left: 16}}/> : null}
             <Button transparent
                     rounded
-                    style={{zIndex: 9999, position:'absolute', top: 8, right: 8}}
+                    style={{zIndex: 99999, position:'absolute', top: 8, right: 8}}
                     onPress={() => this.manageFavoriteState()}
             >
                 {this.state.favorite ?
                     <Icon
                         name="md-heart"
-                        style={{ fontSize: 28, color: "#ff5367" }}
+                        style={{ fontSize: 28, color: "#ff5367", zIndex: 99999 }}
                     /> :
                     <Icon
                         name="md-heart-outline"
-                        style={{ fontSize: 28, color: "#FFFFFF" }}
+                        style={{ fontSize: 28, color: "#FFFFFF", zIndex: 99999 }}
                     />
                 }
             </Button>
