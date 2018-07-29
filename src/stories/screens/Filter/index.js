@@ -13,13 +13,11 @@ import {
     FooterTab
 } from "native-base";
 import { TextField } from "react-native-material-textfield";
-import { Button as ButtonElement } from "react-native-elements";
 import ToggleButton from "./components/ToggleButton";
 import MapView from 'react-native-maps';
 import { MINSK_COORDINATES } from '../../../utils/coordinates'
 import { CheckBox } from 'react-native-elements'
 import StationCheckbox from './components/StationCheckbox/index'
-import Modal from 'react-native-modalbox';
 import {
   Image,
   View,
@@ -38,14 +36,29 @@ import  StationsModal from './components/StationsModal/index'
 const Item = Picker.Item;
 const subwaySelection = [
     {
+        label:"Выбрать линию/ станции",
+        value:"SELECT_STATIONS"
+    },
+    {
         label:"Не важно",
         value:"ANY_SUBWAY"
     },
-    {
-        label:"Возле метро",
-        value:"NEAR_SUBWAY"
-    }
 ]
+
+const subwayOptions = {
+    moscow: {
+        label:"Московская линия",
+        value:"MOSCOW_LINE"
+    },
+    zavod: {
+        label:"Автозаводская линия",
+        value:"ZAVOD_LINE"
+    },
+    moscow_zavod: {
+        label:"Московская + Автозаводская",
+        value:"MOSCOW_ZAVOD_LINES"
+    }
+}
 
 const radius = 1.5
 
@@ -141,7 +154,6 @@ const moscowLine = [
         radiusInKm: radius
     }
 ]
-
 const zavodLine = [
     {
         name: 'Могилевская',
@@ -250,7 +262,7 @@ class Filter extends React.Component<Props, State> {
   constructor(props) {
     super(props);
       let rooms = this.props.filter.rooms ? this.props.filter.rooms : [];
-      // let subway = this.props.filter.subway ? this.props.filter.subway : "ANY_SUBWAY";
+      let subway = this.props.filter.subway ? this.props.filter.subway : "ANY_SUBWAY";
       // console.log(this.props.filter)
     this.state = {
       isModalStationOpen: false,
@@ -269,7 +281,7 @@ class Filter extends React.Component<Props, State> {
       coordinates: [],
       subwayStations: [],
       selectedOwnerType: "OWNER_AND_AGENT",
-      selectedSubway: this.props.filter.subway,
+      selectedSubway: subway,
       mapScrollEnabled: true,
       mapIsEditable: false,
       regionIsChanging: false,
@@ -341,11 +353,12 @@ class Filter extends React.Component<Props, State> {
   }
 
   onSubwayChanged = value => {
+      //console.log(value)
       this.setState({
           selectedSubway: value,
       });
 
-    if(value === "NEAR_SUBWAY"){
+    if(value === "SELECT_STATIONS"){
       this.setState({
         isModalStationOpen: !this.state.isModalStationOpen
       });
@@ -406,7 +419,6 @@ class Filter extends React.Component<Props, State> {
               }
           }
       }
-      // console.log(flatContainsRoom)
       return flatContainsRoom;
   }
 
@@ -515,7 +527,6 @@ class Filter extends React.Component<Props, State> {
       page: 0,
     };
 
-
     if(this.state.maxPrice < this.state.minPrice){
         errors['maxPrice'] = "Неверное значение"
 
@@ -586,9 +597,6 @@ class Filter extends React.Component<Props, State> {
   }
 
   render() {
-
-      //console.log(this.props.filter.subwayStations)
-
     const mapOptions = {
       scrollEnabled: this.state.mapScrollEnabled
     };
