@@ -18,6 +18,7 @@ import {
 } from "react-native";
 import FavoriteFlatRow from "../../../../common/FavoriteFlatRow";
 const { StatusBarManager } = NativeModules;
+const { height, width } = Dimensions.get("window");
 
 export interface Props {
   navigation: any;
@@ -27,6 +28,7 @@ export interface Props {
 export interface State {
   monthPlus: number;
 }
+
 
 class FlatsList extends React.Component<Props, State> {
   constructor(props) {
