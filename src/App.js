@@ -8,6 +8,7 @@ import Favorite from "./container/FavoriteContainer";
 import FlatPage from "./container/FlatPageContainer";
 import Filter from "./container/FilterContainer";
 import Sidebar from "./container/SidebarContainer";
+import NotInterested from "./container/NotInterestedContainer"
 import "moment/locale/ru";
 
 const Drawer = DrawerNavigator(
@@ -15,6 +16,7 @@ const Drawer = DrawerNavigator(
     Home: { screen: Home },
       Map: { screen: Map },
       Favorite: { screen: Favorite },
+      NotInterested: { screen: NotInterested}
   },
   {
     initialRouteName: "Home",

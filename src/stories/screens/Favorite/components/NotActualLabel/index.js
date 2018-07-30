@@ -38,7 +38,7 @@ class NotActualLabel extends React.Component<Props, State> {
   render() {
     return (
         <View style={styles.notActualLabel}>
-            <Text style={{color: "#FFF", fontSize: 24, fontWeight: 'bold'}}>Объявление не актуально</Text>
+            <Text style={{color: "#FFF", fontSize: 22, fontWeight: 'bold', opacity: 1}}>Объявление не актуально</Text>
         </View>
 
     );
@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         shadowColor: '#000',
         shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.8, shadowRadius: 2, elevation: 1,
-        backgroundColor: '#b5bbc5',
+        backgroundColor: '#bcc2cc',
         opacity: 0.7
     }
 });

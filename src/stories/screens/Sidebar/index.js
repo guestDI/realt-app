@@ -8,14 +8,18 @@ const routes = [
     route: "Home",
     caption: "Список"
   },
-    {
-      route: "Map",
-        caption: "Карта",
-    },
-    {
-        route: "Favorite",
-        caption: "Избранное",
-    },
+  {
+    route: "Map",
+    caption: "Карта",
+  },
+  {
+    route: "Favorite",
+    caption: "Избранное",
+  },
+  {
+    route: "NotInterested",
+    caption: "Не интересующие",
+  },
 ];
 
 export interface Props {

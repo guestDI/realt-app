@@ -148,6 +148,10 @@ class FlatPage extends React.Component<Props, State> {
     });
   };
 
+  manageNotInterestedState = () => {
+
+  }
+
   shareLink = () => {
       Share.share({
           message: this.props.flat.url,
@@ -253,14 +257,12 @@ class FlatPage extends React.Component<Props, State> {
                 translucent={false}
             />
           <Left>
-            {/*<Button transparent>*/}
               <Icon
                 active
                 style={{color: "#414141", zIndex: 9999}}
                 name="arrow-back"
                 onPress={() => this.props.navigation.goBack()}
               />
-            {/*</Button>*/}
           </Left>
           <Body>
             <Title style={{color: "#414141"}}>Аренда</Title>
@@ -275,6 +277,17 @@ class FlatPage extends React.Component<Props, State> {
                   active
                   style={{color: "#414141", zIndex: 9999}}
                   name="share"
+              />
+            </Button>
+            <Button transparent
+                    rounded
+                    style={{zIndex: 9999, paddingRight: 15, paddingLeft: 15}}
+                    onPress={() => this.manageNotInterestedState()}
+            >
+              <Icon
+                active
+                style={{color: "#414141", zIndex: 9999, fontSize: 30}}
+                name="dislike" type="Foundation"
               />
             </Button>
             <Button transparent

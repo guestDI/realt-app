@@ -23,19 +23,6 @@ export default class Setup extends React.Component<Props, State> {
       isReady: false
     };
 
-    // var firebaseConfig = {
-    //     apiKey: "AIzaSyAWc6EcocxP3PZT_uIViMdQlJV4lGr3jJc",
-    //     authDomain: "movies-81c24.firebaseapp.com",
-    //     databaseURL: "https://movies-81c24.firebaseio.com",
-    //     projectId: "movies-81c24",
-    //     storageBucket: "",
-    //     messagingSenderId: "67881508082"
-    // };
-    //
-    // firebase.initializeApp(firebaseConfig);
-    // console.ignoredYellowBox = [
-    //     'Setting a timer'
-    // ];
   }
   componentWillMount() {
     this.getLocationAsync();

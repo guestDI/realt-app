@@ -1,8 +1,6 @@
 import * as React from "react";
 import {
   List,
-  ListItem,
-  Thumbnail,
   Text
 } from "native-base";
 import {
@@ -18,7 +16,6 @@ import {
 } from "react-native";
 
 import FlatRow from "../../../../common/FlatRow";
-import NotActualLabel from "../NotActualLabel"
 
 const { StatusBarManager } = NativeModules;
 
@@ -34,7 +31,7 @@ export interface State {
 const { height, width } = Dimensions.get("window");
 const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
-class FavoriteFlats extends React.Component<Props, State> {
+class NotInterestedFlats extends React.Component<Props, State> {
   constructor(props) {
     super(props);
     this.state = {
@@ -103,4 +100,4 @@ class FavoriteFlats extends React.Component<Props, State> {
 
 }
 
-export default FavoriteFlats;
+export default NotInterestedFlats;
