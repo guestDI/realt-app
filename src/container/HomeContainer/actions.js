@@ -1,6 +1,6 @@
 import axios from "axios";
 import qs from 'qs'
-import { getFavoriteFlat, saveFavoriteFlat, getFilter } from "../../asyncStorage";
+import { saveFavoriteFlat, getFilter } from "../../asyncStorage";
 import { formatLocation } from "../../utils/utils";
 
 export function listIsLoading(bool: boolean) {

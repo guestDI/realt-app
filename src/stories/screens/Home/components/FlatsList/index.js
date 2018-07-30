@@ -1,19 +1,9 @@
 import * as React from "react";
 import {
   Container,
-  Header,
-  Title,
-  Content,
   Button,
   Icon,
-  Left,
-  Body,
-  Right,
-  List,
-  ListItem,
-  Thumbnail,
-  Text,
-  Footer
+    Toast
 } from "native-base";
 import {
   Image,
@@ -26,7 +16,7 @@ import {
   Dimensions,
   ActivityIndicator
 } from "react-native";
-import FlatRow from "../../../../common/FlatRow";
+import FavoriteFlatRow from "../../../../common/FavoriteFlatRow";
 const { StatusBarManager } = NativeModules;
 
 export interface Props {
@@ -37,9 +27,6 @@ export interface Props {
 export interface State {
   monthPlus: number;
 }
-
-const { height, width } = Dimensions.get("window");
-const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
 class FlatsList extends React.Component<Props, State> {
   constructor(props) {
@@ -86,7 +73,6 @@ class FlatsList extends React.Component<Props, State> {
       <View
         style={{
           paddingVertical: 21,
-          // borderTopWidth: 1,
           borderColor: "#CED0CE"
         }}
       >
@@ -128,10 +114,10 @@ class FlatsList extends React.Component<Props, State> {
                 initialNumToRender={3}
                 data={this.props.list}
                 renderItem={({item, index}) => (
-                    <View key={index} style={{flex: 1, backgroundColor: 'white', paddingTop: 10}}>
-                        <FlatRow key={index} flat={item} addFavoriteFlat={this.props.addFavoriteFlat} removeFavoriteFlat={this.props.removeFavoriteFlat}
-                                 onRowPressed={this.onFlatRowPress} favoriteFlats={this.props.favoriteFlats}/>
-                    </View>
+                    <TouchableOpacity key={index} onPress={() => this.onFlatRowPress(item)} activeOpacity={1}>
+                        <FavoriteFlatRow key={index} index={index} flat={item} favoriteFlats={this.props.favoriteFlats}
+                                         removeFavoriteFlat={this.props.removeFavoriteFlat} addFavoriteFlat={this.props.addFavoriteFlat}/>
+                    </TouchableOpacity>
                 )}
                 keyExtractor={item => `${item.id}`}
                 ItemSeparatorComponent={this.renderSeparator}

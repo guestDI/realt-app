@@ -39,7 +39,6 @@ import formatDate from "../../../utils/utils";
 import Modal from 'react-native-modalbox';
 import Popover from "./components/Popover";
 
-
 export interface Props {
   navigation: any;
 }
@@ -56,9 +55,6 @@ const { StatusBarManager } = NativeModules;
 const { height, width } = Dimensions.get("window");
 const ASPECT_RATIO = width / height;
 const LATITUDE_DELTA = 0.0922;
-const LONGITUDE_DELTA = LATITUDE_DELTA * ASPECT_RATIO;
-const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-// const arr = ['fridge', 'stove', 'wifi', 'wash', 'tv', 'air_condition']
 
 class FlatPage extends React.Component<Props, State> {
   constructor(props) {
@@ -83,7 +79,6 @@ class FlatPage extends React.Component<Props, State> {
       optionsLocations: [],
       favorite: this.checkIfFavorite(this.props.favoriteFlats)
     };
-      // console.log(this.checkIfFavorite(this.props.favoriteFlats))
   }
 
   componentWillReceiveProps(nextProps) {
@@ -107,10 +102,6 @@ class FlatPage extends React.Component<Props, State> {
       viewerVisible: false,
       statusBarColor: "rgba(0, 0, 0, 0.3)"
     });
-  };
-
-  onAddressClick = () => {
-    this.refs._scrollView.scrollToEnd({ animated: true });
   };
 
   checkIfFavorite = (props) => {

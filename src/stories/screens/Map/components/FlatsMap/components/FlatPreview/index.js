@@ -18,7 +18,7 @@ import {
   Image,
   ImageBackground
 } from "react-native";
-import FlatLabel from '../../../../../../common/FlatRow/FlatLabel'
+import FlatLabel from '../../../../../../common/FlatLabel'
 const { StatusBarManager } = NativeModules;
 
 export interface Props {

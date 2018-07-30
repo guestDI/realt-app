@@ -167,7 +167,7 @@ class Home extends React.Component<Props, State> {
                   isListLoading={this.props.loadingState}
                   isListRefreshing={this.props.refreshListState}
                   onRefreshList={this.props.refreshFlatsList}
-                  favoriteFlats={this.props.favorites}
+                  favoriteFlats={this.props.favoriteFlats}
                   addFavoriteFlat={this.props.addFavoriteFlat}
                   removeFavoriteFlat={this.props.removeFavoriteFlat}
                 />

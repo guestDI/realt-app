@@ -1,8 +1,9 @@
 import * as React from "react";
 import {
   List,
-  ListItem,
-  Thumbnail,
+  Icon,
+  Toast,
+    Button,
   Text
 } from "native-base";
 import {
@@ -18,6 +19,7 @@ import {
 } from "react-native";
 
 import FlatRow from "../../../../common/FlatRow";
+import FavoriteFlatRow from "../../../../common/FavoriteFlatRow"
 import NotActualLabel from "../NotActualLabel"
 
 const { StatusBarManager } = NativeModules;
@@ -31,9 +33,6 @@ export interface State {
   monthPlus: number;
 }
 
-const { height, width } = Dimensions.get("window");
-const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
-
 class FavoriteFlats extends React.Component<Props, State> {
   constructor(props) {
     super(props);
@@ -41,7 +40,7 @@ class FavoriteFlats extends React.Component<Props, State> {
       loading: this.props.isListLoading,
       page: 0,
       error: null,
-      refreshing: false
+      refreshing: false,
     };
   }
 
@@ -51,7 +50,6 @@ class FavoriteFlats extends React.Component<Props, State> {
       <View
         style={{
           paddingVertical: 20,
-          // borderTopWidth: 1,
           borderColor: "#CED0CE"
         }}
       >
@@ -65,6 +63,21 @@ class FavoriteFlats extends React.Component<Props, State> {
       flat: val
     });
   };
+
+  checkIfFavorite = (props, item) => {
+    if (props) {
+      let flatId = item.id;
+
+      let collet = props.filter(flat => {
+      let id = flat.id
+        return flatId === id;
+      })
+
+      return collet.length > 0;
+      } else {
+        return false;
+    }
+  }
 
   render() {
     return (
@@ -82,11 +95,10 @@ class FavoriteFlats extends React.Component<Props, State> {
                         data={this.props.list}
                         initialNumToRender={3}
                         renderItem={({item, index}) => (
-                            <View>
-                                {/*<NotActualLabel/>*/}
-                                <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
-                                     favoriteFlats={this.props.list}/>
-                            </View>
+                            <TouchableOpacity key={index} onPress={() => this.onFlatRowPress(item)} activeOpacity={1}>
+                                <FavoriteFlatRow key={index} index={index} flat={item} favoriteFlats={this.props.list}
+                                                 removeFavoriteFlat={this.props.removeFromFavorites}/>
+                            </TouchableOpacity>
                         )}
                         keyExtractor={item => item.originalId}
                         // ItemSeparatorComponent={this.renderSeparator}

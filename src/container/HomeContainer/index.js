@@ -57,7 +57,7 @@ class HomeContainer extends React.Component<Props, State> {
         loadMore={this.loadMore}
         loadingState={this.props.listIsLoading}
         refreshListState={this.props.listIsRefreshing}
-        favorites={this.props.favoriteFlats}
+        favoriteFlats={this.props.favoriteFlats}
         addFavoriteFlat={this.props.addFlatToFavorites}
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
         refreshFlatsList={this.handleRefresh}

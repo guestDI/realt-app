@@ -1,9 +1,4 @@
 import * as React from "react";
-import {
-Button,
-  Icon,
-    Toast
-} from "native-base";
 
 import {
   Image,
@@ -20,8 +15,8 @@ import {
     Animated
 } from "react-native";
 import formatDate from "../../../utils/utils";
-import { LazyloadScrollView, LazyloadView, LazyloadImage } from 'react-native-lazyload-deux'
-import FlatLabel from './FlatLabel/index'
+import { LazyloadScrollView, LazyloadImage } from 'react-native-lazyload-deux'
+import FlatLabel from '../FlatLabel/index'
 
 export interface Props {
   navigation: any;
@@ -32,8 +27,6 @@ export interface Props {
 }
 
 const { height, width } = Dimensions.get("window");
-const BannerWidth = Dimensions.get('window').width;
-const BannerHeight = 260;
 
 class FlatRow extends React.PureComponent<Props, State> {
   constructor(props) {
@@ -41,8 +34,7 @@ class FlatRow extends React.PureComponent<Props, State> {
 
       this.state = {
           activeSlide: 0,
-          // favorite: false
-          favorite: this.checkIfFavorite(props.favoriteFlats)
+
       };
   }
 
@@ -80,44 +72,6 @@ class FlatRow extends React.PureComponent<Props, State> {
         }
     }
 
-    checkIfFavorite = (props) => {
-        if (props) {
-            let flatId = this.props.flat.id;
-
-            let collet = props.filter(flat => {
-                let id = flat.id
-                return flatId === id;
-            })
-
-            return collet.length > 0;
-        } else {
-            return false;
-        }
-    }
-
-    manageFavoriteState = () => {
-        if(this.state.favorite){
-            this.props.removeFavoriteFlat(this.props.flat.id)
-            Toast.show({
-                text: "Удалено из избранного",
-                position: 'bottom',
-                buttonText: 'Скрыть',
-                duration: 1500
-            })
-        } else {
-            this.props.addFavoriteFlat(this.props.flat)
-            Toast.show({
-                text: "Добавлено в избранное",
-                position: 'bottom',
-                buttonText: 'Скрыть',
-                duration: 1500
-            })
-        }
-        this.setState({
-            favorite: !this.state.favorite
-        });
-    };
-
   scrollX = new Animated.Value(0)
 
   render() {
@@ -139,37 +93,19 @@ class FlatRow extends React.PureComponent<Props, State> {
             >
             {this.props.flat.photos.map((image, index) => {
               return(
-                  <TouchableOpacity key={index} onPress={this.onRowPress} activeOpacity={1}>
                     <LazyloadImage
                       style={styles.cardImage}
                       host={`lazyload-list${this.props.flat.id}`}
                       source={{uri: image}}
                       borderRadius={3}
-
+                      key={index}
                     >
                     </LazyloadImage>
-                  </TouchableOpacity>
               )
             })}
             </LazyloadScrollView>
             {this.props.flat.landlordType !==null ?
             <FlatLabel text={this.props.flat.landlordType} style={{zIndex: 9999, top: 16, left: 16}}/> : null}
-            <Button transparent
-                    rounded
-                    style={{zIndex: 99999, position:'absolute', top: 8, right: 8}}
-                    onPress={() => this.manageFavoriteState()}
-            >
-                {this.state.favorite ?
-                    <Icon
-                        name="md-heart"
-                        style={{ fontSize: 28, color: "#ff5367", zIndex: 99999 }}
-                    /> :
-                    <Icon
-                        name="md-heart-outline"
-                        style={{ fontSize: 28, color: "#FFFFFF", zIndex: 99999 }}
-                    />
-                }
-            </Button>
             {this.props.flat.photos.length > 1 ?
             <View style={{ flexDirection: 'row', position:'absolute', bottom:10, zIndex: 9999999 }}>
               {this.props.flat.photos.map((_, i) => {
