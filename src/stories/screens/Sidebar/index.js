@@ -16,10 +16,6 @@ const routes = [
     route: "Favorite",
     caption: "Избранное",
   },
-  {
-    route: "NotInterested",
-    caption: "Не интересующие",
-  },
 ];
 
 export interface Props {

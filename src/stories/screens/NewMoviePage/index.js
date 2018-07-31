@@ -270,17 +270,17 @@ class FlatPage extends React.Component<Props, State> {
                   name="share"
               />
             </Button>
-            <Button transparent
-                    rounded
-                    style={{zIndex: 9999, paddingRight: 15, paddingLeft: 15}}
-                    onPress={() => this.manageNotInterestedState()}
-            >
-              <Icon
-                active
-                style={{color: "#414141", zIndex: 9999, fontSize: 30}}
-                name="dislike" type="Foundation"
-              />
-            </Button>
+            {/*<Button transparent*/}
+                    {/*rounded*/}
+                    {/*style={{zIndex: 9999, paddingRight: 15, paddingLeft: 15}}*/}
+                    {/*onPress={() => this.manageNotInterestedState()}*/}
+            {/*>*/}
+              {/*<Icon*/}
+                {/*active*/}
+                {/*style={{color: "#414141", zIndex: 9999, fontSize: 30}}*/}
+                {/*name="dislike" type="Foundation"*/}
+              {/*/>*/}
+            {/*</Button>*/}
             <Button transparent
                     rounded
                     style={{zIndex: 9999}}
