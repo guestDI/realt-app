@@ -1,76 +1,19 @@
 const initialState = {
-  list: [],
-  listIsLoading: false,
-  listIsRefreshing: false,
-  isLoading: true,
-  listIsEmpty: false
+    notInterestedFlats: []
 };
 
 export default function(state: any = initialState, action: Function) {
-  if (action.type === "FETCH_LIST_SUCCESS") {
-    return {
-      ...state,
-      list: [...state.list, ...action.list]
-    };
-  }
-
-  if (action.type === "LIST_CLEAR") {
-      return {
-          ...state,
-          list: []
-      };
-  }
-
-    if (action.type === "LIST_IS_EMPTY") {
-        return {
-            ...state,
-            listIsEmpty: action.listIsEmpty
-        };
+    if (action.type === "SAVE_NOT_INTERESTED_FLAT") {
+        return Object.assign({}, state, {notInterestedFlats: [...state.notInterestedFlats, action.notInterestedFlat]});
     }
 
-  if (action.type === "MAP_CLEAR") {
-      return {
-          ...state,
-          mapList: []
-      };
-  }
+    if (action.type === "NOT_INTERESTED_FLATS") {
+        return Object.assign({}, state, {notInterestedFlats: action.notInterestedFlats});
+    }
 
-  if (action.type === "LIST_IS_REFRESHING") {
-    return {
-      ...state,
-      listIsRefreshing: action.listIsRefreshing
-    };
-  }
+    if(action.type === "REMOVE_NOT_INTERESTED_FLAT"){
+        return Object.assign({}, state, {notInterestedFlats: state.notInterestedFlats.filter(flat => flat.id !== action.id)})
+    }
 
-  if (action.type === "LIST_IS_LOADING") {
-    return {
-      ...state,
-        listIsLoading: action.listIsLoading
-    };
-  }
-
-  if (action.type === "FETCH_LIST_HAS_ERRORED") {
-      return {
-          ...state,
-          listHasErrored: action.listHasErrored
-      };
-  }
-
-  if (action.type === "FETCH_MAP_LIST_SUCCESS") {
-    return {
-      ...state,
-      mapList: [...state.mapList, ...action.mapList]
-    };
-  }
-
-  if (action.type === "MAP_LIST_IS_LOADING") {
-    return {
-      ...state,
-      isLoading: action.isLoading
-    };
-  }
-
-  return state;
+    return state;
 }
-
-

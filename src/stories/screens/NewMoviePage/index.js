@@ -53,8 +53,6 @@ export interface Props {
 const { StatusBarManager } = NativeModules;
 
 const { height, width } = Dimensions.get("window");
-const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0922;
 
 class FlatPage extends React.Component<Props, State> {
   constructor(props) {
@@ -77,7 +75,8 @@ class FlatPage extends React.Component<Props, State> {
       friendsModalVisible: false,
       imageNumberSelected: 0,
       optionsLocations: [],
-      favorite: this.checkIfFavorite(this.props.favoriteFlats)
+      favorite: this.checkIfFavorite(this.props.favoriteFlats),
+      notInterested: this.checkIfNotInterested(this.props.notInterestedFlats)
     };
   }
 
@@ -115,6 +114,17 @@ class FlatPage extends React.Component<Props, State> {
     return collet.length > 0;
   }
 
+  checkIfNotInterested = (props) => {
+    let flatId = this.props.flat.id;
+
+    let collection = props.filter(flat => {
+    let id = flat.id
+        return flatId===id;
+    })
+
+      return collection.length > 0;
+  }
+
 
   manageFavoriteState = () => {
     if(this.state.favorite){
@@ -140,7 +150,26 @@ class FlatPage extends React.Component<Props, State> {
   };
 
   manageNotInterestedState = () => {
-
+      if(this.state.notInterested){
+          this.props.removeNotInterestedFlat(this.props.flat.id)
+          Toast.show({
+              text: "Добавлено в общий список",
+              position: 'bottom',
+              buttonText: 'Скрыть',
+              duration: 1500
+          })
+      } else {
+          this.props.addNotInterestedFlat(this.props.flat)
+          Toast.show({
+              text: "Перемещено в 'не интересующие' ",
+              position: 'bottom',
+              buttonText: 'Скрыть',
+              duration: 1500
+          })
+      }
+      this.setState({
+          notInterested: !this.state.notInterested
+      });
   }
 
   shareLink = () => {
@@ -275,11 +304,17 @@ class FlatPage extends React.Component<Props, State> {
                     style={{zIndex: 9999, paddingRight: 15, paddingLeft: 15}}
                     onPress={() => this.manageNotInterestedState()}
             >
-              <Icon
-                active
-                style={{color: "#414141", zIndex: 9999, fontSize: 30}}
-                name="dislike" type="Foundation"
-              />
+                {this.state.notInterested ?
+                    <Icon
+                        active
+                        style={{color: "#f0c217", zIndex: 9999, fontSize: 30}}
+                        name="dislike" type="Foundation"
+                    /> :
+                    <Icon
+                        name="dislike" type="Foundation"
+                        style={{color: "#414141", zIndex: 9999, fontSize: 30}}
+                    />
+                }
             </Button>
             <Button transparent
                     rounded

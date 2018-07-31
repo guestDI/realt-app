@@ -38,14 +38,6 @@ class FlatRow extends React.PureComponent<Props, State> {
       };
   }
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.favoriteFlats && this.props.favoriteFlats !== nextProps.favoriteFlats) {
-            this.setState({
-                favorite: this.checkIfFavorite(nextProps.favoriteFlats),
-            });
-        }
-    }
-
   onRowPress = () => {
     if (this.props.onRowPressed) {
       //for little bit smoother click animation
