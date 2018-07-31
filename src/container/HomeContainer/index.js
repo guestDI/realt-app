@@ -79,9 +79,6 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   loadMore = page => {
-    // if (this.props.listIsEmpty) {
-    //   return;
-    // }
       getFilter(filter => {
           let changedFilter = Object.assign({}, filter, {size: FLATS_ON_PAGE, page: page});
           this.props.fetchFlats(changedFilter);

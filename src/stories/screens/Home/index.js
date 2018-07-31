@@ -91,11 +91,13 @@ class Home extends React.Component<Props, State> {
     });
   };
 
-  // onRefresh = () => {
-  //   this.setState({
-  //     onNetworkStateChanged: !this.state.onNetworkStateChanged
-  // })
-  // }
+  filterNotInterestedFlats = () => {
+      let array1 = this.props.list.filter(item => {
+          return !this.props.notInterestedFlats.includes(item);
+      })
+
+      return array1
+  }
 
   render() {
     return (

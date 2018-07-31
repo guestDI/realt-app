@@ -312,17 +312,13 @@ class FlatPage extends React.Component<Props, State> {
                     style={{zIndex: 9999, paddingRight: 15, paddingLeft: 15}}
                     onPress={() => this.manageNotInterestedState()}
             >
-                {this.state.notInterested ?
-                    <Icon
-                        active
-                        style={{color: "#f0c217", zIndex: 9999, fontSize: 30}}
-                        name="dislike" type="Foundation"
-                    /> :
+              {this.state.notInterested ?
+                <Icon active style={{color: "#f0c217", zIndex: 9999, fontSize: 30}} name="dislike" type="Foundation"/> :
                     <Icon
                         name="dislike" type="Foundation"
                         style={{color: "#414141", zIndex: 9999, fontSize: 30}}
                     />
-                }
+                  }
             </Button>
               }
               {this.state.notInterested ?
