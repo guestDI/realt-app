@@ -299,6 +299,14 @@ class FlatPage extends React.Component<Props, State> {
                   name="share"
               />
             </Button>
+              {this.state.favorite ?
+              <Button transparent
+                      rounded
+                      style={{zIndex: 9999}}
+              >
+                  <Icon  name="dislike" type="Foundation" style={{fontSize: 26, color: "#414141"}}
+                  />
+              </Button> :
             <Button transparent
                     rounded
                     style={{zIndex: 9999, paddingRight: 15, paddingLeft: 15}}
@@ -316,22 +324,32 @@ class FlatPage extends React.Component<Props, State> {
                     />
                 }
             </Button>
-            <Button transparent
-                    rounded
-                    style={{zIndex: 9999}}
-                    onPress={() => this.manageFavoriteState()}
-            >
-              {this.state.favorite ?
-                  <Icon
-                      name="md-heart"
-                      style={{ fontSize: 26, color: "#ff5367" }}
-                  /> :
-                  <Icon
-                      name="md-heart-outline"
-                      style={{ fontSize: 26, color: "#414141" }}
-                  />
               }
-            </Button>
+              {this.state.notInterested ?
+                  <Button transparent
+                          rounded
+                          style={{zIndex: 9999}}
+                  >
+                      <Icon name="md-heart" style={{fontSize: 26, color: "#414141"}}
+                      />
+                  </Button> :
+                  <Button transparent
+                          rounded
+                          style={{zIndex: 9999}}
+                          onPress={() => this.manageFavoriteState()}
+                  >
+                      {this.state.favorite ?
+                          <Icon
+                              name="md-heart"
+                              style={{fontSize: 26, color: "#ff5367"}}
+                          /> :
+                          <Icon
+                              name="md-heart-outline"
+                              style={{fontSize: 26, color: "#414141"}}
+                          />
+                      }
+                  </Button>
+              }
           </Right>
         </Header>
         <View style={{ flex: 1 }}>
