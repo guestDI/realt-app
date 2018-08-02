@@ -279,7 +279,7 @@ class Filter extends React.Component<Props, State> {
       threeRooms: rooms.includes(ROOM_ENUM.THREE),
       fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
       coordinates: [],
-      subwayStations: [],
+      subwayStations: this.props.filter.subwayStations,
       selectedOwnerType: "OWNER_AND_AGENT",
       selectedSubway: subway,
       mapScrollEnabled: true,
@@ -297,6 +297,7 @@ class Filter extends React.Component<Props, State> {
     if (this.props.filter !== nextProps.filter) {
         let rooms = nextProps.filter.rooms ? nextProps.filter.rooms : [];
         let polygons = nextProps.filter.coordinates ? nextProps.filter.coordinates : [];
+        let subwayStations = nextProps.filter.subwayStations ? nextProps.filter.subwayStations: []
       this.setState({
         minPrice: nextProps.filter.minPrice,
         maxPrice: nextProps.filter.maxPrice,
@@ -308,6 +309,7 @@ class Filter extends React.Component<Props, State> {
         threeRooms: rooms.includes(ROOM_ENUM.THREE),
         fourOrMore: rooms.includes(ROOM_ENUM.FOUR_OR_MORE),
         polygons: polygons,
+        subwayStations: subwayStations
         // selectedSubway: nextProps.subway,
         // selectedOwnerType: nextProps.filter.selectedOwnerType,
         // selectedSubway: nextProps.filter.selectedOwnerType
@@ -568,10 +570,47 @@ class Filter extends React.Component<Props, State> {
       }
   }
 
+  getSelectedStationsForLine = (stations, line) => {
+      let result = false;
+      line.map((el, index) => {
+          let stationIndex = stations.map(item => {
+              return item.name;
+          }).indexOf(el.name);
+          if(stationIndex > -1){
+             result = true;
+          }
+      })
+
+      return result
+  }
+
   onSelectedStationsSaved = val => {
       this.setState({
         savedLineStations: val.slice()
       })
+
+      let moscow = this.getSelectedStationsForLine(val, moscowLine);
+      let zavod = this.getSelectedStationsForLine(val, zavodLine);;
+
+      if(moscow && zavod){
+          // console.log(subwayOptions.moscow_zavod)
+          this.setState({
+              selectedSubway: subwayOptions.moscow_zavod.value
+          })
+      } else if(moscow && !zavod){
+          // console.log(subwayOptions.moscow.value)
+          this.setState({
+              selectedSubway: subwayOptions.moscow.value
+          })
+      } else if(!moscow && zavod){
+           //console.log(subwayOptions.zavod.value)
+          this.setState({
+              selectedSubway: subwayOptions.zavod.value
+          })
+      }
+
+      // console.log('moscow', moscow)
+      // console.log('zavod', zavod)
   }
 
   removeMarker = (index) => {
@@ -602,7 +641,7 @@ class Filter extends React.Component<Props, State> {
     };
 
     let { minPrice, maxPrice, editing } = this.state;
-
+      //console.log(this.props.filter)
     return (
       <Container style={{backgroundColor: '#FFFFFF'}}>
         <Header style={{ backgroundColor: '#FFFFFF', }}>
@@ -803,7 +842,7 @@ class Filter extends React.Component<Props, State> {
                       borderColor: "#e5e5e5", marginBottom: 20}}>
                       <Text style={{fontSize: 14, color: '#00000061'}}>Метро</Text>
                       <View style={{ backgroundColor: 'white'}}>
-                        <Picker
+                          <Picker
                             style={{color: '#414141', }}
                               iosHeader="Выбрать"
                               placeholder="Выбрать"
@@ -901,6 +940,19 @@ class Filter extends React.Component<Props, State> {
                         </MapView.Marker>
                       ))
                     : null}
+                    {this.state.subwayStations && this.state.subwayStations.map((station, index) => {
+                        return(
+                          <MapView.Circle
+                            key={index}
+                            center={{latitude: station.latitude,
+                                     longitude: station.longitude}}
+                            radius={station.radiusInKm*1000}
+                            strokeColor="#F00"
+                            fillColor="rgba(255,0,0,0.5)"
+                            strokeWidth={2}
+                          />
+                        )
+                    })}
                   {this.state.polygons && this.state.polygons.map(polygon => (
                     <MapView.Polygon
                       key={polygon.id}

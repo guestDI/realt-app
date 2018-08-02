@@ -114,16 +114,6 @@ class StationsModal extends React.Component<Props, State> {
         );
     }
 
-
-    checkStationInTheList = (station) => {
-        this.state.lineStations.map(item => {
-            if(item.name === station.name){
-                return true;
-            }
-        })
-        return false;
-    }
-
     _renderContent = section => {
         let lines = section.title === "m_line" ? this.props.moscowLine.slice() : this.props.zavodLine.slice()
 
