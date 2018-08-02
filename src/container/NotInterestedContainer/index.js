@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import NotInterested from "../../stories/screens/NotInterested";
 import SplashScreen from 'react-native-smart-splash-screen'
-import { fetchFavoritesFlats, removeFromFavorite } from '../FlatPageContainer/actions'
+import { addFlatToInterested, fetchNotInterestedFlats, removeFromNotInterested } from '../NotInterestedContainer/actions'
 
 export interface Props {
   navigation: any;
@@ -20,21 +20,21 @@ class NotInterestedContainer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-      this.props.getFavoriteFlats()
-      // SplashScreen.close({
-      //     animationType: SplashScreen.animationType.scale,
-      //     duration: 850,
-      //     delay: 500,
-      // })
+      this.props.getNotInterestedFlats()
+      SplashScreen.close({
+          animationType: SplashScreen.animationType.scale,
+          duration: 850,
+          delay: 500,
+      })
   }
 
   render() {
     return (
       <NotInterested
         navigation={this.props.navigation}
-        favorites={this.props.favoriteFlats}
+        notInterested={this.props.notInterestedFlats}
         flatsList={this.props.data}
-        removeFavoriteFlat={this.props.removeFlatFromFavorites}
+        removeNotInterestedFlat={this.props.removeFlatFromNotInterested}
       />
     );
   }
@@ -42,13 +42,13 @@ class NotInterestedContainer extends React.Component<Props, State> {
 
 function bindAction(dispatch) {
   return {
-      getFavoriteFlats: () => dispatch(fetchFavoritesFlats()),
-      removeFlatFromFavorites: id => dispatch(removeFromFavorite(id))
+      getNotInterestedFlats: () => dispatch(fetchNotInterestedFlats()),
+      removeFlatFromNotInterested: id => dispatch(removeFromNotInterested(id))
   };
 }
 
 const mapStateToProps = state => ({
-  favoriteFlats: state.flatReducer.favoriteFlats,
+  notInterestedFlats: state.notInterestedFlatReducer.notInterestedFlats,
   data: state.homeReducer.list,
 });
 export default connect(mapStateToProps, bindAction)(NotInterestedContainer);

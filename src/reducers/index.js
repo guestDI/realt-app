@@ -6,6 +6,7 @@ import mapReducer from "../container/MapContainer/reducer";
 import ratedFriendsReducer from "../container/FlatPageContainer/reducer";
 import filterReducer from "../container/FilterContainer/reducer";
 import flatReducer from "../container/FlatPageContainer/reducer";
+import notInterestedFlatReducer from "../container/NotInterestedContainer/reducer";
 
 export default combineReducers({
   form: formReducer,
@@ -13,5 +14,6 @@ export default combineReducers({
   mapReducer,
   ratedFriendsReducer,
   filterReducer,
-  flatReducer
+  flatReducer,
+  notInterestedFlatReducer
 });

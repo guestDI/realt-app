@@ -3,11 +3,11 @@ import * as React from "react";
 import { connect } from "react-redux";
 
 import Home from "../../stories/screens/Home";
-import flats from "./data_test";
 import SplashScreen from 'react-native-smart-splash-screen'
 import { fetchFlats, fetchFlatsOnMap, refreshFlats, initFlatsLoad, reloadFlatsOnMap } from "./actions";
 import { fetchFilter } from '../FilterContainer/actions'
 import { fetchFavoritesFlats, addFavoriteFlat, removeFromFavorite } from '../FlatPageContainer/actions'
+import { addFlatToInterested, fetchNotInterestedFlats, removeFromNotInterested } from '../NotInterestedContainer/actions'
 import {getFilter} from "../../asyncStorage";
 
 export interface Props {
@@ -29,6 +29,7 @@ class HomeContainer extends React.Component<Props, State> {
   componentDidMount() {
     // this.props.fetchFilter()
       this.props.getFavoriteFlats()
+      this.props.getNotInterestedFlats()
       SplashScreen.close({
           animationType: SplashScreen.animationType.scale,
           duration: 850,
@@ -60,6 +61,9 @@ class HomeContainer extends React.Component<Props, State> {
         favoriteFlats={this.props.favoriteFlats}
         addFavoriteFlat={this.props.addFlatToFavorites}
         removeFavoriteFlat={this.props.removeFlatFromFavorites}
+        notInterestedFlats={this.props.notInterestedFlats}
+        // addNotInterestedFlat={this.props.addFlatToFavorites}
+        // removeFavoriteFlat={this.props.removeFlatFromFavorites}
         refreshFlatsList={this.handleRefresh}
         isInitialLoad={this.props.isInitialLoad}
         networkState={this.props.networkError}
@@ -75,9 +79,6 @@ class HomeContainer extends React.Component<Props, State> {
   }
 
   loadMore = page => {
-    // if (this.props.listIsEmpty) {
-    //   return;
-    // }
       getFilter(filter => {
           let changedFilter = Object.assign({}, filter, {size: FLATS_ON_PAGE, page: page});
           this.props.fetchFlats(changedFilter);
@@ -94,7 +95,10 @@ function bindAction(dispatch) {
     fetchFilter: () => dispatch(fetchFilter()),
     getFavoriteFlats: () => dispatch(fetchFavoritesFlats()),
     addFlatToFavorites: (favoriteFlat) => dispatch(addFavoriteFlat(favoriteFlat)),
-    removeFlatFromFavorites: id => dispatch(removeFromFavorite(id))
+    removeFlatFromFavorites: id => dispatch(removeFromFavorite(id)),
+    getNotInterestedFlats: () => dispatch(fetchNotInterestedFlats()),
+    // addFlatToNotInterested: (notInterestedFlat) => dispatch(addFlatToInterested(notInterestedFlat)),
+    // removeFlatFromNotInterested: id => dispatch(removeFromNotInterested(id)),
   };
 }
 
@@ -109,6 +113,7 @@ const mapStateToProps = state => ({
   favoriteFlats: state.flatReducer.favoriteFlats,
   listIsEmpty: state.homeReducer.listIsEmpty,
   isInitialLoad: state.homeReducer.isInitialLoad,
-  networkError: state.homeReducer.networkError
+  networkError: state.homeReducer.networkError,
+  notInterestedFlats: state.notInterestedFlatReducer.notInterestedFlats
 });
 export default connect(mapStateToProps, bindAction)(HomeContainer);

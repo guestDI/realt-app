@@ -64,21 +64,6 @@ class FavoriteFlats extends React.Component<Props, State> {
     });
   };
 
-  checkIfFavorite = (props, item) => {
-    if (props) {
-      let flatId = item.id;
-
-      let collet = props.filter(flat => {
-      let id = flat.id
-        return flatId === id;
-      })
-
-      return collet.length > 0;
-      } else {
-        return false;
-    }
-  }
-
   render() {
     return (
         this.props.list.length === 0 ?

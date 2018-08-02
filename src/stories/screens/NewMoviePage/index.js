@@ -53,8 +53,6 @@ export interface Props {
 const { StatusBarManager } = NativeModules;
 
 const { height, width } = Dimensions.get("window");
-const ASPECT_RATIO = width / height;
-const LATITUDE_DELTA = 0.0922;
 
 class FlatPage extends React.Component<Props, State> {
   constructor(props) {

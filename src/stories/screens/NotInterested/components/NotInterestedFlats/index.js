@@ -16,8 +16,7 @@ import {
 } from "react-native";
 
 import FlatRow from "../../../../common/FlatRow";
-
-const { StatusBarManager } = NativeModules;
+import NotInterestedFlatRow from "../NotInterestedFlatRow"
 
 export interface Props {
   navigation: any;
@@ -29,7 +28,6 @@ export interface State {
 }
 
 const { height, width } = Dimensions.get("window");
-const STATUSBAR_HEIGHT = Platform.OS === "ios" ? 20 : StatusBarManager.HEIGHT;
 
 class NotInterestedFlats extends React.Component<Props, State> {
   constructor(props) {
@@ -48,7 +46,6 @@ class NotInterestedFlats extends React.Component<Props, State> {
       <View
         style={{
           paddingVertical: 20,
-          // borderTopWidth: 1,
           borderColor: "#CED0CE"
         }}
       >
@@ -79,11 +76,10 @@ class NotInterestedFlats extends React.Component<Props, State> {
                         data={this.props.list}
                         initialNumToRender={3}
                         renderItem={({item, index}) => (
-                            <View>
-                                {/*<NotActualLabel/>*/}
-                                <FlatRow key={item.index} flat={item} onRowPressed={this.onFlatRowPress} removeFavoriteFlat={this.props.removeFromFavorites}
-                                     favoriteFlats={this.props.list}/>
-                            </View>
+                            <TouchableOpacity key={index} onPress={() => this.onFlatRowPress(item)} activeOpacity={1}>
+                                <NotInterestedFlatRow key={index} index={index} flat={item} notInterestedFlats={this.props.list}
+                                                      removeNotInterestedFlat={this.props.removeNotInterestedFlat}/>
+                            </TouchableOpacity>
                         )}
                         keyExtractor={item => item.originalId}
                         // ItemSeparatorComponent={this.renderSeparator}

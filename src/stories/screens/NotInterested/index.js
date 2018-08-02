@@ -36,9 +36,6 @@ class NotInterested extends React.Component<Props, State> {
     super(props);
     this.state = {
       loading: false,
-      page: 0,
-      error: null,
-      refreshing: false,
       visible: false
     };
   }
@@ -68,32 +65,14 @@ class NotInterested extends React.Component<Props, State> {
             <Title style={{color: "#414141"}}>Не интересует</Title>
           </Body>
           <Right>
-            {/*<Button*/}
-                {/*style={{zIndex: 9999}}*/}
-                {/*transparent onPress={() => this.props.navigation.navigate("Home")}>*/}
-              {/*<Icon*/}
-                  {/*active*/}
-                  {/*name="md-list"*/}
-                  {/*style={{color: "#414141"}}*/}
-              {/*/>*/}
-            {/*</Button>*/}
-            {/*<Button*/}
-                {/*style={{zIndex: 9999}}*/}
-                {/*transparent onPress={() => this.props.navigation.navigate("Filter")}>*/}
-              {/*<Icon*/}
-                {/*active*/}
-                {/*name="options"*/}
-                {/*style={{color: "#414141"}}*/}
-              {/*/>*/}
-            {/*</Button>*/}
           </Right>
         </Header>
         <View style={{ flex: 1, backgroundColor: 'white' }}>
             <NotInterestedFlats
                 navigation={this.props.navigation}
-                list={this.props.favorites}
+                list={this.props.notInterested}
                 flatsList={this.props.flatsList}
-                removeFromFavorites={this.props.removeFavoriteFlat}
+                removeNotInterestedFlat={this.props.removeNotInterestedFlat}
             />
         </View>
       </Container>
